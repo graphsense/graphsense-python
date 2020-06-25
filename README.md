@@ -1,6 +1,6 @@
 # GraphSense Python Interface
 
-
+This Python interface allows you to interact with the [GraphSense REST API](https://github.com/graphsense/graphsense-REST) and perform cross-ledger cryptocurrency analytics.
 
 ## Prerequisites
 
@@ -11,21 +11,21 @@
 ## Using the GraphSense API
 
 
-	import graphsense
+	import graphsense as gs
 
 Register API key
 
-	graphsense.authenticate("https://api.graphsense.info", MY_API_KEY)
+	gs.authenticate("https://api.graphsense.info", MY_API_KEY)
 
 
 Retrieve available blockchains and statistics
 
-	graphsense.stats
+	gs.stats
 
 
 Access a specific blockchain
 
-	btc_chain = graphsense.blockchain('btc')
+	btc_chain = gs.blockchain('btc')
 
 Retrieve a specific block
 
@@ -33,12 +33,21 @@ Retrieve a specific block
 
 List block transaction hashes
 
-	txs = block.transactions
+	[tx.hash for tx in block.transactions]
 
-Retrieve a specific transactions
+Retrieve a specific transaction
 
-	tx = block.transaction(
+	tx = btc_chain.transaction(
 		hash=f7f4c281ee20ab8d1b00734b92b60582b922211a7e470accd147c6d70c9714a3)
+
+List addresses transaction inputs
+
+	[i.address for i in tx.inputs]
+
+List output entities in a transaction
+
+	[btc_chain.get_address_entity(out.address) for out in tx.outputs]
+
 
 ...
 
@@ -51,6 +60,6 @@ Retrieve entity for a specific address
 
 Retrieve entities for a set of addresses stored in addresses.txt
 
-	cat addresses.txt | graphsense -a -c get_entity > address_w_entities.txt
+	cat addresses.txt | graphsense -a -c get_address_entity > address_w_entities.txt
 
 ...
