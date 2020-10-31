@@ -31,14 +31,15 @@ configuration = graphsense.Configuration(
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = graphsense.AddressesApi(api_client)
+    api_instance = graphsense.BlocksApi(api_client)
     currency = 'btc' # str | The cryptocurrency (e.g., btc)
-    address = '3Hrnn1UN78uXgLNvtqVXMjHwB41PmX66X4' # str | The cryptocurrency address
+    block = 123456 # str | The cryptocurrency address
 
     try:
         # Get an address with tags
-        api_response = api_instance.get_address_with_tags(currency, address)
-        pprint(api_response)
+        api_response = api_instance.list_block_txs_csv(currency, block, _preload_content=False)
+        df = pd.read_csv(api_response)
+        print(df)
     except ApiException as e:
         print("Exception when calling AddressesApi->get_address_with_tags: %s\n" % e)
 
