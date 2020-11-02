@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_block_txs_csv**
-> list[BlockTxSummary] list_block_txs_csv(currency, height)
+> str list_block_txs_csv(currency, height)
 
 Get all blocks as CSV
 
@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[BlockTxSummary]**](BlockTxSummary.md)
+**str**
 
 ### Authorization
 
