@@ -19,6 +19,7 @@ __version__ = "1.0.0"
 # import apis into sdk package
 from graphsense.api.addresses_api import AddressesApi
 from graphsense.api.blocks_api import BlocksApi
+from graphsense.api.entities_api import EntitiesApi
 from graphsense.api.general_api import GeneralApi
 
 # import ApiClient
@@ -41,6 +42,11 @@ from graphsense.models.block_tx_summary import BlockTxSummary
 from graphsense.models.block_txs import BlockTxs
 from graphsense.models.blocks import Blocks
 from graphsense.models.currency_stats import CurrencyStats
+from graphsense.models.entity import Entity
+from graphsense.models.entity_addresses import EntityAddresses
+from graphsense.models.entity_with_tags import EntityWithTags
+from graphsense.models.entity_with_tags_all_of import EntityWithTagsAllOf
+from graphsense.models.link import Link
 from graphsense.models.neighbor import Neighbor
 from graphsense.models.neighbors import Neighbors
 from graphsense.models.stats import Stats

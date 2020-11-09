@@ -98,14 +98,14 @@ with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = graphsense.AddressesApi(api_client)
     currency = 'btc' # str | The cryptocurrency (e.g., btc)
-address = '3Hrnn1UN78uXgLNvtqVXMjHwB41PmX66X4' # str | The cryptocurrency address
+address = '1Archive1n2C579dMsAu3iC6tWzuQJz8dN' # str | The cryptocurrency address
 
     try:
         # Get an address with tags
-        api_response = api_instance.get_address_with_tags(currency, address)
+        api_response = api_instance.get_address_entity(currency, address)
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling AddressesApi->get_address_with_tags: %s\n" % e)
+        print("Exception when calling AddressesApi->get_address_entity: %s\n" % e)
     
 ```
 
@@ -115,8 +115,11 @@ All URIs are relative to *http://openapi_server:9000*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AddressesApi* | [**get_address_entity**](docs/AddressesApi.md#get_address_entity) | **GET** /{currency}/addresses/{address}/entity | Get an address with tags
 *AddressesApi* | [**get_address_with_tags**](docs/AddressesApi.md#get_address_with_tags) | **GET** /{currency}/addresses/{address} | Get an address with tags
+*AddressesApi* | [**list_address_links**](docs/AddressesApi.md#list_address_links) | **GET** /{currency}/addresses/{address}/links | Get transactions between to addresses
 *AddressesApi* | [**list_address_neighbors**](docs/AddressesApi.md#list_address_neighbors) | **GET** /{currency}/addresses/{address}/neighbors | Get an addresses&#39; neighbors in the address graph
+*AddressesApi* | [**list_address_neighbors_csv**](docs/AddressesApi.md#list_address_neighbors_csv) | **GET** /{currency}/addresses/{address}/neighbors.csv | Get an addresses&#39; neighbors in the address graph as CSV
 *AddressesApi* | [**list_address_tags**](docs/AddressesApi.md#list_address_tags) | **GET** /{currency}/addresses/{address}/tags | Get attribution tags for a given address
 *AddressesApi* | [**list_address_tags_csv**](docs/AddressesApi.md#list_address_tags_csv) | **GET** /{currency}/addresses/{address}/tags.csv | Get attribution tags for a given address
 *AddressesApi* | [**list_address_txs**](docs/AddressesApi.md#list_address_txs) | **GET** /{currency}/addresses/{address}/txs | Get all transactions an address has been involved in
@@ -124,6 +127,12 @@ Class | Method | HTTP request | Description
 *BlocksApi* | [**list_block_txs**](docs/BlocksApi.md#list_block_txs) | **GET** /{currency}/blocks/{height}/txs | Get all blocks (100 per page)
 *BlocksApi* | [**list_block_txs_csv**](docs/BlocksApi.md#list_block_txs_csv) | **GET** /{currency}/blocks/{height}/txs.csv | Get all blocks as CSV
 *BlocksApi* | [**list_blocks**](docs/BlocksApi.md#list_blocks) | **GET** /{currency}/blocks | Get all blocks
+*EntitiesApi* | [**get_entity_with_tags**](docs/EntitiesApi.md#get_entity_with_tags) | **GET** /{currency}/entities/{entity} | Get an entity with tags
+*EntitiesApi* | [**list_entity_addresses**](docs/EntitiesApi.md#list_entity_addresses) | **GET** /{currency}/entities/{entity}/addresses | Get an entity&#39;s addresses
+*EntitiesApi* | [**list_entity_neighbors**](docs/EntitiesApi.md#list_entity_neighbors) | **GET** /{currency}/entities/{entity}/neighbors | Get an entity&#39;s neighbors in the entity graph
+*EntitiesApi* | [**list_entity_neighbors_csv**](docs/EntitiesApi.md#list_entity_neighbors_csv) | **GET** /{currency}/entities/{entity}/neighbors.csv | Get an entity&#39;s neighbors in the entity graph as CSV
+*EntitiesApi* | [**list_entity_tags**](docs/EntitiesApi.md#list_entity_tags) | **GET** /{currency}/entities/{entity}/tags | Get attribution tags for a given entity
+*EntitiesApi* | [**list_entity_tags_csv**](docs/EntitiesApi.md#list_entity_tags_csv) | **GET** /{currency}/entities/{entity}/tags.csv | Get attribution tags for a given entity as CSV
 *GeneralApi* | [**get_statistics**](docs/GeneralApi.md#get_statistics) | **GET** /stats | Get statistics of supported currencies
 
 
@@ -139,6 +148,11 @@ Class | Method | HTTP request | Description
  - [BlockTxs](docs/BlockTxs.md)
  - [Blocks](docs/Blocks.md)
  - [CurrencyStats](docs/CurrencyStats.md)
+ - [Entity](docs/Entity.md)
+ - [EntityAddresses](docs/EntityAddresses.md)
+ - [EntityWithTags](docs/EntityWithTags.md)
+ - [EntityWithTagsAllOf](docs/EntityWithTagsAllOf.md)
+ - [Link](docs/Link.md)
  - [Neighbor](docs/Neighbor.md)
  - [Neighbors](docs/Neighbors.md)
  - [Stats](docs/Stats.md)
