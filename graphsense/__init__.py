@@ -21,6 +21,9 @@ from graphsense.api.addresses_api import AddressesApi
 from graphsense.api.blocks_api import BlocksApi
 from graphsense.api.entities_api import EntitiesApi
 from graphsense.api.general_api import GeneralApi
+from graphsense.api.rates_api import RatesApi
+from graphsense.api.tags_api import TagsApi
+from graphsense.api.txs_api import TxsApi
 
 # import ApiClient
 from graphsense.api_client import ApiClient
@@ -41,6 +44,7 @@ from graphsense.models.block import Block
 from graphsense.models.block_tx_summary import BlockTxSummary
 from graphsense.models.block_txs import BlockTxs
 from graphsense.models.blocks import Blocks
+from graphsense.models.concept import Concept
 from graphsense.models.currency_stats import CurrencyStats
 from graphsense.models.entity import Entity
 from graphsense.models.entity_addresses import EntityAddresses
@@ -49,8 +53,17 @@ from graphsense.models.entity_with_tags_all_of import EntityWithTagsAllOf
 from graphsense.models.link import Link
 from graphsense.models.neighbor import Neighbor
 from graphsense.models.neighbors import Neighbors
+from graphsense.models.rates import Rates
+from graphsense.models.rates_rates import RatesRates
+from graphsense.models.search_paths import SearchPaths
+from graphsense.models.search_result import SearchResult
+from graphsense.models.search_result_by_currency import SearchResultByCurrency
 from graphsense.models.stats import Stats
 from graphsense.models.tag import Tag
+from graphsense.models.taxonomy import Taxonomy
+from graphsense.models.tx import Tx
 from graphsense.models.tx_summary import TxSummary
+from graphsense.models.tx_value import TxValue
+from graphsense.models.txs import Txs
 from graphsense.models.values import Values
 

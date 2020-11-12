@@ -933,3 +933,204 @@ class EntitiesApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
+
+    def search_entity_neighbors(self, currency, entity, direction, key, value, depth, **kwargs):  # noqa: E501
+        """Search deeply for matching neighbors  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.search_entity_neighbors(currency, entity, direction, key, value, depth, async_req=True)
+        >>> result = thread.get()
+
+        :param currency: The cryptocurrency (e.g., btc) (required)
+        :type currency: str
+        :param entity: The entity ID (required)
+        :type entity: int
+        :param direction: Incoming or outgoing neighbors (required)
+        :type direction: str
+        :param key: Match neighbors against one and only one of these properties: - the category the entity belongs to - addresses the entity contains - total_received: amount the entity received in total - balance: amount the entity holds finally (required)
+        :type key: str
+        :param value: If key is - category: comma separated list of category names - addresses: comma separated list of address IDs - total_received/balance: comma separated tuple of (currency, min, max) (required)
+        :type value: list[str]
+        :param depth: How many hops should the transaction graph be searched (required)
+        :type depth: int
+        :param breadth: How many siblings of each neighbor should be tried
+        :type breadth: int
+        :param skip_num_addresses: Skip entities containing more addresses
+        :type skip_num_addresses: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: SearchPaths
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.search_entity_neighbors_with_http_info(currency, entity, direction, key, value, depth, **kwargs)  # noqa: E501
+
+    def search_entity_neighbors_with_http_info(self, currency, entity, direction, key, value, depth, **kwargs):  # noqa: E501
+        """Search deeply for matching neighbors  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.search_entity_neighbors_with_http_info(currency, entity, direction, key, value, depth, async_req=True)
+        >>> result = thread.get()
+
+        :param currency: The cryptocurrency (e.g., btc) (required)
+        :type currency: str
+        :param entity: The entity ID (required)
+        :type entity: int
+        :param direction: Incoming or outgoing neighbors (required)
+        :type direction: str
+        :param key: Match neighbors against one and only one of these properties: - the category the entity belongs to - addresses the entity contains - total_received: amount the entity received in total - balance: amount the entity holds finally (required)
+        :type key: str
+        :param value: If key is - category: comma separated list of category names - addresses: comma separated list of address IDs - total_received/balance: comma separated tuple of (currency, min, max) (required)
+        :type value: list[str]
+        :param depth: How many hops should the transaction graph be searched (required)
+        :type depth: int
+        :param breadth: How many siblings of each neighbor should be tried
+        :type breadth: int
+        :param skip_num_addresses: Skip entities containing more addresses
+        :type skip_num_addresses: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(SearchPaths, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'currency',
+            'entity',
+            'direction',
+            'key',
+            'value',
+            'depth',
+            'breadth',
+            'skip_num_addresses'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method search_entity_neighbors" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'currency' is set
+        if self.api_client.client_side_validation and ('currency' not in local_var_params or  # noqa: E501
+                                                        local_var_params['currency'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `currency` when calling `search_entity_neighbors`")  # noqa: E501
+        # verify the required parameter 'entity' is set
+        if self.api_client.client_side_validation and ('entity' not in local_var_params or  # noqa: E501
+                                                        local_var_params['entity'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `entity` when calling `search_entity_neighbors`")  # noqa: E501
+        # verify the required parameter 'direction' is set
+        if self.api_client.client_side_validation and ('direction' not in local_var_params or  # noqa: E501
+                                                        local_var_params['direction'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `direction` when calling `search_entity_neighbors`")  # noqa: E501
+        # verify the required parameter 'key' is set
+        if self.api_client.client_side_validation and ('key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['key'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `key` when calling `search_entity_neighbors`")  # noqa: E501
+        # verify the required parameter 'value' is set
+        if self.api_client.client_side_validation and ('value' not in local_var_params or  # noqa: E501
+                                                        local_var_params['value'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `value` when calling `search_entity_neighbors`")  # noqa: E501
+        # verify the required parameter 'depth' is set
+        if self.api_client.client_side_validation and ('depth' not in local_var_params or  # noqa: E501
+                                                        local_var_params['depth'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `depth` when calling `search_entity_neighbors`")  # noqa: E501
+
+        if self.api_client.client_side_validation and 'depth' in local_var_params and local_var_params['depth'] > 7:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `depth` when calling `search_entity_neighbors`, must be a value less than or equal to `7`")  # noqa: E501
+        collection_formats = {}
+
+        path_params = {}
+        if 'currency' in local_var_params:
+            path_params['currency'] = local_var_params['currency']  # noqa: E501
+        if 'entity' in local_var_params:
+            path_params['entity'] = local_var_params['entity']  # noqa: E501
+
+        query_params = []
+        if 'direction' in local_var_params and local_var_params['direction'] is not None:  # noqa: E501
+            query_params.append(('direction', local_var_params['direction']))  # noqa: E501
+        if 'key' in local_var_params and local_var_params['key'] is not None:  # noqa: E501
+            query_params.append(('key', local_var_params['key']))  # noqa: E501
+        if 'value' in local_var_params and local_var_params['value'] is not None:  # noqa: E501
+            query_params.append(('value', local_var_params['value']))  # noqa: E501
+            collection_formats['value'] = 'csv'  # noqa: E501
+        if 'depth' in local_var_params and local_var_params['depth'] is not None:  # noqa: E501
+            query_params.append(('depth', local_var_params['depth']))  # noqa: E501
+        if 'breadth' in local_var_params and local_var_params['breadth'] is not None:  # noqa: E501
+            query_params.append(('breadth', local_var_params['breadth']))  # noqa: E501
+        if 'skip_num_addresses' in local_var_params and local_var_params['skip_num_addresses'] is not None:  # noqa: E501
+            query_params.append(('skip_num_addresses', local_var_params['skip_num_addresses']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/{currency}/entities/{entity}/search', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='SearchPaths',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **first_tx** | [**TxSummary**](TxSummary.md) |  | 
 **in_degree** | **int** |  | 
 **last_tx** | [**TxSummary**](TxSummary.md) |  | 
-**no_addresses** | **int** |  | 
+**no_addresses** | **int** | number of contained addresses | 
 **no_incoming_txs** | **int** |  | 
 **no_outgoing_txs** | **int** |  | 
 **out_degree** | **int** |  | 

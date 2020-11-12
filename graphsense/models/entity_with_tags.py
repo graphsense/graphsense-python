@@ -221,6 +221,7 @@ class EntityWithTags(object):
     def no_addresses(self):
         """Gets the no_addresses of this EntityWithTags.  # noqa: E501
 
+        number of contained addresses  # noqa: E501
 
         :return: The no_addresses of this EntityWithTags.  # noqa: E501
         :rtype: int
@@ -231,6 +232,7 @@ class EntityWithTags(object):
     def no_addresses(self, no_addresses):
         """Sets the no_addresses of this EntityWithTags.
 
+        number of contained addresses  # noqa: E501
 
         :param no_addresses: The no_addresses of this EntityWithTags.  # noqa: E501
         :type no_addresses: int

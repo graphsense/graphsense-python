@@ -1,73 +1,17 @@
-# graphsense.GeneralApi
+# graphsense.TxsApi
 
 All URIs are relative to *http://openapi_server:9000*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_statistics**](GeneralApi.md#get_statistics) | **GET** /stats | Get statistics of supported currencies
-[**search**](GeneralApi.md#search) | **GET** /search | Returns matching addresses, transactions and labels
+[**get_tx**](TxsApi.md#get_tx) | **GET** /{currency}/txs/{tx_hash} | Returns details of a specific transaction identified by its hash.
+[**list_txs**](TxsApi.md#list_txs) | **GET** /{currency}/txs | Returns details of a specific transaction identified by its hash.
 
 
-# **get_statistics**
-> Stats get_statistics()
+# **get_tx**
+> Tx get_tx(currency, tx_hash)
 
-Get statistics of supported currencies
-
-### Example
-
-```python
-from __future__ import print_function
-import time
-import graphsense
-from graphsense.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://openapi_server:9000
-# See configuration.py for a list of all supported configuration parameters.
-configuration = graphsense.Configuration(
-    host = "http://openapi_server:9000"
-)
-
-
-# Enter a context with an instance of the API client
-with graphsense.ApiClient() as api_client:
-    # Create an instance of the API class
-    api_instance = graphsense.GeneralApi(api_client)
-    
-    try:
-        # Get statistics of supported currencies
-        api_response = api_instance.get_statistics()
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling GeneralApi->get_statistics: %s\n" % e)
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**Stats**](Stats.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **search**
-> SearchResult search(q, currency=currency, limit=limit)
-
-Returns matching addresses, transactions and labels
+Returns details of a specific transaction identified by its hash.
 
 ### Example
 
@@ -102,30 +46,105 @@ configuration = graphsense.Configuration(
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = graphsense.GeneralApi(api_client)
-    q = 'foo' # str | It can be (the beginning of) an address, a transaction or a label
-currency = 'btc' # str | The cryptocurrency (e.g., btc) (optional)
-limit = 10 # int | Maximum number of search results (optional)
+    api_instance = graphsense.TxsApi(api_client)
+    currency = 'btc' # str | The cryptocurrency (e.g., btc)
+tx_hash = 'ab188013' # str | The transaction hash
 
     try:
-        # Returns matching addresses, transactions and labels
-        api_response = api_instance.search(q, currency=currency, limit=limit)
+        # Returns details of a specific transaction identified by its hash.
+        api_response = api_instance.get_tx(currency, tx_hash)
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling GeneralApi->search: %s\n" % e)
+        print("Exception when calling TxsApi->get_tx: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **q** | **str**| It can be (the beginning of) an address, a transaction or a label | 
- **currency** | **str**| The cryptocurrency (e.g., btc) | [optional] 
- **limit** | **int**| Maximum number of search results | [optional] 
+ **currency** | **str**| The cryptocurrency (e.g., btc) | 
+ **tx_hash** | **str**| The transaction hash | 
 
 ### Return type
 
-[**SearchResult**](SearchResult.md)
+[**Tx**](Tx.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_txs**
+> Txs list_txs(currency, page=page)
+
+Returns details of a specific transaction identified by its hash.
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+from __future__ import print_function
+import time
+import graphsense
+from graphsense.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://openapi_server:9000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = graphsense.Configuration(
+    host = "http://openapi_server:9000"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: api_key
+configuration = graphsense.Configuration(
+    host = "http://openapi_server:9000",
+    api_key = {
+        'api_key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with graphsense.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = graphsense.TxsApi(api_client)
+    currency = 'btc' # str | The cryptocurrency (e.g., btc)
+page = '0400030bff00f07fffff9b00' # str | Resumption token for retrieving the next page (optional)
+
+    try:
+        # Returns details of a specific transaction identified by its hash.
+        api_response = api_instance.list_txs(currency, page=page)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling TxsApi->list_txs: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency** | **str**| The cryptocurrency (e.g., btc) | 
+ **page** | **str**| Resumption token for retrieving the next page | [optional] 
+
+### Return type
+
+[**Txs**](Txs.md)
 
 ### Authorization
 

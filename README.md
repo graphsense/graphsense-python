@@ -133,7 +133,15 @@ Class | Method | HTTP request | Description
 *EntitiesApi* | [**list_entity_neighbors_csv**](docs/EntitiesApi.md#list_entity_neighbors_csv) | **GET** /{currency}/entities/{entity}/neighbors.csv | Get an entity&#39;s neighbors in the entity graph as CSV
 *EntitiesApi* | [**list_entity_tags**](docs/EntitiesApi.md#list_entity_tags) | **GET** /{currency}/entities/{entity}/tags | Get attribution tags for a given entity
 *EntitiesApi* | [**list_entity_tags_csv**](docs/EntitiesApi.md#list_entity_tags_csv) | **GET** /{currency}/entities/{entity}/tags.csv | Get attribution tags for a given entity as CSV
+*EntitiesApi* | [**search_entity_neighbors**](docs/EntitiesApi.md#search_entity_neighbors) | **GET** /{currency}/entities/{entity}/search | Search deeply for matching neighbors
 *GeneralApi* | [**get_statistics**](docs/GeneralApi.md#get_statistics) | **GET** /stats | Get statistics of supported currencies
+*GeneralApi* | [**search**](docs/GeneralApi.md#search) | **GET** /search | Returns matching addresses, transactions and labels
+*RatesApi* | [**get_exchange_rates**](docs/RatesApi.md#get_exchange_rates) | **GET** /{currency}/rates/{height} | Returns exchange rate for a given height
+*TagsApi* | [**list_concepts**](docs/TagsApi.md#list_concepts) | **GET** /tags/taxonomies/{taxonomy}/concepts | Returns the supported concepts of a taxonomy
+*TagsApi* | [**list_tags**](docs/TagsApi.md#list_tags) | **GET** /tags | Returns the tags associated with a given label
+*TagsApi* | [**list_taxonomies**](docs/TagsApi.md#list_taxonomies) | **GET** /tags/taxonomies | Returns the supported taxonomies
+*TxsApi* | [**get_tx**](docs/TxsApi.md#get_tx) | **GET** /{currency}/txs/{tx_hash} | Returns details of a specific transaction identified by its hash.
+*TxsApi* | [**list_txs**](docs/TxsApi.md#list_txs) | **GET** /{currency}/txs | Returns details of a specific transaction identified by its hash.
 
 
 ## Documentation For Models
@@ -147,6 +155,7 @@ Class | Method | HTTP request | Description
  - [BlockTxSummary](docs/BlockTxSummary.md)
  - [BlockTxs](docs/BlockTxs.md)
  - [Blocks](docs/Blocks.md)
+ - [Concept](docs/Concept.md)
  - [CurrencyStats](docs/CurrencyStats.md)
  - [Entity](docs/Entity.md)
  - [EntityAddresses](docs/EntityAddresses.md)
@@ -155,9 +164,18 @@ Class | Method | HTTP request | Description
  - [Link](docs/Link.md)
  - [Neighbor](docs/Neighbor.md)
  - [Neighbors](docs/Neighbors.md)
+ - [Rates](docs/Rates.md)
+ - [RatesRates](docs/RatesRates.md)
+ - [SearchPaths](docs/SearchPaths.md)
+ - [SearchResult](docs/SearchResult.md)
+ - [SearchResultByCurrency](docs/SearchResultByCurrency.md)
  - [Stats](docs/Stats.md)
  - [Tag](docs/Tag.md)
+ - [Taxonomy](docs/Taxonomy.md)
+ - [Tx](docs/Tx.md)
  - [TxSummary](docs/TxSummary.md)
+ - [TxValue](docs/TxValue.md)
+ - [Txs](docs/Txs.md)
  - [Values](docs/Values.md)
 
 

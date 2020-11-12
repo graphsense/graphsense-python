@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**list_entity_neighbors_csv**](EntitiesApi.md#list_entity_neighbors_csv) | **GET** /{currency}/entities/{entity}/neighbors.csv | Get an entity&#39;s neighbors in the entity graph as CSV
 [**list_entity_tags**](EntitiesApi.md#list_entity_tags) | **GET** /{currency}/entities/{entity}/tags | Get attribution tags for a given entity
 [**list_entity_tags_csv**](EntitiesApi.md#list_entity_tags_csv) | **GET** /{currency}/entities/{entity}/tags.csv | Get attribution tags for a given entity as CSV
+[**search_entity_neighbors**](EntitiesApi.md#search_entity_neighbors) | **GET** /{currency}/entities/{entity}/search | Search deeply for matching neighbors
 
 
 # **get_entity_with_tags**
@@ -480,6 +481,95 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/csv
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **search_entity_neighbors**
+> SearchPaths search_entity_neighbors(currency, entity, direction, key, value, depth, breadth=breadth, skip_num_addresses=skip_num_addresses)
+
+Search deeply for matching neighbors
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+from __future__ import print_function
+import time
+import graphsense
+from graphsense.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://openapi_server:9000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = graphsense.Configuration(
+    host = "http://openapi_server:9000"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: api_key
+configuration = graphsense.Configuration(
+    host = "http://openapi_server:9000",
+    api_key = {
+        'api_key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with graphsense.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = graphsense.EntitiesApi(api_client)
+    currency = 'btc' # str | The cryptocurrency (e.g., btc)
+entity = 67065 # int | The entity ID
+direction = 'out' # str | Incoming or outgoing neighbors
+key = 'category' # str | Match neighbors against one and only one of these properties: - the category the entity belongs to - addresses the entity contains - total_received: amount the entity received in total - balance: amount the entity holds finally
+value = ['Miner'] # list[str] | If key is - category: comma separated list of category names - addresses: comma separated list of address IDs - total_received/balance: comma separated tuple of (currency, min, max)
+depth = 56 # int | How many hops should the transaction graph be searched
+breadth = 16 # int | How many siblings of each neighbor should be tried (optional) (default to 16)
+skip_num_addresses = 56 # int | Skip entities containing more addresses (optional)
+
+    try:
+        # Search deeply for matching neighbors
+        api_response = api_instance.search_entity_neighbors(currency, entity, direction, key, value, depth, breadth=breadth, skip_num_addresses=skip_num_addresses)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling EntitiesApi->search_entity_neighbors: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency** | **str**| The cryptocurrency (e.g., btc) | 
+ **entity** | **int**| The entity ID | 
+ **direction** | **str**| Incoming or outgoing neighbors | 
+ **key** | **str**| Match neighbors against one and only one of these properties: - the category the entity belongs to - addresses the entity contains - total_received: amount the entity received in total - balance: amount the entity holds finally | 
+ **value** | [**list[str]**](str.md)| If key is - category: comma separated list of category names - addresses: comma separated list of address IDs - total_received/balance: comma separated tuple of (currency, min, max) | 
+ **depth** | **int**| How many hops should the transaction graph be searched | 
+ **breadth** | **int**| How many siblings of each neighbor should be tried | [optional] [default to 16]
+ **skip_num_addresses** | **int**| Skip entities containing more addresses | [optional] 
+
+### Return type
+
+[**SearchPaths**](SearchPaths.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
