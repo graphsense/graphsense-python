@@ -33,6 +33,7 @@ class CurrencyStats(object):
                             and the value is json key in definition.
     """
     openapi_types = {
+        'data_sources': 'list[StatsLedger]',
         'name': 'str',
         'no_address_relations': 'int',
         'no_addresses': 'int',
@@ -40,10 +41,13 @@ class CurrencyStats(object):
         'no_entities': 'int',
         'no_labels': 'int',
         'no_txs': 'int',
-        'timestamp': 'int'
+        'notes': 'list[str]',
+        'timestamp': 'int',
+        'tools': 'list[str]'
     }
 
     attribute_map = {
+        'data_sources': 'data_sources',
         'name': 'name',
         'no_address_relations': 'no_address_relations',
         'no_addresses': 'no_addresses',
@@ -51,15 +55,18 @@ class CurrencyStats(object):
         'no_entities': 'no_entities',
         'no_labels': 'no_labels',
         'no_txs': 'no_txs',
-        'timestamp': 'timestamp'
+        'notes': 'notes',
+        'timestamp': 'timestamp',
+        'tools': 'tools'
     }
 
-    def __init__(self, name=None, no_address_relations=None, no_addresses=None, no_blocks=None, no_entities=None, no_labels=None, no_txs=None, timestamp=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, data_sources=None, name=None, no_address_relations=None, no_addresses=None, no_blocks=None, no_entities=None, no_labels=None, no_txs=None, notes=None, timestamp=None, tools=None, local_vars_configuration=None):  # noqa: E501
         """CurrencyStats - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
+        self._data_sources = None
         self._name = None
         self._no_address_relations = None
         self._no_addresses = None
@@ -67,9 +74,13 @@ class CurrencyStats(object):
         self._no_entities = None
         self._no_labels = None
         self._no_txs = None
+        self._notes = None
         self._timestamp = None
+        self._tools = None
         self.discriminator = None
 
+        if data_sources is not None:
+            self.data_sources = data_sources
         if name is not None:
             self.name = name
         if no_address_relations is not None:
@@ -84,8 +95,33 @@ class CurrencyStats(object):
             self.no_labels = no_labels
         if no_txs is not None:
             self.no_txs = no_txs
+        if notes is not None:
+            self.notes = notes
         if timestamp is not None:
             self.timestamp = timestamp
+        if tools is not None:
+            self.tools = tools
+
+    @property
+    def data_sources(self):
+        """Gets the data_sources of this CurrencyStats.  # noqa: E501
+
+
+        :return: The data_sources of this CurrencyStats.  # noqa: E501
+        :rtype: list[StatsLedger]
+        """
+        return self._data_sources
+
+    @data_sources.setter
+    def data_sources(self, data_sources):
+        """Sets the data_sources of this CurrencyStats.
+
+
+        :param data_sources: The data_sources of this CurrencyStats.  # noqa: E501
+        :type data_sources: list[StatsLedger]
+        """
+
+        self._data_sources = data_sources
 
     @property
     def name(self):
@@ -235,6 +271,27 @@ class CurrencyStats(object):
         self._no_txs = no_txs
 
     @property
+    def notes(self):
+        """Gets the notes of this CurrencyStats.  # noqa: E501
+
+
+        :return: The notes of this CurrencyStats.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._notes
+
+    @notes.setter
+    def notes(self, notes):
+        """Sets the notes of this CurrencyStats.
+
+
+        :param notes: The notes of this CurrencyStats.  # noqa: E501
+        :type notes: list[str]
+        """
+
+        self._notes = notes
+
+    @property
     def timestamp(self):
         """Gets the timestamp of this CurrencyStats.  # noqa: E501
 
@@ -254,6 +311,27 @@ class CurrencyStats(object):
         """
 
         self._timestamp = timestamp
+
+    @property
+    def tools(self):
+        """Gets the tools of this CurrencyStats.  # noqa: E501
+
+
+        :return: The tools of this CurrencyStats.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._tools
+
+    @tools.setter
+    def tools(self, tools):
+        """Sets the tools of this CurrencyStats.
+
+
+        :param tools: The tools of this CurrencyStats.  # noqa: E501
+        :type tools: list[str]
+        """
+
+        self._tools = tools
 
     def to_dict(self):
         """Returns the model properties as a dict"""

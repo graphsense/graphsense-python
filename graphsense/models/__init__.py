@@ -38,6 +38,12 @@ from graphsense.models.search_paths import SearchPaths
 from graphsense.models.search_result import SearchResult
 from graphsense.models.search_result_by_currency import SearchResultByCurrency
 from graphsense.models.stats import Stats
+from graphsense.models.stats_ledger import StatsLedger
+from graphsense.models.stats_ledger_version import StatsLedgerVersion
+from graphsense.models.stats_note import StatsNote
+from graphsense.models.stats_tags_source import StatsTagsSource
+from graphsense.models.stats_tool import StatsTool
+from graphsense.models.stats_version import StatsVersion
 from graphsense.models.tag import Tag
 from graphsense.models.taxonomy import Taxonomy
 from graphsense.models.tx import Tx

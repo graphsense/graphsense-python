@@ -255,6 +255,11 @@ class GeneralApi(object):
                                                         local_var_params['q'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `q` when calling `search`")  # noqa: E501
 
+        if self.api_client.client_side_validation and ('q' in local_var_params and  # noqa: E501
+                                                        len(local_var_params['q']) < 3):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `q` when calling `search`, length must be greater than or equal to `3`")  # noqa: E501
+        if self.api_client.client_side_validation and 'q' in local_var_params and not re.search(r'^[\w ]+$', local_var_params['q']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `q` when calling `search`, must conform to the pattern `/^[\w ]+$/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
