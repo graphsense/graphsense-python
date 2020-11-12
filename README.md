@@ -49,14 +49,10 @@ In order to generate the client from [Graphsense's OpenAPI specification](https:
     URL=https://github.com/graphsense/graphsense-openapi/blob/master/graphsense.yaml
     docker run --rm \
       -v "${PWD}:/build" \
-      -v "${PWD}/templates:/templates" \
       openapitools/openapi-generator-cli:latest-release \
       generate -i "$URL" \
         -g python \
-        -o /build \
-        -t /templates \
-        --additional-properties=packageName=graphsense
-        --additional-properties=projectName=graphsense-python
+        -o /build
 ```
 
 ## Getting Started
@@ -170,6 +166,12 @@ Class | Method | HTTP request | Description
  - [SearchResult](docs/SearchResult.md)
  - [SearchResultByCurrency](docs/SearchResultByCurrency.md)
  - [Stats](docs/Stats.md)
+ - [StatsLedger](docs/StatsLedger.md)
+ - [StatsLedgerVersion](docs/StatsLedgerVersion.md)
+ - [StatsNote](docs/StatsNote.md)
+ - [StatsTagsSource](docs/StatsTagsSource.md)
+ - [StatsTool](docs/StatsTool.md)
+ - [StatsVersion](docs/StatsVersion.md)
  - [Tag](docs/Tag.md)
  - [Taxonomy](docs/Taxonomy.md)
  - [Tx](docs/Tx.md)

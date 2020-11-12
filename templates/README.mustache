@@ -57,14 +57,10 @@ In order to generate the client from [Graphsense's OpenAPI specification](https:
     URL=https://github.com/graphsense/graphsense-openapi/blob/master/graphsense.yaml
     docker run --rm \
       -v "${PWD}:/build" \
-      -v "${PWD}/templates:/templates" \
       openapitools/openapi-generator-cli:latest-release \
       generate -i "$URL" \
         -g python \
-        -o /build \
-        -t /templates \
-        --additional-properties=packageName=graphsense
-        --additional-properties=projectName=graphsense-python
+        -o /build
 ```
 
 ## Getting Started
