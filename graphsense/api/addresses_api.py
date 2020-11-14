@@ -317,7 +317,7 @@ class AddressesApi(object):
             _request_auth=local_var_params.get('_request_auth'))
 
     def list_address_links(self, currency, address, neighbor, **kwargs):  # noqa: E501
-        """Get transactions between to addresses  # noqa: E501
+        """Get transactions between two addresses  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -350,7 +350,7 @@ class AddressesApi(object):
         return self.list_address_links_with_http_info(currency, address, neighbor, **kwargs)  # noqa: E501
 
     def list_address_links_with_http_info(self, currency, address, neighbor, **kwargs):  # noqa: E501
-        """Get transactions between to addresses  # noqa: E501
+        """Get transactions between two addresses  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True

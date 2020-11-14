@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_address_entity**](AddressesApi.md#get_address_entity) | **GET** /{currency}/addresses/{address}/entity | Get an address with tags
 [**get_address_with_tags**](AddressesApi.md#get_address_with_tags) | **GET** /{currency}/addresses/{address} | Get an address with tags
-[**list_address_links**](AddressesApi.md#list_address_links) | **GET** /{currency}/addresses/{address}/links | Get transactions between to addresses
+[**list_address_links**](AddressesApi.md#list_address_links) | **GET** /{currency}/addresses/{address}/links | Get transactions between two addresses
 [**list_address_neighbors**](AddressesApi.md#list_address_neighbors) | **GET** /{currency}/addresses/{address}/neighbors | Get an addresses&#39; neighbors in the address graph
 [**list_address_neighbors_csv**](AddressesApi.md#list_address_neighbors_csv) | **GET** /{currency}/addresses/{address}/neighbors.csv | Get an addresses&#39; neighbors in the address graph as CSV
 [**list_address_tags**](AddressesApi.md#list_address_tags) | **GET** /{currency}/addresses/{address}/tags | Get attribution tags for a given address
@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 # **list_address_links**
 > list[Link] list_address_links(currency, address, neighbor)
 
-Get transactions between to addresses
+Get transactions between two addresses
 
 ### Example
 
@@ -212,7 +212,7 @@ address = '1Archive1n2C579dMsAu3iC6tWzuQJz8dN' # str | The cryptocurrency addres
 neighbor = '17DfZja1713S3JRWA9jaebCKFM5anUh7GG' # str | Neighbor address
 
     try:
-        # Get transactions between to addresses
+        # Get transactions between two addresses
         api_response = api_instance.list_address_links(currency, address, neighbor)
         pprint(api_response)
     except ApiException as e:
