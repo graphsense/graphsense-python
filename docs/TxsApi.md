@@ -5,7 +5,7 @@ All URIs are relative to *http://openapi_server:9000*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_tx**](TxsApi.md#get_tx) | **GET** /{currency}/txs/{tx_hash} | Returns details of a specific transaction identified by its hash.
-[**list_txs**](TxsApi.md#list_txs) | **GET** /{currency}/txs | Returns details of a specific transaction identified by its hash.
+[**list_txs**](TxsApi.md#list_txs) | **GET** /{currency}/txs | Returns transactions
 
 
 # **get_tx**
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 # **list_txs**
 > Txs list_txs(currency, page=page)
 
-Returns details of a specific transaction identified by its hash.
+Returns transactions
 
 ### Example
 
@@ -128,7 +128,7 @@ with graphsense.ApiClient(configuration) as api_client:
 page = '0400030bff00f07fffff9b00' # str | Resumption token for retrieving the next page (optional)
 
     try:
-        # Returns details of a specific transaction identified by its hash.
+        # Returns transactions
         api_response = api_instance.list_txs(currency, page=page)
         pprint(api_response)
     except ApiException as e:
