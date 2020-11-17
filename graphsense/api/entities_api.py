@@ -607,7 +607,7 @@ class EntitiesApi(object):
             query_params.append(('direction', local_var_params['direction']))  # noqa: E501
         if 'targets' in local_var_params and local_var_params['targets'] is not None:  # noqa: E501
             query_params.append(('targets', local_var_params['targets']))  # noqa: E501
-            collection_formats['targets'] = 'csv'  # noqa: E501
+            collection_formats['targets'] = 'multi'  # noqa: E501
         if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
             query_params.append(('page', local_var_params['page']))  # noqa: E501
         if 'pagesize' in local_var_params and local_var_params['pagesize'] is not None:  # noqa: E501
@@ -1237,7 +1237,7 @@ class EntitiesApi(object):
             query_params.append(('key', local_var_params['key']))  # noqa: E501
         if 'value' in local_var_params and local_var_params['value'] is not None:  # noqa: E501
             query_params.append(('value', local_var_params['value']))  # noqa: E501
-            collection_formats['value'] = 'csv'  # noqa: E501
+            collection_formats['value'] = 'multi'  # noqa: E501
         if 'depth' in local_var_params and local_var_params['depth'] is not None:  # noqa: E501
             query_params.append(('depth', local_var_params['depth']))  # noqa: E501
         if 'breadth' in local_var_params and local_var_params['breadth'] is not None:  # noqa: E501
