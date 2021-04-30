@@ -67,3 +67,4 @@ target/
 
 #ctags
 tags
+venv-gpython/

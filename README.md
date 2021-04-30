@@ -196,3 +196,41 @@ Class | Method | HTTP request | Description
 - **Type**: API key
 - **API key parameter name**: Authorization
 - **Location**: HTTP header
+
+## Examples
+
+In `./examples` you can find example Python scripts and [Jupyter](https://jupyter.org/) notebooks demonstrating how to use the GraphSense Python API. Please Follow these setup instructions to run them:
+
+Clone this repository
+
+    git clone git@github.com:graphsense/graphsense-python.git
+    cd graphsense-python
+
+Recommended: create and activate a virtual Python environment
+
+    python3 -m venv venv-gpython
+    . ./venv-gpython/bin/activate
+
+Upgrade pip and install all dependencies
+    
+    python -m pip install --upgrade pip
+    pip install -r examples/requirements.txt
+
+Install the GraphSense python client
+
+    pip install git+https://github.com/graphsense/graphsense-python.git
+
+Install a custom iPython kernel that uses the virtual Python environment
+
+    ipython kernel install --name=venv-gpython
+
+Run the Jupyter notebook
+
+    jupyter notebook
+
+Open the notebooks in your browser
+
+    http://localhost:8889/notebooks/examples/basic_entities_demo.ipynb
+    http://localhost:8889/notebooks/examples/sextortion_study.ipynb
+
+Make sure you select the right kernel (venv-gpython) before running the notebooks (Kernel -> Change kernel -> venv-gpython)
