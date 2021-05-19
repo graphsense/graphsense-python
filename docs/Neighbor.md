@@ -1,12 +1,13 @@
 # Neighbor
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **balance** | [**Values**](Values.md) |  | 
 **estimated_value** | [**Values**](Values.md) |  | 
+**has_labels** | **bool** | has labels | 
 **id** | **str** | address or entity id | 
-**labels** | **list[str]** | labels | 
 **no_txs** | **int** | number of transactions | 
 **node_type** | **str** | address or entity | 
 **received** | [**Values**](Values.md) |  | 

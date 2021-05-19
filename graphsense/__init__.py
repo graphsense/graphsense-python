@@ -1,5 +1,3 @@
-# coding: utf-8
-
 # flake8: noqa
 
 """
@@ -12,64 +10,18 @@
 """
 
 
-from __future__ import absolute_import
-
 __version__ = "1.0.0"
-
-# import apis into sdk package
-from graphsense.api.addresses_api import AddressesApi
-from graphsense.api.blocks_api import BlocksApi
-from graphsense.api.entities_api import EntitiesApi
-from graphsense.api.general_api import GeneralApi
-from graphsense.api.rates_api import RatesApi
-from graphsense.api.tags_api import TagsApi
-from graphsense.api.txs_api import TxsApi
 
 # import ApiClient
 from graphsense.api_client import ApiClient
+
+# import Configuration
 from graphsense.configuration import Configuration
+
+# import exceptions
 from graphsense.exceptions import OpenApiException
+from graphsense.exceptions import ApiAttributeError
 from graphsense.exceptions import ApiTypeError
 from graphsense.exceptions import ApiValueError
 from graphsense.exceptions import ApiKeyError
-from graphsense.exceptions import ApiAttributeError
 from graphsense.exceptions import ApiException
-# import models into sdk package
-from graphsense.models.address import Address
-from graphsense.models.address_tx import AddressTx
-from graphsense.models.address_txs import AddressTxs
-from graphsense.models.address_with_tags import AddressWithTags
-from graphsense.models.address_with_tags_all_of import AddressWithTagsAllOf
-from graphsense.models.block import Block
-from graphsense.models.block_tx_summary import BlockTxSummary
-from graphsense.models.block_txs import BlockTxs
-from graphsense.models.blocks import Blocks
-from graphsense.models.concept import Concept
-from graphsense.models.currency_stats import CurrencyStats
-from graphsense.models.entity import Entity
-from graphsense.models.entity_addresses import EntityAddresses
-from graphsense.models.entity_with_tags import EntityWithTags
-from graphsense.models.entity_with_tags_all_of import EntityWithTagsAllOf
-from graphsense.models.link import Link
-from graphsense.models.neighbor import Neighbor
-from graphsense.models.neighbors import Neighbors
-from graphsense.models.rates import Rates
-from graphsense.models.rates_rates import RatesRates
-from graphsense.models.search_paths import SearchPaths
-from graphsense.models.search_result import SearchResult
-from graphsense.models.search_result_by_currency import SearchResultByCurrency
-from graphsense.models.stats import Stats
-from graphsense.models.stats_ledger import StatsLedger
-from graphsense.models.stats_ledger_version import StatsLedgerVersion
-from graphsense.models.stats_note import StatsNote
-from graphsense.models.stats_tags_source import StatsTagsSource
-from graphsense.models.stats_tool import StatsTool
-from graphsense.models.stats_version import StatsVersion
-from graphsense.models.tag import Tag
-from graphsense.models.taxonomy import Taxonomy
-from graphsense.models.tx import Tx
-from graphsense.models.tx_summary import TxSummary
-from graphsense.models.tx_value import TxValue
-from graphsense.models.txs import Txs
-from graphsense.models.values import Values
-

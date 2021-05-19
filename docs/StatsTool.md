@@ -1,10 +1,11 @@
 # StatsTool
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
-**responsible_for** | **list[str]** |  | [optional] 
+**responsible_for** | **[str]** |  | [optional] 
 **titanium_replayable** | **bool** |  | [optional] 
 **version** | **str** |  | [optional] 
 **visible_name** | **str** |  | [optional] 

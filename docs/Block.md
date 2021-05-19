@@ -1,10 +1,11 @@
 # Block
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **block_hash** | **str** |  | [optional] 
-**height** | **int** | Height | [optional] 
+**height** | [**Height**](Height.md) |  | [optional] 
 **no_txs** | **int** |  | [optional] 
 **timestamp** | **int** |  | [optional] 
 

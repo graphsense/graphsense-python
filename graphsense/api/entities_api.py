@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     GraphSense API
 
@@ -10,18 +8,25 @@
 """
 
 
-from __future__ import absolute_import
-
 import re  # noqa: F401
+import sys  # noqa: F401
 
-# python 2 and python 3 compatibility library
-import six
-
-from graphsense.api_client import ApiClient
-from graphsense.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
+from graphsense.api_client import ApiClient, Endpoint as _Endpoint
+from graphsense.model_utils import (  # noqa: F401
+    check_allowed_values,
+    check_validations,
+    date,
+    datetime,
+    file_type,
+    none_type,
+    validate_and_convert_types
 )
+from graphsense.model.entities import Entities
+from graphsense.model.entity_addresses import EntityAddresses
+from graphsense.model.entity_tag import EntityTag
+from graphsense.model.entity_with_tags import EntityWithTags
+from graphsense.model.neighbors import Neighbors
+from graphsense.model.search_paths import SearchPaths
 
 
 class EntitiesApi(object):
@@ -36,1241 +41,1445 @@ class EntitiesApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def get_entity_with_tags(self, currency, entity, **kwargs):  # noqa: E501
-        """Get an entity with tags  # noqa: E501
+        def __get_entity_with_tags(
+            self,
+            currency,
+            entity,
+            **kwargs
+        ):
+            """Get an entity with tags  # noqa: E501
 
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_entity_with_tags(currency, entity, async_req=True)
-        >>> result = thread.get()
+            >>> thread = api.get_entity_with_tags(currency, entity, async_req=True)
+            >>> result = thread.get()
 
-        :param currency: The cryptocurrency (e.g., btc) (required)
-        :type currency: str
-        :param entity: The entity ID (required)
-        :type entity: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: EntityWithTags
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.get_entity_with_tags_with_http_info(currency, entity, **kwargs)  # noqa: E501
+            Args:
+                currency (str): The cryptocurrency (e.g., btc)
+                entity (str): The entity ID
 
-    def get_entity_with_tags_with_http_info(self, currency, entity, **kwargs):  # noqa: E501
-        """Get an entity with tags  # noqa: E501
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
 
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+            Returns:
+                EntityWithTags
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['currency'] = \
+                currency
+            kwargs['entity'] = \
+                entity
+            return self.call_with_http_info(**kwargs)
 
-        >>> thread = api.get_entity_with_tags_with_http_info(currency, entity, async_req=True)
-        >>> result = thread.get()
-
-        :param currency: The cryptocurrency (e.g., btc) (required)
-        :type currency: str
-        :param entity: The entity ID (required)
-        :type entity: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :type _return_http_data_only: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(EntityWithTags, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'currency',
-            'entity'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
-            ]
+        self.get_entity_with_tags = _Endpoint(
+            settings={
+                'response_type': (EntityWithTags,),
+                'auth': [
+                    'api_key'
+                ],
+                'endpoint_path': '/{currency}/entities/{entity}',
+                'operation_id': 'get_entity_with_tags',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'currency',
+                    'entity',
+                ],
+                'required': [
+                    'currency',
+                    'entity',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'currency':
+                        (str,),
+                    'entity':
+                        (str,),
+                },
+                'attribute_map': {
+                    'currency': 'currency',
+                    'entity': 'entity',
+                },
+                'location_map': {
+                    'currency': 'path',
+                    'entity': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__get_entity_with_tags
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_entity_with_tags" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'currency' is set
-        if self.api_client.client_side_validation and ('currency' not in local_var_params or  # noqa: E501
-                                                        local_var_params['currency'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `currency` when calling `get_entity_with_tags`")  # noqa: E501
-        # verify the required parameter 'entity' is set
-        if self.api_client.client_side_validation and ('entity' not in local_var_params or  # noqa: E501
-                                                        local_var_params['entity'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `entity` when calling `get_entity_with_tags`")  # noqa: E501
+        def __list_entities(
+            self,
+            currency,
+            **kwargs
+        ):
+            """Get entities  # noqa: E501
 
-        collection_formats = {}
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
-        if 'currency' in local_var_params:
-            path_params['currency'] = local_var_params['currency']  # noqa: E501
-        if 'entity' in local_var_params:
-            path_params['entity'] = local_var_params['entity']  # noqa: E501
+            >>> thread = api.list_entities(currency, async_req=True)
+            >>> result = thread.get()
 
-        query_params = []
+            Args:
+                currency (str): The cryptocurrency (e.g., btc)
 
-        header_params = {}
+            Keyword Args:
+                ids ([str]): Restrict result to given set of comma separated IDs. [optional]
+                page (str): Resumption token for retrieving the next page. [optional]
+                pagesize (int): Number of items returned in a single page. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+            Returns:
+                Entities
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['currency'] = \
+                currency
+            return self.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        self.list_entities = _Endpoint(
+            settings={
+                'response_type': (Entities,),
+                'auth': [
+                    'api_key'
+                ],
+                'endpoint_path': '/{currency}/entities',
+                'operation_id': 'list_entities',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'currency',
+                    'ids',
+                    'page',
+                    'pagesize',
+                ],
+                'required': [
+                    'currency',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                    'pagesize',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('pagesize',): {
 
-        # Authentication setting
-        auth_settings = ['api_key']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/{currency}/entities/{entity}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='EntityWithTags',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
-
-    def list_entity_addresses(self, currency, entity, **kwargs):  # noqa: E501
-        """Get an entity's addresses  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.list_entity_addresses(currency, entity, async_req=True)
-        >>> result = thread.get()
-
-        :param currency: The cryptocurrency (e.g., btc) (required)
-        :type currency: str
-        :param entity: The entity ID (required)
-        :type entity: int
-        :param page: Resumption token for retrieving the next page
-        :type page: str
-        :param pagesize: Number of items returned in a single page
-        :type pagesize: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: EntityAddresses
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.list_entity_addresses_with_http_info(currency, entity, **kwargs)  # noqa: E501
-
-    def list_entity_addresses_with_http_info(self, currency, entity, **kwargs):  # noqa: E501
-        """Get an entity's addresses  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.list_entity_addresses_with_http_info(currency, entity, async_req=True)
-        >>> result = thread.get()
-
-        :param currency: The cryptocurrency (e.g., btc) (required)
-        :type currency: str
-        :param entity: The entity ID (required)
-        :type entity: int
-        :param page: Resumption token for retrieving the next page
-        :type page: str
-        :param pagesize: Number of items returned in a single page
-        :type pagesize: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :type _return_http_data_only: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(EntityAddresses, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'currency',
-            'entity',
-            'page',
-            'pagesize'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
-            ]
+                        'inclusive_maximum': 1000,
+                        'inclusive_minimum': 1,
+                    },
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'currency':
+                        (str,),
+                    'ids':
+                        ([str],),
+                    'page':
+                        (str,),
+                    'pagesize':
+                        (int,),
+                },
+                'attribute_map': {
+                    'currency': 'currency',
+                    'ids': 'ids',
+                    'page': 'page',
+                    'pagesize': 'pagesize',
+                },
+                'location_map': {
+                    'currency': 'path',
+                    'ids': 'query',
+                    'page': 'query',
+                    'pagesize': 'query',
+                },
+                'collection_format_map': {
+                    'ids': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__list_entities
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_entity_addresses" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'currency' is set
-        if self.api_client.client_side_validation and ('currency' not in local_var_params or  # noqa: E501
-                                                        local_var_params['currency'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `currency` when calling `list_entity_addresses`")  # noqa: E501
-        # verify the required parameter 'entity' is set
-        if self.api_client.client_side_validation and ('entity' not in local_var_params or  # noqa: E501
-                                                        local_var_params['entity'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `entity` when calling `list_entity_addresses`")  # noqa: E501
+        def __list_entities_csv(
+            self,
+            currency,
+            ids,
+            **kwargs
+        ):
+            """Get entities as CSV  # noqa: E501
 
-        collection_formats = {}
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
-        if 'currency' in local_var_params:
-            path_params['currency'] = local_var_params['currency']  # noqa: E501
-        if 'entity' in local_var_params:
-            path_params['entity'] = local_var_params['entity']  # noqa: E501
+            >>> thread = api.list_entities_csv(currency, ids, async_req=True)
+            >>> result = thread.get()
 
-        query_params = []
-        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
-            query_params.append(('page', local_var_params['page']))  # noqa: E501
-        if 'pagesize' in local_var_params and local_var_params['pagesize'] is not None:  # noqa: E501
-            query_params.append(('pagesize', local_var_params['pagesize']))  # noqa: E501
+            Args:
+                currency (str): The cryptocurrency (e.g., btc)
+                ids ([str]): Set of comma separated IDs
 
-        header_params = {}
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+            Returns:
+                str
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['currency'] = \
+                currency
+            kwargs['ids'] = \
+                ids
+            return self.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['api_key']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/{currency}/entities/{entity}/addresses', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='EntityAddresses',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
-
-    def list_entity_addresses_csv(self, currency, entity, **kwargs):  # noqa: E501
-        """Get an entity's addresses as CSV  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.list_entity_addresses_csv(currency, entity, async_req=True)
-        >>> result = thread.get()
-
-        :param currency: The cryptocurrency (e.g., btc) (required)
-        :type currency: str
-        :param entity: The entity ID (required)
-        :type entity: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: str
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.list_entity_addresses_csv_with_http_info(currency, entity, **kwargs)  # noqa: E501
-
-    def list_entity_addresses_csv_with_http_info(self, currency, entity, **kwargs):  # noqa: E501
-        """Get an entity's addresses as CSV  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.list_entity_addresses_csv_with_http_info(currency, entity, async_req=True)
-        >>> result = thread.get()
-
-        :param currency: The cryptocurrency (e.g., btc) (required)
-        :type currency: str
-        :param entity: The entity ID (required)
-        :type entity: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :type _return_http_data_only: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(str, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'currency',
-            'entity'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
-            ]
+        self.list_entities_csv = _Endpoint(
+            settings={
+                'response_type': (str,),
+                'auth': [
+                    'api_key'
+                ],
+                'endpoint_path': '/{currency}/entities.csv',
+                'operation_id': 'list_entities_csv',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'currency',
+                    'ids',
+                ],
+                'required': [
+                    'currency',
+                    'ids',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'currency':
+                        (str,),
+                    'ids':
+                        ([str],),
+                },
+                'attribute_map': {
+                    'currency': 'currency',
+                    'ids': 'ids',
+                },
+                'location_map': {
+                    'currency': 'path',
+                    'ids': 'query',
+                },
+                'collection_format_map': {
+                    'ids': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/csv'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__list_entities_csv
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_entity_addresses_csv" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'currency' is set
-        if self.api_client.client_side_validation and ('currency' not in local_var_params or  # noqa: E501
-                                                        local_var_params['currency'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `currency` when calling `list_entity_addresses_csv`")  # noqa: E501
-        # verify the required parameter 'entity' is set
-        if self.api_client.client_side_validation and ('entity' not in local_var_params or  # noqa: E501
-                                                        local_var_params['entity'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `entity` when calling `list_entity_addresses_csv`")  # noqa: E501
+        def __list_entity_addresses(
+            self,
+            currency,
+            entity,
+            **kwargs
+        ):
+            """Get an entity's addresses  # noqa: E501
 
-        collection_formats = {}
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
-        if 'currency' in local_var_params:
-            path_params['currency'] = local_var_params['currency']  # noqa: E501
-        if 'entity' in local_var_params:
-            path_params['entity'] = local_var_params['entity']  # noqa: E501
+            >>> thread = api.list_entity_addresses(currency, entity, async_req=True)
+            >>> result = thread.get()
 
-        query_params = []
+            Args:
+                currency (str): The cryptocurrency (e.g., btc)
+                entity (str): The entity ID
 
-        header_params = {}
+            Keyword Args:
+                page (str): Resumption token for retrieving the next page. [optional]
+                pagesize (int): Number of items returned in a single page. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+            Returns:
+                EntityAddresses
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['currency'] = \
+                currency
+            kwargs['entity'] = \
+                entity
+            return self.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/csv'])  # noqa: E501
+        self.list_entity_addresses = _Endpoint(
+            settings={
+                'response_type': (EntityAddresses,),
+                'auth': [
+                    'api_key'
+                ],
+                'endpoint_path': '/{currency}/entities/{entity}/addresses',
+                'operation_id': 'list_entity_addresses',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'currency',
+                    'entity',
+                    'page',
+                    'pagesize',
+                ],
+                'required': [
+                    'currency',
+                    'entity',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                    'pagesize',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('pagesize',): {
 
-        # Authentication setting
-        auth_settings = ['api_key']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/{currency}/entities/{entity}/addresses.csv', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='str',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
-
-    def list_entity_neighbors(self, currency, entity, direction, **kwargs):  # noqa: E501
-        """Get an entity's neighbors in the entity graph  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.list_entity_neighbors(currency, entity, direction, async_req=True)
-        >>> result = thread.get()
-
-        :param currency: The cryptocurrency (e.g., btc) (required)
-        :type currency: str
-        :param entity: The entity ID (required)
-        :type entity: int
-        :param direction: Incoming or outgoing neighbors (required)
-        :type direction: str
-        :param targets: Restrict result to given set of comma separated IDs
-        :type targets: list[int]
-        :param page: Resumption token for retrieving the next page
-        :type page: str
-        :param pagesize: Number of items returned in a single page
-        :type pagesize: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: Neighbors
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.list_entity_neighbors_with_http_info(currency, entity, direction, **kwargs)  # noqa: E501
-
-    def list_entity_neighbors_with_http_info(self, currency, entity, direction, **kwargs):  # noqa: E501
-        """Get an entity's neighbors in the entity graph  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.list_entity_neighbors_with_http_info(currency, entity, direction, async_req=True)
-        >>> result = thread.get()
-
-        :param currency: The cryptocurrency (e.g., btc) (required)
-        :type currency: str
-        :param entity: The entity ID (required)
-        :type entity: int
-        :param direction: Incoming or outgoing neighbors (required)
-        :type direction: str
-        :param targets: Restrict result to given set of comma separated IDs
-        :type targets: list[int]
-        :param page: Resumption token for retrieving the next page
-        :type page: str
-        :param pagesize: Number of items returned in a single page
-        :type pagesize: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :type _return_http_data_only: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(Neighbors, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'currency',
-            'entity',
-            'direction',
-            'targets',
-            'page',
-            'pagesize'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
-            ]
+                        'inclusive_maximum': 1000,
+                        'inclusive_minimum': 1,
+                    },
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'currency':
+                        (str,),
+                    'entity':
+                        (str,),
+                    'page':
+                        (str,),
+                    'pagesize':
+                        (int,),
+                },
+                'attribute_map': {
+                    'currency': 'currency',
+                    'entity': 'entity',
+                    'page': 'page',
+                    'pagesize': 'pagesize',
+                },
+                'location_map': {
+                    'currency': 'path',
+                    'entity': 'path',
+                    'page': 'query',
+                    'pagesize': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__list_entity_addresses
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_entity_neighbors" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'currency' is set
-        if self.api_client.client_side_validation and ('currency' not in local_var_params or  # noqa: E501
-                                                        local_var_params['currency'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `currency` when calling `list_entity_neighbors`")  # noqa: E501
-        # verify the required parameter 'entity' is set
-        if self.api_client.client_side_validation and ('entity' not in local_var_params or  # noqa: E501
-                                                        local_var_params['entity'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `entity` when calling `list_entity_neighbors`")  # noqa: E501
-        # verify the required parameter 'direction' is set
-        if self.api_client.client_side_validation and ('direction' not in local_var_params or  # noqa: E501
-                                                        local_var_params['direction'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `direction` when calling `list_entity_neighbors`")  # noqa: E501
+        def __list_entity_addresses_csv(
+            self,
+            currency,
+            entity,
+            **kwargs
+        ):
+            """Get an entity's addresses as CSV  # noqa: E501
 
-        collection_formats = {}
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
-        if 'currency' in local_var_params:
-            path_params['currency'] = local_var_params['currency']  # noqa: E501
-        if 'entity' in local_var_params:
-            path_params['entity'] = local_var_params['entity']  # noqa: E501
+            >>> thread = api.list_entity_addresses_csv(currency, entity, async_req=True)
+            >>> result = thread.get()
 
-        query_params = []
-        if 'direction' in local_var_params and local_var_params['direction'] is not None:  # noqa: E501
-            query_params.append(('direction', local_var_params['direction']))  # noqa: E501
-        if 'targets' in local_var_params and local_var_params['targets'] is not None:  # noqa: E501
-            query_params.append(('targets', local_var_params['targets']))  # noqa: E501
-            collection_formats['targets'] = 'multi'  # noqa: E501
-        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
-            query_params.append(('page', local_var_params['page']))  # noqa: E501
-        if 'pagesize' in local_var_params and local_var_params['pagesize'] is not None:  # noqa: E501
-            query_params.append(('pagesize', local_var_params['pagesize']))  # noqa: E501
+            Args:
+                currency (str): The cryptocurrency (e.g., btc)
+                entity (str): The entity ID
 
-        header_params = {}
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+            Returns:
+                str
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['currency'] = \
+                currency
+            kwargs['entity'] = \
+                entity
+            return self.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['api_key']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/{currency}/entities/{entity}/neighbors', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='Neighbors',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
-
-    def list_entity_neighbors_csv(self, currency, entity, direction, **kwargs):  # noqa: E501
-        """Get an entity's neighbors in the entity graph as CSV  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.list_entity_neighbors_csv(currency, entity, direction, async_req=True)
-        >>> result = thread.get()
-
-        :param currency: The cryptocurrency (e.g., btc) (required)
-        :type currency: str
-        :param entity: The entity ID (required)
-        :type entity: int
-        :param direction: Incoming or outgoing neighbors (required)
-        :type direction: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: str
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.list_entity_neighbors_csv_with_http_info(currency, entity, direction, **kwargs)  # noqa: E501
-
-    def list_entity_neighbors_csv_with_http_info(self, currency, entity, direction, **kwargs):  # noqa: E501
-        """Get an entity's neighbors in the entity graph as CSV  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.list_entity_neighbors_csv_with_http_info(currency, entity, direction, async_req=True)
-        >>> result = thread.get()
-
-        :param currency: The cryptocurrency (e.g., btc) (required)
-        :type currency: str
-        :param entity: The entity ID (required)
-        :type entity: int
-        :param direction: Incoming or outgoing neighbors (required)
-        :type direction: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :type _return_http_data_only: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(str, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'currency',
-            'entity',
-            'direction'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
-            ]
+        self.list_entity_addresses_csv = _Endpoint(
+            settings={
+                'response_type': (str,),
+                'auth': [
+                    'api_key'
+                ],
+                'endpoint_path': '/{currency}/entities/{entity}/addresses.csv',
+                'operation_id': 'list_entity_addresses_csv',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'currency',
+                    'entity',
+                ],
+                'required': [
+                    'currency',
+                    'entity',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'currency':
+                        (str,),
+                    'entity':
+                        (str,),
+                },
+                'attribute_map': {
+                    'currency': 'currency',
+                    'entity': 'entity',
+                },
+                'location_map': {
+                    'currency': 'path',
+                    'entity': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'text/csv'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__list_entity_addresses_csv
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_entity_neighbors_csv" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'currency' is set
-        if self.api_client.client_side_validation and ('currency' not in local_var_params or  # noqa: E501
-                                                        local_var_params['currency'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `currency` when calling `list_entity_neighbors_csv`")  # noqa: E501
-        # verify the required parameter 'entity' is set
-        if self.api_client.client_side_validation and ('entity' not in local_var_params or  # noqa: E501
-                                                        local_var_params['entity'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `entity` when calling `list_entity_neighbors_csv`")  # noqa: E501
-        # verify the required parameter 'direction' is set
-        if self.api_client.client_side_validation and ('direction' not in local_var_params or  # noqa: E501
-                                                        local_var_params['direction'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `direction` when calling `list_entity_neighbors_csv`")  # noqa: E501
+        def __list_entity_neighbors(
+            self,
+            currency,
+            entity,
+            direction,
+            **kwargs
+        ):
+            """Get an entity's neighbors in the entity graph  # noqa: E501
 
-        collection_formats = {}
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
-        if 'currency' in local_var_params:
-            path_params['currency'] = local_var_params['currency']  # noqa: E501
-        if 'entity' in local_var_params:
-            path_params['entity'] = local_var_params['entity']  # noqa: E501
+            >>> thread = api.list_entity_neighbors(currency, entity, direction, async_req=True)
+            >>> result = thread.get()
 
-        query_params = []
-        if 'direction' in local_var_params and local_var_params['direction'] is not None:  # noqa: E501
-            query_params.append(('direction', local_var_params['direction']))  # noqa: E501
+            Args:
+                currency (str): The cryptocurrency (e.g., btc)
+                entity (str): The entity ID
+                direction (str): Incoming or outgoing neighbors
 
-        header_params = {}
+            Keyword Args:
+                ids ([str]): Restrict result to given set of comma separated IDs. [optional]
+                page (str): Resumption token for retrieving the next page. [optional]
+                pagesize (int): Number of items returned in a single page. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+            Returns:
+                Neighbors
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['currency'] = \
+                currency
+            kwargs['entity'] = \
+                entity
+            kwargs['direction'] = \
+                direction
+            return self.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/csv'])  # noqa: E501
+        self.list_entity_neighbors = _Endpoint(
+            settings={
+                'response_type': (Neighbors,),
+                'auth': [
+                    'api_key'
+                ],
+                'endpoint_path': '/{currency}/entities/{entity}/neighbors',
+                'operation_id': 'list_entity_neighbors',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'currency',
+                    'entity',
+                    'direction',
+                    'ids',
+                    'page',
+                    'pagesize',
+                ],
+                'required': [
+                    'currency',
+                    'entity',
+                    'direction',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                    'direction',
+                ],
+                'validation': [
+                    'pagesize',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('pagesize',): {
 
-        # Authentication setting
-        auth_settings = ['api_key']  # noqa: E501
+                        'inclusive_maximum': 1000,
+                        'inclusive_minimum': 1,
+                    },
+                },
+                'allowed_values': {
+                    ('direction',): {
 
-        return self.api_client.call_api(
-            '/{currency}/entities/{entity}/neighbors.csv', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='str',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
-
-    def list_entity_tags(self, currency, entity, **kwargs):  # noqa: E501
-        """Get attribution tags for a given entity  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.list_entity_tags(currency, entity, async_req=True)
-        >>> result = thread.get()
-
-        :param currency: The cryptocurrency (e.g., btc) (required)
-        :type currency: str
-        :param entity: The entity ID (required)
-        :type entity: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: list[Tag]
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.list_entity_tags_with_http_info(currency, entity, **kwargs)  # noqa: E501
-
-    def list_entity_tags_with_http_info(self, currency, entity, **kwargs):  # noqa: E501
-        """Get attribution tags for a given entity  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.list_entity_tags_with_http_info(currency, entity, async_req=True)
-        >>> result = thread.get()
-
-        :param currency: The cryptocurrency (e.g., btc) (required)
-        :type currency: str
-        :param entity: The entity ID (required)
-        :type entity: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :type _return_http_data_only: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(list[Tag], status_code(int), headers(HTTPHeaderDict))
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'currency',
-            'entity'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
-            ]
+                        "IN": "in",
+                        "OUT": "out"
+                    },
+                },
+                'openapi_types': {
+                    'currency':
+                        (str,),
+                    'entity':
+                        (str,),
+                    'direction':
+                        (str,),
+                    'ids':
+                        ([str],),
+                    'page':
+                        (str,),
+                    'pagesize':
+                        (int,),
+                },
+                'attribute_map': {
+                    'currency': 'currency',
+                    'entity': 'entity',
+                    'direction': 'direction',
+                    'ids': 'ids',
+                    'page': 'page',
+                    'pagesize': 'pagesize',
+                },
+                'location_map': {
+                    'currency': 'path',
+                    'entity': 'path',
+                    'direction': 'query',
+                    'ids': 'query',
+                    'page': 'query',
+                    'pagesize': 'query',
+                },
+                'collection_format_map': {
+                    'ids': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__list_entity_neighbors
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_entity_tags" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'currency' is set
-        if self.api_client.client_side_validation and ('currency' not in local_var_params or  # noqa: E501
-                                                        local_var_params['currency'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `currency` when calling `list_entity_tags`")  # noqa: E501
-        # verify the required parameter 'entity' is set
-        if self.api_client.client_side_validation and ('entity' not in local_var_params or  # noqa: E501
-                                                        local_var_params['entity'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `entity` when calling `list_entity_tags`")  # noqa: E501
+        def __list_entity_neighbors_csv(
+            self,
+            currency,
+            entity,
+            direction,
+            **kwargs
+        ):
+            """Get an entity's neighbors in the entity graph as CSV  # noqa: E501
 
-        collection_formats = {}
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
-        if 'currency' in local_var_params:
-            path_params['currency'] = local_var_params['currency']  # noqa: E501
-        if 'entity' in local_var_params:
-            path_params['entity'] = local_var_params['entity']  # noqa: E501
+            >>> thread = api.list_entity_neighbors_csv(currency, entity, direction, async_req=True)
+            >>> result = thread.get()
 
-        query_params = []
+            Args:
+                currency (str): The cryptocurrency (e.g., btc)
+                entity (str): The entity ID
+                direction (str): Incoming or outgoing neighbors
 
-        header_params = {}
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+            Returns:
+                str
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['currency'] = \
+                currency
+            kwargs['entity'] = \
+                entity
+            kwargs['direction'] = \
+                direction
+            return self.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        self.list_entity_neighbors_csv = _Endpoint(
+            settings={
+                'response_type': (str,),
+                'auth': [
+                    'api_key'
+                ],
+                'endpoint_path': '/{currency}/entities/{entity}/neighbors.csv',
+                'operation_id': 'list_entity_neighbors_csv',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'currency',
+                    'entity',
+                    'direction',
+                ],
+                'required': [
+                    'currency',
+                    'entity',
+                    'direction',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                    'direction',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('direction',): {
 
-        # Authentication setting
-        auth_settings = ['api_key']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/{currency}/entities/{entity}/tags', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='list[Tag]',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
-
-    def list_entity_tags_csv(self, currency, entity, **kwargs):  # noqa: E501
-        """Get attribution tags for a given entity as CSV  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.list_entity_tags_csv(currency, entity, async_req=True)
-        >>> result = thread.get()
-
-        :param currency: The cryptocurrency (e.g., btc) (required)
-        :type currency: str
-        :param entity: The entity ID (required)
-        :type entity: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: str
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.list_entity_tags_csv_with_http_info(currency, entity, **kwargs)  # noqa: E501
-
-    def list_entity_tags_csv_with_http_info(self, currency, entity, **kwargs):  # noqa: E501
-        """Get attribution tags for a given entity as CSV  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.list_entity_tags_csv_with_http_info(currency, entity, async_req=True)
-        >>> result = thread.get()
-
-        :param currency: The cryptocurrency (e.g., btc) (required)
-        :type currency: str
-        :param entity: The entity ID (required)
-        :type entity: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :type _return_http_data_only: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(str, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'currency',
-            'entity'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
-            ]
+                        "IN": "in",
+                        "OUT": "out"
+                    },
+                },
+                'openapi_types': {
+                    'currency':
+                        (str,),
+                    'entity':
+                        (str,),
+                    'direction':
+                        (str,),
+                },
+                'attribute_map': {
+                    'currency': 'currency',
+                    'entity': 'entity',
+                    'direction': 'direction',
+                },
+                'location_map': {
+                    'currency': 'path',
+                    'entity': 'path',
+                    'direction': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'text/csv'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__list_entity_neighbors_csv
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_entity_tags_csv" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'currency' is set
-        if self.api_client.client_side_validation and ('currency' not in local_var_params or  # noqa: E501
-                                                        local_var_params['currency'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `currency` when calling `list_entity_tags_csv`")  # noqa: E501
-        # verify the required parameter 'entity' is set
-        if self.api_client.client_side_validation and ('entity' not in local_var_params or  # noqa: E501
-                                                        local_var_params['entity'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `entity` when calling `list_entity_tags_csv`")  # noqa: E501
+        def __list_tags_by_entity(
+            self,
+            currency,
+            entity,
+            **kwargs
+        ):
+            """Get attribution tags for a given entity  # noqa: E501
 
-        collection_formats = {}
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
-        if 'currency' in local_var_params:
-            path_params['currency'] = local_var_params['currency']  # noqa: E501
-        if 'entity' in local_var_params:
-            path_params['entity'] = local_var_params['entity']  # noqa: E501
+            >>> thread = api.list_tags_by_entity(currency, entity, async_req=True)
+            >>> result = thread.get()
 
-        query_params = []
+            Args:
+                currency (str): The cryptocurrency (e.g., btc)
+                entity (str): The entity ID
 
-        header_params = {}
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+            Returns:
+                [EntityTag]
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['currency'] = \
+                currency
+            kwargs['entity'] = \
+                entity
+            return self.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/csv'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['api_key']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/{currency}/entities/{entity}/tags.csv', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='str',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
-
-    def search_entity_neighbors(self, currency, entity, direction, key, value, depth, **kwargs):  # noqa: E501
-        """Search deeply for matching neighbors  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.search_entity_neighbors(currency, entity, direction, key, value, depth, async_req=True)
-        >>> result = thread.get()
-
-        :param currency: The cryptocurrency (e.g., btc) (required)
-        :type currency: str
-        :param entity: The entity ID (required)
-        :type entity: int
-        :param direction: Incoming or outgoing neighbors (required)
-        :type direction: str
-        :param key: Match neighbors against one and only one of these properties: - the category the entity belongs to - addresses the entity contains - total_received: amount the entity received in total - balance: amount the entity holds finally (required)
-        :type key: str
-        :param value: If key is - category: comma separated list of category names - addresses: comma separated list of address IDs - total_received/balance: comma separated tuple of (currency, min, max) (required)
-        :type value: list[str]
-        :param depth: How many hops should the transaction graph be searched (required)
-        :type depth: int
-        :param breadth: How many siblings of each neighbor should be tried
-        :type breadth: int
-        :param skip_num_addresses: Skip entities containing more addresses
-        :type skip_num_addresses: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: SearchPaths
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.search_entity_neighbors_with_http_info(currency, entity, direction, key, value, depth, **kwargs)  # noqa: E501
-
-    def search_entity_neighbors_with_http_info(self, currency, entity, direction, key, value, depth, **kwargs):  # noqa: E501
-        """Search deeply for matching neighbors  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.search_entity_neighbors_with_http_info(currency, entity, direction, key, value, depth, async_req=True)
-        >>> result = thread.get()
-
-        :param currency: The cryptocurrency (e.g., btc) (required)
-        :type currency: str
-        :param entity: The entity ID (required)
-        :type entity: int
-        :param direction: Incoming or outgoing neighbors (required)
-        :type direction: str
-        :param key: Match neighbors against one and only one of these properties: - the category the entity belongs to - addresses the entity contains - total_received: amount the entity received in total - balance: amount the entity holds finally (required)
-        :type key: str
-        :param value: If key is - category: comma separated list of category names - addresses: comma separated list of address IDs - total_received/balance: comma separated tuple of (currency, min, max) (required)
-        :type value: list[str]
-        :param depth: How many hops should the transaction graph be searched (required)
-        :type depth: int
-        :param breadth: How many siblings of each neighbor should be tried
-        :type breadth: int
-        :param skip_num_addresses: Skip entities containing more addresses
-        :type skip_num_addresses: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :type _return_http_data_only: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(SearchPaths, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'currency',
-            'entity',
-            'direction',
-            'key',
-            'value',
-            'depth',
-            'breadth',
-            'skip_num_addresses'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
-            ]
+        self.list_tags_by_entity = _Endpoint(
+            settings={
+                'response_type': ([EntityTag],),
+                'auth': [
+                    'api_key'
+                ],
+                'endpoint_path': '/{currency}/entities/{entity}/tags',
+                'operation_id': 'list_tags_by_entity',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'currency',
+                    'entity',
+                ],
+                'required': [
+                    'currency',
+                    'entity',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'currency':
+                        (str,),
+                    'entity':
+                        (str,),
+                },
+                'attribute_map': {
+                    'currency': 'currency',
+                    'entity': 'entity',
+                },
+                'location_map': {
+                    'currency': 'path',
+                    'entity': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__list_tags_by_entity
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method search_entity_neighbors" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'currency' is set
-        if self.api_client.client_side_validation and ('currency' not in local_var_params or  # noqa: E501
-                                                        local_var_params['currency'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `currency` when calling `search_entity_neighbors`")  # noqa: E501
-        # verify the required parameter 'entity' is set
-        if self.api_client.client_side_validation and ('entity' not in local_var_params or  # noqa: E501
-                                                        local_var_params['entity'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `entity` when calling `search_entity_neighbors`")  # noqa: E501
-        # verify the required parameter 'direction' is set
-        if self.api_client.client_side_validation and ('direction' not in local_var_params or  # noqa: E501
-                                                        local_var_params['direction'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `direction` when calling `search_entity_neighbors`")  # noqa: E501
-        # verify the required parameter 'key' is set
-        if self.api_client.client_side_validation and ('key' not in local_var_params or  # noqa: E501
-                                                        local_var_params['key'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `key` when calling `search_entity_neighbors`")  # noqa: E501
-        # verify the required parameter 'value' is set
-        if self.api_client.client_side_validation and ('value' not in local_var_params or  # noqa: E501
-                                                        local_var_params['value'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `value` when calling `search_entity_neighbors`")  # noqa: E501
-        # verify the required parameter 'depth' is set
-        if self.api_client.client_side_validation and ('depth' not in local_var_params or  # noqa: E501
-                                                        local_var_params['depth'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `depth` when calling `search_entity_neighbors`")  # noqa: E501
+        def __list_tags_by_entity_csv(
+            self,
+            currency,
+            entity,
+            **kwargs
+        ):
+            """Get attribution tags for a given entity as CSV  # noqa: E501
 
-        if self.api_client.client_side_validation and 'depth' in local_var_params and local_var_params['depth'] > 7:  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `depth` when calling `search_entity_neighbors`, must be a value less than or equal to `7`")  # noqa: E501
-        collection_formats = {}
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
-        if 'currency' in local_var_params:
-            path_params['currency'] = local_var_params['currency']  # noqa: E501
-        if 'entity' in local_var_params:
-            path_params['entity'] = local_var_params['entity']  # noqa: E501
+            >>> thread = api.list_tags_by_entity_csv(currency, entity, async_req=True)
+            >>> result = thread.get()
 
-        query_params = []
-        if 'direction' in local_var_params and local_var_params['direction'] is not None:  # noqa: E501
-            query_params.append(('direction', local_var_params['direction']))  # noqa: E501
-        if 'key' in local_var_params and local_var_params['key'] is not None:  # noqa: E501
-            query_params.append(('key', local_var_params['key']))  # noqa: E501
-        if 'value' in local_var_params and local_var_params['value'] is not None:  # noqa: E501
-            query_params.append(('value', local_var_params['value']))  # noqa: E501
-            collection_formats['value'] = 'multi'  # noqa: E501
-        if 'depth' in local_var_params and local_var_params['depth'] is not None:  # noqa: E501
-            query_params.append(('depth', local_var_params['depth']))  # noqa: E501
-        if 'breadth' in local_var_params and local_var_params['breadth'] is not None:  # noqa: E501
-            query_params.append(('breadth', local_var_params['breadth']))  # noqa: E501
-        if 'skip_num_addresses' in local_var_params and local_var_params['skip_num_addresses'] is not None:  # noqa: E501
-            query_params.append(('skip_num_addresses', local_var_params['skip_num_addresses']))  # noqa: E501
+            Args:
+                currency (str): The cryptocurrency (e.g., btc)
+                entity (str): The entity ID
 
-        header_params = {}
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+            Returns:
+                str
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['currency'] = \
+                currency
+            kwargs['entity'] = \
+                entity
+            return self.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        self.list_tags_by_entity_csv = _Endpoint(
+            settings={
+                'response_type': (str,),
+                'auth': [
+                    'api_key'
+                ],
+                'endpoint_path': '/{currency}/entities/{entity}/tags.csv',
+                'operation_id': 'list_tags_by_entity_csv',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'currency',
+                    'entity',
+                ],
+                'required': [
+                    'currency',
+                    'entity',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'currency':
+                        (str,),
+                    'entity':
+                        (str,),
+                },
+                'attribute_map': {
+                    'currency': 'currency',
+                    'entity': 'entity',
+                },
+                'location_map': {
+                    'currency': 'path',
+                    'entity': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/csv'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__list_tags_by_entity_csv
+        )
 
-        # Authentication setting
-        auth_settings = ['api_key']  # noqa: E501
+        def __search_entity_neighbors(
+            self,
+            currency,
+            entity,
+            direction,
+            key,
+            value,
+            depth,
+            **kwargs
+        ):
+            """Search deeply for matching neighbors  # noqa: E501
 
-        return self.api_client.call_api(
-            '/{currency}/entities/{entity}/search', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='SearchPaths',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.search_entity_neighbors(currency, entity, direction, key, value, depth, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                currency (str): The cryptocurrency (e.g., btc)
+                entity (str): The entity ID
+                direction (str): Incoming or outgoing neighbors
+                key (str): Match neighbors against one and only one of these properties: - the category the entity belongs to - addresses the entity contains - total_received: amount the entity received in total - balance: amount the entity holds finally
+                value ([str]): If key is - category: comma separated list of category names - addresses: comma separated list of address IDs - total_received/balance: comma separated tuple of (currency, min, max)
+                depth (int): How many hops should the transaction graph be searched
+
+            Keyword Args:
+                breadth (int): How many siblings of each neighbor should be tried. [optional] if omitted the server will use the default value of 16
+                skip_num_addresses (int): Skip entities containing more addresses. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                SearchPaths
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['currency'] = \
+                currency
+            kwargs['entity'] = \
+                entity
+            kwargs['direction'] = \
+                direction
+            kwargs['key'] = \
+                key
+            kwargs['value'] = \
+                value
+            kwargs['depth'] = \
+                depth
+            return self.call_with_http_info(**kwargs)
+
+        self.search_entity_neighbors = _Endpoint(
+            settings={
+                'response_type': (SearchPaths,),
+                'auth': [
+                    'api_key'
+                ],
+                'endpoint_path': '/{currency}/entities/{entity}/search',
+                'operation_id': 'search_entity_neighbors',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'currency',
+                    'entity',
+                    'direction',
+                    'key',
+                    'value',
+                    'depth',
+                    'breadth',
+                    'skip_num_addresses',
+                ],
+                'required': [
+                    'currency',
+                    'entity',
+                    'direction',
+                    'key',
+                    'value',
+                    'depth',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                    'direction',
+                    'key',
+                ],
+                'validation': [
+                    'depth',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('depth',): {
+
+                        'inclusive_maximum': 7,
+                    },
+                },
+                'allowed_values': {
+                    ('direction',): {
+
+                        "IN": "in",
+                        "OUT": "out"
+                    },
+                    ('key',): {
+
+                        "CATEGORY": "category",
+                        "ADDRESSES": "addresses",
+                        "TOTAL_RECEIVED": "total_received",
+                        "BALANCE": "balance"
+                    },
+                },
+                'openapi_types': {
+                    'currency':
+                        (str,),
+                    'entity':
+                        (str,),
+                    'direction':
+                        (str,),
+                    'key':
+                        (str,),
+                    'value':
+                        ([str],),
+                    'depth':
+                        (int,),
+                    'breadth':
+                        (int,),
+                    'skip_num_addresses':
+                        (int,),
+                },
+                'attribute_map': {
+                    'currency': 'currency',
+                    'entity': 'entity',
+                    'direction': 'direction',
+                    'key': 'key',
+                    'value': 'value',
+                    'depth': 'depth',
+                    'breadth': 'breadth',
+                    'skip_num_addresses': 'skip_num_addresses',
+                },
+                'location_map': {
+                    'currency': 'path',
+                    'entity': 'path',
+                    'direction': 'query',
+                    'key': 'query',
+                    'value': 'query',
+                    'depth': 'query',
+                    'breadth': 'query',
+                    'skip_num_addresses': 'query',
+                },
+                'collection_format_map': {
+                    'value': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__search_entity_neighbors
+        )
