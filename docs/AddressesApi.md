@@ -4,8 +4,8 @@ All URIs are relative to *http://openapi_server:9000*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**get_address**](AddressesApi.md#get_address) | **GET** /{currency}/addresses/{address} | Get an address, optionally with tags
 [**get_address_entity**](AddressesApi.md#get_address_entity) | **GET** /{currency}/addresses/{address}/entity | Get the entity of an address
-[**get_address_with_tags**](AddressesApi.md#get_address_with_tags) | **GET** /{currency}/addresses/{address} | Get an address with tags
 [**list_address_links**](AddressesApi.md#list_address_links) | **GET** /{currency}/addresses/{address}/links | Get transactions between two addresses
 [**list_address_links_csv**](AddressesApi.md#list_address_links_csv) | **GET** /{currency}/addresses/{address}/links.csv | Get transactions between two addresses as CSV
 [**list_address_neighbors**](AddressesApi.md#list_address_neighbors) | **GET** /{currency}/addresses/{address}/neighbors | Get an addresses&#39; neighbors in the address graph
@@ -18,10 +18,10 @@ Method | HTTP request | Description
 [**list_tags_by_address_csv**](AddressesApi.md#list_tags_by_address_csv) | **GET** /{currency}/addresses/{address}/tags.csv | Get attribution tags for a given address
 
 
-# **get_address_entity**
-> EntityWithTags get_address_entity(currency, address)
+# **get_address**
+> Address get_address(currency, address)
 
-Get the entity of an address
+Get an address, optionally with tags
 
 ### Example
 
@@ -30,7 +30,7 @@ Get the entity of an address
 import time
 import graphsense
 from graphsense.api import addresses_api
-from graphsense.model.entity_with_tags import EntityWithTags
+from graphsense.model.address import Address
 from pprint import pprint
 # Defining the host is optional and defaults to http://openapi_server:9000
 # See configuration.py for a list of all supported configuration parameters.
@@ -55,14 +55,24 @@ with graphsense.ApiClient(configuration) as api_client:
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
     address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
+    include_tags = True # bool | Whether tags should be included (optional)
 
     # example passing only required values which don't have defaults set
     try:
-        # Get the entity of an address
-        api_response = api_instance.get_address_entity(currency, address)
+        # Get an address, optionally with tags
+        api_response = api_instance.get_address(currency, address)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling AddressesApi->get_address_entity: %s\n" % e)
+        print("Exception when calling AddressesApi->get_address: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Get an address, optionally with tags
+        api_response = api_instance.get_address(currency, address, include_tags=include_tags)
+        pprint(api_response)
+    except graphsense.ApiException as e:
+        print("Exception when calling AddressesApi->get_address: %s\n" % e)
 ```
 
 
@@ -72,10 +82,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **str**| The cryptocurrency (e.g., btc) |
  **address** | **str**| The cryptocurrency address |
+ **include_tags** | **bool**| Whether tags should be included | [optional]
 
 ### Return type
 
-[**EntityWithTags**](EntityWithTags.md)
+[**Address**](Address.md)
 
 ### Authorization
 
@@ -94,10 +105,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_address_with_tags**
-> AddressWithTags get_address_with_tags(currency, address)
+# **get_address_entity**
+> Entity get_address_entity(currency, address)
 
-Get an address with tags
+Get the entity of an address
 
 ### Example
 
@@ -106,7 +117,7 @@ Get an address with tags
 import time
 import graphsense
 from graphsense.api import addresses_api
-from graphsense.model.address_with_tags import AddressWithTags
+from graphsense.model.entity import Entity
 from pprint import pprint
 # Defining the host is optional and defaults to http://openapi_server:9000
 # See configuration.py for a list of all supported configuration parameters.
@@ -131,14 +142,24 @@ with graphsense.ApiClient(configuration) as api_client:
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
     address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
+    include_tags = True # bool | Whether tags should be included (optional)
 
     # example passing only required values which don't have defaults set
     try:
-        # Get an address with tags
-        api_response = api_instance.get_address_with_tags(currency, address)
+        # Get the entity of an address
+        api_response = api_instance.get_address_entity(currency, address)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling AddressesApi->get_address_with_tags: %s\n" % e)
+        print("Exception when calling AddressesApi->get_address_entity: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Get the entity of an address
+        api_response = api_instance.get_address_entity(currency, address, include_tags=include_tags)
+        pprint(api_response)
+    except graphsense.ApiException as e:
+        print("Exception when calling AddressesApi->get_address_entity: %s\n" % e)
 ```
 
 
@@ -148,10 +169,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **str**| The cryptocurrency (e.g., btc) |
  **address** | **str**| The cryptocurrency address |
+ **include_tags** | **bool**| Whether tags should be included | [optional]
 
 ### Return type
 
-[**AddressWithTags**](AddressWithTags.md)
+[**Entity**](Entity.md)
 
 ### Authorization
 

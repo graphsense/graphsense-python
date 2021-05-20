@@ -4,22 +4,22 @@ All URIs are relative to *http://openapi_server:9000*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_entity_with_tags**](EntitiesApi.md#get_entity_with_tags) | **GET** /{currency}/entities/{entity} | Get an entity with tags
+[**get_entity**](EntitiesApi.md#get_entity) | **GET** /{currency}/entities/{entity} | Get an entity, optionally with tags
 [**list_entities**](EntitiesApi.md#list_entities) | **GET** /{currency}/entities | Get entities
 [**list_entities_csv**](EntitiesApi.md#list_entities_csv) | **GET** /{currency}/entities.csv | Get entities as CSV
 [**list_entity_addresses**](EntitiesApi.md#list_entity_addresses) | **GET** /{currency}/entities/{entity}/addresses | Get an entity&#39;s addresses
 [**list_entity_addresses_csv**](EntitiesApi.md#list_entity_addresses_csv) | **GET** /{currency}/entities/{entity}/addresses.csv | Get an entity&#39;s addresses as CSV
 [**list_entity_neighbors**](EntitiesApi.md#list_entity_neighbors) | **GET** /{currency}/entities/{entity}/neighbors | Get an entity&#39;s neighbors in the entity graph
 [**list_entity_neighbors_csv**](EntitiesApi.md#list_entity_neighbors_csv) | **GET** /{currency}/entities/{entity}/neighbors.csv | Get an entity&#39;s neighbors in the entity graph as CSV
-[**list_tags_by_entity**](EntitiesApi.md#list_tags_by_entity) | **GET** /{currency}/entities/{entity}/tags | Get attribution tags for a given entity
-[**list_tags_by_entity_csv**](EntitiesApi.md#list_tags_by_entity_csv) | **GET** /{currency}/entities/{entity}/tags.csv | Get attribution tags for a given entity as CSV
+[**list_tags_by_entity**](EntitiesApi.md#list_tags_by_entity) | **GET** /{currency}/entities/{entity}/tags | Get tags for a given entity
+[**list_tags_by_entity_by_level_csv**](EntitiesApi.md#list_tags_by_entity_by_level_csv) | **GET** /{currency}/entities/{entity}/tags.csv | Get address or entity tags for a given entity as CSV
 [**search_entity_neighbors**](EntitiesApi.md#search_entity_neighbors) | **GET** /{currency}/entities/{entity}/search | Search deeply for matching neighbors
 
 
-# **get_entity_with_tags**
-> EntityWithTags get_entity_with_tags(currency, entity)
+# **get_entity**
+> Entity get_entity(currency, entity)
 
-Get an entity with tags
+Get an entity, optionally with tags
 
 ### Example
 
@@ -28,7 +28,7 @@ Get an entity with tags
 import time
 import graphsense
 from graphsense.api import entities_api
-from graphsense.model.entity_with_tags import EntityWithTags
+from graphsense.model.entity import Entity
 from pprint import pprint
 # Defining the host is optional and defaults to http://openapi_server:9000
 # See configuration.py for a list of all supported configuration parameters.
@@ -53,14 +53,24 @@ with graphsense.ApiClient(configuration) as api_client:
     api_instance = entities_api.EntitiesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
     entity = "67065" # str | The entity ID
+    include_tags = True # bool | Whether tags should be included (optional)
 
     # example passing only required values which don't have defaults set
     try:
-        # Get an entity with tags
-        api_response = api_instance.get_entity_with_tags(currency, entity)
+        # Get an entity, optionally with tags
+        api_response = api_instance.get_entity(currency, entity)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling EntitiesApi->get_entity_with_tags: %s\n" % e)
+        print("Exception when calling EntitiesApi->get_entity: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Get an entity, optionally with tags
+        api_response = api_instance.get_entity(currency, entity, include_tags=include_tags)
+        pprint(api_response)
+    except graphsense.ApiException as e:
+        print("Exception when calling EntitiesApi->get_entity: %s\n" % e)
 ```
 
 
@@ -70,10 +80,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **str**| The cryptocurrency (e.g., btc) |
  **entity** | **str**| The entity ID |
+ **include_tags** | **bool**| Whether tags should be included | [optional]
 
 ### Return type
 
-[**EntityWithTags**](EntityWithTags.md)
+[**Entity**](Entity.md)
 
 ### Authorization
 
@@ -597,9 +608,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_tags_by_entity**
-> [EntityTag] list_tags_by_entity(currency, entity)
+> TagsByEntity list_tags_by_entity(currency, entity)
 
-Get attribution tags for a given entity
+Get tags for a given entity
 
 ### Example
 
@@ -608,7 +619,7 @@ Get attribution tags for a given entity
 import time
 import graphsense
 from graphsense.api import entities_api
-from graphsense.model.entity_tag import EntityTag
+from graphsense.model.tags_by_entity import TagsByEntity
 from pprint import pprint
 # Defining the host is optional and defaults to http://openapi_server:9000
 # See configuration.py for a list of all supported configuration parameters.
@@ -636,7 +647,7 @@ with graphsense.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Get attribution tags for a given entity
+        # Get tags for a given entity
         api_response = api_instance.list_tags_by_entity(currency, entity)
         pprint(api_response)
     except graphsense.ApiException as e:
@@ -653,7 +664,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[EntityTag]**](EntityTag.md)
+[**TagsByEntity**](TagsByEntity.md)
 
 ### Authorization
 
@@ -672,10 +683,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_tags_by_entity_csv**
-> str list_tags_by_entity_csv(currency, entity)
+# **list_tags_by_entity_by_level_csv**
+> str list_tags_by_entity_by_level_csv(currency, entity, level)
 
-Get attribution tags for a given entity as CSV
+Get address or entity tags for a given entity as CSV
 
 ### Example
 
@@ -708,14 +719,15 @@ with graphsense.ApiClient(configuration) as api_client:
     api_instance = entities_api.EntitiesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
     entity = "67065" # str | The entity ID
+    level = "address" # str | Whether tags on the address or entity level are requested
 
     # example passing only required values which don't have defaults set
     try:
-        # Get attribution tags for a given entity as CSV
-        api_response = api_instance.list_tags_by_entity_csv(currency, entity)
+        # Get address or entity tags for a given entity as CSV
+        api_response = api_instance.list_tags_by_entity_by_level_csv(currency, entity, level)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling EntitiesApi->list_tags_by_entity_csv: %s\n" % e)
+        print("Exception when calling EntitiesApi->list_tags_by_entity_by_level_csv: %s\n" % e)
 ```
 
 
@@ -725,6 +737,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **str**| The cryptocurrency (e.g., btc) |
  **entity** | **str**| The entity ID |
+ **level** | **str**| Whether tags on the address or entity level are requested |
 
 ### Return type
 
@@ -748,7 +761,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_entity_neighbors**
-> SearchPaths search_entity_neighbors(currency, entity, direction, key, value, depth)
+> [SearchResultLevel1] search_entity_neighbors(currency, entity, direction, key, value, depth)
 
 Search deeply for matching neighbors
 
@@ -759,7 +772,7 @@ Search deeply for matching neighbors
 import time
 import graphsense
 from graphsense.api import entities_api
-from graphsense.model.search_paths import SearchPaths
+from graphsense.model.search_result_level1 import SearchResultLevel1
 from pprint import pprint
 # Defining the host is optional and defaults to http://openapi_server:9000
 # See configuration.py for a list of all supported configuration parameters.
@@ -788,7 +801,7 @@ with graphsense.ApiClient(configuration) as api_client:
     key = "category" # str | Match neighbors against one and only one of these properties: - the category the entity belongs to - addresses the entity contains - total_received: amount the entity received in total - balance: amount the entity holds finally
     value = [
         "Miner",
-    ] # [str] | If key is - category: comma separated list of category names - addresses: comma separated list of address IDs - total_received/balance: comma separated tuple of (currency, min, max)
+    ] # [str] | If key is - category: comma separated list of category names - addresses: comma separated list of address IDs - entities: comma separated list of entity IDs - total_received/balance: comma separated tuple of (currency, min, max)
     depth = 2 # int | How many hops should the transaction graph be searched
     breadth = 16 # int | How many siblings of each neighbor should be tried (optional) if omitted the server will use the default value of 16
     skip_num_addresses = 1 # int | Skip entities containing more addresses (optional)
@@ -820,14 +833,14 @@ Name | Type | Description  | Notes
  **entity** | **str**| The entity ID |
  **direction** | **str**| Incoming or outgoing neighbors |
  **key** | **str**| Match neighbors against one and only one of these properties: - the category the entity belongs to - addresses the entity contains - total_received: amount the entity received in total - balance: amount the entity holds finally |
- **value** | **[str]**| If key is - category: comma separated list of category names - addresses: comma separated list of address IDs - total_received/balance: comma separated tuple of (currency, min, max) |
+ **value** | **[str]**| If key is - category: comma separated list of category names - addresses: comma separated list of address IDs - entities: comma separated list of entity IDs - total_received/balance: comma separated tuple of (currency, min, max) |
  **depth** | **int**| How many hops should the transaction graph be searched |
  **breadth** | **int**| How many siblings of each neighbor should be tried | [optional] if omitted the server will use the default value of 16
  **skip_num_addresses** | **int**| Skip entities containing more addresses | [optional]
 
 ### Return type
 
-[**SearchPaths**](SearchPaths.md)
+[**[SearchResultLevel1]**](SearchResultLevel1.md)
 
 ### Authorization
 

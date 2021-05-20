@@ -65,11 +65,11 @@ import time
 import graphsense
 from pprint import pprint
 from graphsense.api import addresses_api
+from graphsense.model.address import Address
 from graphsense.model.address_tag import AddressTag
 from graphsense.model.address_txs import AddressTxs
-from graphsense.model.address_with_tags import AddressWithTags
 from graphsense.model.addresses import Addresses
-from graphsense.model.entity_with_tags import EntityWithTags
+from graphsense.model.entity import Entity
 from graphsense.model.link import Link
 from graphsense.model.neighbors import Neighbors
 # Defining the host is optional and defaults to http://openapi_server:9000
@@ -96,13 +96,14 @@ with graphsense.ApiClient(configuration) as api_client:
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
 address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
+include_tags = True # bool | Whether tags should be included (optional)
 
     try:
-        # Get the entity of an address
-        api_response = api_instance.get_address_entity(currency, address)
+        # Get an address, optionally with tags
+        api_response = api_instance.get_address(currency, address, include_tags=include_tags)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling AddressesApi->get_address_entity: %s\n" % e)
+        print("Exception when calling AddressesApi->get_address: %s\n" % e)
 ```
 
 ## Documentation for API Endpoints
@@ -111,8 +112,8 @@ All URIs are relative to *http://openapi_server:9000*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AddressesApi* | [**get_address**](docs/AddressesApi.md#get_address) | **GET** /{currency}/addresses/{address} | Get an address, optionally with tags
 *AddressesApi* | [**get_address_entity**](docs/AddressesApi.md#get_address_entity) | **GET** /{currency}/addresses/{address}/entity | Get the entity of an address
-*AddressesApi* | [**get_address_with_tags**](docs/AddressesApi.md#get_address_with_tags) | **GET** /{currency}/addresses/{address} | Get an address with tags
 *AddressesApi* | [**list_address_links**](docs/AddressesApi.md#list_address_links) | **GET** /{currency}/addresses/{address}/links | Get transactions between two addresses
 *AddressesApi* | [**list_address_links_csv**](docs/AddressesApi.md#list_address_links_csv) | **GET** /{currency}/addresses/{address}/links.csv | Get transactions between two addresses as CSV
 *AddressesApi* | [**list_address_neighbors**](docs/AddressesApi.md#list_address_neighbors) | **GET** /{currency}/addresses/{address}/neighbors | Get an addresses&#39; neighbors in the address graph
@@ -127,15 +128,15 @@ Class | Method | HTTP request | Description
 *BlocksApi* | [**list_block_txs**](docs/BlocksApi.md#list_block_txs) | **GET** /{currency}/blocks/{height}/txs | Get block transactions (100 per page)
 *BlocksApi* | [**list_block_txs_csv**](docs/BlocksApi.md#list_block_txs_csv) | **GET** /{currency}/blocks/{height}/txs.csv | Get block transactions as CSV
 *BlocksApi* | [**list_blocks**](docs/BlocksApi.md#list_blocks) | **GET** /{currency}/blocks | Get all blocks
-*EntitiesApi* | [**get_entity_with_tags**](docs/EntitiesApi.md#get_entity_with_tags) | **GET** /{currency}/entities/{entity} | Get an entity with tags
+*EntitiesApi* | [**get_entity**](docs/EntitiesApi.md#get_entity) | **GET** /{currency}/entities/{entity} | Get an entity, optionally with tags
 *EntitiesApi* | [**list_entities**](docs/EntitiesApi.md#list_entities) | **GET** /{currency}/entities | Get entities
 *EntitiesApi* | [**list_entities_csv**](docs/EntitiesApi.md#list_entities_csv) | **GET** /{currency}/entities.csv | Get entities as CSV
 *EntitiesApi* | [**list_entity_addresses**](docs/EntitiesApi.md#list_entity_addresses) | **GET** /{currency}/entities/{entity}/addresses | Get an entity&#39;s addresses
 *EntitiesApi* | [**list_entity_addresses_csv**](docs/EntitiesApi.md#list_entity_addresses_csv) | **GET** /{currency}/entities/{entity}/addresses.csv | Get an entity&#39;s addresses as CSV
 *EntitiesApi* | [**list_entity_neighbors**](docs/EntitiesApi.md#list_entity_neighbors) | **GET** /{currency}/entities/{entity}/neighbors | Get an entity&#39;s neighbors in the entity graph
 *EntitiesApi* | [**list_entity_neighbors_csv**](docs/EntitiesApi.md#list_entity_neighbors_csv) | **GET** /{currency}/entities/{entity}/neighbors.csv | Get an entity&#39;s neighbors in the entity graph as CSV
-*EntitiesApi* | [**list_tags_by_entity**](docs/EntitiesApi.md#list_tags_by_entity) | **GET** /{currency}/entities/{entity}/tags | Get attribution tags for a given entity
-*EntitiesApi* | [**list_tags_by_entity_csv**](docs/EntitiesApi.md#list_tags_by_entity_csv) | **GET** /{currency}/entities/{entity}/tags.csv | Get attribution tags for a given entity as CSV
+*EntitiesApi* | [**list_tags_by_entity**](docs/EntitiesApi.md#list_tags_by_entity) | **GET** /{currency}/entities/{entity}/tags | Get tags for a given entity
+*EntitiesApi* | [**list_tags_by_entity_by_level_csv**](docs/EntitiesApi.md#list_tags_by_entity_by_level_csv) | **GET** /{currency}/entities/{entity}/tags.csv | Get address or entity tags for a given entity as CSV
 *EntitiesApi* | [**search_entity_neighbors**](docs/EntitiesApi.md#search_entity_neighbors) | **GET** /{currency}/entities/{entity}/search | Search deeply for matching neighbors
 *GeneralApi* | [**get_statistics**](docs/GeneralApi.md#get_statistics) | **GET** /stats | Get statistics of supported currencies
 *GeneralApi* | [**search**](docs/GeneralApi.md#search) | **GET** /search | Returns matching addresses, transactions and labels
@@ -155,8 +156,6 @@ Class | Method | HTTP request | Description
  - [AddressTx](docs/AddressTx.md)
  - [AddressTxUtxo](docs/AddressTxUtxo.md)
  - [AddressTxs](docs/AddressTxs.md)
- - [AddressWithTags](docs/AddressWithTags.md)
- - [AddressWithTagsAllOf](docs/AddressWithTagsAllOf.md)
  - [Addresses](docs/Addresses.md)
  - [Block](docs/Block.md)
  - [BlockTx](docs/BlockTx.md)
@@ -169,8 +168,6 @@ Class | Method | HTTP request | Description
  - [EntityAddresses](docs/EntityAddresses.md)
  - [EntityTag](docs/EntityTag.md)
  - [EntityTagAllOf](docs/EntityTagAllOf.md)
- - [EntityWithTags](docs/EntityWithTags.md)
- - [EntityWithTagsAllOf](docs/EntityWithTagsAllOf.md)
  - [Height](docs/Height.md)
  - [Link](docs/Link.md)
  - [LinkUtxo](docs/LinkUtxo.md)
@@ -178,10 +175,18 @@ Class | Method | HTTP request | Description
  - [Neighbors](docs/Neighbors.md)
  - [Rates](docs/Rates.md)
  - [RatesRates](docs/RatesRates.md)
- - [SearchPaths](docs/SearchPaths.md)
  - [SearchResult](docs/SearchResult.md)
  - [SearchResultByCurrency](docs/SearchResultByCurrency.md)
  - [SearchResultLabels](docs/SearchResultLabels.md)
+ - [SearchResultLeaf](docs/SearchResultLeaf.md)
+ - [SearchResultLevel1](docs/SearchResultLevel1.md)
+ - [SearchResultLevel1AllOf](docs/SearchResultLevel1AllOf.md)
+ - [SearchResultLevel2](docs/SearchResultLevel2.md)
+ - [SearchResultLevel2AllOf](docs/SearchResultLevel2AllOf.md)
+ - [SearchResultLevel3](docs/SearchResultLevel3.md)
+ - [SearchResultLevel3AllOf](docs/SearchResultLevel3AllOf.md)
+ - [SearchResultLevel4](docs/SearchResultLevel4.md)
+ - [SearchResultLevel4AllOf](docs/SearchResultLevel4AllOf.md)
  - [Stats](docs/Stats.md)
  - [StatsLedger](docs/StatsLedger.md)
  - [StatsLedgerVersion](docs/StatsLedgerVersion.md)
@@ -190,6 +195,7 @@ Class | Method | HTTP request | Description
  - [StatsTool](docs/StatsTool.md)
  - [StatsVersion](docs/StatsVersion.md)
  - [Tag](docs/Tag.md)
+ - [TagsByEntity](docs/TagsByEntity.md)
  - [Taxonomy](docs/Taxonomy.md)
  - [Tx](docs/Tx.md)
  - [TxAccount](docs/TxAccount.md)

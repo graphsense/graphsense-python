@@ -27,8 +27,10 @@ from graphsense.model_utils import (  # noqa: F401
 )
 
 def lazy_import():
+    from graphsense.model.address_tag import AddressTag
     from graphsense.model.tx_summary import TxSummary
     from graphsense.model.values import Values
+    globals()['AddressTag'] = AddressTag
     globals()['TxSummary'] = TxSummary
     globals()['Values'] = Values
 
@@ -89,6 +91,7 @@ class Address(ModelNormal):
             'out_degree': (int,),  # noqa: E501
             'total_received': (Values,),  # noqa: E501
             'total_spent': (Values,),  # noqa: E501
+            'tags': ([AddressTag],),  # noqa: E501
         }
 
     @cached_property
@@ -107,6 +110,7 @@ class Address(ModelNormal):
         'out_degree': 'out_degree',  # noqa: E501
         'total_received': 'total_received',  # noqa: E501
         'total_spent': 'total_spent',  # noqa: E501
+        'tags': 'tags',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -167,6 +171,7 @@ class Address(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            tags ([AddressTag]): Tags. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

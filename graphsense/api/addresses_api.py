@@ -21,11 +21,11 @@ from graphsense.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
+from graphsense.model.address import Address
 from graphsense.model.address_tag import AddressTag
 from graphsense.model.address_txs import AddressTxs
-from graphsense.model.address_with_tags import AddressWithTags
 from graphsense.model.addresses import Addresses
-from graphsense.model.entity_with_tags import EntityWithTags
+from graphsense.model.entity import Entity
 from graphsense.model.link import Link
 from graphsense.model.neighbors import Neighbors
 
@@ -42,18 +42,18 @@ class AddressesApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-        def __get_address_entity(
+        def __get_address(
             self,
             currency,
             address,
             **kwargs
         ):
-            """Get the entity of an address  # noqa: E501
+            """Get an address, optionally with tags  # noqa: E501
 
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_address_entity(currency, address, async_req=True)
+            >>> thread = api.get_address(currency, address, async_req=True)
             >>> result = thread.get()
 
             Args:
@@ -61,6 +61,7 @@ class AddressesApi(object):
                 address (str): The cryptocurrency address
 
             Keyword Args:
+                include_tags (bool): Whether tags should be included. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -82,7 +83,141 @@ class AddressesApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                EntityWithTags
+                Address
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['currency'] = \
+                currency
+            kwargs['address'] = \
+                address
+            return self.call_with_http_info(**kwargs)
+
+        self.get_address = _Endpoint(
+            settings={
+                'response_type': (Address,),
+                'auth': [
+                    'api_key'
+                ],
+                'endpoint_path': '/{currency}/addresses/{address}',
+                'operation_id': 'get_address',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'currency',
+                    'address',
+                    'include_tags',
+                ],
+                'required': [
+                    'currency',
+                    'address',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'currency':
+                        (str,),
+                    'address':
+                        (str,),
+                    'include_tags':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'currency': 'currency',
+                    'address': 'address',
+                    'include_tags': 'include_tags',
+                },
+                'location_map': {
+                    'currency': 'path',
+                    'address': 'path',
+                    'include_tags': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__get_address
+        )
+
+        def __get_address_entity(
+            self,
+            currency,
+            address,
+            **kwargs
+        ):
+            """Get the entity of an address  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.get_address_entity(currency, address, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                currency (str): The cryptocurrency (e.g., btc)
+                address (str): The cryptocurrency address
+
+            Keyword Args:
+                include_tags (bool): Whether tags should be included. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                Entity
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -113,7 +248,7 @@ class AddressesApi(object):
 
         self.get_address_entity = _Endpoint(
             settings={
-                'response_type': (EntityWithTags,),
+                'response_type': (Entity,),
                 'auth': [
                     'api_key'
                 ],
@@ -126,6 +261,7 @@ class AddressesApi(object):
                 'all': [
                     'currency',
                     'address',
+                    'include_tags',
                 ],
                 'required': [
                     'currency',
@@ -148,14 +284,18 @@ class AddressesApi(object):
                         (str,),
                     'address':
                         (str,),
+                    'include_tags':
+                        (bool,),
                 },
                 'attribute_map': {
                     'currency': 'currency',
                     'address': 'address',
+                    'include_tags': 'include_tags',
                 },
                 'location_map': {
                     'currency': 'path',
                     'address': 'path',
+                    'include_tags': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -168,134 +308,6 @@ class AddressesApi(object):
             },
             api_client=api_client,
             callable=__get_address_entity
-        )
-
-        def __get_address_with_tags(
-            self,
-            currency,
-            address,
-            **kwargs
-        ):
-            """Get an address with tags  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.get_address_with_tags(currency, address, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                currency (str): The cryptocurrency (e.g., btc)
-                address (str): The cryptocurrency address
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                AddressWithTags
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['currency'] = \
-                currency
-            kwargs['address'] = \
-                address
-            return self.call_with_http_info(**kwargs)
-
-        self.get_address_with_tags = _Endpoint(
-            settings={
-                'response_type': (AddressWithTags,),
-                'auth': [
-                    'api_key'
-                ],
-                'endpoint_path': '/{currency}/addresses/{address}',
-                'operation_id': 'get_address_with_tags',
-                'http_method': 'GET',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'currency',
-                    'address',
-                ],
-                'required': [
-                    'currency',
-                    'address',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'currency':
-                        (str,),
-                    'address':
-                        (str,),
-                },
-                'attribute_map': {
-                    'currency': 'currency',
-                    'address': 'address',
-                },
-                'location_map': {
-                    'currency': 'path',
-                    'address': 'path',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__get_address_with_tags
         )
 
         def __list_address_links(

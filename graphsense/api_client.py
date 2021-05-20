@@ -762,10 +762,10 @@ class Endpoint(object):
         Example:
 
         api_instance = AddressesApi()
-        api_instance.get_address_entity  # this is an instance of the class Endpoint
-        api_instance.get_address_entity()  # this invokes api_instance.get_address_entity.__call__()
+        api_instance.get_address  # this is an instance of the class Endpoint
+        api_instance.get_address()  # this invokes api_instance.get_address.__call__()
         which then invokes the callable functions stored in that endpoint at
-        api_instance.get_address_entity.callable or self.callable in this class
+        api_instance.get_address.callable or self.callable in this class
 
         """
         return self.callable(self, *args, **kwargs)

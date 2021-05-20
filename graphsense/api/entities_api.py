@@ -22,11 +22,11 @@ from graphsense.model_utils import (  # noqa: F401
     validate_and_convert_types
 )
 from graphsense.model.entities import Entities
+from graphsense.model.entity import Entity
 from graphsense.model.entity_addresses import EntityAddresses
-from graphsense.model.entity_tag import EntityTag
-from graphsense.model.entity_with_tags import EntityWithTags
 from graphsense.model.neighbors import Neighbors
-from graphsense.model.search_paths import SearchPaths
+from graphsense.model.search_result_level1 import SearchResultLevel1
+from graphsense.model.tags_by_entity import TagsByEntity
 
 
 class EntitiesApi(object):
@@ -41,18 +41,18 @@ class EntitiesApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-        def __get_entity_with_tags(
+        def __get_entity(
             self,
             currency,
             entity,
             **kwargs
         ):
-            """Get an entity with tags  # noqa: E501
+            """Get an entity, optionally with tags  # noqa: E501
 
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_entity_with_tags(currency, entity, async_req=True)
+            >>> thread = api.get_entity(currency, entity, async_req=True)
             >>> result = thread.get()
 
             Args:
@@ -60,6 +60,7 @@ class EntitiesApi(object):
                 entity (str): The entity ID
 
             Keyword Args:
+                include_tags (bool): Whether tags should be included. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -81,7 +82,7 @@ class EntitiesApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                EntityWithTags
+                Entity
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -110,14 +111,14 @@ class EntitiesApi(object):
                 entity
             return self.call_with_http_info(**kwargs)
 
-        self.get_entity_with_tags = _Endpoint(
+        self.get_entity = _Endpoint(
             settings={
-                'response_type': (EntityWithTags,),
+                'response_type': (Entity,),
                 'auth': [
                     'api_key'
                 ],
                 'endpoint_path': '/{currency}/entities/{entity}',
-                'operation_id': 'get_entity_with_tags',
+                'operation_id': 'get_entity',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -125,6 +126,7 @@ class EntitiesApi(object):
                 'all': [
                     'currency',
                     'entity',
+                    'include_tags',
                 ],
                 'required': [
                     'currency',
@@ -147,14 +149,18 @@ class EntitiesApi(object):
                         (str,),
                     'entity':
                         (str,),
+                    'include_tags':
+                        (bool,),
                 },
                 'attribute_map': {
                     'currency': 'currency',
                     'entity': 'entity',
+                    'include_tags': 'include_tags',
                 },
                 'location_map': {
                     'currency': 'path',
                     'entity': 'path',
+                    'include_tags': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -166,7 +172,7 @@ class EntitiesApi(object):
                 'content_type': [],
             },
             api_client=api_client,
-            callable=__get_entity_with_tags
+            callable=__get_entity
         )
 
         def __list_entities(
@@ -1034,7 +1040,7 @@ class EntitiesApi(object):
             entity,
             **kwargs
         ):
-            """Get attribution tags for a given entity  # noqa: E501
+            """Get tags for a given entity  # noqa: E501
 
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
@@ -1068,7 +1074,7 @@ class EntitiesApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                [EntityTag]
+                TagsByEntity
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -1099,7 +1105,7 @@ class EntitiesApi(object):
 
         self.list_tags_by_entity = _Endpoint(
             settings={
-                'response_type': ([EntityTag],),
+                'response_type': (TagsByEntity,),
                 'auth': [
                     'api_key'
                 ],
@@ -1156,23 +1162,25 @@ class EntitiesApi(object):
             callable=__list_tags_by_entity
         )
 
-        def __list_tags_by_entity_csv(
+        def __list_tags_by_entity_by_level_csv(
             self,
             currency,
             entity,
+            level,
             **kwargs
         ):
-            """Get attribution tags for a given entity as CSV  # noqa: E501
+            """Get address or entity tags for a given entity as CSV  # noqa: E501
 
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.list_tags_by_entity_csv(currency, entity, async_req=True)
+            >>> thread = api.list_tags_by_entity_by_level_csv(currency, entity, level, async_req=True)
             >>> result = thread.get()
 
             Args:
                 currency (str): The cryptocurrency (e.g., btc)
                 entity (str): The entity ID
+                level (str): Whether tags on the address or entity level are requested
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
@@ -1223,16 +1231,18 @@ class EntitiesApi(object):
                 currency
             kwargs['entity'] = \
                 entity
+            kwargs['level'] = \
+                level
             return self.call_with_http_info(**kwargs)
 
-        self.list_tags_by_entity_csv = _Endpoint(
+        self.list_tags_by_entity_by_level_csv = _Endpoint(
             settings={
                 'response_type': (str,),
                 'auth': [
                     'api_key'
                 ],
                 'endpoint_path': '/{currency}/entities/{entity}/tags.csv',
-                'operation_id': 'list_tags_by_entity_csv',
+                'operation_id': 'list_tags_by_entity_by_level_csv',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -1240,14 +1250,17 @@ class EntitiesApi(object):
                 'all': [
                     'currency',
                     'entity',
+                    'level',
                 ],
                 'required': [
                     'currency',
                     'entity',
+                    'level',
                 ],
                 'nullable': [
                 ],
                 'enum': [
+                    'level',
                 ],
                 'validation': [
                 ]
@@ -1256,20 +1269,29 @@ class EntitiesApi(object):
                 'validations': {
                 },
                 'allowed_values': {
+                    ('level',): {
+
+                        "ADDRESS": "address",
+                        "ENTITY": "entity"
+                    },
                 },
                 'openapi_types': {
                     'currency':
                         (str,),
                     'entity':
                         (str,),
+                    'level':
+                        (str,),
                 },
                 'attribute_map': {
                     'currency': 'currency',
                     'entity': 'entity',
+                    'level': 'level',
                 },
                 'location_map': {
                     'currency': 'path',
                     'entity': 'path',
+                    'level': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -1281,7 +1303,7 @@ class EntitiesApi(object):
                 'content_type': [],
             },
             api_client=api_client,
-            callable=__list_tags_by_entity_csv
+            callable=__list_tags_by_entity_by_level_csv
         )
 
         def __search_entity_neighbors(
@@ -1307,7 +1329,7 @@ class EntitiesApi(object):
                 entity (str): The entity ID
                 direction (str): Incoming or outgoing neighbors
                 key (str): Match neighbors against one and only one of these properties: - the category the entity belongs to - addresses the entity contains - total_received: amount the entity received in total - balance: amount the entity holds finally
-                value ([str]): If key is - category: comma separated list of category names - addresses: comma separated list of address IDs - total_received/balance: comma separated tuple of (currency, min, max)
+                value ([str]): If key is - category: comma separated list of category names - addresses: comma separated list of address IDs - entities: comma separated list of entity IDs - total_received/balance: comma separated tuple of (currency, min, max)
                 depth (int): How many hops should the transaction graph be searched
 
             Keyword Args:
@@ -1334,7 +1356,7 @@ class EntitiesApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                SearchPaths
+                [SearchResultLevel1]
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -1373,7 +1395,7 @@ class EntitiesApi(object):
 
         self.search_entity_neighbors = _Endpoint(
             settings={
-                'response_type': (SearchPaths,),
+                'response_type': ([SearchResultLevel1],),
                 'auth': [
                     'api_key'
                 ],
@@ -1428,6 +1450,7 @@ class EntitiesApi(object):
 
                         "CATEGORY": "category",
                         "ADDRESSES": "addresses",
+                        "ENTITIES": "entities",
                         "TOTAL_RECEIVED": "total_received",
                         "BALANCE": "balance"
                     },
