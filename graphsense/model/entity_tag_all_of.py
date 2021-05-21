@@ -72,7 +72,7 @@ class EntityTagAllOf(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'entity': (str,),  # noqa: E501
+            'entity': (int,),  # noqa: E501
         }
 
     @cached_property
@@ -100,7 +100,7 @@ class EntityTagAllOf(ModelNormal):
         """EntityTagAllOf - a model defined in OpenAPI
 
         Args:
-            entity (str): Entity id
+            entity (int): Entity id
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

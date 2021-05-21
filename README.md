@@ -141,8 +141,8 @@ Class | Method | HTTP request | Description
 *GeneralApi* | [**get_statistics**](docs/GeneralApi.md#get_statistics) | **GET** /stats | Get statistics of supported currencies
 *GeneralApi* | [**search**](docs/GeneralApi.md#search) | **GET** /search | Returns matching addresses, transactions and labels
 *RatesApi* | [**get_exchange_rates**](docs/RatesApi.md#get_exchange_rates) | **GET** /{currency}/rates/{height} | Returns exchange rate for a given height
-*TagsApi* | [**list_address_tags**](docs/TagsApi.md#list_address_tags) | **GET** /tags | Returns the address tags associated with a given label
 *TagsApi* | [**list_concepts**](docs/TagsApi.md#list_concepts) | **GET** /tags/taxonomies/{taxonomy}/concepts | Returns the supported concepts of a taxonomy
+*TagsApi* | [**list_tags**](docs/TagsApi.md#list_tags) | **GET** /tags | Returns address and entity tags associated with a given label
 *TagsApi* | [**list_taxonomies**](docs/TagsApi.md#list_taxonomies) | **GET** /tags/taxonomies | Returns the supported taxonomies
 *TxsApi* | [**get_tx**](docs/TxsApi.md#get_tx) | **GET** /{currency}/txs/{tx_hash} | Returns details of a specific transaction identified by its hash.
 *TxsApi* | [**list_txs**](docs/TxsApi.md#list_txs) | **GET** /{currency}/txs | Returns transactions
@@ -195,7 +195,7 @@ Class | Method | HTTP request | Description
  - [StatsTool](docs/StatsTool.md)
  - [StatsVersion](docs/StatsVersion.md)
  - [Tag](docs/Tag.md)
- - [TagsByEntity](docs/TagsByEntity.md)
+ - [Tags](docs/Tags.md)
  - [Taxonomy](docs/Taxonomy.md)
  - [Tx](docs/Tx.md)
  - [TxAccount](docs/TxAccount.md)

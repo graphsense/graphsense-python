@@ -26,7 +26,7 @@ from graphsense.model.entity import Entity
 from graphsense.model.entity_addresses import EntityAddresses
 from graphsense.model.neighbors import Neighbors
 from graphsense.model.search_result_level1 import SearchResultLevel1
-from graphsense.model.tags_by_entity import TagsByEntity
+from graphsense.model.tags import Tags
 
 
 class EntitiesApi(object):
@@ -57,7 +57,7 @@ class EntitiesApi(object):
 
             Args:
                 currency (str): The cryptocurrency (e.g., btc)
-                entity (str): The entity ID
+                entity (int): The entity ID
 
             Keyword Args:
                 include_tags (bool): Whether tags should be included. [optional]
@@ -148,7 +148,7 @@ class EntitiesApi(object):
                     'currency':
                         (str,),
                     'entity':
-                        (str,),
+                        (int,),
                     'include_tags':
                         (bool,),
                 },
@@ -463,7 +463,7 @@ class EntitiesApi(object):
 
             Args:
                 currency (str): The cryptocurrency (e.g., btc)
-                entity (str): The entity ID
+                entity (int): The entity ID
 
             Keyword Args:
                 page (str): Resumption token for retrieving the next page. [optional]
@@ -562,7 +562,7 @@ class EntitiesApi(object):
                     'currency':
                         (str,),
                     'entity':
-                        (str,),
+                        (int,),
                     'page':
                         (str,),
                     'pagesize':
@@ -609,7 +609,7 @@ class EntitiesApi(object):
 
             Args:
                 currency (str): The cryptocurrency (e.g., btc)
-                entity (str): The entity ID
+                entity (int): The entity ID
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
@@ -698,7 +698,7 @@ class EntitiesApi(object):
                     'currency':
                         (str,),
                     'entity':
-                        (str,),
+                        (int,),
                 },
                 'attribute_map': {
                     'currency': 'currency',
@@ -738,7 +738,7 @@ class EntitiesApi(object):
 
             Args:
                 currency (str): The cryptocurrency (e.g., btc)
-                entity (str): The entity ID
+                entity (int): The entity ID
                 direction (str): Incoming or outgoing neighbors
 
             Keyword Args:
@@ -850,7 +850,7 @@ class EntitiesApi(object):
                     'currency':
                         (str,),
                     'entity':
-                        (str,),
+                        (int,),
                     'direction':
                         (str,),
                     'ids':
@@ -907,7 +907,7 @@ class EntitiesApi(object):
 
             Args:
                 currency (str): The cryptocurrency (e.g., btc)
-                entity (str): The entity ID
+                entity (int): The entity ID
                 direction (str): Incoming or outgoing neighbors
 
             Keyword Args:
@@ -1007,7 +1007,7 @@ class EntitiesApi(object):
                     'currency':
                         (str,),
                     'entity':
-                        (str,),
+                        (int,),
                     'direction':
                         (str,),
                 },
@@ -1050,7 +1050,7 @@ class EntitiesApi(object):
 
             Args:
                 currency (str): The cryptocurrency (e.g., btc)
-                entity (str): The entity ID
+                entity (int): The entity ID
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
@@ -1074,7 +1074,7 @@ class EntitiesApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                TagsByEntity
+                Tags
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -1105,7 +1105,7 @@ class EntitiesApi(object):
 
         self.list_tags_by_entity = _Endpoint(
             settings={
-                'response_type': (TagsByEntity,),
+                'response_type': (Tags,),
                 'auth': [
                     'api_key'
                 ],
@@ -1139,7 +1139,7 @@ class EntitiesApi(object):
                     'currency':
                         (str,),
                     'entity':
-                        (str,),
+                        (int,),
                 },
                 'attribute_map': {
                     'currency': 'currency',
@@ -1179,7 +1179,7 @@ class EntitiesApi(object):
 
             Args:
                 currency (str): The cryptocurrency (e.g., btc)
-                entity (str): The entity ID
+                entity (int): The entity ID
                 level (str): Whether tags on the address or entity level are requested
 
             Keyword Args:
@@ -1279,7 +1279,7 @@ class EntitiesApi(object):
                     'currency':
                         (str,),
                     'entity':
-                        (str,),
+                        (int,),
                     'level':
                         (str,),
                 },
@@ -1326,7 +1326,7 @@ class EntitiesApi(object):
 
             Args:
                 currency (str): The cryptocurrency (e.g., btc)
-                entity (str): The entity ID
+                entity (int): The entity ID
                 direction (str): Incoming or outgoing neighbors
                 key (str): Match neighbors against one and only one of these properties: - the category the entity belongs to - addresses the entity contains - total_received: amount the entity received in total - balance: amount the entity holds finally
                 value ([str]): If key is - category: comma separated list of category names - addresses: comma separated list of address IDs - entities: comma separated list of entity IDs - total_received/balance: comma separated tuple of (currency, min, max)
@@ -1459,7 +1459,7 @@ class EntitiesApi(object):
                     'currency':
                         (str,),
                     'entity':
-                        (str,),
+                        (int,),
                     'direction':
                         (str,),
                     'key':

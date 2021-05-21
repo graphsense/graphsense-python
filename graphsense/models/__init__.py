@@ -54,7 +54,7 @@ from graphsense.model.stats_tags_source import StatsTagsSource
 from graphsense.model.stats_tool import StatsTool
 from graphsense.model.stats_version import StatsVersion
 from graphsense.model.tag import Tag
-from graphsense.model.tags_by_entity import TagsByEntity
+from graphsense.model.tags import Tags
 from graphsense.model.taxonomy import Taxonomy
 from graphsense.model.tx import Tx
 from graphsense.model.tx_account import TxAccount

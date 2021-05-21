@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **active** | **bool** | whether the address has been ever used | 
 **currency** | **str** | Currency | 
 **label** | **str** | Label | 
-**entity** | **str** | Entity id | 
+**entity** | **int** | Entity id | 
 **abuse** | **str** | Abuses | [optional] 
 **category** | **str** | Category | [optional] 
 **lastmod** | **int** | Last modified | [optional] 

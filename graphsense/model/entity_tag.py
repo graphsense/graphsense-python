@@ -89,7 +89,7 @@ class EntityTag(ModelComposed):
             'active': (bool,),  # noqa: E501
             'currency': (str,),  # noqa: E501
             'label': (str,),  # noqa: E501
-            'entity': (str,),  # noqa: E501
+            'entity': (int,),  # noqa: E501
             'abuse': (str,),  # noqa: E501
             'category': (str,),  # noqa: E501
             'lastmod': (int,),  # noqa: E501
@@ -134,7 +134,7 @@ class EntityTag(ModelComposed):
             active (bool): whether the address has been ever used
             currency (str): Currency
             label (str): Label
-            entity (str): Entity id
+            entity (int): Entity id
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
