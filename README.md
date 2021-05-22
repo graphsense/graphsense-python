@@ -229,7 +229,7 @@ Clone this repository
 Recommended: create and activate a virtual Python environment
 
     python3 -m venv venv-gpython
-    . ./venv-gpython/bin/activate
+    source venv-gpython/bin/activate
 
 Upgrade pip and install all dependencies
     
@@ -242,7 +242,7 @@ Install the GraphSense python client
 
 Install a custom iPython kernel that uses the virtual Python environment
 
-    ipython kernel install --name=venv-gpython
+    ipython kernel install --name=venv-gpython --user
 
 Run the Jupyter notebook
 
