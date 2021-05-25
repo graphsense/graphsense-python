@@ -60,7 +60,8 @@ class EntitiesApi(object):
                 entity (int): The entity ID
 
             Keyword Args:
-                include_tags (bool): Whether tags should be included. [optional]
+                include_tags (bool): Whether tags should be included. [optional] if omitted the server will use the default value of False
+                tag_coherence (bool): Whether to calculate coherence of address tags. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -127,6 +128,7 @@ class EntitiesApi(object):
                     'currency',
                     'entity',
                     'include_tags',
+                    'tag_coherence',
                 ],
                 'required': [
                     'currency',
@@ -151,16 +153,20 @@ class EntitiesApi(object):
                         (int,),
                     'include_tags':
                         (bool,),
+                    'tag_coherence':
+                        (bool,),
                 },
                 'attribute_map': {
                     'currency': 'currency',
                     'entity': 'entity',
                     'include_tags': 'include_tags',
+                    'tag_coherence': 'tag_coherence',
                 },
                 'location_map': {
                     'currency': 'path',
                     'entity': 'path',
                     'include_tags': 'query',
+                    'tag_coherence': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -1053,6 +1059,7 @@ class EntitiesApi(object):
                 entity (int): The entity ID
 
             Keyword Args:
+                tag_coherence (bool): Whether to calculate coherence of address tags. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -1118,6 +1125,7 @@ class EntitiesApi(object):
                 'all': [
                     'currency',
                     'entity',
+                    'tag_coherence',
                 ],
                 'required': [
                     'currency',
@@ -1140,14 +1148,18 @@ class EntitiesApi(object):
                         (str,),
                     'entity':
                         (int,),
+                    'tag_coherence':
+                        (bool,),
                 },
                 'attribute_map': {
                     'currency': 'currency',
                     'entity': 'entity',
+                    'tag_coherence': 'tag_coherence',
                 },
                 'location_map': {
                     'currency': 'path',
                     'entity': 'path',
+                    'tag_coherence': 'query',
                 },
                 'collection_format_map': {
                 }
