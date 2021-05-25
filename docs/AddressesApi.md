@@ -387,6 +387,7 @@ with graphsense.ApiClient(configuration) as api_client:
     currency = "btc" # str | The cryptocurrency (e.g., btc)
     address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
     direction = "out" # str | Incoming or outgoing neighbors
+    include_labels = False # bool | Whether labels of tags should be included (optional) if omitted the server will use the default value of False
     page = "0400030bff00f07fffff9b00" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
@@ -402,7 +403,7 @@ with graphsense.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Get an addresses' neighbors in the address graph
-        api_response = api_instance.list_address_neighbors(currency, address, direction, page=page, pagesize=pagesize)
+        api_response = api_instance.list_address_neighbors(currency, address, direction, include_labels=include_labels, page=page, pagesize=pagesize)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling AddressesApi->list_address_neighbors: %s\n" % e)
@@ -416,6 +417,7 @@ Name | Type | Description  | Notes
  **currency** | **str**| The cryptocurrency (e.g., btc) |
  **address** | **str**| The cryptocurrency address |
  **direction** | **str**| Incoming or outgoing neighbors |
+ **include_labels** | **bool**| Whether labels of tags should be included | [optional] if omitted the server will use the default value of False
  **page** | **str**| Resumption token for retrieving the next page | [optional]
  **pagesize** | **int**| Number of items returned in a single page | [optional]
 

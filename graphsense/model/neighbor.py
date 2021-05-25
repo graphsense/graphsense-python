@@ -83,11 +83,11 @@ class Neighbor(ModelNormal):
         return {
             'balance': (Values,),  # noqa: E501
             'estimated_value': (Values,),  # noqa: E501
-            'has_labels': (bool,),  # noqa: E501
             'id': (str,),  # noqa: E501
             'no_txs': (int,),  # noqa: E501
             'node_type': (str,),  # noqa: E501
             'received': (Values,),  # noqa: E501
+            'labels': ([str],),  # noqa: E501
         }
 
     @cached_property
@@ -98,11 +98,11 @@ class Neighbor(ModelNormal):
     attribute_map = {
         'balance': 'balance',  # noqa: E501
         'estimated_value': 'estimated_value',  # noqa: E501
-        'has_labels': 'has_labels',  # noqa: E501
         'id': 'id',  # noqa: E501
         'no_txs': 'no_txs',  # noqa: E501
         'node_type': 'node_type',  # noqa: E501
         'received': 'received',  # noqa: E501
+        'labels': 'labels',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -117,13 +117,12 @@ class Neighbor(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, balance, estimated_value, has_labels, id, no_txs, node_type, received, *args, **kwargs):  # noqa: E501
+    def __init__(self, balance, estimated_value, id, no_txs, node_type, received, *args, **kwargs):  # noqa: E501
         """Neighbor - a model defined in OpenAPI
 
         Args:
             balance (Values):
             estimated_value (Values):
-            has_labels (bool): has labels
             id (str): address or entity id
             no_txs (int): number of transactions
             node_type (str): address or entity
@@ -160,6 +159,7 @@ class Neighbor(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            labels ([str]): labels. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -187,7 +187,6 @@ class Neighbor(ModelNormal):
 
         self.balance = balance
         self.estimated_value = estimated_value
-        self.has_labels = has_labels
         self.id = id
         self.no_txs = no_txs
         self.node_type = node_type

@@ -613,6 +613,7 @@ class AddressesApi(object):
                 direction (str): Incoming or outgoing neighbors
 
             Keyword Args:
+                include_labels (bool): Whether labels of tags should be included. [optional] if omitted the server will use the default value of False
                 page (str): Resumption token for retrieving the next page. [optional]
                 pagesize (int): Number of items returned in a single page. [optional]
                 _return_http_data_only (bool): response data without head status
@@ -683,6 +684,7 @@ class AddressesApi(object):
                     'currency',
                     'address',
                     'direction',
+                    'include_labels',
                     'page',
                     'pagesize',
                 ],
@@ -722,6 +724,8 @@ class AddressesApi(object):
                         (str,),
                     'direction':
                         (str,),
+                    'include_labels':
+                        (bool,),
                     'page':
                         (str,),
                     'pagesize':
@@ -731,6 +735,7 @@ class AddressesApi(object):
                     'currency': 'currency',
                     'address': 'address',
                     'direction': 'direction',
+                    'include_labels': 'include_labels',
                     'page': 'page',
                     'pagesize': 'pagesize',
                 },
@@ -738,6 +743,7 @@ class AddressesApi(object):
                     'currency': 'path',
                     'address': 'path',
                     'direction': 'query',
+                    'include_labels': 'query',
                     'page': 'query',
                     'pagesize': 'query',
                 },
