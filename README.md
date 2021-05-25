@@ -96,7 +96,7 @@ with graphsense.ApiClient(configuration) as api_client:
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
 address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
-include_tags = True # bool | Whether tags should be included (optional)
+include_tags = False # bool | Whether tags should be included (optional) (default to False)
 
     try:
         # Get an address, optionally with tags

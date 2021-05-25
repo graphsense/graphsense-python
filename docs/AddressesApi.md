@@ -55,7 +55,7 @@ with graphsense.ApiClient(configuration) as api_client:
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
     address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
-    include_tags = True # bool | Whether tags should be included (optional)
+    include_tags = False # bool | Whether tags should be included (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
     try:
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **str**| The cryptocurrency (e.g., btc) |
  **address** | **str**| The cryptocurrency address |
- **include_tags** | **bool**| Whether tags should be included | [optional]
+ **include_tags** | **bool**| Whether tags should be included | [optional] if omitted the server will use the default value of False
 
 ### Return type
 
@@ -142,7 +142,8 @@ with graphsense.ApiClient(configuration) as api_client:
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
     address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
-    include_tags = True # bool | Whether tags should be included (optional)
+    include_tags = False # bool | Whether tags should be included (optional) if omitted the server will use the default value of False
+    tag_coherence = False # bool | Whether to calculate coherence of address tags (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
     try:
@@ -156,7 +157,7 @@ with graphsense.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Get the entity of an address
-        api_response = api_instance.get_address_entity(currency, address, include_tags=include_tags)
+        api_response = api_instance.get_address_entity(currency, address, include_tags=include_tags, tag_coherence=tag_coherence)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling AddressesApi->get_address_entity: %s\n" % e)
@@ -169,7 +170,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **str**| The cryptocurrency (e.g., btc) |
  **address** | **str**| The cryptocurrency address |
- **include_tags** | **bool**| Whether tags should be included | [optional]
+ **include_tags** | **bool**| Whether tags should be included | [optional] if omitted the server will use the default value of False
+ **tag_coherence** | **bool**| Whether to calculate coherence of address tags | [optional] if omitted the server will use the default value of False
 
 ### Return type
 

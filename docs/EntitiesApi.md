@@ -53,7 +53,8 @@ with graphsense.ApiClient(configuration) as api_client:
     api_instance = entities_api.EntitiesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
     entity = 67065 # int | The entity ID
-    include_tags = True # bool | Whether tags should be included (optional)
+    include_tags = False # bool | Whether tags should be included (optional) if omitted the server will use the default value of False
+    tag_coherence = False # bool | Whether to calculate coherence of address tags (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
     try:
@@ -67,7 +68,7 @@ with graphsense.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Get an entity, optionally with tags
-        api_response = api_instance.get_entity(currency, entity, include_tags=include_tags)
+        api_response = api_instance.get_entity(currency, entity, include_tags=include_tags, tag_coherence=tag_coherence)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling EntitiesApi->get_entity: %s\n" % e)
@@ -80,7 +81,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **str**| The cryptocurrency (e.g., btc) |
  **entity** | **int**| The entity ID |
- **include_tags** | **bool**| Whether tags should be included | [optional]
+ **include_tags** | **bool**| Whether tags should be included | [optional] if omitted the server will use the default value of False
+ **tag_coherence** | **bool**| Whether to calculate coherence of address tags | [optional] if omitted the server will use the default value of False
 
 ### Return type
 
@@ -644,11 +646,21 @@ with graphsense.ApiClient(configuration) as api_client:
     api_instance = entities_api.EntitiesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
     entity = 67065 # int | The entity ID
+    tag_coherence = False # bool | Whether to calculate coherence of address tags (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
     try:
         # Get tags for a given entity
         api_response = api_instance.list_tags_by_entity(currency, entity)
+        pprint(api_response)
+    except graphsense.ApiException as e:
+        print("Exception when calling EntitiesApi->list_tags_by_entity: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Get tags for a given entity
+        api_response = api_instance.list_tags_by_entity(currency, entity, tag_coherence=tag_coherence)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling EntitiesApi->list_tags_by_entity: %s\n" % e)
@@ -661,6 +673,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **str**| The cryptocurrency (e.g., btc) |
  **entity** | **int**| The entity ID |
+ **tag_coherence** | **bool**| Whether to calculate coherence of address tags | [optional] if omitted the server will use the default value of False
 
 ### Return type
 

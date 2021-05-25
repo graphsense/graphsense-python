@@ -61,7 +61,7 @@ class AddressesApi(object):
                 address (str): The cryptocurrency address
 
             Keyword Args:
-                include_tags (bool): Whether tags should be included. [optional]
+                include_tags (bool): Whether tags should be included. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -195,7 +195,8 @@ class AddressesApi(object):
                 address (str): The cryptocurrency address
 
             Keyword Args:
-                include_tags (bool): Whether tags should be included. [optional]
+                include_tags (bool): Whether tags should be included. [optional] if omitted the server will use the default value of False
+                tag_coherence (bool): Whether to calculate coherence of address tags. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -262,6 +263,7 @@ class AddressesApi(object):
                     'currency',
                     'address',
                     'include_tags',
+                    'tag_coherence',
                 ],
                 'required': [
                     'currency',
@@ -286,16 +288,20 @@ class AddressesApi(object):
                         (str,),
                     'include_tags':
                         (bool,),
+                    'tag_coherence':
+                        (bool,),
                 },
                 'attribute_map': {
                     'currency': 'currency',
                     'address': 'address',
                     'include_tags': 'include_tags',
+                    'tag_coherence': 'tag_coherence',
                 },
                 'location_map': {
                     'currency': 'path',
                     'address': 'path',
                     'include_tags': 'query',
+                    'tag_coherence': 'query',
                 },
                 'collection_format_map': {
                 }
