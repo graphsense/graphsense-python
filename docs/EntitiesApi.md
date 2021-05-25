@@ -478,6 +478,7 @@ with graphsense.ApiClient(configuration) as api_client:
     ids = [
         "ids_example",
     ] # [str] | Restrict result to given set of comma separated IDs (optional)
+    include_labels = False # bool | Whether labels of tags should be included (optional) if omitted the server will use the default value of False
     page = "0400030bff00f07fffff9b00" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
@@ -493,7 +494,7 @@ with graphsense.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Get an entity's neighbors in the entity graph
-        api_response = api_instance.list_entity_neighbors(currency, entity, direction, ids=ids, page=page, pagesize=pagesize)
+        api_response = api_instance.list_entity_neighbors(currency, entity, direction, ids=ids, include_labels=include_labels, page=page, pagesize=pagesize)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling EntitiesApi->list_entity_neighbors: %s\n" % e)
@@ -508,6 +509,7 @@ Name | Type | Description  | Notes
  **entity** | **int**| The entity ID |
  **direction** | **str**| Incoming or outgoing neighbors |
  **ids** | **[str]**| Restrict result to given set of comma separated IDs | [optional]
+ **include_labels** | **bool**| Whether labels of tags should be included | [optional] if omitted the server will use the default value of False
  **page** | **str**| Resumption token for retrieving the next page | [optional]
  **pagesize** | **int**| Number of items returned in a single page | [optional]
 

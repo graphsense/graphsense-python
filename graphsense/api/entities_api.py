@@ -749,6 +749,7 @@ class EntitiesApi(object):
 
             Keyword Args:
                 ids ([str]): Restrict result to given set of comma separated IDs. [optional]
+                include_labels (bool): Whether labels of tags should be included. [optional] if omitted the server will use the default value of False
                 page (str): Resumption token for retrieving the next page. [optional]
                 pagesize (int): Number of items returned in a single page. [optional]
                 _return_http_data_only (bool): response data without head status
@@ -820,6 +821,7 @@ class EntitiesApi(object):
                     'entity',
                     'direction',
                     'ids',
+                    'include_labels',
                     'page',
                     'pagesize',
                 ],
@@ -861,6 +863,8 @@ class EntitiesApi(object):
                         (str,),
                     'ids':
                         ([str],),
+                    'include_labels':
+                        (bool,),
                     'page':
                         (str,),
                     'pagesize':
@@ -871,6 +875,7 @@ class EntitiesApi(object):
                     'entity': 'entity',
                     'direction': 'direction',
                     'ids': 'ids',
+                    'include_labels': 'include_labels',
                     'page': 'page',
                     'pagesize': 'pagesize',
                 },
@@ -879,6 +884,7 @@ class EntitiesApi(object):
                     'entity': 'path',
                     'direction': 'query',
                     'ids': 'query',
+                    'include_labels': 'query',
                     'page': 'query',
                     'pagesize': 'query',
                 },
