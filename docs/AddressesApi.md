@@ -388,7 +388,7 @@ with graphsense.ApiClient(configuration) as api_client:
     address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
     direction = "out" # str | Incoming or outgoing neighbors
     include_labels = False # bool | Whether labels of tags should be included (optional) if omitted the server will use the default value of False
-    page = "0400030bff00f07fffff9b00" # str | Resumption token for retrieving the next page (optional)
+    page = "page_example" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
     # example passing only required values which don't have defaults set
@@ -556,7 +556,7 @@ with graphsense.ApiClient(configuration) as api_client:
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
     address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
-    page = "0400030bff00f07fffff9b00" # str | Resumption token for retrieving the next page (optional)
+    page = "page_example" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
     # example passing only required values which don't have defaults set
@@ -722,7 +722,7 @@ with graphsense.ApiClient(configuration) as api_client:
     ids = [
         "ids_example",
     ] # [str] | Restrict result to given set of comma separated IDs (optional)
-    page = "0400030bff00f07fffff9b00" # str | Resumption token for retrieving the next page (optional)
+    page = "page_example" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
     # example passing only required values which don't have defaults set

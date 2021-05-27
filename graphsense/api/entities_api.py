@@ -282,7 +282,6 @@ class EntitiesApi(object):
                 'validations': {
                     ('pagesize',): {
 
-                        'inclusive_maximum': 1000,
                         'inclusive_minimum': 1,
                     },
                 },
@@ -558,7 +557,6 @@ class EntitiesApi(object):
                 'validations': {
                     ('pagesize',): {
 
-                        'inclusive_maximum': 1000,
                         'inclusive_minimum': 1,
                     },
                 },
@@ -843,7 +841,6 @@ class EntitiesApi(object):
                 'validations': {
                     ('pagesize',): {
 
-                        'inclusive_maximum': 1000,
                         'inclusive_minimum': 1,
                     },
                 },
@@ -1346,7 +1343,7 @@ class EntitiesApi(object):
                 currency (str): The cryptocurrency (e.g., btc)
                 entity (int): The entity ID
                 direction (str): Incoming or outgoing neighbors
-                key (str): Match neighbors against one and only one of these properties: - the category the entity belongs to - addresses the entity contains - total_received: amount the entity received in total - balance: amount the entity holds finally
+                key (str): Match neighbors against one and only one of these properties: - the category the entity belongs to - addresses the entity contains - entity ids - total_received: amount the entity received in total - balance: amount the entity holds finally
                 value ([str]): If key is - category: comma separated list of category names - addresses: comma separated list of address IDs - entities: comma separated list of entity IDs - total_received/balance: comma separated tuple of (currency, min, max)
                 depth (int): How many hops should the transaction graph be searched
 

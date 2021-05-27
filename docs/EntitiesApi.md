@@ -144,7 +144,7 @@ with graphsense.ApiClient(configuration) as api_client:
     ids = [
         "ids_example",
     ] # [str] | Restrict result to given set of comma separated IDs (optional)
-    page = "0400030bff00f07fffff9b00" # str | Resumption token for retrieving the next page (optional)
+    page = "page_example" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
     # example passing only required values which don't have defaults set
@@ -310,7 +310,7 @@ with graphsense.ApiClient(configuration) as api_client:
     api_instance = entities_api.EntitiesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
     entity = 67065 # int | The entity ID
-    page = "0400030bff00f07fffff9b00" # str | Resumption token for retrieving the next page (optional)
+    page = "page_example" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
     # example passing only required values which don't have defaults set
@@ -479,7 +479,7 @@ with graphsense.ApiClient(configuration) as api_client:
         "ids_example",
     ] # [str] | Restrict result to given set of comma separated IDs (optional)
     include_labels = False # bool | Whether labels of tags should be included (optional) if omitted the server will use the default value of False
-    page = "0400030bff00f07fffff9b00" # str | Resumption token for retrieving the next page (optional)
+    page = "page_example" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
     # example passing only required values which don't have defaults set
@@ -813,7 +813,7 @@ with graphsense.ApiClient(configuration) as api_client:
     currency = "btc" # str | The cryptocurrency (e.g., btc)
     entity = 67065 # int | The entity ID
     direction = "out" # str | Incoming or outgoing neighbors
-    key = "category" # str | Match neighbors against one and only one of these properties: - the category the entity belongs to - addresses the entity contains - total_received: amount the entity received in total - balance: amount the entity holds finally
+    key = "category" # str | Match neighbors against one and only one of these properties: - the category the entity belongs to - addresses the entity contains - entity ids - total_received: amount the entity received in total - balance: amount the entity holds finally
     value = [
         "Miner",
     ] # [str] | If key is - category: comma separated list of category names - addresses: comma separated list of address IDs - entities: comma separated list of entity IDs - total_received/balance: comma separated tuple of (currency, min, max)
@@ -847,7 +847,7 @@ Name | Type | Description  | Notes
  **currency** | **str**| The cryptocurrency (e.g., btc) |
  **entity** | **int**| The entity ID |
  **direction** | **str**| Incoming or outgoing neighbors |
- **key** | **str**| Match neighbors against one and only one of these properties: - the category the entity belongs to - addresses the entity contains - total_received: amount the entity received in total - balance: amount the entity holds finally |
+ **key** | **str**| Match neighbors against one and only one of these properties: - the category the entity belongs to - addresses the entity contains - entity ids - total_received: amount the entity received in total - balance: amount the entity holds finally |
  **value** | **[str]**| If key is - category: comma separated list of category names - addresses: comma separated list of address IDs - entities: comma separated list of entity IDs - total_received/balance: comma separated tuple of (currency, min, max) |
  **depth** | **int**| How many hops should the transaction graph be searched |
  **breadth** | **int**| How many siblings of each neighbor should be tried | [optional] if omitted the server will use the default value of 16

@@ -120,7 +120,7 @@ with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = txs_api.TxsApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
-    page = "0400030bff00f07fffff9b00" # str | Resumption token for retrieving the next page (optional)
+    page = "page_example" # str | Resumption token for retrieving the next page (optional)
 
     # example passing only required values which don't have defaults set
     try:
