@@ -46,6 +46,10 @@ from graphsense.model.search_result_level3 import SearchResultLevel3
 from graphsense.model.search_result_level3_all_of import SearchResultLevel3AllOf
 from graphsense.model.search_result_level4 import SearchResultLevel4
 from graphsense.model.search_result_level4_all_of import SearchResultLevel4AllOf
+from graphsense.model.search_result_level5 import SearchResultLevel5
+from graphsense.model.search_result_level5_all_of import SearchResultLevel5AllOf
+from graphsense.model.search_result_level6 import SearchResultLevel6
+from graphsense.model.search_result_level6_all_of import SearchResultLevel6AllOf
 from graphsense.model.stats import Stats
 from graphsense.model.stats_ledger import StatsLedger
 from graphsense.model.stats_ledger_version import StatsLedgerVersion
