@@ -16,10 +16,10 @@ Returns exchange rate for a given height
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
 import time
 import graphsense
-from graphsense.rest import ApiException
+from graphsense.api import rates_api
+from graphsense.model.rates import Rates
 from pprint import pprint
 # Defining the host is optional and defaults to http://openapi_server:9000
 # See configuration.py for a list of all supported configuration parameters.
@@ -33,36 +33,34 @@ configuration = graphsense.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: api_key
-configuration = graphsense.Configuration(
-    host = "http://openapi_server:9000",
-    api_key = {
-        'api_key': 'YOUR_API_KEY'
-    }
-)
+configuration.api_key['api_key'] = 'YOUR_API_KEY'
+
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = graphsense.RatesApi(api_client)
-    currency = 'btc' # str | The cryptocurrency (e.g., btc)
-height = 1 # int | The block height
+    api_instance = rates_api.RatesApi(api_client)
+    currency = "btc" # str | The cryptocurrency (e.g., btc)
+    height = 1 # int | The block height
 
+    # example passing only required values which don't have defaults set
     try:
         # Returns exchange rate for a given height
         api_response = api_instance.get_exchange_rates(currency, height)
         pprint(api_response)
-    except ApiException as e:
+    except graphsense.ApiException as e:
         print("Exception when calling RatesApi->get_exchange_rates: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **str**| The cryptocurrency (e.g., btc) | 
- **height** | **int**| The block height | 
+ **currency** | **str**| The cryptocurrency (e.g., btc) |
+ **height** | **int**| The block height |
 
 ### Return type
 
@@ -76,6 +74,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

@@ -1,13 +1,17 @@
 # Link
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**height** | **int** | Height | 
-**input_value** | [**Values**](Values.md) |  | 
-**output_value** | [**Values**](Values.md) |  | 
-**timestamp** | **int** | Timestamp | 
-**tx_hash** | **str** | Transaction hash | 
+**currency_type** | **str** |  | defaults to "account"
+**height** | [**Height**](Height.md) |  | [optional] 
+**input_value** | [**Values**](Values.md) |  | [optional] 
+**output_value** | [**Values**](Values.md) |  | [optional] 
+**timestamp** | **int** | Timestamp | [optional] 
+**tx_hash** | **str** | Transaction hash | [optional] 
+**values** | [**Values**](Values.md) |  | [optional] 
+**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

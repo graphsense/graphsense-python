@@ -1,5 +1,6 @@
 # Address
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -13,6 +14,7 @@ Name | Type | Description | Notes
 **out_degree** | **int** |  | 
 **total_received** | [**Values**](Values.md) |  | 
 **total_spent** | [**Values**](Values.md) |  | 
+**tags** | [**[AddressTag]**](AddressTag.md) | Tags | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

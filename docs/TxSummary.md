@@ -1,9 +1,10 @@
 # TxSummary
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**height** | **int** | Height | 
+**height** | [**Height**](Height.md) |  | 
 **timestamp** | **int** | Timestamp | 
 **tx_hash** | **str** | Transaction hash | 
 

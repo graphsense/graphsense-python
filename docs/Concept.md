@@ -1,5 +1,6 @@
 # Concept
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

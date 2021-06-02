@@ -46,6 +46,7 @@ coverage.xml
 .hypothesis/
 venv/
 .venv/
+venv-gpython/
 .python-version
 .pytest_cache
 
@@ -67,3 +68,6 @@ target/
 
 #ctags
 tags
+
+#openapi
+.openapi-generator

@@ -1,5 +1,6 @@
 # Taxonomy
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

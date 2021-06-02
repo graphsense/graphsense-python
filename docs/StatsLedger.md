@@ -1,5 +1,6 @@
 # StatsLedger
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
