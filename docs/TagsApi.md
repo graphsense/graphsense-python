@@ -1,6 +1,6 @@
 # graphsense.TagsApi
 
-All URIs are relative to *http://openapi_server:9000*
+All URIs are relative to *https://api.graphsense.info*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -23,10 +23,10 @@ import graphsense
 from graphsense.api import tags_api
 from graphsense.model.concept import Concept
 from pprint import pprint
-# Defining the host is optional and defaults to http://openapi_server:9000
+# Defining the host is optional and defaults to https://api.graphsense.info
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://openapi_server:9000"
+    host = "https://api.graphsense.info"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -97,10 +97,10 @@ import graphsense
 from graphsense.api import tags_api
 from graphsense.model.tags import Tags
 from pprint import pprint
-# Defining the host is optional and defaults to http://openapi_server:9000
+# Defining the host is optional and defaults to https://api.graphsense.info
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://openapi_server:9000"
+    host = "https://api.graphsense.info"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -182,10 +182,10 @@ import graphsense
 from graphsense.api import tags_api
 from graphsense.model.taxonomy import Taxonomy
 from pprint import pprint
-# Defining the host is optional and defaults to http://openapi_server:9000
+# Defining the host is optional and defaults to https://api.graphsense.info
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://openapi_server:9000"
+    host = "https://api.graphsense.info"
 )
 
 # The client must configure the authentication and authorization parameters

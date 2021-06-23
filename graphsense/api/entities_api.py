@@ -920,6 +920,7 @@ class EntitiesApi(object):
                 direction (str): Incoming or outgoing neighbors
 
             Keyword Args:
+                include_labels (bool): Whether labels of tags should be included. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -988,6 +989,7 @@ class EntitiesApi(object):
                     'currency',
                     'entity',
                     'direction',
+                    'include_labels',
                 ],
                 'required': [
                     'currency',
@@ -1019,16 +1021,20 @@ class EntitiesApi(object):
                         (int,),
                     'direction':
                         (str,),
+                    'include_labels':
+                        (bool,),
                 },
                 'attribute_map': {
                     'currency': 'currency',
                     'entity': 'entity',
                     'direction': 'direction',
+                    'include_labels': 'include_labels',
                 },
                 'location_map': {
                     'currency': 'path',
                     'entity': 'path',
                     'direction': 'query',
+                    'include_labels': 'query',
                 },
                 'collection_format_map': {
                 }

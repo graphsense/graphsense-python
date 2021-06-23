@@ -1,6 +1,6 @@
 # graphsense.AddressesApi
 
-All URIs are relative to *http://openapi_server:9000*
+All URIs are relative to *https://api.graphsense.info*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -32,10 +32,10 @@ import graphsense
 from graphsense.api import addresses_api
 from graphsense.model.address import Address
 from pprint import pprint
-# Defining the host is optional and defaults to http://openapi_server:9000
+# Defining the host is optional and defaults to https://api.graphsense.info
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://openapi_server:9000"
+    host = "https://api.graphsense.info"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -119,10 +119,10 @@ import graphsense
 from graphsense.api import addresses_api
 from graphsense.model.entity import Entity
 from pprint import pprint
-# Defining the host is optional and defaults to http://openapi_server:9000
+# Defining the host is optional and defaults to https://api.graphsense.info
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://openapi_server:9000"
+    host = "https://api.graphsense.info"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -208,10 +208,10 @@ import graphsense
 from graphsense.api import addresses_api
 from graphsense.model.link import Link
 from pprint import pprint
-# Defining the host is optional and defaults to http://openapi_server:9000
+# Defining the host is optional and defaults to https://api.graphsense.info
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://openapi_server:9000"
+    host = "https://api.graphsense.info"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -285,10 +285,10 @@ import time
 import graphsense
 from graphsense.api import addresses_api
 from pprint import pprint
-# Defining the host is optional and defaults to http://openapi_server:9000
+# Defining the host is optional and defaults to https://api.graphsense.info
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://openapi_server:9000"
+    host = "https://api.graphsense.info"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -363,10 +363,10 @@ import graphsense
 from graphsense.api import addresses_api
 from graphsense.model.neighbors import Neighbors
 from pprint import pprint
-# Defining the host is optional and defaults to http://openapi_server:9000
+# Defining the host is optional and defaults to https://api.graphsense.info
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://openapi_server:9000"
+    host = "https://api.graphsense.info"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -455,10 +455,10 @@ import time
 import graphsense
 from graphsense.api import addresses_api
 from pprint import pprint
-# Defining the host is optional and defaults to http://openapi_server:9000
+# Defining the host is optional and defaults to https://api.graphsense.info
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://openapi_server:9000"
+    host = "https://api.graphsense.info"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -479,11 +479,21 @@ with graphsense.ApiClient(configuration) as api_client:
     currency = "btc" # str | The cryptocurrency (e.g., btc)
     address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
     direction = "out" # str | Incoming or outgoing neighbors
+    include_labels = False # bool | Whether labels of tags should be included (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
     try:
         # Get an addresses' neighbors in the address graph as CSV
         api_response = api_instance.list_address_neighbors_csv(currency, address, direction)
+        pprint(api_response)
+    except graphsense.ApiException as e:
+        print("Exception when calling AddressesApi->list_address_neighbors_csv: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Get an addresses' neighbors in the address graph as CSV
+        api_response = api_instance.list_address_neighbors_csv(currency, address, direction, include_labels=include_labels)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling AddressesApi->list_address_neighbors_csv: %s\n" % e)
@@ -497,6 +507,7 @@ Name | Type | Description  | Notes
  **currency** | **str**| The cryptocurrency (e.g., btc) |
  **address** | **str**| The cryptocurrency address |
  **direction** | **str**| Incoming or outgoing neighbors |
+ **include_labels** | **bool**| Whether labels of tags should be included | [optional] if omitted the server will use the default value of False
 
 ### Return type
 
@@ -533,10 +544,10 @@ import graphsense
 from graphsense.api import addresses_api
 from graphsense.model.address_txs import AddressTxs
 from pprint import pprint
-# Defining the host is optional and defaults to http://openapi_server:9000
+# Defining the host is optional and defaults to https://api.graphsense.info
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://openapi_server:9000"
+    host = "https://api.graphsense.info"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -621,10 +632,10 @@ import time
 import graphsense
 from graphsense.api import addresses_api
 from pprint import pprint
-# Defining the host is optional and defaults to http://openapi_server:9000
+# Defining the host is optional and defaults to https://api.graphsense.info
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://openapi_server:9000"
+    host = "https://api.graphsense.info"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -697,10 +708,10 @@ import graphsense
 from graphsense.api import addresses_api
 from graphsense.model.addresses import Addresses
 from pprint import pprint
-# Defining the host is optional and defaults to http://openapi_server:9000
+# Defining the host is optional and defaults to https://api.graphsense.info
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://openapi_server:9000"
+    host = "https://api.graphsense.info"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -787,10 +798,10 @@ import time
 import graphsense
 from graphsense.api import addresses_api
 from pprint import pprint
-# Defining the host is optional and defaults to http://openapi_server:9000
+# Defining the host is optional and defaults to https://api.graphsense.info
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://openapi_server:9000"
+    host = "https://api.graphsense.info"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -865,10 +876,10 @@ import graphsense
 from graphsense.api import addresses_api
 from graphsense.model.address_tag import AddressTag
 from pprint import pprint
-# Defining the host is optional and defaults to http://openapi_server:9000
+# Defining the host is optional and defaults to https://api.graphsense.info
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://openapi_server:9000"
+    host = "https://api.graphsense.info"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -940,10 +951,10 @@ import time
 import graphsense
 from graphsense.api import addresses_api
 from pprint import pprint
-# Defining the host is optional and defaults to http://openapi_server:9000
+# Defining the host is optional and defaults to https://api.graphsense.info
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://openapi_server:9000"
+    host = "https://api.graphsense.info"
 )
 
 # The client must configure the authentication and authorization parameters

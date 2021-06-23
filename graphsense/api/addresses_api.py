@@ -780,6 +780,7 @@ class AddressesApi(object):
                 direction (str): Incoming or outgoing neighbors
 
             Keyword Args:
+                include_labels (bool): Whether labels of tags should be included. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -848,6 +849,7 @@ class AddressesApi(object):
                     'currency',
                     'address',
                     'direction',
+                    'include_labels',
                 ],
                 'required': [
                     'currency',
@@ -879,16 +881,20 @@ class AddressesApi(object):
                         (str,),
                     'direction':
                         (str,),
+                    'include_labels':
+                        (bool,),
                 },
                 'attribute_map': {
                     'currency': 'currency',
                     'address': 'address',
                     'direction': 'direction',
+                    'include_labels': 'include_labels',
                 },
                 'location_map': {
                     'currency': 'path',
                     'address': 'path',
                     'direction': 'query',
+                    'include_labels': 'query',
                 },
                 'collection_format_map': {
                 }
