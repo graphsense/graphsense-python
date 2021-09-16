@@ -1,6 +1,6 @@
 # graphsense.AddressesApi
 
-All URIs are relative to *https://api.graphsense.info*
+All URIs are relative to *http://graphsense-rest:9000*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -25,36 +25,25 @@ Get an address, optionally with tags
 
 ### Example
 
-* Api Key Authentication (api_key):
 ```python
 import time
 import graphsense
 from graphsense.api import addresses_api
 from graphsense.model.address import Address
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: api_key
-configuration.api_key['api_key'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with graphsense.ApiClient(configuration) as api_client:
+with graphsense.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
-    address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
+    address = "addressA" # str | The cryptocurrency address
     include_tags = False # bool | Whether tags should be included (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
@@ -90,7 +79,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+No authorization required
 
 ### HTTP request headers
 
@@ -112,36 +101,25 @@ Get the entity of an address
 
 ### Example
 
-* Api Key Authentication (api_key):
 ```python
 import time
 import graphsense
 from graphsense.api import addresses_api
 from graphsense.model.entity import Entity
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: api_key
-configuration.api_key['api_key'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with graphsense.ApiClient(configuration) as api_client:
+with graphsense.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
-    address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
+    address = "addressA" # str | The cryptocurrency address
     include_tags = False # bool | Whether tags should be included (optional) if omitted the server will use the default value of False
     tag_coherence = False # bool | Whether to calculate coherence of address tags (optional) if omitted the server will use the default value of False
 
@@ -179,7 +157,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+No authorization required
 
 ### HTTP request headers
 
@@ -201,37 +179,26 @@ Get transactions between two addresses
 
 ### Example
 
-* Api Key Authentication (api_key):
 ```python
 import time
 import graphsense
 from graphsense.api import addresses_api
 from graphsense.model.link import Link
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: api_key
-configuration.api_key['api_key'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with graphsense.ApiClient(configuration) as api_client:
+with graphsense.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
-    address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
-    neighbor = "17DfZja1713S3JRWA9jaebCKFM5anUh7GG" # str | Neighbor address
+    address = "addressA" # str | The cryptocurrency address
+    neighbor = "addressE" # str | Neighbor address
 
     # example passing only required values which don't have defaults set
     try:
@@ -257,7 +224,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+No authorization required
 
 ### HTTP request headers
 
@@ -279,36 +246,25 @@ Get transactions between two addresses as CSV
 
 ### Example
 
-* Api Key Authentication (api_key):
 ```python
 import time
 import graphsense
 from graphsense.api import addresses_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: api_key
-configuration.api_key['api_key'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with graphsense.ApiClient(configuration) as api_client:
+with graphsense.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
-    address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
-    neighbor = "17DfZja1713S3JRWA9jaebCKFM5anUh7GG" # str | Neighbor address
+    address = "addressA" # str | The cryptocurrency address
+    neighbor = "addressE" # str | Neighbor address
 
     # example passing only required values which don't have defaults set
     try:
@@ -334,7 +290,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+No authorization required
 
 ### HTTP request headers
 
@@ -356,36 +312,25 @@ Get an addresses' neighbors in the address graph
 
 ### Example
 
-* Api Key Authentication (api_key):
 ```python
 import time
 import graphsense
 from graphsense.api import addresses_api
 from graphsense.model.neighbors import Neighbors
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: api_key
-configuration.api_key['api_key'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with graphsense.ApiClient(configuration) as api_client:
+with graphsense.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
-    address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
+    address = "addressA" # str | The cryptocurrency address
     direction = "out" # str | Incoming or outgoing neighbors
     include_labels = False # bool | Whether labels of tags should be included (optional) if omitted the server will use the default value of False
     page = "page_example" # str | Resumption token for retrieving the next page (optional)
@@ -427,7 +372,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+No authorization required
 
 ### HTTP request headers
 
@@ -449,35 +394,24 @@ Get an addresses' neighbors in the address graph as CSV
 
 ### Example
 
-* Api Key Authentication (api_key):
 ```python
 import time
 import graphsense
 from graphsense.api import addresses_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: api_key
-configuration.api_key['api_key'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with graphsense.ApiClient(configuration) as api_client:
+with graphsense.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
-    address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
+    address = "addressA" # str | The cryptocurrency address
     direction = "out" # str | Incoming or outgoing neighbors
     include_labels = False # bool | Whether labels of tags should be included (optional) if omitted the server will use the default value of False
 
@@ -515,7 +449,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+No authorization required
 
 ### HTTP request headers
 
@@ -531,42 +465,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_address_txs**
-> AddressTxs list_address_txs(currency, address)
+> TxsAccount list_address_txs(currency, address)
 
 Get all transactions an address has been involved in
 
 ### Example
 
-* Api Key Authentication (api_key):
 ```python
 import time
 import graphsense
 from graphsense.api import addresses_api
-from graphsense.model.address_txs import AddressTxs
+from graphsense.model.txs_account import TxsAccount
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: api_key
-configuration.api_key['api_key'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with graphsense.ApiClient(configuration) as api_client:
+with graphsense.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
-    address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
+    address = "addressA" # str | The cryptocurrency address
     page = "page_example" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
@@ -600,11 +523,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AddressTxs**](AddressTxs.md)
+[**TxsAccount**](TxsAccount.md)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+No authorization required
 
 ### HTTP request headers
 
@@ -626,35 +549,24 @@ Get all transactions an address has been involved in as CSV
 
 ### Example
 
-* Api Key Authentication (api_key):
 ```python
 import time
 import graphsense
 from graphsense.api import addresses_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: api_key
-configuration.api_key['api_key'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with graphsense.ApiClient(configuration) as api_client:
+with graphsense.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
-    address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
+    address = "addressA" # str | The cryptocurrency address
 
     # example passing only required values which don't have defaults set
     try:
@@ -679,7 +591,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+No authorization required
 
 ### HTTP request headers
 
@@ -701,38 +613,27 @@ Get addresses
 
 ### Example
 
-* Api Key Authentication (api_key):
 ```python
 import time
 import graphsense
 from graphsense.api import addresses_api
 from graphsense.model.addresses import Addresses
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: api_key
-configuration.api_key['api_key'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with graphsense.ApiClient(configuration) as api_client:
+with graphsense.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
     ids = [
-        "ids_example",
-    ] # [str] | Restrict result to given set of comma separated IDs (optional)
+        1,
+    ] # [int] | Restrict result to given set of comma separated IDs (optional)
     page = "page_example" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
@@ -760,7 +661,7 @@ with graphsense.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **str**| The cryptocurrency (e.g., btc) |
- **ids** | **[str]**| Restrict result to given set of comma separated IDs | [optional]
+ **ids** | **[int]**| Restrict result to given set of comma separated IDs | [optional]
  **page** | **str**| Resumption token for retrieving the next page | [optional]
  **pagesize** | **int**| Number of items returned in a single page | [optional]
 
@@ -770,7 +671,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+No authorization required
 
 ### HTTP request headers
 
@@ -792,31 +693,20 @@ Get addresses as CSV
 
 ### Example
 
-* Api Key Authentication (api_key):
 ```python
 import time
 import graphsense
 from graphsense.api import addresses_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: api_key
-configuration.api_key['api_key'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with graphsense.ApiClient(configuration) as api_client:
+with graphsense.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
@@ -847,7 +737,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+No authorization required
 
 ### HTTP request headers
 
@@ -869,36 +759,25 @@ Get attribution tags for a given address
 
 ### Example
 
-* Api Key Authentication (api_key):
 ```python
 import time
 import graphsense
 from graphsense.api import addresses_api
 from graphsense.model.address_tag import AddressTag
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: api_key
-configuration.api_key['api_key'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with graphsense.ApiClient(configuration) as api_client:
+with graphsense.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
-    address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
+    address = "addressA" # str | The cryptocurrency address
 
     # example passing only required values which don't have defaults set
     try:
@@ -923,7 +802,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+No authorization required
 
 ### HTTP request headers
 
@@ -945,35 +824,24 @@ Get attribution tags for a given address
 
 ### Example
 
-* Api Key Authentication (api_key):
 ```python
 import time
 import graphsense
 from graphsense.api import addresses_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: api_key
-configuration.api_key['api_key'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with graphsense.ApiClient(configuration) as api_client:
+with graphsense.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
-    address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
+    address = "addressA" # str | The cryptocurrency address
 
     # example passing only required values which don't have defaults set
     try:
@@ -998,7 +866,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+No authorization required
 
 ### HTTP request headers
 

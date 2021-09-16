@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **total_input** | [**Values**](Values.md) |  | 
 **total_output** | [**Values**](Values.md) |  | 
 **tx_hash** | **str** | Transaction hash | 
-**currency_type** | **str** |  | defaults to "utxo"
+**tx_type** | **str** |  | defaults to "utxo"
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

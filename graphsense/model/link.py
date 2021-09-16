@@ -90,13 +90,13 @@ class Link(ModelComposed):
         """
         lazy_import()
         return {
-            'currency_type': (str,),  # noqa: E501
+            'tx_type': (str,),  # noqa: E501
             'height': (Height,),  # noqa: E501
             'input_value': (Values,),  # noqa: E501
             'output_value': (Values,),  # noqa: E501
             'timestamp': (int,),  # noqa: E501
             'tx_hash': (str,),  # noqa: E501
-            'values': (Values,),  # noqa: E501
+            'value': (Values,),  # noqa: E501
         }
 
     @cached_property
@@ -110,16 +110,16 @@ class Link(ModelComposed):
         }
         if not val:
             return None
-        return {'currency_type': val}
+        return {'tx_type': val}
 
     attribute_map = {
-        'currency_type': 'currency_type',  # noqa: E501
+        'tx_type': 'tx_type',  # noqa: E501
         'height': 'height',  # noqa: E501
         'input_value': 'input_value',  # noqa: E501
         'output_value': 'output_value',  # noqa: E501
         'timestamp': 'timestamp',  # noqa: E501
         'tx_hash': 'tx_hash',  # noqa: E501
-        'values': 'values',  # noqa: E501
+        'value': 'value',  # noqa: E501
     }
 
     required_properties = set([
@@ -141,7 +141,7 @@ class Link(ModelComposed):
         Args:
 
         Keyword Args:
-            currency_type (str): defaults to "account"  # noqa: E501
+            tx_type (str): defaults to "account"  # noqa: E501
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -177,10 +177,10 @@ class Link(ModelComposed):
             output_value (Values): [optional]  # noqa: E501
             timestamp (int): Timestamp. [optional]  # noqa: E501
             tx_hash (str): Transaction hash. [optional]  # noqa: E501
-            values (Values): [optional]  # noqa: E501
+            value (Values): [optional]  # noqa: E501
         """
 
-        currency_type = kwargs.get('currency_type', "account")
+        tx_type = kwargs.get('tx_type', "account")
         _check_type = kwargs.pop('_check_type', True)
         _spec_property_naming = kwargs.pop('_spec_property_naming', False)
         _path_to_item = kwargs.pop('_path_to_item', ())
@@ -212,7 +212,7 @@ class Link(ModelComposed):
             '_visited_composed_classes': self._visited_composed_classes,
         }
         required_args = {
-            'currency_type': currency_type,
+            'tx_type': tx_type,
         }
         model_args = {}
         model_args.update(required_args)

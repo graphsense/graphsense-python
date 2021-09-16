@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **address** | **str** | Address | 
 **balance** | [**Values**](Values.md) |  | 
+**entity** | **int** | Entity id | 
 **first_tx** | [**TxSummary**](TxSummary.md) |  | 
 **in_degree** | **int** |  | 
 **last_tx** | [**TxSummary**](TxSummary.md) |  | 

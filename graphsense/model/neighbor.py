@@ -81,12 +81,10 @@ class Neighbor(ModelNormal):
         """
         lazy_import()
         return {
-            'balance': (Values,),  # noqa: E501
-            'estimated_value': (Values,),  # noqa: E501
             'id': (str,),  # noqa: E501
             'no_txs': (int,),  # noqa: E501
             'node_type': (str,),  # noqa: E501
-            'received': (Values,),  # noqa: E501
+            'value': (Values,),  # noqa: E501
             'labels': ([str],),  # noqa: E501
         }
 
@@ -96,12 +94,10 @@ class Neighbor(ModelNormal):
 
 
     attribute_map = {
-        'balance': 'balance',  # noqa: E501
-        'estimated_value': 'estimated_value',  # noqa: E501
         'id': 'id',  # noqa: E501
         'no_txs': 'no_txs',  # noqa: E501
         'node_type': 'node_type',  # noqa: E501
-        'received': 'received',  # noqa: E501
+        'value': 'value',  # noqa: E501
         'labels': 'labels',  # noqa: E501
     }
 
@@ -117,16 +113,14 @@ class Neighbor(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, balance, estimated_value, id, no_txs, node_type, received, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, no_txs, node_type, value, *args, **kwargs):  # noqa: E501
         """Neighbor - a model defined in OpenAPI
 
         Args:
-            balance (Values):
-            estimated_value (Values):
             id (str): address or entity id
             no_txs (int): number of transactions
             node_type (str): address or entity
-            received (Values):
+            value (Values):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -185,12 +179,10 @@ class Neighbor(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.balance = balance
-        self.estimated_value = estimated_value
         self.id = id
         self.no_txs = no_txs
         self.node_type = node_type
-        self.received = received
+        self.value = value
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

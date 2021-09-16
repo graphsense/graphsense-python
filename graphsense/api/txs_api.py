@@ -109,9 +109,7 @@ class TxsApi(object):
         self.get_tx = _Endpoint(
             settings={
                 'response_type': (Tx,),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/{currency}/txs/{tx_hash}',
                 'operation_id': 'get_tx',
                 'http_method': 'GET',
@@ -234,9 +232,7 @@ class TxsApi(object):
         self.list_txs = _Endpoint(
             settings={
                 'response_type': (Txs,),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/{currency}/txs',
                 'operation_id': 'list_txs',
                 'http_method': 'GET',

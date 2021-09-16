@@ -28,9 +28,9 @@ from graphsense.model_utils import (  # noqa: F401
 
 def lazy_import():
     from graphsense.model.height import Height
-    from graphsense.model.rates_rates import RatesRates
+    from graphsense.model.rate import Rate
     globals()['Height'] = Height
-    globals()['RatesRates'] = RatesRates
+    globals()['Rate'] = Rate
 
 
 class Rates(ModelNormal):
@@ -80,7 +80,7 @@ class Rates(ModelNormal):
         lazy_import()
         return {
             'height': (Height,),  # noqa: E501
-            'rates': (RatesRates,),  # noqa: E501
+            'rates': ([Rate],),  # noqa: E501
         }
 
     @cached_property
@@ -140,7 +140,7 @@ class Rates(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             height (Height): [optional]  # noqa: E501
-            rates (RatesRates): [optional]  # noqa: E501
+            rates ([Rate]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

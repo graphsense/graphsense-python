@@ -23,11 +23,11 @@ from graphsense.model_utils import (  # noqa: F401
 )
 from graphsense.model.address import Address
 from graphsense.model.address_tag import AddressTag
-from graphsense.model.address_txs import AddressTxs
 from graphsense.model.addresses import Addresses
 from graphsense.model.entity import Entity
 from graphsense.model.link import Link
 from graphsense.model.neighbors import Neighbors
+from graphsense.model.txs_account import TxsAccount
 
 
 class AddressesApi(object):
@@ -115,9 +115,7 @@ class AddressesApi(object):
         self.get_address = _Endpoint(
             settings={
                 'response_type': (Address,),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/{currency}/addresses/{address}',
                 'operation_id': 'get_address',
                 'http_method': 'GET',
@@ -250,9 +248,7 @@ class AddressesApi(object):
         self.get_address_entity = _Endpoint(
             settings={
                 'response_type': (Entity,),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/{currency}/addresses/{address}/entity',
                 'operation_id': 'get_address_entity',
                 'http_method': 'GET',
@@ -392,9 +388,7 @@ class AddressesApi(object):
         self.list_address_links = _Endpoint(
             settings={
                 'response_type': ([Link],),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/{currency}/addresses/{address}/links',
                 'operation_id': 'list_address_links',
                 'http_method': 'GET',
@@ -530,9 +524,7 @@ class AddressesApi(object):
         self.list_address_links_csv = _Endpoint(
             settings={
                 'response_type': (str,),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/{currency}/addresses/{address}/links.csv',
                 'operation_id': 'list_address_links_csv',
                 'http_method': 'GET',
@@ -671,9 +663,7 @@ class AddressesApi(object):
         self.list_address_neighbors = _Endpoint(
             settings={
                 'response_type': (Neighbors,),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/{currency}/addresses/{address}/neighbors',
                 'operation_id': 'list_address_neighbors',
                 'http_method': 'GET',
@@ -836,9 +826,7 @@ class AddressesApi(object):
         self.list_address_neighbors_csv = _Endpoint(
             settings={
                 'response_type': (str,),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/{currency}/addresses/{address}/neighbors.csv',
                 'operation_id': 'list_address_neighbors_csv',
                 'http_method': 'GET',
@@ -951,7 +939,7 @@ class AddressesApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                AddressTxs
+                TxsAccount
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -982,10 +970,8 @@ class AddressesApi(object):
 
         self.list_address_txs = _Endpoint(
             settings={
-                'response_type': (AddressTxs,),
-                'auth': [
-                    'api_key'
-                ],
+                'response_type': (TxsAccount,),
+                'auth': [],
                 'endpoint_path': '/{currency}/addresses/{address}/txs',
                 'operation_id': 'list_address_txs',
                 'http_method': 'GET',
@@ -1126,9 +1112,7 @@ class AddressesApi(object):
         self.list_address_txs_csv = _Endpoint(
             settings={
                 'response_type': (str,),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/{currency}/addresses/{address}/txs.csv',
                 'operation_id': 'list_address_txs_csv',
                 'http_method': 'GET',
@@ -1199,7 +1183,7 @@ class AddressesApi(object):
                 currency (str): The cryptocurrency (e.g., btc)
 
             Keyword Args:
-                ids ([str]): Restrict result to given set of comma separated IDs. [optional]
+                ids ([int]): Restrict result to given set of comma separated IDs. [optional]
                 page (str): Resumption token for retrieving the next page. [optional]
                 pagesize (int): Number of items returned in a single page. [optional]
                 _return_http_data_only (bool): response data without head status
@@ -1253,9 +1237,7 @@ class AddressesApi(object):
         self.list_addresses = _Endpoint(
             settings={
                 'response_type': (Addresses,),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/{currency}/addresses',
                 'operation_id': 'list_addresses',
                 'http_method': 'GET',
@@ -1292,7 +1274,7 @@ class AddressesApi(object):
                     'currency':
                         (str,),
                     'ids':
-                        ([str],),
+                        ([int],),
                     'page':
                         (str,),
                     'pagesize':
@@ -1396,9 +1378,7 @@ class AddressesApi(object):
         self.list_addresses_csv = _Endpoint(
             settings={
                 'response_type': (str,),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/{currency}/addresses.csv',
                 'operation_id': 'list_addresses_csv',
                 'http_method': 'GET',
@@ -1525,9 +1505,7 @@ class AddressesApi(object):
         self.list_tags_by_address = _Endpoint(
             settings={
                 'response_type': ([AddressTag],),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/{currency}/addresses/{address}/tags',
                 'operation_id': 'list_tags_by_address',
                 'http_method': 'GET',
@@ -1653,9 +1631,7 @@ class AddressesApi(object):
         self.list_tags_by_address_csv = _Endpoint(
             settings={
                 'response_type': (str,),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/{currency}/addresses/{address}/tags.csv',
                 'operation_id': 'list_tags_by_address_csv',
                 'http_method': 'GET',

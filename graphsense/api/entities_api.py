@@ -115,9 +115,7 @@ class EntitiesApi(object):
         self.get_entity = _Endpoint(
             settings={
                 'response_type': (Entity,),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/{currency}/entities/{entity}',
                 'operation_id': 'get_entity',
                 'http_method': 'GET',
@@ -198,7 +196,7 @@ class EntitiesApi(object):
                 currency (str): The cryptocurrency (e.g., btc)
 
             Keyword Args:
-                ids ([str]): Restrict result to given set of comma separated IDs. [optional]
+                ids ([int]): Restrict result to given set of comma separated IDs. [optional]
                 page (str): Resumption token for retrieving the next page. [optional]
                 pagesize (int): Number of items returned in a single page. [optional]
                 _return_http_data_only (bool): response data without head status
@@ -252,9 +250,7 @@ class EntitiesApi(object):
         self.list_entities = _Endpoint(
             settings={
                 'response_type': (Entities,),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/{currency}/entities',
                 'operation_id': 'list_entities',
                 'http_method': 'GET',
@@ -291,7 +287,7 @@ class EntitiesApi(object):
                     'currency':
                         (str,),
                     'ids':
-                        ([str],),
+                        ([int],),
                     'page':
                         (str,),
                     'pagesize':
@@ -395,9 +391,7 @@ class EntitiesApi(object):
         self.list_entities_csv = _Endpoint(
             settings={
                 'response_type': (str,),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/{currency}/entities.csv',
                 'operation_id': 'list_entities_csv',
                 'http_method': 'GET',
@@ -526,9 +520,7 @@ class EntitiesApi(object):
         self.list_entity_addresses = _Endpoint(
             settings={
                 'response_type': (EntityAddresses,),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/{currency}/entities/{entity}/addresses',
                 'operation_id': 'list_entity_addresses',
                 'http_method': 'GET',
@@ -669,9 +661,7 @@ class EntitiesApi(object):
         self.list_entity_addresses_csv = _Endpoint(
             settings={
                 'response_type': (str,),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/{currency}/entities/{entity}/addresses.csv',
                 'operation_id': 'list_entity_addresses_csv',
                 'http_method': 'GET',
@@ -746,7 +736,7 @@ class EntitiesApi(object):
                 direction (str): Incoming or outgoing neighbors
 
             Keyword Args:
-                ids ([str]): Restrict result to given set of comma separated IDs. [optional]
+                ids ([int]): Restrict result to given set of comma separated IDs. [optional]
                 include_labels (bool): Whether labels of tags should be included. [optional] if omitted the server will use the default value of False
                 page (str): Resumption token for retrieving the next page. [optional]
                 pagesize (int): Number of items returned in a single page. [optional]
@@ -805,9 +795,7 @@ class EntitiesApi(object):
         self.list_entity_neighbors = _Endpoint(
             settings={
                 'response_type': (Neighbors,),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/{currency}/entities/{entity}/neighbors',
                 'operation_id': 'list_entity_neighbors',
                 'http_method': 'GET',
@@ -859,7 +847,7 @@ class EntitiesApi(object):
                     'direction':
                         (str,),
                     'ids':
-                        ([str],),
+                        ([int],),
                     'include_labels':
                         (bool,),
                     'page':
@@ -976,9 +964,7 @@ class EntitiesApi(object):
         self.list_entity_neighbors_csv = _Endpoint(
             settings={
                 'response_type': (str,),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/{currency}/entities/{entity}/neighbors.csv',
                 'operation_id': 'list_entity_neighbors_csv',
                 'http_method': 'GET',
@@ -1122,9 +1108,7 @@ class EntitiesApi(object):
         self.list_tags_by_entity = _Endpoint(
             settings={
                 'response_type': (Tags,),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/{currency}/entities/{entity}/tags',
                 'operation_id': 'list_tags_by_entity',
                 'http_method': 'GET',
@@ -1259,9 +1243,7 @@ class EntitiesApi(object):
         self.list_tags_by_entity_by_level_csv = _Endpoint(
             settings={
                 'response_type': (str,),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/{currency}/entities/{entity}/tags.csv',
                 'operation_id': 'list_tags_by_entity_by_level_csv',
                 'http_method': 'GET',
@@ -1350,7 +1332,7 @@ class EntitiesApi(object):
                 entity (int): The entity ID
                 direction (str): Incoming or outgoing neighbors
                 key (str): Match neighbors against one and only one of these properties: - the category the entity belongs to - addresses the entity contains - entity ids - total_received: amount the entity received in total - balance: amount the entity holds finally
-                value ([str]): If key is - category: comma separated list of category names - addresses: comma separated list of address IDs - entities: comma separated list of entity IDs - total_received/balance: comma separated tuple of (currency, min, max)
+                value ([str]): If key is - category: comma separated list of category names - addresses: comma separated list of address IDs - entities: comma separated list of entity IDs - total_received/balance: comma separated tuple of (currency, min, max) where currency is 'value' for the cryptocurrency value or an ISO currency code
                 depth (int): How many hops should the transaction graph be searched
 
             Keyword Args:
@@ -1417,9 +1399,7 @@ class EntitiesApi(object):
         self.search_entity_neighbors = _Endpoint(
             settings={
                 'response_type': ([SearchResultLevel1],),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/{currency}/entities/{entity}/search',
                 'operation_id': 'search_entity_neighbors',
                 'http_method': 'GET',

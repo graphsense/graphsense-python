@@ -76,26 +76,6 @@ class Configuration(object):
     :param ssl_ca_cert: str - the path to a file of concatenated CA certificates 
       in PEM format
 
-    :Example:
-
-    API Key Authentication Example.
-    Given the following security scheme in the OpenAPI specification:
-      components:
-        securitySchemes:
-          cookieAuth:         # name for the security scheme
-            type: apiKey
-            in: cookie
-            name: JSESSIONID  # cookie name
-
-    You can programmatically set the cookie:
-
-conf = graphsense.Configuration(
-    api_key={'cookieAuth': 'abc123'}
-    api_key_prefix={'cookieAuth': 'JSESSIONID'}
-)
-
-    The following cookie will be added to the HTTP request:
-       Cookie: JSESSIONID abc123
     """
 
     _default = None
@@ -112,7 +92,7 @@ conf = graphsense.Configuration(
                  ):
         """Constructor
         """
-        self._base_path = "https://api.graphsense.info" if host is None else host
+        self._base_path = "http://graphsense-rest:9000" if host is None else host
         """Default Base url
         """
         self.server_index = 0 if server_index is None and host is None else server_index
@@ -386,15 +366,6 @@ conf = graphsense.Configuration(
         :return: The Auth Settings information dict.
         """
         auth = {}
-        if 'api_key' in self.api_key:
-            auth['api_key'] = {
-                'type': 'api_key',
-                'in': 'header',
-                'key': 'Authorization',
-                'value': self.get_api_key_with_prefix(
-                    'api_key',
-                ),
-            }
         return auth
 
     def to_debug_report(self):
@@ -416,7 +387,7 @@ conf = graphsense.Configuration(
         """
         return [
             {
-                'url': "https://api.graphsense.info",
+                'url': "http://graphsense-rest:9000",
                 'description': "No description provided",
             }
         ]

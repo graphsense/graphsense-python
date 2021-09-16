@@ -79,11 +79,11 @@ class TxAccount(ModelNormal):
         """
         lazy_import()
         return {
-            'currency_type': (str,),  # noqa: E501
             'height': (Height,),  # noqa: E501
             'timestamp': (int,),  # noqa: E501
             'tx_hash': (str,),  # noqa: E501
-            'values': (Values,),  # noqa: E501
+            'tx_type': (str,),  # noqa: E501
+            'value': (Values,),  # noqa: E501
         }
 
     @cached_property
@@ -92,11 +92,11 @@ class TxAccount(ModelNormal):
 
 
     attribute_map = {
-        'currency_type': 'currency_type',  # noqa: E501
         'height': 'height',  # noqa: E501
         'timestamp': 'timestamp',  # noqa: E501
         'tx_hash': 'tx_hash',  # noqa: E501
-        'values': 'values',  # noqa: E501
+        'tx_type': 'tx_type',  # noqa: E501
+        'value': 'value',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -111,17 +111,17 @@ class TxAccount(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, height, timestamp, tx_hash, values, *args, **kwargs):  # noqa: E501
+    def __init__(self, height, timestamp, tx_hash, value, *args, **kwargs):  # noqa: E501
         """TxAccount - a model defined in OpenAPI
 
         Args:
             height (Height):
             timestamp (int): Timestamp
             tx_hash (str): Transaction hash
-            values (Values):
+            value (Values):
 
         Keyword Args:
-            currency_type (str): defaults to "account"  # noqa: E501
+            tx_type (str): defaults to "account"  # noqa: E501
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -154,7 +154,7 @@ class TxAccount(ModelNormal):
                                 _visited_composed_classes = (Animal,)
         """
 
-        currency_type = kwargs.get('currency_type', "account")
+        tx_type = kwargs.get('tx_type', "account")
         _check_type = kwargs.pop('_check_type', True)
         _spec_property_naming = kwargs.pop('_spec_property_naming', False)
         _path_to_item = kwargs.pop('_path_to_item', ())
@@ -178,11 +178,11 @@ class TxAccount(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.currency_type = currency_type
         self.height = height
         self.timestamp = timestamp
         self.tx_hash = tx_hash
-        self.values = values
+        self.tx_type = tx_type
+        self.value = value
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

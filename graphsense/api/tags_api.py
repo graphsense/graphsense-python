@@ -106,9 +106,7 @@ class TagsApi(object):
         self.list_concepts = _Endpoint(
             settings={
                 'response_type': ([Concept],),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/tags/taxonomies/{taxonomy}/concepts',
                 'operation_id': 'list_concepts',
                 'http_method': 'GET',
@@ -225,9 +223,7 @@ class TagsApi(object):
         self.list_tags = _Endpoint(
             settings={
                 'response_type': ([Tags],),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/tags',
                 'operation_id': 'list_tags',
                 'http_method': 'GET',
@@ -343,9 +339,7 @@ class TagsApi(object):
         self.list_taxonomies = _Endpoint(
             settings={
                 'response_type': ([Taxonomy],),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/tags/taxonomies',
                 'operation_id': 'list_taxonomies',
                 'http_method': 'GET',

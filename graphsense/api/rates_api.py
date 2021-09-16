@@ -108,9 +108,7 @@ class RatesApi(object):
         self.get_exchange_rates = _Endpoint(
             settings={
                 'response_type': (Rates,),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/{currency}/rates/{height}',
                 'operation_id': 'get_exchange_rates',
                 'http_method': 'GET',
@@ -137,7 +135,7 @@ class RatesApi(object):
                 'validations': {
                     ('height',): {
 
-                        'inclusive_minimum': 1,
+                        'inclusive_minimum': 0,
                     },
                 },
                 'allowed_values': {

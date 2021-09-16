@@ -82,7 +82,6 @@ class TxUtxo(ModelNormal):
         lazy_import()
         return {
             'coinbase': (bool,),  # noqa: E501
-            'currency_type': (str,),  # noqa: E501
             'height': (Height,),  # noqa: E501
             'inputs': (TxValues,),  # noqa: E501
             'outputs': (TxValues,),  # noqa: E501
@@ -90,6 +89,7 @@ class TxUtxo(ModelNormal):
             'total_input': (Values,),  # noqa: E501
             'total_output': (Values,),  # noqa: E501
             'tx_hash': (str,),  # noqa: E501
+            'tx_type': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -99,7 +99,6 @@ class TxUtxo(ModelNormal):
 
     attribute_map = {
         'coinbase': 'coinbase',  # noqa: E501
-        'currency_type': 'currency_type',  # noqa: E501
         'height': 'height',  # noqa: E501
         'inputs': 'inputs',  # noqa: E501
         'outputs': 'outputs',  # noqa: E501
@@ -107,6 +106,7 @@ class TxUtxo(ModelNormal):
         'total_input': 'total_input',  # noqa: E501
         'total_output': 'total_output',  # noqa: E501
         'tx_hash': 'tx_hash',  # noqa: E501
+        'tx_type': 'tx_type',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -135,7 +135,7 @@ class TxUtxo(ModelNormal):
             tx_hash (str): Transaction hash
 
         Keyword Args:
-            currency_type (str): defaults to "utxo"  # noqa: E501
+            tx_type (str): defaults to "utxo"  # noqa: E501
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -168,7 +168,7 @@ class TxUtxo(ModelNormal):
                                 _visited_composed_classes = (Animal,)
         """
 
-        currency_type = kwargs.get('currency_type', "utxo")
+        tx_type = kwargs.get('tx_type', "utxo")
         _check_type = kwargs.pop('_check_type', True)
         _spec_property_naming = kwargs.pop('_spec_property_naming', False)
         _path_to_item = kwargs.pop('_path_to_item', ())
@@ -193,7 +193,6 @@ class TxUtxo(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.coinbase = coinbase
-        self.currency_type = currency_type
         self.height = height
         self.inputs = inputs
         self.outputs = outputs
@@ -201,6 +200,7 @@ class TxUtxo(ModelNormal):
         self.total_input = total_input
         self.total_output = total_output
         self.tx_hash = tx_hash
+        self.tx_type = tx_type
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

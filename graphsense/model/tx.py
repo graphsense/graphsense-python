@@ -92,7 +92,7 @@ class Tx(ModelComposed):
         """
         lazy_import()
         return {
-            'currency_type': (str,),  # noqa: E501
+            'tx_type': (str,),  # noqa: E501
             'coinbase': (bool,),  # noqa: E501
             'height': (Height,),  # noqa: E501
             'inputs': (TxValues,),  # noqa: E501
@@ -101,7 +101,7 @@ class Tx(ModelComposed):
             'total_input': (Values,),  # noqa: E501
             'total_output': (Values,),  # noqa: E501
             'tx_hash': (str,),  # noqa: E501
-            'values': (Values,),  # noqa: E501
+            'value': (Values,),  # noqa: E501
         }
 
     @cached_property
@@ -115,10 +115,10 @@ class Tx(ModelComposed):
         }
         if not val:
             return None
-        return {'currency_type': val}
+        return {'tx_type': val}
 
     attribute_map = {
-        'currency_type': 'currency_type',  # noqa: E501
+        'tx_type': 'tx_type',  # noqa: E501
         'coinbase': 'coinbase',  # noqa: E501
         'height': 'height',  # noqa: E501
         'inputs': 'inputs',  # noqa: E501
@@ -127,7 +127,7 @@ class Tx(ModelComposed):
         'total_input': 'total_input',  # noqa: E501
         'total_output': 'total_output',  # noqa: E501
         'tx_hash': 'tx_hash',  # noqa: E501
-        'values': 'values',  # noqa: E501
+        'value': 'value',  # noqa: E501
     }
 
     required_properties = set([
@@ -149,7 +149,7 @@ class Tx(ModelComposed):
         Args:
 
         Keyword Args:
-            currency_type (str): defaults to "account"  # noqa: E501
+            tx_type (str): defaults to "account"  # noqa: E501
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -188,10 +188,10 @@ class Tx(ModelComposed):
             total_input (Values): [optional]  # noqa: E501
             total_output (Values): [optional]  # noqa: E501
             tx_hash (str): Transaction hash. [optional]  # noqa: E501
-            values (Values): [optional]  # noqa: E501
+            value (Values): [optional]  # noqa: E501
         """
 
-        currency_type = kwargs.get('currency_type', "account")
+        tx_type = kwargs.get('tx_type', "account")
         _check_type = kwargs.pop('_check_type', True)
         _spec_property_naming = kwargs.pop('_spec_property_naming', False)
         _path_to_item = kwargs.pop('_path_to_item', ())
@@ -223,7 +223,7 @@ class Tx(ModelComposed):
             '_visited_composed_classes': self._visited_composed_classes,
         }
         required_args = {
-            'currency_type': currency_type,
+            'tx_type': tx_type,
         }
         model_args = {}
         model_args.update(required_args)

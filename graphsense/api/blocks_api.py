@@ -22,8 +22,8 @@ from graphsense.model_utils import (  # noqa: F401
     validate_and_convert_types
 )
 from graphsense.model.block import Block
-from graphsense.model.block_tx import BlockTx
 from graphsense.model.blocks import Blocks
+from graphsense.model.tx import Tx
 
 
 class BlocksApi(object):
@@ -110,9 +110,7 @@ class BlocksApi(object):
         self.get_block = _Endpoint(
             settings={
                 'response_type': (Block,),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/{currency}/blocks/{height}',
                 'operation_id': 'get_block',
                 'http_method': 'GET',
@@ -139,7 +137,7 @@ class BlocksApi(object):
                 'validations': {
                     ('height',): {
 
-                        'inclusive_minimum': 1,
+                        'inclusive_minimum': 0,
                     },
                 },
                 'allowed_values': {
@@ -177,7 +175,7 @@ class BlocksApi(object):
             height,
             **kwargs
         ):
-            """Get block transactions (100 per page)  # noqa: E501
+            """Get block transactions  # noqa: E501
 
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
@@ -211,7 +209,7 @@ class BlocksApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                [BlockTx]
+                [Tx]
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -242,10 +240,8 @@ class BlocksApi(object):
 
         self.list_block_txs = _Endpoint(
             settings={
-                'response_type': ([BlockTx],),
-                'auth': [
-                    'api_key'
-                ],
+                'response_type': ([Tx],),
+                'auth': [],
                 'endpoint_path': '/{currency}/blocks/{height}/txs',
                 'operation_id': 'list_block_txs',
                 'http_method': 'GET',
@@ -272,7 +268,7 @@ class BlocksApi(object):
                 'validations': {
                     ('height',): {
 
-                        'inclusive_minimum': 1,
+                        'inclusive_minimum': 0,
                     },
                 },
                 'allowed_values': {
@@ -376,9 +372,7 @@ class BlocksApi(object):
         self.list_block_txs_csv = _Endpoint(
             settings={
                 'response_type': (str,),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/{currency}/blocks/{height}/txs.csv',
                 'operation_id': 'list_block_txs_csv',
                 'http_method': 'GET',
@@ -405,7 +399,7 @@ class BlocksApi(object):
                 'validations': {
                     ('height',): {
 
-                        'inclusive_minimum': 1,
+                        'inclusive_minimum': 0,
                     },
                 },
                 'allowed_values': {
@@ -506,9 +500,7 @@ class BlocksApi(object):
         self.list_blocks = _Endpoint(
             settings={
                 'response_type': (Blocks,),
-                'auth': [
-                    'api_key'
-                ],
+                'auth': [],
                 'endpoint_path': '/{currency}/blocks',
                 'operation_id': 'list_blocks',
                 'http_method': 'GET',

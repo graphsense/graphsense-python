@@ -67,27 +67,17 @@ from pprint import pprint
 from graphsense.api import addresses_api
 from graphsense.model.address import Address
 from graphsense.model.address_tag import AddressTag
-from graphsense.model.address_txs import AddressTxs
 from graphsense.model.addresses import Addresses
 from graphsense.model.entity import Entity
 from graphsense.model.link import Link
 from graphsense.model.neighbors import Neighbors
-# Defining the host is optional and defaults to https://api.graphsense.info
+from graphsense.model.txs_account import TxsAccount
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: api_key
-configuration.api_key['api_key'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['api_key'] = 'Bearer'
 
 
 # Enter a context with an instance of the API client
@@ -95,7 +85,7 @@ with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
-address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
+address = "addressA" # str | The cryptocurrency address
 include_tags = False # bool | Whether tags should be included (optional) (default to False)
 
     try:
@@ -108,7 +98,7 @@ include_tags = False # bool | Whether tags should be included (optional) (defaul
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.graphsense.info*
+All URIs are relative to *http://graphsense-rest:9000*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -125,7 +115,7 @@ Class | Method | HTTP request | Description
 *AddressesApi* | [**list_tags_by_address**](docs/AddressesApi.md#list_tags_by_address) | **GET** /{currency}/addresses/{address}/tags | Get attribution tags for a given address
 *AddressesApi* | [**list_tags_by_address_csv**](docs/AddressesApi.md#list_tags_by_address_csv) | **GET** /{currency}/addresses/{address}/tags.csv | Get attribution tags for a given address
 *BlocksApi* | [**get_block**](docs/BlocksApi.md#get_block) | **GET** /{currency}/blocks/{height} | Get a block by its height
-*BlocksApi* | [**list_block_txs**](docs/BlocksApi.md#list_block_txs) | **GET** /{currency}/blocks/{height}/txs | Get block transactions (100 per page)
+*BlocksApi* | [**list_block_txs**](docs/BlocksApi.md#list_block_txs) | **GET** /{currency}/blocks/{height}/txs | Get block transactions
 *BlocksApi* | [**list_block_txs_csv**](docs/BlocksApi.md#list_block_txs_csv) | **GET** /{currency}/blocks/{height}/txs.csv | Get block transactions as CSV
 *BlocksApi* | [**list_blocks**](docs/BlocksApi.md#list_blocks) | **GET** /{currency}/blocks | Get all blocks
 *EntitiesApi* | [**get_entity**](docs/EntitiesApi.md#get_entity) | **GET** /{currency}/entities/{entity} | Get an entity, optionally with tags
@@ -153,13 +143,8 @@ Class | Method | HTTP request | Description
  - [Address](docs/Address.md)
  - [AddressTag](docs/AddressTag.md)
  - [AddressTagAllOf](docs/AddressTagAllOf.md)
- - [AddressTx](docs/AddressTx.md)
- - [AddressTxUtxo](docs/AddressTxUtxo.md)
- - [AddressTxs](docs/AddressTxs.md)
  - [Addresses](docs/Addresses.md)
  - [Block](docs/Block.md)
- - [BlockTx](docs/BlockTx.md)
- - [BlockTxUtxo](docs/BlockTxUtxo.md)
  - [Blocks](docs/Blocks.md)
  - [Concept](docs/Concept.md)
  - [CurrencyStats](docs/CurrencyStats.md)
@@ -173,8 +158,8 @@ Class | Method | HTTP request | Description
  - [LinkUtxo](docs/LinkUtxo.md)
  - [Neighbor](docs/Neighbor.md)
  - [Neighbors](docs/Neighbors.md)
+ - [Rate](docs/Rate.md)
  - [Rates](docs/Rates.md)
- - [RatesRates](docs/RatesRates.md)
  - [SearchResult](docs/SearchResult.md)
  - [SearchResultByCurrency](docs/SearchResultByCurrency.md)
  - [SearchResultLabels](docs/SearchResultLabels.md)
@@ -208,18 +193,13 @@ Class | Method | HTTP request | Description
  - [TxValue](docs/TxValue.md)
  - [TxValues](docs/TxValues.md)
  - [Txs](docs/Txs.md)
+ - [TxsAccount](docs/TxsAccount.md)
  - [Values](docs/Values.md)
 
 
 ## Documentation For Authorization
 
-
-## api_key
-
-- **Type**: API key
-- **API key parameter name**: Authorization
-- **Location**: HTTP header
-
+ All endpoints do not require authorization.
 
 ## Examples
 

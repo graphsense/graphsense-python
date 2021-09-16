@@ -83,6 +83,7 @@ class Address(ModelNormal):
         return {
             'address': (str,),  # noqa: E501
             'balance': (Values,),  # noqa: E501
+            'entity': (int,),  # noqa: E501
             'first_tx': (TxSummary,),  # noqa: E501
             'in_degree': (int,),  # noqa: E501
             'last_tx': (TxSummary,),  # noqa: E501
@@ -102,6 +103,7 @@ class Address(ModelNormal):
     attribute_map = {
         'address': 'address',  # noqa: E501
         'balance': 'balance',  # noqa: E501
+        'entity': 'entity',  # noqa: E501
         'first_tx': 'first_tx',  # noqa: E501
         'in_degree': 'in_degree',  # noqa: E501
         'last_tx': 'last_tx',  # noqa: E501
@@ -125,12 +127,13 @@ class Address(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, address, balance, first_tx, in_degree, last_tx, no_incoming_txs, no_outgoing_txs, out_degree, total_received, total_spent, *args, **kwargs):  # noqa: E501
+    def __init__(self, address, balance, entity, first_tx, in_degree, last_tx, no_incoming_txs, no_outgoing_txs, out_degree, total_received, total_spent, *args, **kwargs):  # noqa: E501
         """Address - a model defined in OpenAPI
 
         Args:
             address (str): Address
             balance (Values):
+            entity (int): Entity id
             first_tx (TxSummary):
             in_degree (int):
             last_tx (TxSummary):
@@ -199,6 +202,7 @@ class Address(ModelNormal):
 
         self.address = address
         self.balance = balance
+        self.entity = entity
         self.first_tx = first_tx
         self.in_degree = in_degree
         self.last_tx = last_tx
