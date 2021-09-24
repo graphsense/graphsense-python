@@ -9,6 +9,8 @@ Method | HTTP request | Description
 [**list_entities_csv**](EntitiesApi.md#list_entities_csv) | **GET** /{currency}/entities.csv | Get entities as CSV
 [**list_entity_addresses**](EntitiesApi.md#list_entity_addresses) | **GET** /{currency}/entities/{entity}/addresses | Get an entity&#39;s addresses
 [**list_entity_addresses_csv**](EntitiesApi.md#list_entity_addresses_csv) | **GET** /{currency}/entities/{entity}/addresses.csv | Get an entity&#39;s addresses as CSV
+[**list_entity_links**](EntitiesApi.md#list_entity_links) | **GET** /{currency}/entities/{entity}/links | Get transactions between two entities
+[**list_entity_links_csv**](EntitiesApi.md#list_entity_links_csv) | **GET** /{currency}/entities/{entity}/links.csv | Get transactions between two entities as CSV
 [**list_entity_neighbors**](EntitiesApi.md#list_entity_neighbors) | **GET** /{currency}/entities/{entity}/neighbors | Get an entity&#39;s neighbors in the entity graph
 [**list_entity_neighbors_csv**](EntitiesApi.md#list_entity_neighbors_csv) | **GET** /{currency}/entities/{entity}/neighbors.csv | Get an entity&#39;s neighbors in the entity graph as CSV
 [**list_tags_by_entity**](EntitiesApi.md#list_tags_by_entity) | **GET** /{currency}/entities/{entity}/tags | Get tags for a given entity
@@ -360,6 +362,139 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **str**| The cryptocurrency (e.g., btc) |
  **entity** | **int**| The entity ID |
+
+### Return type
+
+**str**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/csv
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_entity_links**
+> Links list_entity_links(currency, entity, neighbor)
+
+Get transactions between two entities
+
+### Example
+
+```python
+import time
+import graphsense
+from graphsense.api import entities_api
+from graphsense.model.links import Links
+from pprint import pprint
+# Defining the host is optional and defaults to http://graphsense-rest:9000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = graphsense.Configuration(
+    host = "http://graphsense-rest:9000"
+)
+
+
+# Enter a context with an instance of the API client
+with graphsense.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = entities_api.EntitiesApi(api_client)
+    currency = "btc" # str | The cryptocurrency (e.g., btc)
+    entity = 67065 # int | The entity ID
+    neighbor = 123456 # int | Neighbor entity
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Get transactions between two entities
+        api_response = api_instance.list_entity_links(currency, entity, neighbor)
+        pprint(api_response)
+    except graphsense.ApiException as e:
+        print("Exception when calling EntitiesApi->list_entity_links: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency** | **str**| The cryptocurrency (e.g., btc) |
+ **entity** | **int**| The entity ID |
+ **neighbor** | **int**| Neighbor entity |
+
+### Return type
+
+[**Links**](Links.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_entity_links_csv**
+> str list_entity_links_csv(currency, entity, neighbor)
+
+Get transactions between two entities as CSV
+
+### Example
+
+```python
+import time
+import graphsense
+from graphsense.api import entities_api
+from pprint import pprint
+# Defining the host is optional and defaults to http://graphsense-rest:9000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = graphsense.Configuration(
+    host = "http://graphsense-rest:9000"
+)
+
+
+# Enter a context with an instance of the API client
+with graphsense.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = entities_api.EntitiesApi(api_client)
+    currency = "btc" # str | The cryptocurrency (e.g., btc)
+    entity = 67065 # int | The entity ID
+    neighbor = 123456 # int | Neighbor entity
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Get transactions between two entities as CSV
+        api_response = api_instance.list_entity_links_csv(currency, entity, neighbor)
+        pprint(api_response)
+    except graphsense.ApiException as e:
+        print("Exception when calling EntitiesApi->list_entity_links_csv: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency** | **str**| The cryptocurrency (e.g., btc) |
+ **entity** | **int**| The entity ID |
+ **neighbor** | **int**| Neighbor entity |
 
 ### Return type
 

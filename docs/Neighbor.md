@@ -4,9 +4,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**balance** | [**Values**](Values.md) |  | 
 **id** | **str** | address or entity id | 
 **no_txs** | **int** | number of transactions | 
 **node_type** | **str** | address or entity | 
+**received** | [**Values**](Values.md) |  | 
 **value** | [**Values**](Values.md) |  | 
 **labels** | **[str]** | labels | [optional] 
 

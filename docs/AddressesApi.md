@@ -173,7 +173,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_address_links**
-> [Link] list_address_links(currency, address, neighbor)
+> Links list_address_links(currency, address, neighbor)
 
 Get transactions between two addresses
 
@@ -183,7 +183,7 @@ Get transactions between two addresses
 import time
 import graphsense
 from graphsense.api import addresses_api
-from graphsense.model.link import Link
+from graphsense.model.links import Links
 from pprint import pprint
 # Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[Link]**](Link.md)
+[**Links**](Links.md)
 
 ### Authorization
 

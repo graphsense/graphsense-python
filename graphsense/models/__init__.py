@@ -25,6 +25,7 @@ from graphsense.model.entity_tag_all_of import EntityTagAllOf
 from graphsense.model.height import Height
 from graphsense.model.link import Link
 from graphsense.model.link_utxo import LinkUtxo
+from graphsense.model.links import Links
 from graphsense.model.neighbor import Neighbor
 from graphsense.model.neighbors import Neighbors
 from graphsense.model.rate import Rate

@@ -69,7 +69,7 @@ from graphsense.model.address import Address
 from graphsense.model.address_tag import AddressTag
 from graphsense.model.addresses import Addresses
 from graphsense.model.entity import Entity
-from graphsense.model.link import Link
+from graphsense.model.links import Links
 from graphsense.model.neighbors import Neighbors
 from graphsense.model.txs_account import TxsAccount
 # Defining the host is optional and defaults to http://graphsense-rest:9000
@@ -123,6 +123,8 @@ Class | Method | HTTP request | Description
 *EntitiesApi* | [**list_entities_csv**](docs/EntitiesApi.md#list_entities_csv) | **GET** /{currency}/entities.csv | Get entities as CSV
 *EntitiesApi* | [**list_entity_addresses**](docs/EntitiesApi.md#list_entity_addresses) | **GET** /{currency}/entities/{entity}/addresses | Get an entity&#39;s addresses
 *EntitiesApi* | [**list_entity_addresses_csv**](docs/EntitiesApi.md#list_entity_addresses_csv) | **GET** /{currency}/entities/{entity}/addresses.csv | Get an entity&#39;s addresses as CSV
+*EntitiesApi* | [**list_entity_links**](docs/EntitiesApi.md#list_entity_links) | **GET** /{currency}/entities/{entity}/links | Get transactions between two entities
+*EntitiesApi* | [**list_entity_links_csv**](docs/EntitiesApi.md#list_entity_links_csv) | **GET** /{currency}/entities/{entity}/links.csv | Get transactions between two entities as CSV
 *EntitiesApi* | [**list_entity_neighbors**](docs/EntitiesApi.md#list_entity_neighbors) | **GET** /{currency}/entities/{entity}/neighbors | Get an entity&#39;s neighbors in the entity graph
 *EntitiesApi* | [**list_entity_neighbors_csv**](docs/EntitiesApi.md#list_entity_neighbors_csv) | **GET** /{currency}/entities/{entity}/neighbors.csv | Get an entity&#39;s neighbors in the entity graph as CSV
 *EntitiesApi* | [**list_tags_by_entity**](docs/EntitiesApi.md#list_tags_by_entity) | **GET** /{currency}/entities/{entity}/tags | Get tags for a given entity
@@ -156,6 +158,7 @@ Class | Method | HTTP request | Description
  - [Height](docs/Height.md)
  - [Link](docs/Link.md)
  - [LinkUtxo](docs/LinkUtxo.md)
+ - [Links](docs/Links.md)
  - [Neighbor](docs/Neighbor.md)
  - [Neighbors](docs/Neighbors.md)
  - [Rate](docs/Rate.md)

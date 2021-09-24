@@ -24,6 +24,7 @@ from graphsense.model_utils import (  # noqa: F401
 from graphsense.model.entities import Entities
 from graphsense.model.entity import Entity
 from graphsense.model.entity_addresses import EntityAddresses
+from graphsense.model.links import Links
 from graphsense.model.neighbors import Neighbors
 from graphsense.model.search_result_level1 import SearchResultLevel1
 from graphsense.model.tags import Tags
@@ -713,6 +714,278 @@ class EntitiesApi(object):
             },
             api_client=api_client,
             callable=__list_entity_addresses_csv
+        )
+
+        def __list_entity_links(
+            self,
+            currency,
+            entity,
+            neighbor,
+            **kwargs
+        ):
+            """Get transactions between two entities  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.list_entity_links(currency, entity, neighbor, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                currency (str): The cryptocurrency (e.g., btc)
+                entity (int): The entity ID
+                neighbor (int): Neighbor entity
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                Links
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['currency'] = \
+                currency
+            kwargs['entity'] = \
+                entity
+            kwargs['neighbor'] = \
+                neighbor
+            return self.call_with_http_info(**kwargs)
+
+        self.list_entity_links = _Endpoint(
+            settings={
+                'response_type': (Links,),
+                'auth': [],
+                'endpoint_path': '/{currency}/entities/{entity}/links',
+                'operation_id': 'list_entity_links',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'currency',
+                    'entity',
+                    'neighbor',
+                ],
+                'required': [
+                    'currency',
+                    'entity',
+                    'neighbor',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'currency':
+                        (str,),
+                    'entity':
+                        (int,),
+                    'neighbor':
+                        (int,),
+                },
+                'attribute_map': {
+                    'currency': 'currency',
+                    'entity': 'entity',
+                    'neighbor': 'neighbor',
+                },
+                'location_map': {
+                    'currency': 'path',
+                    'entity': 'path',
+                    'neighbor': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__list_entity_links
+        )
+
+        def __list_entity_links_csv(
+            self,
+            currency,
+            entity,
+            neighbor,
+            **kwargs
+        ):
+            """Get transactions between two entities as CSV  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.list_entity_links_csv(currency, entity, neighbor, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                currency (str): The cryptocurrency (e.g., btc)
+                entity (int): The entity ID
+                neighbor (int): Neighbor entity
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                str
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['currency'] = \
+                currency
+            kwargs['entity'] = \
+                entity
+            kwargs['neighbor'] = \
+                neighbor
+            return self.call_with_http_info(**kwargs)
+
+        self.list_entity_links_csv = _Endpoint(
+            settings={
+                'response_type': (str,),
+                'auth': [],
+                'endpoint_path': '/{currency}/entities/{entity}/links.csv',
+                'operation_id': 'list_entity_links_csv',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'currency',
+                    'entity',
+                    'neighbor',
+                ],
+                'required': [
+                    'currency',
+                    'entity',
+                    'neighbor',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'currency':
+                        (str,),
+                    'entity':
+                        (int,),
+                    'neighbor':
+                        (int,),
+                },
+                'attribute_map': {
+                    'currency': 'currency',
+                    'entity': 'entity',
+                    'neighbor': 'neighbor',
+                },
+                'location_map': {
+                    'currency': 'path',
+                    'entity': 'path',
+                    'neighbor': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'text/csv'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__list_entity_links_csv
         )
 
         def __list_entity_neighbors(

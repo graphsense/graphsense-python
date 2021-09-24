@@ -25,7 +25,7 @@ from graphsense.model.address import Address
 from graphsense.model.address_tag import AddressTag
 from graphsense.model.addresses import Addresses
 from graphsense.model.entity import Entity
-from graphsense.model.link import Link
+from graphsense.model.links import Links
 from graphsense.model.neighbors import Neighbors
 from graphsense.model.txs_account import TxsAccount
 
@@ -354,7 +354,7 @@ class AddressesApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                [Link]
+                Links
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -387,7 +387,7 @@ class AddressesApi(object):
 
         self.list_address_links = _Endpoint(
             settings={
-                'response_type': ([Link],),
+                'response_type': (Links,),
                 'auth': [],
                 'endpoint_path': '/{currency}/addresses/{address}/links',
                 'operation_id': 'list_address_links',
