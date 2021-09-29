@@ -201,8 +201,8 @@ with graphsense.ApiClient() as api_client:
     api_instance = entities_api.EntitiesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
     ids = [
-        "ids_example",
-    ] # [str] | Set of comma separated IDs
+        1,
+    ] # [int] | Set of comma separated IDs
 
     # example passing only required values which don't have defaults set
     try:
@@ -219,7 +219,7 @@ with graphsense.ApiClient() as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **str**| The cryptocurrency (e.g., btc) |
- **ids** | **[str]**| Set of comma separated IDs |
+ **ids** | **[int]**| Set of comma separated IDs |
 
 ### Return type
 

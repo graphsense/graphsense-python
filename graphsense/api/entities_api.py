@@ -336,7 +336,7 @@ class EntitiesApi(object):
 
             Args:
                 currency (str): The cryptocurrency (e.g., btc)
-                ids ([str]): Set of comma separated IDs
+                ids ([int]): Set of comma separated IDs
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
@@ -423,7 +423,7 @@ class EntitiesApi(object):
                     'currency':
                         (str,),
                     'ids':
-                        ([str],),
+                        ([int],),
                 },
                 'attribute_map': {
                     'currency': 'currency',

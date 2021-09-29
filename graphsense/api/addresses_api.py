@@ -1183,7 +1183,7 @@ class AddressesApi(object):
                 currency (str): The cryptocurrency (e.g., btc)
 
             Keyword Args:
-                ids ([int]): Restrict result to given set of comma separated IDs. [optional]
+                ids ([str]): Restrict result to given set of comma separated addresses. [optional]
                 page (str): Resumption token for retrieving the next page. [optional]
                 pagesize (int): Number of items returned in a single page. [optional]
                 _return_http_data_only (bool): response data without head status
@@ -1274,7 +1274,7 @@ class AddressesApi(object):
                     'currency':
                         (str,),
                     'ids':
-                        ([int],),
+                        ([str],),
                     'page':
                         (str,),
                     'pagesize':

@@ -632,8 +632,8 @@ with graphsense.ApiClient() as api_client:
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
     ids = [
-        1,
-    ] # [int] | Restrict result to given set of comma separated IDs (optional)
+        "ids_example",
+    ] # [str] | Restrict result to given set of comma separated addresses (optional)
     page = "page_example" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
@@ -661,7 +661,7 @@ with graphsense.ApiClient() as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **str**| The cryptocurrency (e.g., btc) |
- **ids** | **[int]**| Restrict result to given set of comma separated IDs | [optional]
+ **ids** | **[str]**| Restrict result to given set of comma separated addresses | [optional]
  **page** | **str**| Resumption token for retrieving the next page | [optional]
  **pagesize** | **int**| Number of items returned in a single page | [optional]
 
