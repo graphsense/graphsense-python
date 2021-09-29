@@ -13,6 +13,8 @@ Method | HTTP request | Description
 [**list_entity_links_csv**](EntitiesApi.md#list_entity_links_csv) | **GET** /{currency}/entities/{entity}/links.csv | Get transactions between two entities as CSV
 [**list_entity_neighbors**](EntitiesApi.md#list_entity_neighbors) | **GET** /{currency}/entities/{entity}/neighbors | Get an entity&#39;s neighbors in the entity graph
 [**list_entity_neighbors_csv**](EntitiesApi.md#list_entity_neighbors_csv) | **GET** /{currency}/entities/{entity}/neighbors.csv | Get an entity&#39;s neighbors in the entity graph as CSV
+[**list_entity_txs**](EntitiesApi.md#list_entity_txs) | **GET** /{currency}/entities/{entity}/txs | Get all transactions an entity has been involved in
+[**list_entity_txs_csv**](EntitiesApi.md#list_entity_txs_csv) | **GET** /{currency}/entities/{entity}/txs.csv | Get all transactions an entity has been involved in as CSV
 [**list_tags_by_entity**](EntitiesApi.md#list_tags_by_entity) | **GET** /{currency}/entities/{entity}/tags | Get tags for a given entity
 [**list_tags_by_entity_by_level_csv**](EntitiesApi.md#list_tags_by_entity_by_level_csv) | **GET** /{currency}/entities/{entity}/tags.csv | Get address or entity tags for a given entity as CSV
 [**search_entity_neighbors**](EntitiesApi.md#search_entity_neighbors) | **GET** /{currency}/entities/{entity}/search | Search deeply for matching neighbors
@@ -658,6 +660,148 @@ Name | Type | Description  | Notes
  **entity** | **int**| The entity ID |
  **direction** | **str**| Incoming or outgoing neighbors |
  **include_labels** | **bool**| Whether labels of tags should be included | [optional] if omitted the server will use the default value of False
+
+### Return type
+
+**str**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/csv
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_entity_txs**
+> TxsAccount list_entity_txs(currency, entity)
+
+Get all transactions an entity has been involved in
+
+### Example
+
+```python
+import time
+import graphsense
+from graphsense.api import entities_api
+from graphsense.model.txs_account import TxsAccount
+from pprint import pprint
+# Defining the host is optional and defaults to http://graphsense-rest:9000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = graphsense.Configuration(
+    host = "http://graphsense-rest:9000"
+)
+
+
+# Enter a context with an instance of the API client
+with graphsense.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = entities_api.EntitiesApi(api_client)
+    currency = "btc" # str | The cryptocurrency (e.g., btc)
+    entity = 67065 # int | The entity ID
+    page = "page_example" # str | Resumption token for retrieving the next page (optional)
+    pagesize = 10 # int | Number of items returned in a single page (optional)
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Get all transactions an entity has been involved in
+        api_response = api_instance.list_entity_txs(currency, entity)
+        pprint(api_response)
+    except graphsense.ApiException as e:
+        print("Exception when calling EntitiesApi->list_entity_txs: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Get all transactions an entity has been involved in
+        api_response = api_instance.list_entity_txs(currency, entity, page=page, pagesize=pagesize)
+        pprint(api_response)
+    except graphsense.ApiException as e:
+        print("Exception when calling EntitiesApi->list_entity_txs: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency** | **str**| The cryptocurrency (e.g., btc) |
+ **entity** | **int**| The entity ID |
+ **page** | **str**| Resumption token for retrieving the next page | [optional]
+ **pagesize** | **int**| Number of items returned in a single page | [optional]
+
+### Return type
+
+[**TxsAccount**](TxsAccount.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_entity_txs_csv**
+> str list_entity_txs_csv(currency, entity)
+
+Get all transactions an entity has been involved in as CSV
+
+### Example
+
+```python
+import time
+import graphsense
+from graphsense.api import entities_api
+from pprint import pprint
+# Defining the host is optional and defaults to http://graphsense-rest:9000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = graphsense.Configuration(
+    host = "http://graphsense-rest:9000"
+)
+
+
+# Enter a context with an instance of the API client
+with graphsense.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = entities_api.EntitiesApi(api_client)
+    currency = "btc" # str | The cryptocurrency (e.g., btc)
+    entity = 67065 # int | The entity ID
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Get all transactions an entity has been involved in as CSV
+        api_response = api_instance.list_entity_txs_csv(currency, entity)
+        pprint(api_response)
+    except graphsense.ApiException as e:
+        print("Exception when calling EntitiesApi->list_entity_txs_csv: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency** | **str**| The cryptocurrency (e.g., btc) |
+ **entity** | **int**| The entity ID |
 
 ### Return type
 

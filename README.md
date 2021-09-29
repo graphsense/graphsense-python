@@ -127,6 +127,8 @@ Class | Method | HTTP request | Description
 *EntitiesApi* | [**list_entity_links_csv**](docs/EntitiesApi.md#list_entity_links_csv) | **GET** /{currency}/entities/{entity}/links.csv | Get transactions between two entities as CSV
 *EntitiesApi* | [**list_entity_neighbors**](docs/EntitiesApi.md#list_entity_neighbors) | **GET** /{currency}/entities/{entity}/neighbors | Get an entity&#39;s neighbors in the entity graph
 *EntitiesApi* | [**list_entity_neighbors_csv**](docs/EntitiesApi.md#list_entity_neighbors_csv) | **GET** /{currency}/entities/{entity}/neighbors.csv | Get an entity&#39;s neighbors in the entity graph as CSV
+*EntitiesApi* | [**list_entity_txs**](docs/EntitiesApi.md#list_entity_txs) | **GET** /{currency}/entities/{entity}/txs | Get all transactions an entity has been involved in
+*EntitiesApi* | [**list_entity_txs_csv**](docs/EntitiesApi.md#list_entity_txs_csv) | **GET** /{currency}/entities/{entity}/txs.csv | Get all transactions an entity has been involved in as CSV
 *EntitiesApi* | [**list_tags_by_entity**](docs/EntitiesApi.md#list_tags_by_entity) | **GET** /{currency}/entities/{entity}/tags | Get tags for a given entity
 *EntitiesApi* | [**list_tags_by_entity_by_level_csv**](docs/EntitiesApi.md#list_tags_by_entity_by_level_csv) | **GET** /{currency}/entities/{entity}/tags.csv | Get address or entity tags for a given entity as CSV
 *EntitiesApi* | [**search_entity_neighbors**](docs/EntitiesApi.md#search_entity_neighbors) | **GET** /{currency}/entities/{entity}/search | Search deeply for matching neighbors
