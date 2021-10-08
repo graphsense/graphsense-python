@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tx_type** | **str** |  | defaults to "account"
-**coinbase** | **bool** | Coinbase transaction flag | [optional] 
-**height** | [**Height**](Height.md) |  | [optional] 
 **inputs** | [**TxValues**](TxValues.md) |  | [optional] 
 **outputs** | [**TxValues**](TxValues.md) |  | [optional] 
+**coinbase** | **bool** | Coinbase transaction flag | [optional] 
+**height** | [**Height**](Height.md) |  | [optional] 
 **timestamp** | **int** | Timestamp | [optional] 
 **total_input** | [**Values**](Values.md) |  | [optional] 
 **total_output** | [**Values**](Values.md) |  | [optional] 

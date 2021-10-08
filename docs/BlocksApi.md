@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_block**](BlocksApi.md#get_block) | **GET** /{currency}/blocks/{height} | Get a block by its height
 [**list_block_txs**](BlocksApi.md#list_block_txs) | **GET** /{currency}/blocks/{height}/txs | Get block transactions
-[**list_block_txs_csv**](BlocksApi.md#list_block_txs_csv) | **GET** /{currency}/blocks/{height}/txs.csv | Get block transactions as CSV
 [**list_blocks**](BlocksApi.md#list_blocks) | **GET** /{currency}/blocks | Get all blocks
 
 
@@ -131,70 +130,6 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **list_block_txs_csv**
-> str list_block_txs_csv(currency, height)
-
-Get block transactions as CSV
-
-### Example
-
-```python
-import time
-import graphsense
-from graphsense.api import blocks_api
-from pprint import pprint
-# Defining the host is optional and defaults to http://graphsense-rest:9000
-# See configuration.py for a list of all supported configuration parameters.
-configuration = graphsense.Configuration(
-    host = "http://graphsense-rest:9000"
-)
-
-
-# Enter a context with an instance of the API client
-with graphsense.ApiClient() as api_client:
-    # Create an instance of the API class
-    api_instance = blocks_api.BlocksApi(api_client)
-    currency = "btc" # str | The cryptocurrency (e.g., btc)
-    height = 1 # int | The block height
-
-    # example passing only required values which don't have defaults set
-    try:
-        # Get block transactions as CSV
-        api_response = api_instance.list_block_txs_csv(currency, height)
-        pprint(api_response)
-    except graphsense.ApiException as e:
-        print("Exception when calling BlocksApi->list_block_txs_csv: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **currency** | **str**| The cryptocurrency (e.g., btc) |
- **height** | **int**| The block height |
-
-### Return type
-
-**str**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: text/csv
 
 
 ### HTTP response details

@@ -93,10 +93,10 @@ class Tx(ModelComposed):
         lazy_import()
         return {
             'tx_type': (str,),  # noqa: E501
-            'coinbase': (bool,),  # noqa: E501
-            'height': (Height,),  # noqa: E501
             'inputs': (TxValues,),  # noqa: E501
             'outputs': (TxValues,),  # noqa: E501
+            'coinbase': (bool,),  # noqa: E501
+            'height': (Height,),  # noqa: E501
             'timestamp': (int,),  # noqa: E501
             'total_input': (Values,),  # noqa: E501
             'total_output': (Values,),  # noqa: E501
@@ -119,10 +119,10 @@ class Tx(ModelComposed):
 
     attribute_map = {
         'tx_type': 'tx_type',  # noqa: E501
-        'coinbase': 'coinbase',  # noqa: E501
-        'height': 'height',  # noqa: E501
         'inputs': 'inputs',  # noqa: E501
         'outputs': 'outputs',  # noqa: E501
+        'coinbase': 'coinbase',  # noqa: E501
+        'height': 'height',  # noqa: E501
         'timestamp': 'timestamp',  # noqa: E501
         'total_input': 'total_input',  # noqa: E501
         'total_output': 'total_output',  # noqa: E501
@@ -180,10 +180,10 @@ class Tx(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            coinbase (bool): Coinbase transaction flag. [optional]  # noqa: E501
-            height (Height): [optional]  # noqa: E501
             inputs (TxValues): [optional]  # noqa: E501
             outputs (TxValues): [optional]  # noqa: E501
+            coinbase (bool): Coinbase transaction flag. [optional]  # noqa: E501
+            height (Height): [optional]  # noqa: E501
             timestamp (int): Timestamp. [optional]  # noqa: E501
             total_input (Values): [optional]  # noqa: E501
             total_output (Values): [optional]  # noqa: E501

@@ -83,13 +83,13 @@ class TxUtxo(ModelNormal):
         return {
             'coinbase': (bool,),  # noqa: E501
             'height': (Height,),  # noqa: E501
-            'inputs': (TxValues,),  # noqa: E501
-            'outputs': (TxValues,),  # noqa: E501
             'timestamp': (int,),  # noqa: E501
             'total_input': (Values,),  # noqa: E501
             'total_output': (Values,),  # noqa: E501
             'tx_hash': (str,),  # noqa: E501
             'tx_type': (str,),  # noqa: E501
+            'inputs': (TxValues,),  # noqa: E501
+            'outputs': (TxValues,),  # noqa: E501
         }
 
     @cached_property
@@ -100,13 +100,13 @@ class TxUtxo(ModelNormal):
     attribute_map = {
         'coinbase': 'coinbase',  # noqa: E501
         'height': 'height',  # noqa: E501
-        'inputs': 'inputs',  # noqa: E501
-        'outputs': 'outputs',  # noqa: E501
         'timestamp': 'timestamp',  # noqa: E501
         'total_input': 'total_input',  # noqa: E501
         'total_output': 'total_output',  # noqa: E501
         'tx_hash': 'tx_hash',  # noqa: E501
         'tx_type': 'tx_type',  # noqa: E501
+        'inputs': 'inputs',  # noqa: E501
+        'outputs': 'outputs',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -121,14 +121,12 @@ class TxUtxo(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, coinbase, height, inputs, outputs, timestamp, total_input, total_output, tx_hash, *args, **kwargs):  # noqa: E501
+    def __init__(self, coinbase, height, timestamp, total_input, total_output, tx_hash, *args, **kwargs):  # noqa: E501
         """TxUtxo - a model defined in OpenAPI
 
         Args:
             coinbase (bool): Coinbase transaction flag
             height (Height):
-            inputs (TxValues):
-            outputs (TxValues):
             timestamp (int): Timestamp
             total_input (Values):
             total_output (Values):
@@ -166,6 +164,8 @@ class TxUtxo(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            inputs (TxValues): [optional]  # noqa: E501
+            outputs (TxValues): [optional]  # noqa: E501
         """
 
         tx_type = kwargs.get('tx_type', "utxo")
@@ -194,8 +194,6 @@ class TxUtxo(ModelNormal):
 
         self.coinbase = coinbase
         self.height = height
-        self.inputs = inputs
-        self.outputs = outputs
         self.timestamp = timestamp
         self.total_input = total_input
         self.total_output = total_output

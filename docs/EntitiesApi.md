@@ -6,17 +6,11 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_entity**](EntitiesApi.md#get_entity) | **GET** /{currency}/entities/{entity} | Get an entity, optionally with tags
 [**list_entities**](EntitiesApi.md#list_entities) | **GET** /{currency}/entities | Get entities
-[**list_entities_csv**](EntitiesApi.md#list_entities_csv) | **GET** /{currency}/entities.csv | Get entities as CSV
 [**list_entity_addresses**](EntitiesApi.md#list_entity_addresses) | **GET** /{currency}/entities/{entity}/addresses | Get an entity&#39;s addresses
-[**list_entity_addresses_csv**](EntitiesApi.md#list_entity_addresses_csv) | **GET** /{currency}/entities/{entity}/addresses.csv | Get an entity&#39;s addresses as CSV
 [**list_entity_links**](EntitiesApi.md#list_entity_links) | **GET** /{currency}/entities/{entity}/links | Get transactions between two entities
-[**list_entity_links_csv**](EntitiesApi.md#list_entity_links_csv) | **GET** /{currency}/entities/{entity}/links.csv | Get transactions between two entities as CSV
 [**list_entity_neighbors**](EntitiesApi.md#list_entity_neighbors) | **GET** /{currency}/entities/{entity}/neighbors | Get an entity&#39;s neighbors in the entity graph
-[**list_entity_neighbors_csv**](EntitiesApi.md#list_entity_neighbors_csv) | **GET** /{currency}/entities/{entity}/neighbors.csv | Get an entity&#39;s neighbors in the entity graph as CSV
 [**list_entity_txs**](EntitiesApi.md#list_entity_txs) | **GET** /{currency}/entities/{entity}/txs | Get all transactions an entity has been involved in
-[**list_entity_txs_csv**](EntitiesApi.md#list_entity_txs_csv) | **GET** /{currency}/entities/{entity}/txs.csv | Get all transactions an entity has been involved in as CSV
 [**list_tags_by_entity**](EntitiesApi.md#list_tags_by_entity) | **GET** /{currency}/entities/{entity}/tags | Get tags for a given entity
-[**list_tags_by_entity_by_level_csv**](EntitiesApi.md#list_tags_by_entity_by_level_csv) | **GET** /{currency}/entities/{entity}/tags.csv | Get address or entity tags for a given entity as CSV
 [**search_entity_neighbors**](EntitiesApi.md#search_entity_neighbors) | **GET** /{currency}/entities/{entity}/search | Search deeply for matching neighbors
 
 
@@ -46,7 +40,7 @@ with graphsense.ApiClient() as api_client:
     api_instance = entities_api.EntitiesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
     entity = 67065 # int | The entity ID
-    include_tags = False # bool | Whether tags should be included (optional) if omitted the server will use the default value of False
+    include_tags = False # bool | Whether to include tags (optional) if omitted the server will use the default value of False
     tag_coherence = False # bool | Whether to calculate coherence of address tags (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
@@ -74,7 +68,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **str**| The cryptocurrency (e.g., btc) |
  **entity** | **int**| The entity ID |
- **include_tags** | **bool**| Whether tags should be included | [optional] if omitted the server will use the default value of False
+ **include_tags** | **bool**| Whether to include tags | [optional] if omitted the server will use the default value of False
  **tag_coherence** | **bool**| Whether to calculate coherence of address tags | [optional] if omitted the server will use the default value of False
 
 ### Return type
@@ -178,72 +172,6 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_entities_csv**
-> str list_entities_csv(currency, ids)
-
-Get entities as CSV
-
-### Example
-
-```python
-import time
-import graphsense
-from graphsense.api import entities_api
-from pprint import pprint
-# Defining the host is optional and defaults to http://graphsense-rest:9000
-# See configuration.py for a list of all supported configuration parameters.
-configuration = graphsense.Configuration(
-    host = "http://graphsense-rest:9000"
-)
-
-
-# Enter a context with an instance of the API client
-with graphsense.ApiClient() as api_client:
-    # Create an instance of the API class
-    api_instance = entities_api.EntitiesApi(api_client)
-    currency = "btc" # str | The cryptocurrency (e.g., btc)
-    ids = [
-        1,
-    ] # [int] | Set of comma separated IDs
-
-    # example passing only required values which don't have defaults set
-    try:
-        # Get entities as CSV
-        api_response = api_instance.list_entities_csv(currency, ids)
-        pprint(api_response)
-    except graphsense.ApiException as e:
-        print("Exception when calling EntitiesApi->list_entities_csv: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **currency** | **str**| The cryptocurrency (e.g., btc) |
- **ids** | **[int]**| Set of comma separated IDs |
-
-### Return type
-
-**str**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/csv
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **list_entity_addresses**
 > EntityAddresses list_entity_addresses(currency, entity)
 
@@ -322,70 +250,6 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_entity_addresses_csv**
-> str list_entity_addresses_csv(currency, entity)
-
-Get an entity's addresses as CSV
-
-### Example
-
-```python
-import time
-import graphsense
-from graphsense.api import entities_api
-from pprint import pprint
-# Defining the host is optional and defaults to http://graphsense-rest:9000
-# See configuration.py for a list of all supported configuration parameters.
-configuration = graphsense.Configuration(
-    host = "http://graphsense-rest:9000"
-)
-
-
-# Enter a context with an instance of the API client
-with graphsense.ApiClient() as api_client:
-    # Create an instance of the API class
-    api_instance = entities_api.EntitiesApi(api_client)
-    currency = "btc" # str | The cryptocurrency (e.g., btc)
-    entity = 67065 # int | The entity ID
-
-    # example passing only required values which don't have defaults set
-    try:
-        # Get an entity's addresses as CSV
-        api_response = api_instance.list_entity_addresses_csv(currency, entity)
-        pprint(api_response)
-    except graphsense.ApiException as e:
-        print("Exception when calling EntitiesApi->list_entity_addresses_csv: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **currency** | **str**| The cryptocurrency (e.g., btc) |
- **entity** | **int**| The entity ID |
-
-### Return type
-
-**str**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: text/csv
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **list_entity_links**
 > Links list_entity_links(currency, entity, neighbor)
 
@@ -453,72 +317,6 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_entity_links_csv**
-> str list_entity_links_csv(currency, entity, neighbor)
-
-Get transactions between two entities as CSV
-
-### Example
-
-```python
-import time
-import graphsense
-from graphsense.api import entities_api
-from pprint import pprint
-# Defining the host is optional and defaults to http://graphsense-rest:9000
-# See configuration.py for a list of all supported configuration parameters.
-configuration = graphsense.Configuration(
-    host = "http://graphsense-rest:9000"
-)
-
-
-# Enter a context with an instance of the API client
-with graphsense.ApiClient() as api_client:
-    # Create an instance of the API class
-    api_instance = entities_api.EntitiesApi(api_client)
-    currency = "btc" # str | The cryptocurrency (e.g., btc)
-    entity = 67065 # int | The entity ID
-    neighbor = 123456 # int | Neighbor entity
-
-    # example passing only required values which don't have defaults set
-    try:
-        # Get transactions between two entities as CSV
-        api_response = api_instance.list_entity_links_csv(currency, entity, neighbor)
-        pprint(api_response)
-    except graphsense.ApiException as e:
-        print("Exception when calling EntitiesApi->list_entity_links_csv: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **currency** | **str**| The cryptocurrency (e.g., btc) |
- **entity** | **int**| The entity ID |
- **neighbor** | **int**| Neighbor entity |
-
-### Return type
-
-**str**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: text/csv
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **list_entity_neighbors**
 > Neighbors list_entity_neighbors(currency, entity, direction)
 
@@ -549,7 +347,7 @@ with graphsense.ApiClient() as api_client:
     ids = [
         1,
     ] # [int] | Restrict result to given set of comma separated IDs (optional)
-    include_labels = False # bool | Whether labels of tags should be included (optional) if omitted the server will use the default value of False
+    include_labels = False # bool | Whether to include labels of tags (optional) if omitted the server will use the default value of False
     page = "page_example" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
@@ -580,7 +378,7 @@ Name | Type | Description  | Notes
  **entity** | **int**| The entity ID |
  **direction** | **str**| Incoming or outgoing neighbors |
  **ids** | **[int]**| Restrict result to given set of comma separated IDs | [optional]
- **include_labels** | **bool**| Whether labels of tags should be included | [optional] if omitted the server will use the default value of False
+ **include_labels** | **bool**| Whether to include labels of tags | [optional] if omitted the server will use the default value of False
  **page** | **str**| Resumption token for retrieving the next page | [optional]
  **pagesize** | **int**| Number of items returned in a single page | [optional]
 
@@ -596,83 +394,6 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **list_entity_neighbors_csv**
-> str list_entity_neighbors_csv(currency, entity, direction)
-
-Get an entity's neighbors in the entity graph as CSV
-
-### Example
-
-```python
-import time
-import graphsense
-from graphsense.api import entities_api
-from pprint import pprint
-# Defining the host is optional and defaults to http://graphsense-rest:9000
-# See configuration.py for a list of all supported configuration parameters.
-configuration = graphsense.Configuration(
-    host = "http://graphsense-rest:9000"
-)
-
-
-# Enter a context with an instance of the API client
-with graphsense.ApiClient() as api_client:
-    # Create an instance of the API class
-    api_instance = entities_api.EntitiesApi(api_client)
-    currency = "btc" # str | The cryptocurrency (e.g., btc)
-    entity = 67065 # int | The entity ID
-    direction = "out" # str | Incoming or outgoing neighbors
-    include_labels = False # bool | Whether labels of tags should be included (optional) if omitted the server will use the default value of False
-
-    # example passing only required values which don't have defaults set
-    try:
-        # Get an entity's neighbors in the entity graph as CSV
-        api_response = api_instance.list_entity_neighbors_csv(currency, entity, direction)
-        pprint(api_response)
-    except graphsense.ApiException as e:
-        print("Exception when calling EntitiesApi->list_entity_neighbors_csv: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        # Get an entity's neighbors in the entity graph as CSV
-        api_response = api_instance.list_entity_neighbors_csv(currency, entity, direction, include_labels=include_labels)
-        pprint(api_response)
-    except graphsense.ApiException as e:
-        print("Exception when calling EntitiesApi->list_entity_neighbors_csv: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **currency** | **str**| The cryptocurrency (e.g., btc) |
- **entity** | **int**| The entity ID |
- **direction** | **str**| Incoming or outgoing neighbors |
- **include_labels** | **bool**| Whether labels of tags should be included | [optional] if omitted the server will use the default value of False
-
-### Return type
-
-**str**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: text/csv
 
 
 ### HTTP response details
@@ -760,70 +481,6 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_entity_txs_csv**
-> str list_entity_txs_csv(currency, entity)
-
-Get all transactions an entity has been involved in as CSV
-
-### Example
-
-```python
-import time
-import graphsense
-from graphsense.api import entities_api
-from pprint import pprint
-# Defining the host is optional and defaults to http://graphsense-rest:9000
-# See configuration.py for a list of all supported configuration parameters.
-configuration = graphsense.Configuration(
-    host = "http://graphsense-rest:9000"
-)
-
-
-# Enter a context with an instance of the API client
-with graphsense.ApiClient() as api_client:
-    # Create an instance of the API class
-    api_instance = entities_api.EntitiesApi(api_client)
-    currency = "btc" # str | The cryptocurrency (e.g., btc)
-    entity = 67065 # int | The entity ID
-
-    # example passing only required values which don't have defaults set
-    try:
-        # Get all transactions an entity has been involved in as CSV
-        api_response = api_instance.list_entity_txs_csv(currency, entity)
-        pprint(api_response)
-    except graphsense.ApiException as e:
-        print("Exception when calling EntitiesApi->list_entity_txs_csv: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **currency** | **str**| The cryptocurrency (e.g., btc) |
- **entity** | **int**| The entity ID |
-
-### Return type
-
-**str**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: text/csv
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **list_tags_by_entity**
 > Tags list_tags_by_entity(currency, entity)
 
@@ -891,72 +548,6 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **list_tags_by_entity_by_level_csv**
-> str list_tags_by_entity_by_level_csv(currency, entity, level)
-
-Get address or entity tags for a given entity as CSV
-
-### Example
-
-```python
-import time
-import graphsense
-from graphsense.api import entities_api
-from pprint import pprint
-# Defining the host is optional and defaults to http://graphsense-rest:9000
-# See configuration.py for a list of all supported configuration parameters.
-configuration = graphsense.Configuration(
-    host = "http://graphsense-rest:9000"
-)
-
-
-# Enter a context with an instance of the API client
-with graphsense.ApiClient() as api_client:
-    # Create an instance of the API class
-    api_instance = entities_api.EntitiesApi(api_client)
-    currency = "btc" # str | The cryptocurrency (e.g., btc)
-    entity = 67065 # int | The entity ID
-    level = "address" # str | Whether tags on the address or entity level are requested
-
-    # example passing only required values which don't have defaults set
-    try:
-        # Get address or entity tags for a given entity as CSV
-        api_response = api_instance.list_tags_by_entity_by_level_csv(currency, entity, level)
-        pprint(api_response)
-    except graphsense.ApiException as e:
-        print("Exception when calling EntitiesApi->list_tags_by_entity_by_level_csv: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **currency** | **str**| The cryptocurrency (e.g., btc) |
- **entity** | **int**| The entity ID |
- **level** | **str**| Whether tags on the address or entity level are requested |
-
-### Return type
-
-**str**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/csv
 
 
 ### HTTP response details
