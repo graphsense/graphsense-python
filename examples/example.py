@@ -9,11 +9,8 @@
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
-from graphsense.model.get_tx_io import GetTxIo
-from graphsense.model.get_tx_io_parameters import GetTxIoParameters
-from graphsense.model.io import Io
 import graphsense
-from graphsense.api import batch_api, blocks_api
+from graphsense.api import bulk_api, blocks_api, txs_api
 from pprint import pprint
 # Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
@@ -26,7 +23,8 @@ configuration = graphsense.Configuration(
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     addresses_api_instance = blocks_api.BlocksApi(api_client)
-    batch_api_instance = batch_api.BatchApi(api_client)
+    txs_api_instance = txs_api.TxsApi(api_client)
+    batch_api_instance = bulk_api.BulkApi(api_client)
     currency = "btc"  # str | The cryptocurrency (e.g., btc)
 
     txs = ['1d8149eb8d8475b98113b5011cf70e0b7a4dccff71286d28b8b4b641f94f1e46',
@@ -40,15 +38,20 @@ with graphsense.ApiClient(configuration) as api_client:
            '46951cfd631ff75140c8ec38af1927909dd2e5ed4192500982b591902d7e4fbb',
            'bcf84712500459da1670546601ef7373946fbca624f2e9957a53f5205102a224']
 
-    pprint(txs)
-    params = [GetTxIoParameters(tx_hash=tx_hash, io=Io('inputs')) for tx_hash in txs]
+
+    eth_txs = ['5c504ed432cb51138bcf09aa5e8a410dd4a1e204ef84bfed1be16dfba1b22060',
+               'e32afe67eac7a1343f42ab127bf6765aaa24959e552a7e8a39128957b815b5c5',
+               '19f1df2c7ee6b464720ad28e903aeda1a5ad8780afc22f0b960827bd4fcf656d']
+
+    #params = [ListEntityAddressesParameters(entity=entity) for entity in range (1,100)]
+    #operation = ListEntityAddresses(parameters=params)
 
     # example passing only required values which don't have defaults set
     try:
         # Get data as CSV in batch
-        api_response = \
-            batch_api_instance.batch(currency,
-                                     batch_operation=GetTxIo(parameters=params))
-        print(api_response)
+        api_response = batch_api_instance.bulk('eth', 'txs', 'get_tx', body={'tx_hash': eth_txs}, form='json')
+        #api_response = \
+            #txs_api_instance.get_tx(currency, tx_hash=txs[0], include_io=False)
+        #print(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling BatchApi->batch: %s\n" % e)

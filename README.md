@@ -67,11 +67,10 @@ from pprint import pprint
 from graphsense.api import addresses_api
 from graphsense.model.address import Address
 from graphsense.model.address_tag import AddressTag
-from graphsense.model.addresses import Addresses
+from graphsense.model.address_txs import AddressTxs
 from graphsense.model.entity import Entity
 from graphsense.model.links import Links
 from graphsense.model.neighbors import Neighbors
-from graphsense.model.txs_account import TxsAccount
 # Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
@@ -104,17 +103,14 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AddressesApi* | [**get_address**](docs/AddressesApi.md#get_address) | **GET** /{currency}/addresses/{address} | Get an address, optionally with tags
 *AddressesApi* | [**get_address_entity**](docs/AddressesApi.md#get_address_entity) | **GET** /{currency}/addresses/{address}/entity | Get the entity of an address
-*AddressesApi* | [**list_address_links**](docs/AddressesApi.md#list_address_links) | **GET** /{currency}/addresses/{address}/links | Get transactions between two addresses
+*AddressesApi* | [**list_address_links**](docs/AddressesApi.md#list_address_links) | **GET** /{currency}/addresses/{address}/links | Get outgoing transactions between two addresses
 *AddressesApi* | [**list_address_neighbors**](docs/AddressesApi.md#list_address_neighbors) | **GET** /{currency}/addresses/{address}/neighbors | Get an addresses&#39; neighbors in the address graph
 *AddressesApi* | [**list_address_txs**](docs/AddressesApi.md#list_address_txs) | **GET** /{currency}/addresses/{address}/txs | Get all transactions an address has been involved in
-*AddressesApi* | [**list_addresses**](docs/AddressesApi.md#list_addresses) | **GET** /{currency}/addresses | Get addresses
 *AddressesApi* | [**list_tags_by_address**](docs/AddressesApi.md#list_tags_by_address) | **GET** /{currency}/addresses/{address}/tags | Get attribution tags for a given address
-*BatchApi* | [**batch**](docs/BatchApi.md#batch) | **POST** /{currency}/batch | Get data as CSV in batch
 *BlocksApi* | [**get_block**](docs/BlocksApi.md#get_block) | **GET** /{currency}/blocks/{height} | Get a block by its height
 *BlocksApi* | [**list_block_txs**](docs/BlocksApi.md#list_block_txs) | **GET** /{currency}/blocks/{height}/txs | Get block transactions
-*BlocksApi* | [**list_blocks**](docs/BlocksApi.md#list_blocks) | **GET** /{currency}/blocks | Get all blocks
+*BulkApi* | [**bulk**](docs/BulkApi.md#bulk) | **POST** /{currency}/bulk/{api}/{operation} | Get data as CSV or JSON in bulk
 *EntitiesApi* | [**get_entity**](docs/EntitiesApi.md#get_entity) | **GET** /{currency}/entities/{entity} | Get an entity, optionally with tags
-*EntitiesApi* | [**list_entities**](docs/EntitiesApi.md#list_entities) | **GET** /{currency}/entities | Get entities
 *EntitiesApi* | [**list_entity_addresses**](docs/EntitiesApi.md#list_entity_addresses) | **GET** /{currency}/entities/{entity}/addresses | Get an entity&#39;s addresses
 *EntitiesApi* | [**list_entity_links**](docs/EntitiesApi.md#list_entity_links) | **GET** /{currency}/entities/{entity}/links | Get transactions between two entities
 *EntitiesApi* | [**list_entity_neighbors**](docs/EntitiesApi.md#list_entity_neighbors) | **GET** /{currency}/entities/{entity}/neighbors | Get an entity&#39;s neighbors in the entity graph
@@ -129,7 +125,6 @@ Class | Method | HTTP request | Description
 *TagsApi* | [**list_taxonomies**](docs/TagsApi.md#list_taxonomies) | **GET** /tags/taxonomies | Returns the supported taxonomies
 *TxsApi* | [**get_tx**](docs/TxsApi.md#get_tx) | **GET** /{currency}/txs/{tx_hash} | Returns details of a specific transaction identified by its hash.
 *TxsApi* | [**get_tx_io**](docs/TxsApi.md#get_tx_io) | **GET** /{currency}/txs/{tx_hash}/{io} | Returns input/output values of a specific transaction identified by its hash.
-*TxsApi* | [**list_txs**](docs/TxsApi.md#list_txs) | **GET** /{currency}/txs | Returns transactions
 
 
 ## Documentation For Models
@@ -137,9 +132,10 @@ Class | Method | HTTP request | Description
  - [Address](docs/Address.md)
  - [AddressTag](docs/AddressTag.md)
  - [AddressTagAllOf](docs/AddressTagAllOf.md)
+ - [AddressTx](docs/AddressTx.md)
+ - [AddressTxUtxo](docs/AddressTxUtxo.md)
+ - [AddressTxs](docs/AddressTxs.md)
  - [Addresses](docs/Addresses.md)
- - [BatchOperation](docs/BatchOperation.md)
- - [BatchResponse](docs/BatchResponse.md)
  - [Block](docs/Block.md)
  - [Blocks](docs/Blocks.md)
  - [Concept](docs/Concept.md)
@@ -149,21 +145,13 @@ Class | Method | HTTP request | Description
  - [EntityAddresses](docs/EntityAddresses.md)
  - [EntityTag](docs/EntityTag.md)
  - [EntityTagAllOf](docs/EntityTagAllOf.md)
- - [GetTx](docs/GetTx.md)
- - [GetTxIo](docs/GetTxIo.md)
- - [GetTxIoParameters](docs/GetTxIoParameters.md)
- - [GetTxIoResponse](docs/GetTxIoResponse.md)
- - [GetTxIoResult](docs/GetTxIoResult.md)
- - [GetTxParameters](docs/GetTxParameters.md)
  - [Height](docs/Height.md)
- - [Io](docs/Io.md)
  - [Link](docs/Link.md)
  - [LinkUtxo](docs/LinkUtxo.md)
  - [Links](docs/Links.md)
- - [ListEntityAddresses](docs/ListEntityAddresses.md)
- - [ListEntityAddressesParameters](docs/ListEntityAddressesParameters.md)
  - [Neighbor](docs/Neighbor.md)
  - [Neighbors](docs/Neighbors.md)
+ - [OnlyEntityIds](docs/OnlyEntityIds.md)
  - [Rate](docs/Rate.md)
  - [Rates](docs/Rates.md)
  - [SearchResult](docs/SearchResult.md)
@@ -199,7 +187,6 @@ Class | Method | HTTP request | Description
  - [TxValue](docs/TxValue.md)
  - [TxValues](docs/TxValues.md)
  - [Txs](docs/Txs.md)
- - [TxsAccount](docs/TxsAccount.md)
  - [Values](docs/Values.md)
 
 

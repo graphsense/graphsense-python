@@ -5,7 +5,6 @@ All URIs are relative to *http://graphsense-rest:9000*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_entity**](EntitiesApi.md#get_entity) | **GET** /{currency}/entities/{entity} | Get an entity, optionally with tags
-[**list_entities**](EntitiesApi.md#list_entities) | **GET** /{currency}/entities | Get entities
 [**list_entity_addresses**](EntitiesApi.md#list_entity_addresses) | **GET** /{currency}/entities/{entity}/addresses | Get an entity&#39;s addresses
 [**list_entity_links**](EntitiesApi.md#list_entity_links) | **GET** /{currency}/entities/{entity}/links | Get transactions between two entities
 [**list_entity_neighbors**](EntitiesApi.md#list_entity_neighbors) | **GET** /{currency}/entities/{entity}/neighbors | Get an entity&#39;s neighbors in the entity graph
@@ -74,86 +73,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Entity**](Entity.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **list_entities**
-> Entities list_entities(currency)
-
-Get entities
-
-### Example
-
-```python
-import time
-import graphsense
-from graphsense.api import entities_api
-from graphsense.model.entities import Entities
-from pprint import pprint
-# Defining the host is optional and defaults to http://graphsense-rest:9000
-# See configuration.py for a list of all supported configuration parameters.
-configuration = graphsense.Configuration(
-    host = "http://graphsense-rest:9000"
-)
-
-
-# Enter a context with an instance of the API client
-with graphsense.ApiClient() as api_client:
-    # Create an instance of the API class
-    api_instance = entities_api.EntitiesApi(api_client)
-    currency = "btc" # str | The cryptocurrency (e.g., btc)
-    ids = [
-        1,
-    ] # [int] | Restrict result to given set of comma separated IDs (optional)
-    page = "page_example" # str | Resumption token for retrieving the next page (optional)
-    pagesize = 10 # int | Number of items returned in a single page (optional)
-
-    # example passing only required values which don't have defaults set
-    try:
-        # Get entities
-        api_response = api_instance.list_entities(currency)
-        pprint(api_response)
-    except graphsense.ApiException as e:
-        print("Exception when calling EntitiesApi->list_entities: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        # Get entities
-        api_response = api_instance.list_entities(currency, ids=ids, page=page, pagesize=pagesize)
-        pprint(api_response)
-    except graphsense.ApiException as e:
-        print("Exception when calling EntitiesApi->list_entities: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **currency** | **str**| The cryptocurrency (e.g., btc) |
- **ids** | **[int]**| Restrict result to given set of comma separated IDs | [optional]
- **page** | **str**| Resumption token for retrieving the next page | [optional]
- **pagesize** | **int**| Number of items returned in a single page | [optional]
-
-### Return type
-
-[**Entities**](Entities.md)
 
 ### Authorization
 
@@ -328,6 +247,7 @@ Get an entity's neighbors in the entity graph
 import time
 import graphsense
 from graphsense.api import entities_api
+from graphsense.model.only_entity_ids import OnlyEntityIds
 from graphsense.model.neighbors import Neighbors
 from pprint import pprint
 # Defining the host is optional and defaults to http://graphsense-rest:9000
@@ -344,9 +264,9 @@ with graphsense.ApiClient() as api_client:
     currency = "btc" # str | The cryptocurrency (e.g., btc)
     entity = 67065 # int | The entity ID
     direction = "out" # str | Incoming or outgoing neighbors
-    ids = [
+    only_ids = OnlyEntityIds([
         1,
-    ] # [int] | Restrict result to given set of comma separated IDs (optional)
+    ]) # OnlyEntityIds | Restrict result to given set of comma separated IDs (optional)
     include_labels = False # bool | Whether to include labels of tags (optional) if omitted the server will use the default value of False
     page = "page_example" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
@@ -363,7 +283,7 @@ with graphsense.ApiClient() as api_client:
     # and optional values
     try:
         # Get an entity's neighbors in the entity graph
-        api_response = api_instance.list_entity_neighbors(currency, entity, direction, ids=ids, include_labels=include_labels, page=page, pagesize=pagesize)
+        api_response = api_instance.list_entity_neighbors(currency, entity, direction, only_ids=only_ids, include_labels=include_labels, page=page, pagesize=pagesize)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling EntitiesApi->list_entity_neighbors: %s\n" % e)
@@ -377,7 +297,7 @@ Name | Type | Description  | Notes
  **currency** | **str**| The cryptocurrency (e.g., btc) |
  **entity** | **int**| The entity ID |
  **direction** | **str**| Incoming or outgoing neighbors |
- **ids** | **[int]**| Restrict result to given set of comma separated IDs | [optional]
+ **only_ids** | **OnlyEntityIds**| Restrict result to given set of comma separated IDs | [optional]
  **include_labels** | **bool**| Whether to include labels of tags | [optional] if omitted the server will use the default value of False
  **page** | **str**| Resumption token for retrieving the next page | [optional]
  **pagesize** | **int**| Number of items returned in a single page | [optional]
@@ -404,7 +324,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_entity_txs**
-> TxsAccount list_entity_txs(currency, entity)
+> AddressTxs list_entity_txs(currency, entity)
 
 Get all transactions an entity has been involved in
 
@@ -414,7 +334,7 @@ Get all transactions an entity has been involved in
 import time
 import graphsense
 from graphsense.api import entities_api
-from graphsense.model.txs_account import TxsAccount
+from graphsense.model.address_txs import AddressTxs
 from pprint import pprint
 # Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
@@ -462,7 +382,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TxsAccount**](TxsAccount.md)
+[**AddressTxs**](AddressTxs.md)
 
 ### Authorization
 

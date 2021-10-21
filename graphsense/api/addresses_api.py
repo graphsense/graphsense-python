@@ -23,11 +23,10 @@ from graphsense.model_utils import (  # noqa: F401
 )
 from graphsense.model.address import Address
 from graphsense.model.address_tag import AddressTag
-from graphsense.model.addresses import Addresses
+from graphsense.model.address_txs import AddressTxs
 from graphsense.model.entity import Entity
 from graphsense.model.links import Links
 from graphsense.model.neighbors import Neighbors
-from graphsense.model.txs_account import TxsAccount
 
 
 class AddressesApi(object):
@@ -319,7 +318,7 @@ class AddressesApi(object):
             neighbor,
             **kwargs
         ):
-            """Get transactions between two addresses  # noqa: E501
+            """Get outgoing transactions between two addresses  # noqa: E501
 
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
@@ -655,7 +654,7 @@ class AddressesApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                TxsAccount
+                AddressTxs
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -686,7 +685,7 @@ class AddressesApi(object):
 
         self.list_address_txs = _Endpoint(
             settings={
-                'response_type': (TxsAccount,),
+                'response_type': (AddressTxs,),
                 'auth': [],
                 'endpoint_path': '/{currency}/addresses/{address}/txs',
                 'operation_id': 'list_address_txs',
@@ -754,146 +753,6 @@ class AddressesApi(object):
             },
             api_client=api_client,
             callable=__list_address_txs
-        )
-
-        def __list_addresses(
-            self,
-            currency,
-            **kwargs
-        ):
-            """Get addresses  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.list_addresses(currency, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                currency (str): The cryptocurrency (e.g., btc)
-
-            Keyword Args:
-                ids ([str]): Restrict result to given set of comma separated addresses. [optional]
-                page (str): Resumption token for retrieving the next page. [optional]
-                pagesize (int): Number of items returned in a single page. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                Addresses
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['currency'] = \
-                currency
-            return self.call_with_http_info(**kwargs)
-
-        self.list_addresses = _Endpoint(
-            settings={
-                'response_type': (Addresses,),
-                'auth': [],
-                'endpoint_path': '/{currency}/addresses',
-                'operation_id': 'list_addresses',
-                'http_method': 'GET',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'currency',
-                    'ids',
-                    'page',
-                    'pagesize',
-                ],
-                'required': [
-                    'currency',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                    'pagesize',
-                ]
-            },
-            root_map={
-                'validations': {
-                    ('pagesize',): {
-
-                        'inclusive_minimum': 1,
-                    },
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'currency':
-                        (str,),
-                    'ids':
-                        ([str],),
-                    'page':
-                        (str,),
-                    'pagesize':
-                        (int,),
-                },
-                'attribute_map': {
-                    'currency': 'currency',
-                    'ids': 'ids',
-                    'page': 'page',
-                    'pagesize': 'pagesize',
-                },
-                'location_map': {
-                    'currency': 'path',
-                    'ids': 'query',
-                    'page': 'query',
-                    'pagesize': 'query',
-                },
-                'collection_format_map': {
-                    'ids': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__list_addresses
         )
 
         def __list_tags_by_address(

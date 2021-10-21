@@ -37,20 +37,6 @@ class TestBlocksApi(unittest.TestCase):
         """
         pass
 
-    def test_list_block_txs_csv(self):
-        """Test case for list_block_txs_csv
-
-        Get block transactions as CSV  # noqa: E501
-        """
-        pass
-
-    def test_list_blocks(self):
-        """Test case for list_blocks
-
-        Get all blocks  # noqa: E501
-        """
-        pass
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -40,14 +40,7 @@ class TestAddressesApi(unittest.TestCase):
     def test_list_address_links(self):
         """Test case for list_address_links
 
-        Get transactions between two addresses  # noqa: E501
-        """
-        pass
-
-    def test_list_address_links_csv(self):
-        """Test case for list_address_links_csv
-
-        Get transactions between two addresses as CSV  # noqa: E501
+        Get outgoing transactions between two addresses  # noqa: E501
         """
         pass
 
@@ -58,13 +51,6 @@ class TestAddressesApi(unittest.TestCase):
         """
         pass
 
-    def test_list_address_neighbors_csv(self):
-        """Test case for list_address_neighbors_csv
-
-        Get an addresses' neighbors in the address graph as CSV  # noqa: E501
-        """
-        pass
-
     def test_list_address_txs(self):
         """Test case for list_address_txs
 
@@ -72,36 +58,8 @@ class TestAddressesApi(unittest.TestCase):
         """
         pass
 
-    def test_list_address_txs_csv(self):
-        """Test case for list_address_txs_csv
-
-        Get all transactions an address has been involved in as CSV  # noqa: E501
-        """
-        pass
-
-    def test_list_addresses(self):
-        """Test case for list_addresses
-
-        Get addresses  # noqa: E501
-        """
-        pass
-
-    def test_list_addresses_csv(self):
-        """Test case for list_addresses_csv
-
-        Get addresses as CSV  # noqa: E501
-        """
-        pass
-
     def test_list_tags_by_address(self):
         """Test case for list_tags_by_address
-
-        Get attribution tags for a given address  # noqa: E501
-        """
-        pass
-
-    def test_list_tags_by_address_csv(self):
-        """Test case for list_tags_by_address_csv
 
         Get attribution tags for a given address  # noqa: E501
         """

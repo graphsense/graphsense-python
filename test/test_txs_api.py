@@ -30,10 +30,10 @@ class TestTxsApi(unittest.TestCase):
         """
         pass
 
-    def test_list_txs(self):
-        """Test case for list_txs
+    def test_get_tx_io(self):
+        """Test case for get_tx_io
 
-        Returns transactions  # noqa: E501
+        Returns input/output values of a specific transaction identified by its hash.  # noqa: E501
         """
         pass
 

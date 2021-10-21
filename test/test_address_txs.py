@@ -12,13 +12,13 @@ import sys
 import unittest
 
 import graphsense
-from graphsense.model.io import Io
-globals()['Io'] = Io
-from graphsense.model.get_tx_io_parameters import GetTxIoParameters
+from graphsense.model.address_tx import AddressTx
+globals()['AddressTx'] = AddressTx
+from graphsense.model.address_txs import AddressTxs
 
 
-class TestGetTxIoParameters(unittest.TestCase):
-    """GetTxIoParameters unit test stubs"""
+class TestAddressTxs(unittest.TestCase):
+    """AddressTxs unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,10 +26,10 @@ class TestGetTxIoParameters(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testGetTxIoParameters(self):
-        """Test GetTxIoParameters"""
+    def testAddressTxs(self):
+        """Test AddressTxs"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = GetTxIoParameters()  # noqa: E501
+        # model = AddressTxs()  # noqa: E501
         pass
 
 

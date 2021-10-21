@@ -19,6 +19,7 @@ import time
 import graphsense
 from graphsense.api import rates_api
 from graphsense.model.rates import Rates
+from graphsense.model.height import Height
 from pprint import pprint
 # Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
@@ -32,7 +33,7 @@ with graphsense.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = rates_api.RatesApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
-    height = 1 # int | The block height
+    height = Height(1) # Height | The block height
 
     # example passing only required values which don't have defaults set
     try:
@@ -49,7 +50,7 @@ with graphsense.ApiClient() as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **str**| The cryptocurrency (e.g., btc) |
- **height** | **int**| The block height |
+ **height** | **Height**| The block height |
 
 ### Return type
 

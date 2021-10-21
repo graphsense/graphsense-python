@@ -11,22 +11,22 @@
 import unittest
 
 import graphsense
-from graphsense.api.batch_api import BatchApi  # noqa: E501
+from graphsense.api.bulk_api import BulkApi  # noqa: E501
 
 
-class TestBatchApi(unittest.TestCase):
-    """BatchApi unit test stubs"""
+class TestBulkApi(unittest.TestCase):
+    """BulkApi unit test stubs"""
 
     def setUp(self):
-        self.api = BatchApi()  # noqa: E501
+        self.api = BulkApi()  # noqa: E501
 
     def tearDown(self):
         pass
 
-    def test_batch(self):
-        """Test case for batch
+    def test_bulk(self):
+        """Test case for bulk
 
-        Get data as CSV in batch  # noqa: E501
+        Get data as CSV or JSON in bulk  # noqa: E501
         """
         pass
 

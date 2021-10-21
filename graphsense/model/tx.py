@@ -104,6 +104,8 @@ class Tx(ModelComposed):
             'total_input': (Values,),  # noqa: E501
             'total_output': (Values,),  # noqa: E501
             'tx_hash': (str,),  # noqa: E501
+            'from_address': (str,),  # noqa: E501
+            'to_address': (str,),  # noqa: E501
             'value': (Values,),  # noqa: E501
         }
 
@@ -130,6 +132,8 @@ class Tx(ModelComposed):
         'total_input': 'total_input',  # noqa: E501
         'total_output': 'total_output',  # noqa: E501
         'tx_hash': 'tx_hash',  # noqa: E501
+        'from_address': 'from_address',  # noqa: E501
+        'to_address': 'to_address',  # noqa: E501
         'value': 'value',  # noqa: E501
     }
 
@@ -181,6 +185,8 @@ class Tx(ModelComposed):
             total_input (Values): [optional]  # noqa: E501
             total_output (Values): [optional]  # noqa: E501
             tx_hash (str): Transaction hash. [optional]  # noqa: E501
+            from_address (str): Address. [optional]  # noqa: E501
+            to_address (str): Address. [optional]  # noqa: E501
             value (Values): [optional]  # noqa: E501
         """
 
@@ -291,6 +297,8 @@ class Tx(ModelComposed):
             total_input (Values): [optional]  # noqa: E501
             total_output (Values): [optional]  # noqa: E501
             tx_hash (str): Transaction hash. [optional]  # noqa: E501
+            from_address (str): Address. [optional]  # noqa: E501
+            to_address (str): Address. [optional]  # noqa: E501
             value (Values): [optional]  # noqa: E501
         """
 

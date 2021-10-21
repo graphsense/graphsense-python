@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_tx**](TxsApi.md#get_tx) | **GET** /{currency}/txs/{tx_hash} | Returns details of a specific transaction identified by its hash.
 [**get_tx_io**](TxsApi.md#get_tx_io) | **GET** /{currency}/txs/{tx_hash}/{io} | Returns input/output values of a specific transaction identified by its hash.
-[**list_txs**](TxsApi.md#list_txs) | **GET** /{currency}/txs | Returns transactions
 
 
 # **get_tx**
@@ -35,11 +34,21 @@ with graphsense.ApiClient() as api_client:
     api_instance = txs_api.TxsApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
     tx_hash = "ab188013" # str | The transaction hash
+    include_io = False # bool | Whether to include inputs/outputs of a transaction (UTXO only) (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
     try:
         # Returns details of a specific transaction identified by its hash.
         api_response = api_instance.get_tx(currency, tx_hash)
+        pprint(api_response)
+    except graphsense.ApiException as e:
+        print("Exception when calling TxsApi->get_tx: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Returns details of a specific transaction identified by its hash.
+        api_response = api_instance.get_tx(currency, tx_hash, include_io=include_io)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling TxsApi->get_tx: %s\n" % e)
@@ -52,6 +61,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **str**| The cryptocurrency (e.g., btc) |
  **tx_hash** | **str**| The transaction hash |
+ **include_io** | **bool**| Whether to include inputs/outputs of a transaction (UTXO only) | [optional] if omitted the server will use the default value of False
 
 ### Return type
 
@@ -85,7 +95,6 @@ Returns input/output values of a specific transaction identified by its hash.
 import time
 import graphsense
 from graphsense.api import txs_api
-from graphsense.model.io import Io
 from graphsense.model.tx_values import TxValues
 from pprint import pprint
 # Defining the host is optional and defaults to http://graphsense-rest:9000
@@ -101,7 +110,7 @@ with graphsense.ApiClient() as api_client:
     api_instance = txs_api.TxsApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
     tx_hash = "ab188013" # str | The transaction hash
-    io = Io("outputs") # Io | Input or outpus values of a transaction
+    io = "outputs" # str | Input or outpus values of a transaction
 
     # example passing only required values which don't have defaults set
     try:
@@ -119,85 +128,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **str**| The cryptocurrency (e.g., btc) |
  **tx_hash** | **str**| The transaction hash |
- **io** | **Io**| Input or outpus values of a transaction |
+ **io** | **str**| Input or outpus values of a transaction |
 
 ### Return type
 
 [**TxValues**](TxValues.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **list_txs**
-> Txs list_txs(currency)
-
-Returns transactions
-
-### Example
-
-```python
-import time
-import graphsense
-from graphsense.api import txs_api
-from graphsense.model.txs import Txs
-from pprint import pprint
-# Defining the host is optional and defaults to http://graphsense-rest:9000
-# See configuration.py for a list of all supported configuration parameters.
-configuration = graphsense.Configuration(
-    host = "http://graphsense-rest:9000"
-)
-
-
-# Enter a context with an instance of the API client
-with graphsense.ApiClient() as api_client:
-    # Create an instance of the API class
-    api_instance = txs_api.TxsApi(api_client)
-    currency = "btc" # str | The cryptocurrency (e.g., btc)
-    page = "page_example" # str | Resumption token for retrieving the next page (optional)
-
-    # example passing only required values which don't have defaults set
-    try:
-        # Returns transactions
-        api_response = api_instance.list_txs(currency)
-        pprint(api_response)
-    except graphsense.ApiException as e:
-        print("Exception when calling TxsApi->list_txs: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        # Returns transactions
-        api_response = api_instance.list_txs(currency, page=page)
-        pprint(api_response)
-    except graphsense.ApiException as e:
-        print("Exception when calling TxsApi->list_txs: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **currency** | **str**| The cryptocurrency (e.g., btc) |
- **page** | **str**| Resumption token for retrieving the next page | [optional]
-
-### Return type
-
-[**Txs**](Txs.md)
 
 ### Authorization
 

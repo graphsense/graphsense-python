@@ -4,8 +4,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**from_address** | **str** | Address | 
 **height** | [**Height**](Height.md) |  | 
 **timestamp** | **int** | Timestamp | 
+**to_address** | **str** | Address | 
 **tx_hash** | **str** | Transaction hash | 
 **value** | [**Values**](Values.md) |  | 
 **tx_type** | **str** |  | defaults to "account"

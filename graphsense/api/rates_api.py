@@ -21,6 +21,7 @@ from graphsense.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
+from graphsense.model.height import Height
 from graphsense.model.rates import Rates
 
 
@@ -52,7 +53,7 @@ class RatesApi(object):
 
             Args:
                 currency (str): The cryptocurrency (e.g., btc)
-                height (int): The block height
+                height (Height): The block height
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
@@ -128,15 +129,10 @@ class RatesApi(object):
                 'enum': [
                 ],
                 'validation': [
-                    'height',
                 ]
             },
             root_map={
                 'validations': {
-                    ('height',): {
-
-                        'inclusive_minimum': 0,
-                    },
                 },
                 'allowed_values': {
                 },
@@ -144,7 +140,7 @@ class RatesApi(object):
                     'currency':
                         (str,),
                     'height':
-                        (int,),
+                        (Height,),
                 },
                 'attribute_map': {
                     'currency': 'currency',

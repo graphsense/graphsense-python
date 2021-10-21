@@ -12,11 +12,11 @@ import sys
 import unittest
 
 import graphsense
-from graphsense.model.get_tx_parameters import GetTxParameters
+from graphsense.model.only_entity_ids import OnlyEntityIds
 
 
-class TestGetTxParameters(unittest.TestCase):
-    """GetTxParameters unit test stubs"""
+class TestOnlyEntityIds(unittest.TestCase):
+    """OnlyEntityIds unit test stubs"""
 
     def setUp(self):
         pass
@@ -24,10 +24,10 @@ class TestGetTxParameters(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testGetTxParameters(self):
-        """Test GetTxParameters"""
+    def testOnlyEntityIds(self):
+        """Test OnlyEntityIds"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = GetTxParameters()  # noqa: E501
+        # model = OnlyEntityIds()  # noqa: E501
         pass
 
 

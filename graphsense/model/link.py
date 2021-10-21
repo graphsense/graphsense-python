@@ -99,6 +99,8 @@ class Link(ModelComposed):
             'output_value': (Values,),  # noqa: E501
             'timestamp': (int,),  # noqa: E501
             'tx_hash': (str,),  # noqa: E501
+            'from_address': (str,),  # noqa: E501
+            'to_address': (str,),  # noqa: E501
             'value': (Values,),  # noqa: E501
         }
 
@@ -122,6 +124,8 @@ class Link(ModelComposed):
         'output_value': 'output_value',  # noqa: E501
         'timestamp': 'timestamp',  # noqa: E501
         'tx_hash': 'tx_hash',  # noqa: E501
+        'from_address': 'from_address',  # noqa: E501
+        'to_address': 'to_address',  # noqa: E501
         'value': 'value',  # noqa: E501
     }
 
@@ -170,6 +174,8 @@ class Link(ModelComposed):
             output_value (Values): [optional]  # noqa: E501
             timestamp (int): Timestamp. [optional]  # noqa: E501
             tx_hash (str): Transaction hash. [optional]  # noqa: E501
+            from_address (str): Address. [optional]  # noqa: E501
+            to_address (str): Address. [optional]  # noqa: E501
             value (Values): [optional]  # noqa: E501
         """
 
@@ -277,6 +283,8 @@ class Link(ModelComposed):
             output_value (Values): [optional]  # noqa: E501
             timestamp (int): Timestamp. [optional]  # noqa: E501
             tx_hash (str): Transaction hash. [optional]  # noqa: E501
+            from_address (str): Address. [optional]  # noqa: E501
+            to_address (str): Address. [optional]  # noqa: E501
             value (Values): [optional]  # noqa: E501
         """
 

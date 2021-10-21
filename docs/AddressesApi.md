@@ -6,10 +6,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_address**](AddressesApi.md#get_address) | **GET** /{currency}/addresses/{address} | Get an address, optionally with tags
 [**get_address_entity**](AddressesApi.md#get_address_entity) | **GET** /{currency}/addresses/{address}/entity | Get the entity of an address
-[**list_address_links**](AddressesApi.md#list_address_links) | **GET** /{currency}/addresses/{address}/links | Get transactions between two addresses
+[**list_address_links**](AddressesApi.md#list_address_links) | **GET** /{currency}/addresses/{address}/links | Get outgoing transactions between two addresses
 [**list_address_neighbors**](AddressesApi.md#list_address_neighbors) | **GET** /{currency}/addresses/{address}/neighbors | Get an addresses&#39; neighbors in the address graph
 [**list_address_txs**](AddressesApi.md#list_address_txs) | **GET** /{currency}/addresses/{address}/txs | Get all transactions an address has been involved in
-[**list_addresses**](AddressesApi.md#list_addresses) | **GET** /{currency}/addresses | Get addresses
 [**list_tags_by_address**](AddressesApi.md#list_tags_by_address) | **GET** /{currency}/addresses/{address}/tags | Get attribution tags for a given address
 
 
@@ -170,7 +169,7 @@ No authorization required
 # **list_address_links**
 > Links list_address_links(currency, address, neighbor)
 
-Get transactions between two addresses
+Get outgoing transactions between two addresses
 
 ### Example
 
@@ -197,7 +196,7 @@ with graphsense.ApiClient() as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Get transactions between two addresses
+        # Get outgoing transactions between two addresses
         api_response = api_instance.list_address_links(currency, address, neighbor)
         pprint(api_response)
     except graphsense.ApiException as e:
@@ -317,7 +316,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_address_txs**
-> TxsAccount list_address_txs(currency, address)
+> AddressTxs list_address_txs(currency, address)
 
 Get all transactions an address has been involved in
 
@@ -327,7 +326,7 @@ Get all transactions an address has been involved in
 import time
 import graphsense
 from graphsense.api import addresses_api
-from graphsense.model.txs_account import TxsAccount
+from graphsense.model.address_txs import AddressTxs
 from pprint import pprint
 # Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
@@ -375,87 +374,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TxsAccount**](TxsAccount.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **list_addresses**
-> Addresses list_addresses(currency)
-
-Get addresses
-
-### Example
-
-```python
-import time
-import graphsense
-from graphsense.api import addresses_api
-from graphsense.model.addresses import Addresses
-from pprint import pprint
-# Defining the host is optional and defaults to http://graphsense-rest:9000
-# See configuration.py for a list of all supported configuration parameters.
-configuration = graphsense.Configuration(
-    host = "http://graphsense-rest:9000"
-)
-
-
-# Enter a context with an instance of the API client
-with graphsense.ApiClient() as api_client:
-    # Create an instance of the API class
-    api_instance = addresses_api.AddressesApi(api_client)
-    currency = "btc" # str | The cryptocurrency (e.g., btc)
-    ids = [
-        "ids_example",
-    ] # [str] | Restrict result to given set of comma separated addresses (optional)
-    page = "page_example" # str | Resumption token for retrieving the next page (optional)
-    pagesize = 10 # int | Number of items returned in a single page (optional)
-
-    # example passing only required values which don't have defaults set
-    try:
-        # Get addresses
-        api_response = api_instance.list_addresses(currency)
-        pprint(api_response)
-    except graphsense.ApiException as e:
-        print("Exception when calling AddressesApi->list_addresses: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        # Get addresses
-        api_response = api_instance.list_addresses(currency, ids=ids, page=page, pagesize=pagesize)
-        pprint(api_response)
-    except graphsense.ApiException as e:
-        print("Exception when calling AddressesApi->list_addresses: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **currency** | **str**| The cryptocurrency (e.g., btc) |
- **ids** | **[str]**| Restrict result to given set of comma separated addresses | [optional]
- **page** | **str**| Resumption token for retrieving the next page | [optional]
- **pagesize** | **int**| Number of items returned in a single page | [optional]
-
-### Return type
-
-[**Addresses**](Addresses.md)
+[**AddressTxs**](AddressTxs.md)
 
 ### Authorization
 

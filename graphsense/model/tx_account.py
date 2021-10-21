@@ -89,8 +89,10 @@ class TxAccount(ModelNormal):
         """
         lazy_import()
         return {
+            'from_address': (str,),  # noqa: E501
             'height': (Height,),  # noqa: E501
             'timestamp': (int,),  # noqa: E501
+            'to_address': (str,),  # noqa: E501
             'tx_hash': (str,),  # noqa: E501
             'tx_type': (str,),  # noqa: E501
             'value': (Values,),  # noqa: E501
@@ -102,8 +104,10 @@ class TxAccount(ModelNormal):
 
 
     attribute_map = {
+        'from_address': 'from_address',  # noqa: E501
         'height': 'height',  # noqa: E501
         'timestamp': 'timestamp',  # noqa: E501
+        'to_address': 'to_address',  # noqa: E501
         'tx_hash': 'tx_hash',  # noqa: E501
         'tx_type': 'tx_type',  # noqa: E501
         'value': 'value',  # noqa: E501
@@ -116,12 +120,14 @@ class TxAccount(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, height, timestamp, tx_hash, value, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, from_address, height, timestamp, to_address, tx_hash, value, *args, **kwargs):  # noqa: E501
         """TxAccount - a model defined in OpenAPI
 
         Args:
+            from_address (str): Address
             height (Height):
             timestamp (int): Timestamp
+            to_address (str): Address
             tx_hash (str): Transaction hash
             value (Values):
 
@@ -185,8 +191,10 @@ class TxAccount(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.from_address = from_address
         self.height = height
         self.timestamp = timestamp
+        self.to_address = to_address
         self.tx_hash = tx_hash
         self.tx_type = tx_type
         self.value = value
@@ -210,12 +218,14 @@ class TxAccount(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, height, timestamp, tx_hash, value, *args, **kwargs):  # noqa: E501
+    def __init__(self, from_address, height, timestamp, to_address, tx_hash, value, *args, **kwargs):  # noqa: E501
         """TxAccount - a model defined in OpenAPI
 
         Args:
+            from_address (str): Address
             height (Height):
             timestamp (int): Timestamp
+            to_address (str): Address
             tx_hash (str): Transaction hash
             value (Values):
 
@@ -277,8 +287,10 @@ class TxAccount(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.from_address = from_address
         self.height = height
         self.timestamp = timestamp
+        self.to_address = to_address
         self.tx_hash = tx_hash
         self.tx_type = tx_type
         self.value = value

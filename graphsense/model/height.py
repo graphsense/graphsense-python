@@ -55,7 +55,7 @@ class Height(ModelSimple):
 
     validations = {
         ('value',): {
-            'inclusive_minimum': 1,
+            'inclusive_minimum': 0,
         },
     }
 

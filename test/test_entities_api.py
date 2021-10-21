@@ -30,31 +30,10 @@ class TestEntitiesApi(unittest.TestCase):
         """
         pass
 
-    def test_list_entities(self):
-        """Test case for list_entities
-
-        Get entities  # noqa: E501
-        """
-        pass
-
-    def test_list_entities_csv(self):
-        """Test case for list_entities_csv
-
-        Get entities as CSV  # noqa: E501
-        """
-        pass
-
     def test_list_entity_addresses(self):
         """Test case for list_entity_addresses
 
         Get an entity's addresses  # noqa: E501
-        """
-        pass
-
-    def test_list_entity_addresses_csv(self):
-        """Test case for list_entity_addresses_csv
-
-        Get an entity's addresses as CSV  # noqa: E501
         """
         pass
 
@@ -65,24 +44,10 @@ class TestEntitiesApi(unittest.TestCase):
         """
         pass
 
-    def test_list_entity_links_csv(self):
-        """Test case for list_entity_links_csv
-
-        Get transactions between two entities as CSV  # noqa: E501
-        """
-        pass
-
     def test_list_entity_neighbors(self):
         """Test case for list_entity_neighbors
 
         Get an entity's neighbors in the entity graph  # noqa: E501
-        """
-        pass
-
-    def test_list_entity_neighbors_csv(self):
-        """Test case for list_entity_neighbors_csv
-
-        Get an entity's neighbors in the entity graph as CSV  # noqa: E501
         """
         pass
 
@@ -93,24 +58,10 @@ class TestEntitiesApi(unittest.TestCase):
         """
         pass
 
-    def test_list_entity_txs_csv(self):
-        """Test case for list_entity_txs_csv
-
-        Get all transactions an entity has been involved in as CSV  # noqa: E501
-        """
-        pass
-
     def test_list_tags_by_entity(self):
         """Test case for list_tags_by_entity
 
         Get tags for a given entity  # noqa: E501
-        """
-        pass
-
-    def test_list_tags_by_entity_by_level_csv(self):
-        """Test case for list_tags_by_entity_by_level_csv
-
-        Get address or entity tags for a given entity as CSV  # noqa: E501
         """
         pass
 

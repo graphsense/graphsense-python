@@ -12,15 +12,15 @@ import sys
 import unittest
 
 import graphsense
-from graphsense.model.get_tx_io import GetTxIo
-from graphsense.model.io import Io
-globals()['GetTxIo'] = GetTxIo
-globals()['Io'] = Io
-from graphsense.model.batch_operation import BatchOperation
+from graphsense.model.height import Height
+from graphsense.model.values import Values
+globals()['Height'] = Height
+globals()['Values'] = Values
+from graphsense.model.address_tx_utxo import AddressTxUtxo
 
 
-class TestBatchOperation(unittest.TestCase):
-    """BatchOperation unit test stubs"""
+class TestAddressTxUtxo(unittest.TestCase):
+    """AddressTxUtxo unit test stubs"""
 
     def setUp(self):
         pass
@@ -28,10 +28,10 @@ class TestBatchOperation(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testBatchOperation(self):
-        """Test BatchOperation"""
+    def testAddressTxUtxo(self):
+        """Test AddressTxUtxo"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = BatchOperation()  # noqa: E501
+        # model = AddressTxUtxo()  # noqa: E501
         pass
 
 

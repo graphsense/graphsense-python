@@ -21,14 +21,14 @@ from graphsense.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
-from graphsense.model.entities import Entities
+from graphsense.model.address_txs import AddressTxs
 from graphsense.model.entity import Entity
 from graphsense.model.entity_addresses import EntityAddresses
 from graphsense.model.links import Links
 from graphsense.model.neighbors import Neighbors
+from graphsense.model.only_entity_ids import OnlyEntityIds
 from graphsense.model.search_result_level1 import SearchResultLevel1
 from graphsense.model.tags import Tags
-from graphsense.model.txs_account import TxsAccount
 
 
 class EntitiesApi(object):
@@ -179,146 +179,6 @@ class EntitiesApi(object):
             },
             api_client=api_client,
             callable=__get_entity
-        )
-
-        def __list_entities(
-            self,
-            currency,
-            **kwargs
-        ):
-            """Get entities  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.list_entities(currency, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                currency (str): The cryptocurrency (e.g., btc)
-
-            Keyword Args:
-                ids ([int]): Restrict result to given set of comma separated IDs. [optional]
-                page (str): Resumption token for retrieving the next page. [optional]
-                pagesize (int): Number of items returned in a single page. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                Entities
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['currency'] = \
-                currency
-            return self.call_with_http_info(**kwargs)
-
-        self.list_entities = _Endpoint(
-            settings={
-                'response_type': (Entities,),
-                'auth': [],
-                'endpoint_path': '/{currency}/entities',
-                'operation_id': 'list_entities',
-                'http_method': 'GET',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'currency',
-                    'ids',
-                    'page',
-                    'pagesize',
-                ],
-                'required': [
-                    'currency',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                    'pagesize',
-                ]
-            },
-            root_map={
-                'validations': {
-                    ('pagesize',): {
-
-                        'inclusive_minimum': 1,
-                    },
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'currency':
-                        (str,),
-                    'ids':
-                        ([int],),
-                    'page':
-                        (str,),
-                    'pagesize':
-                        (int,),
-                },
-                'attribute_map': {
-                    'currency': 'currency',
-                    'ids': 'ids',
-                    'page': 'page',
-                    'pagesize': 'pagesize',
-                },
-                'location_map': {
-                    'currency': 'path',
-                    'ids': 'query',
-                    'page': 'query',
-                    'pagesize': 'query',
-                },
-                'collection_format_map': {
-                    'ids': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__list_entities
         )
 
         def __list_entity_addresses(
@@ -621,7 +481,7 @@ class EntitiesApi(object):
                 direction (str): Incoming or outgoing neighbors
 
             Keyword Args:
-                ids ([int]): Restrict result to given set of comma separated IDs. [optional]
+                only_ids (OnlyEntityIds): Restrict result to given set of comma separated IDs. [optional]
                 include_labels (bool): Whether to include labels of tags. [optional] if omitted the server will use the default value of False
                 page (str): Resumption token for retrieving the next page. [optional]
                 pagesize (int): Number of items returned in a single page. [optional]
@@ -691,7 +551,7 @@ class EntitiesApi(object):
                     'currency',
                     'entity',
                     'direction',
-                    'ids',
+                    'only_ids',
                     'include_labels',
                     'page',
                     'pagesize',
@@ -731,8 +591,8 @@ class EntitiesApi(object):
                         (int,),
                     'direction':
                         (str,),
-                    'ids':
-                        ([int],),
+                    'only_ids':
+                        (OnlyEntityIds,),
                     'include_labels':
                         (bool,),
                     'page':
@@ -744,7 +604,7 @@ class EntitiesApi(object):
                     'currency': 'currency',
                     'entity': 'entity',
                     'direction': 'direction',
-                    'ids': 'ids',
+                    'only_ids': 'only_ids',
                     'include_labels': 'include_labels',
                     'page': 'page',
                     'pagesize': 'pagesize',
@@ -753,13 +613,12 @@ class EntitiesApi(object):
                     'currency': 'path',
                     'entity': 'path',
                     'direction': 'query',
-                    'ids': 'query',
+                    'only_ids': 'query',
                     'include_labels': 'query',
                     'page': 'query',
                     'pagesize': 'query',
                 },
                 'collection_format_map': {
-                    'ids': 'multi',
                 }
             },
             headers_map={
@@ -814,7 +673,7 @@ class EntitiesApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                TxsAccount
+                AddressTxs
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -845,7 +704,7 @@ class EntitiesApi(object):
 
         self.list_entity_txs = _Endpoint(
             settings={
-                'response_type': (TxsAccount,),
+                'response_type': (AddressTxs,),
                 'auth': [],
                 'endpoint_path': '/{currency}/entities/{entity}/txs',
                 'operation_id': 'list_entity_txs',
