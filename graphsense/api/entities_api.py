@@ -345,6 +345,8 @@ class EntitiesApi(object):
                 neighbor (int): Neighbor entity
 
             Keyword Args:
+                page (str): Resumption token for retrieving the next page. [optional]
+                pagesize (int): Number of items returned in a single page. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -411,6 +413,8 @@ class EntitiesApi(object):
                     'currency',
                     'entity',
                     'neighbor',
+                    'page',
+                    'pagesize',
                 ],
                 'required': [
                     'currency',
@@ -422,10 +426,15 @@ class EntitiesApi(object):
                 'enum': [
                 ],
                 'validation': [
+                    'pagesize',
                 ]
             },
             root_map={
                 'validations': {
+                    ('pagesize',): {
+
+                        'inclusive_minimum': 1,
+                    },
                 },
                 'allowed_values': {
                 },
@@ -436,16 +445,24 @@ class EntitiesApi(object):
                         (int,),
                     'neighbor':
                         (int,),
+                    'page':
+                        (str,),
+                    'pagesize':
+                        (int,),
                 },
                 'attribute_map': {
                     'currency': 'currency',
                     'entity': 'entity',
                     'neighbor': 'neighbor',
+                    'page': 'page',
+                    'pagesize': 'pagesize',
                 },
                 'location_map': {
                     'currency': 'path',
                     'entity': 'path',
                     'neighbor': 'query',
+                    'page': 'query',
+                    'pagesize': 'query',
                 },
                 'collection_format_map': {
                 }

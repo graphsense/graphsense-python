@@ -193,11 +193,22 @@ with graphsense.ApiClient() as api_client:
     currency = "btc" # str | The cryptocurrency (e.g., btc)
     address = "addressA" # str | The cryptocurrency address
     neighbor = "addressE" # str | Neighbor address
+    page = "page_example" # str | Resumption token for retrieving the next page (optional)
+    pagesize = 10 # int | Number of items returned in a single page (optional)
 
     # example passing only required values which don't have defaults set
     try:
         # Get outgoing transactions between two addresses
         api_response = api_instance.list_address_links(currency, address, neighbor)
+        pprint(api_response)
+    except graphsense.ApiException as e:
+        print("Exception when calling AddressesApi->list_address_links: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Get outgoing transactions between two addresses
+        api_response = api_instance.list_address_links(currency, address, neighbor, page=page, pagesize=pagesize)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling AddressesApi->list_address_links: %s\n" % e)
@@ -211,6 +222,8 @@ Name | Type | Description  | Notes
  **currency** | **str**| The cryptocurrency (e.g., btc) |
  **address** | **str**| The cryptocurrency address |
  **neighbor** | **str**| Neighbor address |
+ **page** | **str**| Resumption token for retrieving the next page | [optional]
+ **pagesize** | **int**| Number of items returned in a single page | [optional]
 
 ### Return type
 

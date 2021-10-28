@@ -332,6 +332,8 @@ class AddressesApi(object):
                 neighbor (str): Neighbor address
 
             Keyword Args:
+                page (str): Resumption token for retrieving the next page. [optional]
+                pagesize (int): Number of items returned in a single page. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -398,6 +400,8 @@ class AddressesApi(object):
                     'currency',
                     'address',
                     'neighbor',
+                    'page',
+                    'pagesize',
                 ],
                 'required': [
                     'currency',
@@ -409,10 +413,15 @@ class AddressesApi(object):
                 'enum': [
                 ],
                 'validation': [
+                    'pagesize',
                 ]
             },
             root_map={
                 'validations': {
+                    ('pagesize',): {
+
+                        'inclusive_minimum': 1,
+                    },
                 },
                 'allowed_values': {
                 },
@@ -423,16 +432,24 @@ class AddressesApi(object):
                         (str,),
                     'neighbor':
                         (str,),
+                    'page':
+                        (str,),
+                    'pagesize':
+                        (int,),
                 },
                 'attribute_map': {
                     'currency': 'currency',
                     'address': 'address',
                     'neighbor': 'neighbor',
+                    'page': 'page',
+                    'pagesize': 'pagesize',
                 },
                 'location_map': {
                     'currency': 'path',
                     'address': 'path',
                     'neighbor': 'query',
+                    'page': 'query',
+                    'pagesize': 'query',
                 },
                 'collection_format_map': {
                 }
