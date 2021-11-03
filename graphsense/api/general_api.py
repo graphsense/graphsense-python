@@ -211,7 +211,9 @@ class GeneralApi(object):
         self.search = _Endpoint(
             settings={
                 'response_type': (SearchResult,),
-                'auth': [],
+                'auth': [
+                    'api_key'
+                ],
                 'endpoint_path': '/search',
                 'operation_id': 'search',
                 'http_method': 'GET',

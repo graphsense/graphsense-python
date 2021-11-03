@@ -15,6 +15,7 @@ Get a block by its height
 
 ### Example
 
+* Api Key Authentication (api_key):
 ```python
 import time
 import graphsense
@@ -28,9 +29,19 @@ configuration = graphsense.Configuration(
     host = "http://graphsense-rest:9000"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: api_key
+configuration.api_key['api_key'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with graphsense.ApiClient() as api_client:
+with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = blocks_api.BlocksApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
@@ -52,14 +63,22 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **str**| The cryptocurrency (e.g., btc) |
  **height** | **Height**| The block height |
+**_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
+**async_req** | **bool** | Execute request asynchronously | [optional] default is False.
 
 ### Return type
 
 [**Block**](Block.md)
 
+**Notes:**
+
+* If `async_req` parameter is True, the request will be called asynchronously.  The method will return the request thread.  If parameter `async_req` is False or missing, then the method will return the response directly.
+
+* If the HTTP response code is `429 Too Many Requests` due to rate limit policies, the underlying `urllib3` HTTP client will automatically stall the request as long as advised by the `Retry-After` header.
+
 ### Authorization
 
-No authorization required
+[api_key](../README.md#api_key)
 
 ### HTTP request headers
 
@@ -81,6 +100,7 @@ Get block transactions
 
 ### Example
 
+* Api Key Authentication (api_key):
 ```python
 import time
 import graphsense
@@ -94,9 +114,19 @@ configuration = graphsense.Configuration(
     host = "http://graphsense-rest:9000"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: api_key
+configuration.api_key['api_key'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with graphsense.ApiClient() as api_client:
+with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = blocks_api.BlocksApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
@@ -118,14 +148,22 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **str**| The cryptocurrency (e.g., btc) |
  **height** | **Height**| The block height |
+**_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
+**async_req** | **bool** | Execute request asynchronously | [optional] default is False.
 
 ### Return type
 
 [**[Tx]**](Tx.md)
 
+**Notes:**
+
+* If `async_req` parameter is True, the request will be called asynchronously.  The method will return the request thread.  If parameter `async_req` is False or missing, then the method will return the response directly.
+
+* If the HTTP response code is `429 Too Many Requests` due to rate limit policies, the underlying `urllib3` HTTP client will automatically stall the request as long as advised by the `Retry-After` header.
+
 ### Authorization
 
-No authorization required
+[api_key](../README.md#api_key)
 
 ### HTTP request headers
 

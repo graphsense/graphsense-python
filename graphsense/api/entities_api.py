@@ -117,7 +117,9 @@ class EntitiesApi(object):
         self.get_entity = _Endpoint(
             settings={
                 'response_type': (Entity,),
-                'auth': [],
+                'auth': [
+                    'api_key'
+                ],
                 'endpoint_path': '/{currency}/entities/{entity}',
                 'operation_id': 'get_entity',
                 'http_method': 'GET',
@@ -255,7 +257,9 @@ class EntitiesApi(object):
         self.list_entity_addresses = _Endpoint(
             settings={
                 'response_type': (EntityAddresses,),
-                'auth': [],
+                'auth': [
+                    'api_key'
+                ],
                 'endpoint_path': '/{currency}/entities/{entity}/addresses',
                 'operation_id': 'list_entity_addresses',
                 'http_method': 'GET',
@@ -402,7 +406,9 @@ class EntitiesApi(object):
         self.list_entity_links = _Endpoint(
             settings={
                 'response_type': (Links,),
-                'auth': [],
+                'auth': [
+                    'api_key'
+                ],
                 'endpoint_path': '/{currency}/entities/{entity}/links',
                 'operation_id': 'list_entity_links',
                 'http_method': 'GET',
@@ -557,7 +563,9 @@ class EntitiesApi(object):
         self.list_entity_neighbors = _Endpoint(
             settings={
                 'response_type': (Neighbors,),
-                'auth': [],
+                'auth': [
+                    'api_key'
+                ],
                 'endpoint_path': '/{currency}/entities/{entity}/neighbors',
                 'operation_id': 'list_entity_neighbors',
                 'http_method': 'GET',
@@ -722,7 +730,9 @@ class EntitiesApi(object):
         self.list_entity_txs = _Endpoint(
             settings={
                 'response_type': (AddressTxs,),
-                'auth': [],
+                'auth': [
+                    'api_key'
+                ],
                 'endpoint_path': '/{currency}/entities/{entity}/txs',
                 'operation_id': 'list_entity_txs',
                 'http_method': 'GET',
@@ -864,7 +874,9 @@ class EntitiesApi(object):
         self.list_tags_by_entity = _Endpoint(
             settings={
                 'response_type': (Tags,),
-                'auth': [],
+                'auth': [
+                    'api_key'
+                ],
                 'endpoint_path': '/{currency}/entities/{entity}/tags',
                 'operation_id': 'list_tags_by_entity',
                 'http_method': 'GET',
@@ -1013,7 +1025,9 @@ class EntitiesApi(object):
         self.search_entity_neighbors = _Endpoint(
             settings={
                 'response_type': ([SearchResultLevel1],),
-                'auth': [],
+                'auth': [
+                    'api_key'
+                ],
                 'endpoint_path': '/{currency}/entities/{entity}/search',
                 'operation_id': 'search_entity_neighbors',
                 'http_method': 'GET',

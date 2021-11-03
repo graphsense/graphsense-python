@@ -110,7 +110,9 @@ class BlocksApi(object):
         self.get_block = _Endpoint(
             settings={
                 'response_type': (Block,),
-                'auth': [],
+                'auth': [
+                    'api_key'
+                ],
                 'endpoint_path': '/{currency}/blocks/{height}',
                 'operation_id': 'get_block',
                 'http_method': 'GET',
@@ -236,7 +238,9 @@ class BlocksApi(object):
         self.list_block_txs = _Endpoint(
             settings={
                 'response_type': ([Tx],),
-                'auth': [],
+                'auth': [
+                    'api_key'
+                ],
                 'endpoint_path': '/{currency}/blocks/{height}/txs',
                 'operation_id': 'list_block_txs',
                 'http_method': 'GET',

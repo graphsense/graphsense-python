@@ -109,7 +109,9 @@ class RatesApi(object):
         self.get_exchange_rates = _Endpoint(
             settings={
                 'response_type': (Rates,),
-                'auth': [],
+                'auth': [
+                    'api_key'
+                ],
                 'endpoint_path': '/{currency}/rates/{height}',
                 'operation_id': 'get_exchange_rates',
                 'http_method': 'GET',

@@ -116,7 +116,9 @@ class BulkApi(object):
         self.bulk = _Endpoint(
             settings={
                 'response_type': ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}],),
-                'auth': [],
+                'auth': [
+                    'api_key'
+                ],
                 'endpoint_path': '/{currency}/bulk/{api}/{operation}',
                 'operation_id': 'bulk',
                 'http_method': 'POST',
