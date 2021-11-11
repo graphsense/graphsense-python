@@ -52,15 +52,6 @@ with graphsense.ApiClient(configuration) as api_client:
         # Get data as CSV in bulk
         api_response = api_instance.bulk_csv(currency, api, operation, body)
         pprint(api_response)
-
-        # Read data into pandas dataframe
-        # Use _preload_content=False to prevent deserializing and stream
-        # the response directly into a dataframe.
-
-        api_response = pandas.read_csv(
-            api_instance.bulk_csv(currency, api, operation, body,
-                                  _preload_content=False)) 
-        pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling BulkApi->bulk_csv: %s\n" % e)
 ```
