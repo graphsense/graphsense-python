@@ -23,10 +23,17 @@ class TestBulkApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_bulk(self):
-        """Test case for bulk
+    def test_bulk_csv(self):
+        """Test case for bulk_csv
 
-        Get data as CSV or JSON in bulk  # noqa: E501
+        Get data as CSV in bulk  # noqa: E501
+        """
+        pass
+
+    def test_bulk_json(self):
+        """Test case for bulk_json
+
+        Get data as JSON in bulk  # noqa: E501
         """
         pass
 

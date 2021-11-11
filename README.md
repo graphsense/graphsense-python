@@ -71,10 +71,10 @@ from graphsense.model.address_txs import AddressTxs
 from graphsense.model.entity import Entity
 from graphsense.model.links import Links
 from graphsense.model.neighbors import Neighbors
-# Defining the host is optional and defaults to http://graphsense-rest:9000
+# Defining the host is optional and defaults to https://api.graphsense.info
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://graphsense-rest:9000"
+    host = "https://api.graphsense.info"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -107,7 +107,7 @@ include_tags = False # bool | Whether to include tags (optional) (default to Fal
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://graphsense-rest:9000*
+All URIs are relative to *https://api.graphsense.info*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -119,7 +119,8 @@ Class | Method | HTTP request | Description
 *AddressesApi* | [**list_tags_by_address**](docs/AddressesApi.md#list_tags_by_address) | **GET** /{currency}/addresses/{address}/tags | Get attribution tags for a given address
 *BlocksApi* | [**get_block**](docs/BlocksApi.md#get_block) | **GET** /{currency}/blocks/{height} | Get a block by its height
 *BlocksApi* | [**list_block_txs**](docs/BlocksApi.md#list_block_txs) | **GET** /{currency}/blocks/{height}/txs | Get block transactions
-*BulkApi* | [**bulk**](docs/BulkApi.md#bulk) | **POST** /{currency}/bulk/{api}/{operation} | Get data as CSV or JSON in bulk
+*BulkApi* | [**bulk_csv**](docs/BulkApi.md#bulk_csv) | **POST** /{currency}/bulk.csv/{api}/{operation} | Get data as CSV in bulk
+*BulkApi* | [**bulk_json**](docs/BulkApi.md#bulk_json) | **POST** /{currency}/bulk.json/{api}/{operation} | Get data as JSON in bulk
 *EntitiesApi* | [**get_entity**](docs/EntitiesApi.md#get_entity) | **GET** /{currency}/entities/{entity} | Get an entity, optionally with tags
 *EntitiesApi* | [**list_entity_addresses**](docs/EntitiesApi.md#list_entity_addresses) | **GET** /{currency}/entities/{entity}/addresses | Get an entity&#39;s addresses
 *EntitiesApi* | [**list_entity_links**](docs/EntitiesApi.md#list_entity_links) | **GET** /{currency}/entities/{entity}/links | Get transactions between two entities
