@@ -195,7 +195,7 @@ class TagsApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                [Tags]
+                Tags
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -224,7 +224,7 @@ class TagsApi(object):
 
         self.list_tags = _Endpoint(
             settings={
-                'response_type': ([Tags],),
+                'response_type': (Tags,),
                 'auth': [
                     'api_key'
                 ],

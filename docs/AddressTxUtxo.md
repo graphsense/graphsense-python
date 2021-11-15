@@ -4,6 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**coinbase** | **bool** | Coinbase transaction flag | 
 **height** | [**Height**](Height.md) |  | 
 **timestamp** | **int** | Timestamp | 
 **tx_hash** | **str** | Transaction hash | 

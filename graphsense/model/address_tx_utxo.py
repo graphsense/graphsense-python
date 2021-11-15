@@ -89,6 +89,7 @@ class AddressTxUtxo(ModelNormal):
         """
         lazy_import()
         return {
+            'coinbase': (bool,),  # noqa: E501
             'height': (Height,),  # noqa: E501
             'timestamp': (int,),  # noqa: E501
             'tx_hash': (str,),  # noqa: E501
@@ -102,6 +103,7 @@ class AddressTxUtxo(ModelNormal):
 
 
     attribute_map = {
+        'coinbase': 'coinbase',  # noqa: E501
         'height': 'height',  # noqa: E501
         'timestamp': 'timestamp',  # noqa: E501
         'tx_hash': 'tx_hash',  # noqa: E501
@@ -116,10 +118,11 @@ class AddressTxUtxo(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, height, timestamp, tx_hash, value, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, coinbase, height, timestamp, tx_hash, value, *args, **kwargs):  # noqa: E501
         """AddressTxUtxo - a model defined in OpenAPI
 
         Args:
+            coinbase (bool): Coinbase transaction flag
             height (Height):
             timestamp (int): Timestamp
             tx_hash (str): Transaction hash
@@ -185,6 +188,7 @@ class AddressTxUtxo(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.coinbase = coinbase
         self.height = height
         self.timestamp = timestamp
         self.tx_hash = tx_hash
@@ -210,10 +214,11 @@ class AddressTxUtxo(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, height, timestamp, tx_hash, value, *args, **kwargs):  # noqa: E501
+    def __init__(self, coinbase, height, timestamp, tx_hash, value, *args, **kwargs):  # noqa: E501
         """AddressTxUtxo - a model defined in OpenAPI
 
         Args:
+            coinbase (bool): Coinbase transaction flag
             height (Height):
             timestamp (int): Timestamp
             tx_hash (str): Transaction hash
@@ -277,6 +282,7 @@ class AddressTxUtxo(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.coinbase = coinbase
         self.height = height
         self.timestamp = timestamp
         self.tx_hash = tx_hash

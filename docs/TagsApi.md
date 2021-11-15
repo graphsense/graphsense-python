@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_tags**
-> [Tags] list_tags(label)
+> Tags list_tags(label)
 
 Returns address and entity tags associated with a given label
 
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[Tags]**](Tags.md)
+[**Tags**](Tags.md)
 
 **Notes:**
 

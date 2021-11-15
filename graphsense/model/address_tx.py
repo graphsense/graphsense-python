@@ -94,6 +94,7 @@ class AddressTx(ModelComposed):
         lazy_import()
         return {
             'tx_type': (str,),  # noqa: E501
+            'coinbase': (bool,),  # noqa: E501
             'height': (Height,),  # noqa: E501
             'timestamp': (int,),  # noqa: E501
             'tx_hash': (str,),  # noqa: E501
@@ -117,6 +118,7 @@ class AddressTx(ModelComposed):
 
     attribute_map = {
         'tx_type': 'tx_type',  # noqa: E501
+        'coinbase': 'coinbase',  # noqa: E501
         'height': 'height',  # noqa: E501
         'timestamp': 'timestamp',  # noqa: E501
         'tx_hash': 'tx_hash',  # noqa: E501
@@ -165,6 +167,7 @@ class AddressTx(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            coinbase (bool): Coinbase transaction flag. [optional]  # noqa: E501
             height (Height): [optional]  # noqa: E501
             timestamp (int): Timestamp. [optional]  # noqa: E501
             tx_hash (str): Transaction hash. [optional]  # noqa: E501
@@ -272,6 +275,7 @@ class AddressTx(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            coinbase (bool): Coinbase transaction flag. [optional]  # noqa: E501
             height (Height): [optional]  # noqa: E501
             timestamp (int): Timestamp. [optional]  # noqa: E501
             tx_hash (str): Transaction hash. [optional]  # noqa: E501

@@ -605,7 +605,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_entity_neighbors**
-> [SearchResultLevel1] search_entity_neighbors(currency, entity, direction, key, value, depth)
+> SearchResultLevel1 search_entity_neighbors(currency, entity, direction, key, value, depth)
 
 Search deeply for matching neighbors
 
@@ -686,7 +686,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[SearchResultLevel1]**](SearchResultLevel1.md)
+[**SearchResultLevel1**](SearchResultLevel1.md)
 
 **Notes:**
 

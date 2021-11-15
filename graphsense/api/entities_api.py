@@ -985,7 +985,7 @@ class EntitiesApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                [SearchResultLevel1]
+                SearchResultLevel1
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -1024,7 +1024,7 @@ class EntitiesApi(object):
 
         self.search_entity_neighbors = _Endpoint(
             settings={
-                'response_type': ([SearchResultLevel1],),
+                'response_type': (SearchResultLevel1,),
                 'auth': [
                     'api_key'
                 ],
