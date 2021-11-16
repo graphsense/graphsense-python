@@ -4,7 +4,7 @@ from pprint import pprint
 import pandas as pd
 
 configuration = graphsense.Configuration(
-    host="https://api.graphsense.info"
+        host="http://spark-master:9001"
 )
 
 configuration.api_key['api_key'] = 'YOUR_API_KEY'

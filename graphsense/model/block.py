@@ -149,7 +149,7 @@ class Block(ModelNormal):
             block_hash (str): [optional]  # noqa: E501
             height (Height): [optional]  # noqa: E501
             no_txs (int): [optional]  # noqa: E501
-            timestamp (int): [optional]  # noqa: E501
+            timestamp (int): Timestamp. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -234,7 +234,7 @@ class Block(ModelNormal):
             block_hash (str): [optional]  # noqa: E501
             height (Height): [optional]  # noqa: E501
             no_txs (int): [optional]  # noqa: E501
-            timestamp (int): [optional]  # noqa: E501
+            timestamp (int): Timestamp. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

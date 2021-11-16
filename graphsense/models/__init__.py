@@ -15,12 +15,9 @@ from graphsense.model.address_tag_all_of import AddressTagAllOf
 from graphsense.model.address_tx import AddressTx
 from graphsense.model.address_tx_utxo import AddressTxUtxo
 from graphsense.model.address_txs import AddressTxs
-from graphsense.model.addresses import Addresses
 from graphsense.model.block import Block
-from graphsense.model.blocks import Blocks
 from graphsense.model.concept import Concept
 from graphsense.model.currency_stats import CurrencyStats
-from graphsense.model.entities import Entities
 from graphsense.model.entity import Entity
 from graphsense.model.entity_addresses import EntityAddresses
 from graphsense.model.entity_tag import EntityTag
@@ -51,12 +48,6 @@ from graphsense.model.search_result_level5_all_of import SearchResultLevel5AllOf
 from graphsense.model.search_result_level6 import SearchResultLevel6
 from graphsense.model.search_result_level6_all_of import SearchResultLevel6AllOf
 from graphsense.model.stats import Stats
-from graphsense.model.stats_ledger import StatsLedger
-from graphsense.model.stats_ledger_version import StatsLedgerVersion
-from graphsense.model.stats_note import StatsNote
-from graphsense.model.stats_tags_source import StatsTagsSource
-from graphsense.model.stats_tool import StatsTool
-from graphsense.model.stats_version import StatsVersion
 from graphsense.model.tag import Tag
 from graphsense.model.tags import Tags
 from graphsense.model.taxonomy import Taxonomy
@@ -66,5 +57,4 @@ from graphsense.model.tx_summary import TxSummary
 from graphsense.model.tx_utxo import TxUtxo
 from graphsense.model.tx_value import TxValue
 from graphsense.model.tx_values import TxValues
-from graphsense.model.txs import Txs
 from graphsense.model.values import Values

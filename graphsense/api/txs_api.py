@@ -52,7 +52,7 @@ class TxsApi(object):
             >>> result = thread.get()
 
             Args:
-                currency (str): The cryptocurrency (e.g., btc)
+                currency (str): The cryptocurrency code (e.g., btc)
                 tx_hash (str): The transaction hash
 
             Keyword Args:
@@ -187,7 +187,7 @@ class TxsApi(object):
             >>> result = thread.get()
 
             Args:
-                currency (str): The cryptocurrency (e.g., btc)
+                currency (str): The cryptocurrency code (e.g., btc)
                 tx_hash (str): The transaction hash
                 io (str): Input or outpus values of a transaction
 

@@ -12,8 +12,6 @@ import sys
 import unittest
 
 import graphsense
-from graphsense.model.stats_ledger import StatsLedger
-globals()['StatsLedger'] = StatsLedger
 from graphsense.model.currency_stats import CurrencyStats
 
 

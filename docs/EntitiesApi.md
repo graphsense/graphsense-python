@@ -48,7 +48,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = entities_api.EntitiesApi(api_client)
-    currency = "btc" # str | The cryptocurrency (e.g., btc)
+    currency = "btc" # str | The cryptocurrency code (e.g., btc)
     entity = 67065 # int | The entity ID
     include_tags = False # bool | Whether to include tags (optional) if omitted the server will use the default value of False
     tag_coherence = False # bool | Whether to calculate coherence of address tags (optional) if omitted the server will use the default value of False
@@ -76,7 +76,7 @@ with graphsense.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **str**| The cryptocurrency (e.g., btc) |
+ **currency** | **str**| The cryptocurrency code (e.g., btc) |
  **entity** | **int**| The entity ID |
  **include_tags** | **bool**| Whether to include tags | [optional] if omitted the server will use the default value of False
  **tag_coherence** | **bool**| Whether to calculate coherence of address tags | [optional] if omitted the server will use the default value of False
@@ -145,7 +145,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = entities_api.EntitiesApi(api_client)
-    currency = "btc" # str | The cryptocurrency (e.g., btc)
+    currency = "btc" # str | The cryptocurrency code (e.g., btc)
     entity = 67065 # int | The entity ID
     page = "page_example" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
@@ -173,7 +173,7 @@ with graphsense.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **str**| The cryptocurrency (e.g., btc) |
+ **currency** | **str**| The cryptocurrency code (e.g., btc) |
  **entity** | **int**| The entity ID |
  **page** | **str**| Resumption token for retrieving the next page | [optional]
  **pagesize** | **int**| Number of items returned in a single page | [optional]
@@ -242,7 +242,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = entities_api.EntitiesApi(api_client)
-    currency = "btc" # str | The cryptocurrency (e.g., btc)
+    currency = "btc" # str | The cryptocurrency code (e.g., btc)
     entity = 67065 # int | The entity ID
     neighbor = 123456 # int | Neighbor entity
     page = "page_example" # str | Resumption token for retrieving the next page (optional)
@@ -271,7 +271,7 @@ with graphsense.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **str**| The cryptocurrency (e.g., btc) |
+ **currency** | **str**| The cryptocurrency code (e.g., btc) |
  **entity** | **int**| The entity ID |
  **neighbor** | **int**| Neighbor entity |
  **page** | **str**| Resumption token for retrieving the next page | [optional]
@@ -342,7 +342,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = entities_api.EntitiesApi(api_client)
-    currency = "btc" # str | The cryptocurrency (e.g., btc)
+    currency = "btc" # str | The cryptocurrency code (e.g., btc)
     entity = 67065 # int | The entity ID
     direction = "out" # str | Incoming or outgoing neighbors
     only_ids = OnlyEntityIds([
@@ -375,7 +375,7 @@ with graphsense.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **str**| The cryptocurrency (e.g., btc) |
+ **currency** | **str**| The cryptocurrency code (e.g., btc) |
  **entity** | **int**| The entity ID |
  **direction** | **str**| Incoming or outgoing neighbors |
  **only_ids** | **OnlyEntityIds**| Restrict result to given set of comma separated IDs | [optional]
@@ -447,7 +447,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = entities_api.EntitiesApi(api_client)
-    currency = "btc" # str | The cryptocurrency (e.g., btc)
+    currency = "btc" # str | The cryptocurrency code (e.g., btc)
     entity = 67065 # int | The entity ID
     page = "page_example" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
@@ -475,7 +475,7 @@ with graphsense.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **str**| The cryptocurrency (e.g., btc) |
+ **currency** | **str**| The cryptocurrency code (e.g., btc) |
  **entity** | **int**| The entity ID |
  **page** | **str**| Resumption token for retrieving the next page | [optional]
  **pagesize** | **int**| Number of items returned in a single page | [optional]
@@ -544,7 +544,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = entities_api.EntitiesApi(api_client)
-    currency = "btc" # str | The cryptocurrency (e.g., btc)
+    currency = "btc" # str | The cryptocurrency code (e.g., btc)
     entity = 67065 # int | The entity ID
     tag_coherence = False # bool | Whether to calculate coherence of address tags (optional) if omitted the server will use the default value of False
 
@@ -571,7 +571,7 @@ with graphsense.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **str**| The cryptocurrency (e.g., btc) |
+ **currency** | **str**| The cryptocurrency code (e.g., btc) |
  **entity** | **int**| The entity ID |
  **tag_coherence** | **bool**| Whether to calculate coherence of address tags | [optional] if omitted the server will use the default value of False
 **_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
@@ -639,7 +639,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = entities_api.EntitiesApi(api_client)
-    currency = "btc" # str | The cryptocurrency (e.g., btc)
+    currency = "btc" # str | The cryptocurrency code (e.g., btc)
     entity = 67065 # int | The entity ID
     direction = "out" # str | Incoming or outgoing neighbors
     key = "category" # str | Match neighbors against one and only one of these properties: - the category the entity belongs to - addresses the entity contains - entity ids - total_received: amount the entity received in total - balance: amount the entity holds finally
@@ -673,7 +673,7 @@ with graphsense.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **str**| The cryptocurrency (e.g., btc) |
+ **currency** | **str**| The cryptocurrency code (e.g., btc) |
  **entity** | **int**| The entity ID |
  **direction** | **str**| Incoming or outgoing neighbors |
  **key** | **str**| Match neighbors against one and only one of these properties: - the category the entity belongs to - addresses the entity contains - entity ids - total_received: amount the entity received in total - balance: amount the entity holds finally |

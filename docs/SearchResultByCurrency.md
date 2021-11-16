@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **addresses** | **[str]** | The list of found addresses | [optional] 
-**currency** | **str** | Currency | [optional] 
-**txs** | **[str]** | The list of found transactions | [optional] 
+**currency** | **str** | crypto currency code | [optional] 
+**txs** | **[str]** | The list of found transaction ids | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

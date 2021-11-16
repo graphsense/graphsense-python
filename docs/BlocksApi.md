@@ -44,7 +44,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = blocks_api.BlocksApi(api_client)
-    currency = "btc" # str | The cryptocurrency (e.g., btc)
+    currency = "btc" # str | The cryptocurrency code (e.g., btc)
     height = Height(1) # Height | The block height
 
     # example passing only required values which don't have defaults set
@@ -61,7 +61,7 @@ with graphsense.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **str**| The cryptocurrency (e.g., btc) |
+ **currency** | **str**| The cryptocurrency code (e.g., btc) |
  **height** | **Height**| The block height |
 **_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
 **async_req** | **bool** | Execute request asynchronously | [optional] default is False.
@@ -129,7 +129,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = blocks_api.BlocksApi(api_client)
-    currency = "btc" # str | The cryptocurrency (e.g., btc)
+    currency = "btc" # str | The cryptocurrency code (e.g., btc)
     height = Height(1) # Height | The block height
 
     # example passing only required values which don't have defaults set
@@ -146,7 +146,7 @@ with graphsense.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **str**| The cryptocurrency (e.g., btc) |
+ **currency** | **str**| The cryptocurrency code (e.g., btc) |
  **height** | **Height**| The block height |
 **_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
 **async_req** | **bool** | Execute request asynchronously | [optional] default is False.

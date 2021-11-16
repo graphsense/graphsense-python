@@ -93,7 +93,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = addresses_api.AddressesApi(api_client)
-    currency = "btc" # str | The cryptocurrency (e.g., btc)
+    currency = "btc" # str | The cryptocurrency code (e.g., btc)
 address = "addressA" # str | The cryptocurrency address
 include_tags = False # bool | Whether to include tags (optional) (default to False)
 
@@ -146,12 +146,9 @@ Class | Method | HTTP request | Description
  - [AddressTx](docs/AddressTx.md)
  - [AddressTxUtxo](docs/AddressTxUtxo.md)
  - [AddressTxs](docs/AddressTxs.md)
- - [Addresses](docs/Addresses.md)
  - [Block](docs/Block.md)
- - [Blocks](docs/Blocks.md)
  - [Concept](docs/Concept.md)
  - [CurrencyStats](docs/CurrencyStats.md)
- - [Entities](docs/Entities.md)
  - [Entity](docs/Entity.md)
  - [EntityAddresses](docs/EntityAddresses.md)
  - [EntityTag](docs/EntityTag.md)
@@ -182,12 +179,6 @@ Class | Method | HTTP request | Description
  - [SearchResultLevel6](docs/SearchResultLevel6.md)
  - [SearchResultLevel6AllOf](docs/SearchResultLevel6AllOf.md)
  - [Stats](docs/Stats.md)
- - [StatsLedger](docs/StatsLedger.md)
- - [StatsLedgerVersion](docs/StatsLedgerVersion.md)
- - [StatsNote](docs/StatsNote.md)
- - [StatsTagsSource](docs/StatsTagsSource.md)
- - [StatsTool](docs/StatsTool.md)
- - [StatsVersion](docs/StatsVersion.md)
  - [Tag](docs/Tag.md)
  - [Tags](docs/Tags.md)
  - [Taxonomy](docs/Taxonomy.md)
@@ -197,7 +188,6 @@ Class | Method | HTTP request | Description
  - [TxUtxo](docs/TxUtxo.md)
  - [TxValue](docs/TxValue.md)
  - [TxValues](docs/TxValues.md)
- - [Txs](docs/Txs.md)
  - [Values](docs/Values.md)
 
 

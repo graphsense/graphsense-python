@@ -56,7 +56,7 @@ class AddressesApi(object):
             >>> result = thread.get()
 
             Args:
-                currency (str): The cryptocurrency (e.g., btc)
+                currency (str): The cryptocurrency code (e.g., btc)
                 address (str): The cryptocurrency address
 
             Keyword Args:
@@ -190,7 +190,7 @@ class AddressesApi(object):
             >>> result = thread.get()
 
             Args:
-                currency (str): The cryptocurrency (e.g., btc)
+                currency (str): The cryptocurrency code (e.g., btc)
                 address (str): The cryptocurrency address
 
             Keyword Args:
@@ -331,7 +331,7 @@ class AddressesApi(object):
             >>> result = thread.get()
 
             Args:
-                currency (str): The cryptocurrency (e.g., btc)
+                currency (str): The cryptocurrency code (e.g., btc)
                 address (str): The cryptocurrency address
                 neighbor (str): Neighbor address
 
@@ -486,7 +486,7 @@ class AddressesApi(object):
             >>> result = thread.get()
 
             Args:
-                currency (str): The cryptocurrency (e.g., btc)
+                currency (str): The cryptocurrency code (e.g., btc)
                 address (str): The cryptocurrency address
                 direction (str): Incoming or outgoing neighbors
 
@@ -652,7 +652,7 @@ class AddressesApi(object):
             >>> result = thread.get()
 
             Args:
-                currency (str): The cryptocurrency (e.g., btc)
+                currency (str): The cryptocurrency code (e.g., btc)
                 address (str): The cryptocurrency address
 
             Keyword Args:
@@ -797,7 +797,7 @@ class AddressesApi(object):
             >>> result = thread.get()
 
             Args:
-                currency (str): The cryptocurrency (e.g., btc)
+                currency (str): The cryptocurrency code (e.g., btc)
                 address (str): The cryptocurrency address
 
             Keyword Args:

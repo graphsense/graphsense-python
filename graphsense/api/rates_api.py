@@ -52,7 +52,7 @@ class RatesApi(object):
             >>> result = thread.get()
 
             Args:
-                currency (str): The cryptocurrency (e.g., btc)
+                currency (str): The cryptocurrency code (e.g., btc)
                 height (Height): The block height
 
             Keyword Args:

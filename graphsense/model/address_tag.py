@@ -127,7 +127,7 @@ class AddressTag(ModelComposed):
 
         Keyword Args:
             active (bool): whether the address has been ever used
-            currency (str): Currency
+            currency (str): crypto currency code
             label (str): Label
             address (str): Address
             _check_type (bool): if True, values for parameters in openapi_types
@@ -235,7 +235,7 @@ class AddressTag(ModelComposed):
 
         Keyword Args:
             active (bool): whether the address has been ever used
-            currency (str): Currency
+            currency (str): crypto currency code
             label (str): Label
             address (str): Address
             _check_type (bool): if True, values for parameters in openapi_types

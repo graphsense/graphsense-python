@@ -52,7 +52,7 @@ class BulkApi(object):
             >>> result = thread.get()
 
             Args:
-                currency (str): The cryptocurrency (e.g., btc)
+                currency (str): The cryptocurrency code (e.g., btc)
                 api (str): The api of the operation to execute in bulk
                 operation (str): The operation to execute in bulk
                 body ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): Map of the operation's parameter names to (arrays of) values
@@ -232,7 +232,7 @@ class BulkApi(object):
             >>> result = thread.get()
 
             Args:
-                currency (str): The cryptocurrency (e.g., btc)
+                currency (str): The cryptocurrency code (e.g., btc)
                 api (str): The api of the operation to execute in bulk
                 operation (str): The operation to execute in bulk
                 body ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): Map of the operation's parameter names to (arrays of) values

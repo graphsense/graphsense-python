@@ -31,15 +31,7 @@ from graphsense.exceptions import ApiAttributeError
 
 def lazy_import():
     from graphsense.model.currency_stats import CurrencyStats
-    from graphsense.model.stats_note import StatsNote
-    from graphsense.model.stats_tags_source import StatsTagsSource
-    from graphsense.model.stats_tool import StatsTool
-    from graphsense.model.stats_version import StatsVersion
     globals()['CurrencyStats'] = CurrencyStats
-    globals()['StatsNote'] = StatsNote
-    globals()['StatsTagsSource'] = StatsTagsSource
-    globals()['StatsTool'] = StatsTool
-    globals()['StatsVersion'] = StatsVersion
 
 
 class Stats(ModelNormal):
@@ -96,10 +88,7 @@ class Stats(ModelNormal):
         lazy_import()
         return {
             'currencies': ([CurrencyStats],),  # noqa: E501
-            'notes': ([StatsNote],),  # noqa: E501
-            'tags_source': (StatsTagsSource,),  # noqa: E501
-            'tools': ([StatsTool],),  # noqa: E501
-            'version': (StatsVersion,),  # noqa: E501
+            'version': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -109,9 +98,6 @@ class Stats(ModelNormal):
 
     attribute_map = {
         'currencies': 'currencies',  # noqa: E501
-        'notes': 'notes',  # noqa: E501
-        'tags_source': 'tags_source',  # noqa: E501
-        'tools': 'tools',  # noqa: E501
         'version': 'version',  # noqa: E501
     }
 
@@ -157,10 +143,7 @@ class Stats(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             currencies ([CurrencyStats]): [optional]  # noqa: E501
-            notes ([StatsNote]): [optional]  # noqa: E501
-            tags_source (StatsTagsSource): [optional]  # noqa: E501
-            tools ([StatsTool]): [optional]  # noqa: E501
-            version (StatsVersion): [optional]  # noqa: E501
+            version (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -243,10 +226,7 @@ class Stats(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             currencies ([CurrencyStats]): [optional]  # noqa: E501
-            notes ([StatsNote]): [optional]  # noqa: E501
-            tags_source (StatsTagsSource): [optional]  # noqa: E501
-            tools ([StatsTool]): [optional]  # noqa: E501
-            version (StatsVersion): [optional]  # noqa: E501
+            version (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

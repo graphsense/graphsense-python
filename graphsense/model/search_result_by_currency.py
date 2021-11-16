@@ -139,8 +139,8 @@ class SearchResultByCurrency(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             addresses ([str]): The list of found addresses. [optional]  # noqa: E501
-            currency (str): Currency. [optional]  # noqa: E501
-            txs ([str]): The list of found transactions. [optional]  # noqa: E501
+            currency (str): crypto currency code. [optional]  # noqa: E501
+            txs ([str]): The list of found transaction ids. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -223,8 +223,8 @@ class SearchResultByCurrency(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             addresses ([str]): The list of found addresses. [optional]  # noqa: E501
-            currency (str): Currency. [optional]  # noqa: E501
-            txs ([str]): The list of found transactions. [optional]  # noqa: E501
+            currency (str): crypto currency code. [optional]  # noqa: E501
+            txs ([str]): The list of found transaction ids. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

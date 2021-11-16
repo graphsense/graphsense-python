@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **active** | **bool** | whether the address has been ever used | 
-**currency** | **str** | Currency | 
+**currency** | **str** | crypto currency code | 
 **label** | **str** | Label | 
 **entity** | **int** | Entity id | 
 **abuse** | **str** | Abuses | [optional] 

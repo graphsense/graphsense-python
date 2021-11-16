@@ -58,7 +58,7 @@ class EntitiesApi(object):
             >>> result = thread.get()
 
             Args:
-                currency (str): The cryptocurrency (e.g., btc)
+                currency (str): The cryptocurrency code (e.g., btc)
                 entity (int): The entity ID
 
             Keyword Args:
@@ -198,7 +198,7 @@ class EntitiesApi(object):
             >>> result = thread.get()
 
             Args:
-                currency (str): The cryptocurrency (e.g., btc)
+                currency (str): The cryptocurrency code (e.g., btc)
                 entity (int): The entity ID
 
             Keyword Args:
@@ -344,7 +344,7 @@ class EntitiesApi(object):
             >>> result = thread.get()
 
             Args:
-                currency (str): The cryptocurrency (e.g., btc)
+                currency (str): The cryptocurrency code (e.g., btc)
                 entity (int): The entity ID
                 neighbor (int): Neighbor entity
 
@@ -499,7 +499,7 @@ class EntitiesApi(object):
             >>> result = thread.get()
 
             Args:
-                currency (str): The cryptocurrency (e.g., btc)
+                currency (str): The cryptocurrency code (e.g., btc)
                 entity (int): The entity ID
                 direction (str): Incoming or outgoing neighbors
 
@@ -671,7 +671,7 @@ class EntitiesApi(object):
             >>> result = thread.get()
 
             Args:
-                currency (str): The cryptocurrency (e.g., btc)
+                currency (str): The cryptocurrency code (e.g., btc)
                 entity (int): The entity ID
 
             Keyword Args:
@@ -816,7 +816,7 @@ class EntitiesApi(object):
             >>> result = thread.get()
 
             Args:
-                currency (str): The cryptocurrency (e.g., btc)
+                currency (str): The cryptocurrency code (e.g., btc)
                 entity (int): The entity ID
 
             Keyword Args:
@@ -954,7 +954,7 @@ class EntitiesApi(object):
             >>> result = thread.get()
 
             Args:
-                currency (str): The cryptocurrency (e.g., btc)
+                currency (str): The cryptocurrency code (e.g., btc)
                 entity (int): The entity ID
                 direction (str): Incoming or outgoing neighbors
                 key (str): Match neighbors against one and only one of these properties: - the category the entity belongs to - addresses the entity contains - entity ids - total_received: amount the entity received in total - balance: amount the entity holds finally
