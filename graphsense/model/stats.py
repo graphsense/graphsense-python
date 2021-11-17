@@ -88,6 +88,7 @@ class Stats(ModelNormal):
         lazy_import()
         return {
             'currencies': ([CurrencyStats],),  # noqa: E501
+            'request_timestamp': (str,),  # noqa: E501
             'version': (str,),  # noqa: E501
         }
 
@@ -98,6 +99,7 @@ class Stats(ModelNormal):
 
     attribute_map = {
         'currencies': 'currencies',  # noqa: E501
+        'request_timestamp': 'request_timestamp',  # noqa: E501
         'version': 'version',  # noqa: E501
     }
 
@@ -143,6 +145,7 @@ class Stats(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             currencies ([CurrencyStats]): [optional]  # noqa: E501
+            request_timestamp (str): [optional]  # noqa: E501
             version (str): [optional]  # noqa: E501
         """
 
@@ -226,6 +229,7 @@ class Stats(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             currencies ([CurrencyStats]): [optional]  # noqa: E501
+            request_timestamp (str): [optional]  # noqa: E501
             version (str): [optional]  # noqa: E501
         """
 
