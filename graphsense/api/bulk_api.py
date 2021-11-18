@@ -38,8 +38,8 @@ class BulkApi(object):
         def __bulk_csv(
             self,
             currency,
-            api,
             operation,
+            num_pages,
             body,
             **kwargs
         ):
@@ -48,13 +48,13 @@ class BulkApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.bulk_csv(currency, api, operation, body, async_req=True)
+            >>> thread = api.bulk_csv(currency, operation, num_pages, body, async_req=True)
             >>> result = thread.get()
 
             Args:
                 currency (str): The cryptocurrency code (e.g., btc)
-                api (str): The api of the operation to execute in bulk
                 operation (str): The operation to execute in bulk
+                num_pages (int): Number of pages to retrieve for operations with list response
                 body ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): Map of the operation's parameter names to (arrays of) values
 
             Keyword Args:
@@ -104,10 +104,10 @@ class BulkApi(object):
             kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['currency'] = \
                 currency
-            kwargs['api'] = \
-                api
             kwargs['operation'] = \
                 operation
+            kwargs['num_pages'] = \
+                num_pages
             kwargs['body'] = \
                 body
             return self.call_with_http_info(**kwargs)
@@ -118,7 +118,7 @@ class BulkApi(object):
                 'auth': [
                     'api_key'
                 ],
-                'endpoint_path': '/{currency}/bulk.csv/{api}/{operation}',
+                'endpoint_path': '/{currency}/bulk.csv/{operation}',
                 'operation_id': 'bulk_csv',
                 'http_method': 'POST',
                 'servers': None,
@@ -126,20 +126,19 @@ class BulkApi(object):
             params_map={
                 'all': [
                     'currency',
-                    'api',
                     'operation',
+                    'num_pages',
                     'body',
                 ],
                 'required': [
                     'currency',
-                    'api',
                     'operation',
+                    'num_pages',
                     'body',
                 ],
                 'nullable': [
                 ],
                 'enum': [
-                    'api',
                     'operation',
                 ],
                 'validation': [
@@ -149,15 +148,6 @@ class BulkApi(object):
                 'validations': {
                 },
                 'allowed_values': {
-                    ('api',): {
-
-                        "BLOCKS": "blocks",
-                        "ADDRESSES": "addresses",
-                        "ENTITIES": "entities",
-                        "TXS": "txs",
-                        "RATES": "rates",
-                        "TAGS": "tags"
-                    },
                     ('operation',): {
 
                         "GET_BLOCK": "get_block",
@@ -182,22 +172,22 @@ class BulkApi(object):
                 'openapi_types': {
                     'currency':
                         (str,),
-                    'api':
-                        (str,),
                     'operation':
                         (str,),
+                    'num_pages':
+                        (int,),
                     'body':
                         ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),
                 },
                 'attribute_map': {
                     'currency': 'currency',
-                    'api': 'api',
                     'operation': 'operation',
+                    'num_pages': 'num_pages',
                 },
                 'location_map': {
                     'currency': 'path',
-                    'api': 'path',
                     'operation': 'path',
+                    'num_pages': 'query',
                     'body': 'body',
                 },
                 'collection_format_map': {
@@ -218,8 +208,8 @@ class BulkApi(object):
         def __bulk_json(
             self,
             currency,
-            api,
             operation,
+            num_pages,
             body,
             **kwargs
         ):
@@ -228,13 +218,13 @@ class BulkApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.bulk_json(currency, api, operation, body, async_req=True)
+            >>> thread = api.bulk_json(currency, operation, num_pages, body, async_req=True)
             >>> result = thread.get()
 
             Args:
                 currency (str): The cryptocurrency code (e.g., btc)
-                api (str): The api of the operation to execute in bulk
                 operation (str): The operation to execute in bulk
+                num_pages (int): Number of pages to retrieve for operations with list response
                 body ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): Map of the operation's parameter names to (arrays of) values
 
             Keyword Args:
@@ -284,10 +274,10 @@ class BulkApi(object):
             kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['currency'] = \
                 currency
-            kwargs['api'] = \
-                api
             kwargs['operation'] = \
                 operation
+            kwargs['num_pages'] = \
+                num_pages
             kwargs['body'] = \
                 body
             return self.call_with_http_info(**kwargs)
@@ -298,7 +288,7 @@ class BulkApi(object):
                 'auth': [
                     'api_key'
                 ],
-                'endpoint_path': '/{currency}/bulk.json/{api}/{operation}',
+                'endpoint_path': '/{currency}/bulk.json/{operation}',
                 'operation_id': 'bulk_json',
                 'http_method': 'POST',
                 'servers': None,
@@ -306,20 +296,19 @@ class BulkApi(object):
             params_map={
                 'all': [
                     'currency',
-                    'api',
                     'operation',
+                    'num_pages',
                     'body',
                 ],
                 'required': [
                     'currency',
-                    'api',
                     'operation',
+                    'num_pages',
                     'body',
                 ],
                 'nullable': [
                 ],
                 'enum': [
-                    'api',
                     'operation',
                 ],
                 'validation': [
@@ -329,15 +318,6 @@ class BulkApi(object):
                 'validations': {
                 },
                 'allowed_values': {
-                    ('api',): {
-
-                        "BLOCKS": "blocks",
-                        "ADDRESSES": "addresses",
-                        "ENTITIES": "entities",
-                        "TXS": "txs",
-                        "RATES": "rates",
-                        "TAGS": "tags"
-                    },
                     ('operation',): {
 
                         "GET_BLOCK": "get_block",
@@ -362,22 +342,22 @@ class BulkApi(object):
                 'openapi_types': {
                     'currency':
                         (str,),
-                    'api':
-                        (str,),
                     'operation':
                         (str,),
+                    'num_pages':
+                        (int,),
                     'body':
                         ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),
                 },
                 'attribute_map': {
                     'currency': 'currency',
-                    'api': 'api',
                     'operation': 'operation',
+                    'num_pages': 'num_pages',
                 },
                 'location_map': {
                     'currency': 'path',
-                    'api': 'path',
                     'operation': 'path',
+                    'num_pages': 'query',
                     'body': 'body',
                 },
                 'collection_format_map': {

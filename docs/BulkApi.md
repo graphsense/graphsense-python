@@ -43,14 +43,13 @@ with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = bulk_api.BulkApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
-    api = "blocks" # str | The api of the operation to execute in bulk
     operation = "get_block" # str | The operation to execute in bulk
     body = {"height": [1, 2, 3]} # {str: (bool, date, datetime, dict, float, int, list, str, none_type)} | Map of the operation's parameter names to (arrays of) values
 
     # example passing only required values which don't have defaults set
     try:
         # Get data as CSV in bulk
-        api_response = api_instance.bulk_csv(currency, api, operation, body)
+        api_response = api_instance.bulk_csv(currency, operation, body, num_pages=1)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling BulkApi->bulk_csv: %s\n" % e)
@@ -129,14 +128,13 @@ with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = bulk_api.BulkApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
-    api = "blocks" # str | The api of the operation to execute in bulk
     operation = "get_block" # str | The operation to execute in bulk
     body = {"height": [1, 2, 3]} # {str: (bool, date, datetime, dict, float, int, list, str, none_type)} | Map of the operation's parameter names to (arrays of) values
 
     # example passing only required values which don't have defaults set
     try:
         # Get data as JSON in bulk
-        api_response = api_instance.bulk_json(currency, api, operation, body)
+        api_response = api_instance.bulk_json(currency, api, operation, body, num_pages=1)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling BulkApi->bulk_json: %s\n" % e)
