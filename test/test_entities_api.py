@@ -61,7 +61,7 @@ class TestEntitiesApi(unittest.TestCase):
     def test_list_tags_by_entity(self):
         """Test case for list_tags_by_entity
 
-        Get tags for a given entity  # noqa: E501
+        Get tags for a given entity for the given level  # noqa: E501
         """
         pass
 

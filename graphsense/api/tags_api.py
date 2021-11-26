@@ -158,22 +158,27 @@ class TagsApi(object):
 
         def __list_tags(
             self,
+            currency,
             label,
+            level,
             **kwargs
         ):
-            """Returns address and entity tags associated with a given label  # noqa: E501
+            """Returns address or entity tags associated with a given label  # noqa: E501
 
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.list_tags(label, async_req=True)
+            >>> thread = api.list_tags(currency, label, level, async_req=True)
             >>> result = thread.get()
 
             Args:
+                currency (str): The cryptocurrency code (e.g., btc)
                 label (str): The label of an entity
+                level (str): Whether tags on the address or entity level are requested
 
             Keyword Args:
-                currency (str): The cryptocurrency (e.g., btc). [optional]
+                page (str): Resumption token for retrieving the next page. [optional]
+                pagesize (int): Number of items returned in a single page. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -218,8 +223,12 @@ class TagsApi(object):
                 '_check_return_type', True
             )
             kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['currency'] = \
+                currency
             kwargs['label'] = \
                 label
+            kwargs['level'] = \
+                level
             return self.call_with_http_info(**kwargs)
 
         self.list_tags = _Endpoint(
@@ -228,44 +237,72 @@ class TagsApi(object):
                 'auth': [
                     'api_key'
                 ],
-                'endpoint_path': '/tags',
+                'endpoint_path': '/{currency}/tags',
                 'operation_id': 'list_tags',
                 'http_method': 'GET',
                 'servers': None,
             },
             params_map={
                 'all': [
-                    'label',
                     'currency',
+                    'label',
+                    'level',
+                    'page',
+                    'pagesize',
                 ],
                 'required': [
+                    'currency',
                     'label',
+                    'level',
                 ],
                 'nullable': [
                 ],
                 'enum': [
+                    'level',
                 ],
                 'validation': [
+                    'pagesize',
                 ]
             },
             root_map={
                 'validations': {
+                    ('pagesize',): {
+
+                        'inclusive_minimum': 1,
+                    },
                 },
                 'allowed_values': {
+                    ('level',): {
+
+                        "ADDRESS": "address",
+                        "ENTITY": "entity"
+                    },
                 },
                 'openapi_types': {
-                    'label':
-                        (str,),
                     'currency':
                         (str,),
+                    'label':
+                        (str,),
+                    'level':
+                        (str,),
+                    'page':
+                        (str,),
+                    'pagesize':
+                        (int,),
                 },
                 'attribute_map': {
-                    'label': 'label',
                     'currency': 'currency',
+                    'label': 'label',
+                    'level': 'level',
+                    'page': 'page',
+                    'pagesize': 'pagesize',
                 },
                 'location_map': {
+                    'currency': 'path',
                     'label': 'query',
-                    'currency': 'query',
+                    'level': 'query',
+                    'page': 'query',
+                    'pagesize': 'query',
                 },
                 'collection_format_map': {
                 }

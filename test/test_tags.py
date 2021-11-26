@@ -13,9 +13,13 @@ import unittest
 
 import graphsense
 from graphsense.model.address_tag import AddressTag
+from graphsense.model.address_tags import AddressTags
 from graphsense.model.entity_tag import EntityTag
+from graphsense.model.entity_tags import EntityTags
 globals()['AddressTag'] = AddressTag
+globals()['AddressTags'] = AddressTags
 globals()['EntityTag'] = EntityTag
+globals()['EntityTags'] = EntityTags
 from graphsense.model.tags import Tags
 
 

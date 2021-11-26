@@ -66,15 +66,15 @@ import graphsense
 from pprint import pprint
 from graphsense.api import addresses_api
 from graphsense.model.address import Address
-from graphsense.model.address_tag import AddressTag
+from graphsense.model.address_tags import AddressTags
 from graphsense.model.address_txs import AddressTxs
 from graphsense.model.entity import Entity
 from graphsense.model.links import Links
 from graphsense.model.neighbors import Neighbors
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -95,7 +95,7 @@ with graphsense.ApiClient(configuration) as api_client:
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
 address = "addressA" # str | The cryptocurrency address
-include_tags = False # bool | Whether to include tags (optional) (default to False)
+include_tags = False # bool | Whether to include the first page of tags. Use the respective /tags endpoint to retrieve more if needed. (optional) (default to False)
 
     try:
         # Get an address, optionally with tags
@@ -107,7 +107,7 @@ include_tags = False # bool | Whether to include tags (optional) (default to Fal
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.graphsense.info*
+All URIs are relative to *http://graphsense-rest:9000*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -126,13 +126,13 @@ Class | Method | HTTP request | Description
 *EntitiesApi* | [**list_entity_links**](docs/EntitiesApi.md#list_entity_links) | **GET** /{currency}/entities/{entity}/links | Get transactions between two entities
 *EntitiesApi* | [**list_entity_neighbors**](docs/EntitiesApi.md#list_entity_neighbors) | **GET** /{currency}/entities/{entity}/neighbors | Get an entity&#39;s neighbors in the entity graph
 *EntitiesApi* | [**list_entity_txs**](docs/EntitiesApi.md#list_entity_txs) | **GET** /{currency}/entities/{entity}/txs | Get all transactions an entity has been involved in
-*EntitiesApi* | [**list_tags_by_entity**](docs/EntitiesApi.md#list_tags_by_entity) | **GET** /{currency}/entities/{entity}/tags | Get tags for a given entity
+*EntitiesApi* | [**list_tags_by_entity**](docs/EntitiesApi.md#list_tags_by_entity) | **GET** /{currency}/entities/{entity}/tags | Get tags for a given entity for the given level
 *EntitiesApi* | [**search_entity_neighbors**](docs/EntitiesApi.md#search_entity_neighbors) | **GET** /{currency}/entities/{entity}/search | Search deeply for matching neighbors
 *GeneralApi* | [**get_statistics**](docs/GeneralApi.md#get_statistics) | **GET** /stats | Get statistics of supported currencies
 *GeneralApi* | [**search**](docs/GeneralApi.md#search) | **GET** /search | Returns matching addresses, transactions and labels
 *RatesApi* | [**get_exchange_rates**](docs/RatesApi.md#get_exchange_rates) | **GET** /{currency}/rates/{height} | Returns exchange rate for a given height
 *TagsApi* | [**list_concepts**](docs/TagsApi.md#list_concepts) | **GET** /tags/taxonomies/{taxonomy}/concepts | Returns the supported concepts of a taxonomy
-*TagsApi* | [**list_tags**](docs/TagsApi.md#list_tags) | **GET** /tags | Returns address and entity tags associated with a given label
+*TagsApi* | [**list_tags**](docs/TagsApi.md#list_tags) | **GET** /{currency}/tags | Returns address or entity tags associated with a given label
 *TagsApi* | [**list_taxonomies**](docs/TagsApi.md#list_taxonomies) | **GET** /tags/taxonomies | Returns the supported taxonomies
 *TxsApi* | [**get_tx**](docs/TxsApi.md#get_tx) | **GET** /{currency}/txs/{tx_hash} | Returns details of a specific transaction identified by its hash.
 *TxsApi* | [**get_tx_io**](docs/TxsApi.md#get_tx_io) | **GET** /{currency}/txs/{tx_hash}/{io} | Returns input/output values of a specific transaction identified by its hash.
@@ -141,8 +141,10 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [Address](docs/Address.md)
+ - [AddressAndEntityTags](docs/AddressAndEntityTags.md)
  - [AddressTag](docs/AddressTag.md)
  - [AddressTagAllOf](docs/AddressTagAllOf.md)
+ - [AddressTags](docs/AddressTags.md)
  - [AddressTx](docs/AddressTx.md)
  - [AddressTxUtxo](docs/AddressTxUtxo.md)
  - [AddressTxs](docs/AddressTxs.md)
@@ -153,6 +155,7 @@ Class | Method | HTTP request | Description
  - [EntityAddresses](docs/EntityAddresses.md)
  - [EntityTag](docs/EntityTag.md)
  - [EntityTagAllOf](docs/EntityTagAllOf.md)
+ - [EntityTags](docs/EntityTags.md)
  - [Height](docs/Height.md)
  - [Link](docs/Link.md)
  - [LinkUtxo](docs/LinkUtxo.md)

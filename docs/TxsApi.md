@@ -1,6 +1,6 @@
 # graphsense.TxsApi
 
-All URIs are relative to *https://api.graphsense.info*
+All URIs are relative to *http://graphsense-rest:9000*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -22,10 +22,10 @@ import graphsense
 from graphsense.api import txs_api
 from graphsense.model.tx import Tx
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -117,10 +117,10 @@ import graphsense
 from graphsense.api import txs_api
 from graphsense.model.tx_values import TxValues
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
 # The client must configure the authentication and authorization parameters

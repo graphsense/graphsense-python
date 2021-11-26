@@ -1,6 +1,6 @@
 # graphsense.GeneralApi
 
-All URIs are relative to *https://api.graphsense.info*
+All URIs are relative to *http://graphsense-rest:9000*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -21,10 +21,10 @@ import graphsense
 from graphsense.api import general_api
 from graphsense.model.stats import Stats
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
 
@@ -89,10 +89,10 @@ import graphsense
 from graphsense.api import general_api
 from graphsense.model.search_result import SearchResult
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -112,7 +112,7 @@ with graphsense.ApiClient(configuration) as api_client:
     api_instance = general_api.GeneralApi(api_client)
     q = "foo" # str | It can be (the beginning of) an address, a transaction or a label
     currency = "btc" # str | The cryptocurrency (e.g., btc) (optional)
-    limit = 10 # int | Maximum number of search results (optional)
+    limit = 10 # int | Maximum number of search results (optional) if omitted the server will use the default value of 10
 
     # example passing only required values which don't have defaults set
     try:
@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **q** | **str**| It can be (the beginning of) an address, a transaction or a label |
  **currency** | **str**| The cryptocurrency (e.g., btc) | [optional]
- **limit** | **int**| Maximum number of search results | [optional]
+ **limit** | **int**| Maximum number of search results | [optional] if omitted the server will use the default value of 10
 **_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
 **async_req** | **bool** | Execute request asynchronously | [optional] default is False.
 

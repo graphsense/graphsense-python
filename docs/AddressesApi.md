@@ -1,6 +1,6 @@
 # graphsense.AddressesApi
 
-All URIs are relative to *https://api.graphsense.info*
+All URIs are relative to *http://graphsense-rest:9000*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -26,10 +26,10 @@ import graphsense
 from graphsense.api import addresses_api
 from graphsense.model.address import Address
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -49,7 +49,7 @@ with graphsense.ApiClient(configuration) as api_client:
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     address = "addressA" # str | The cryptocurrency address
-    include_tags = False # bool | Whether to include tags (optional) if omitted the server will use the default value of False
+    include_tags = False # bool | Whether to include the first page of tags. Use the respective /tags endpoint to retrieve more if needed. (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
     try:
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **str**| The cryptocurrency code (e.g., btc) |
  **address** | **str**| The cryptocurrency address |
- **include_tags** | **bool**| Whether to include tags | [optional] if omitted the server will use the default value of False
+ **include_tags** | **bool**| Whether to include the first page of tags. Use the respective /tags endpoint to retrieve more if needed. | [optional] if omitted the server will use the default value of False
 **_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
 **async_req** | **bool** | Execute request asynchronously | [optional] default is False.
 
@@ -121,10 +121,10 @@ import graphsense
 from graphsense.api import addresses_api
 from graphsense.model.entity import Entity
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -144,8 +144,7 @@ with graphsense.ApiClient(configuration) as api_client:
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     address = "addressA" # str | The cryptocurrency address
-    include_tags = False # bool | Whether to include tags (optional) if omitted the server will use the default value of False
-    tag_coherence = False # bool | Whether to calculate coherence of address tags (optional) if omitted the server will use the default value of False
+    include_tags = False # bool | Whether to include the first page of tags. Use the respective /tags endpoint to retrieve more if needed. (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
     try:
@@ -159,7 +158,7 @@ with graphsense.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Get the entity of an address
-        api_response = api_instance.get_address_entity(currency, address, include_tags=include_tags, tag_coherence=tag_coherence)
+        api_response = api_instance.get_address_entity(currency, address, include_tags=include_tags)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling AddressesApi->get_address_entity: %s\n" % e)
@@ -172,8 +171,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **str**| The cryptocurrency code (e.g., btc) |
  **address** | **str**| The cryptocurrency address |
- **include_tags** | **bool**| Whether to include tags | [optional] if omitted the server will use the default value of False
- **tag_coherence** | **bool**| Whether to calculate coherence of address tags | [optional] if omitted the server will use the default value of False
+ **include_tags** | **bool**| Whether to include the first page of tags. Use the respective /tags endpoint to retrieve more if needed. | [optional] if omitted the server will use the default value of False
 **_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
 **async_req** | **bool** | Execute request asynchronously | [optional] default is False.
 
@@ -218,10 +216,10 @@ import graphsense
 from graphsense.api import addresses_api
 from graphsense.model.links import Links
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -317,10 +315,10 @@ import graphsense
 from graphsense.api import addresses_api
 from graphsense.model.neighbors import Neighbors
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -341,7 +339,7 @@ with graphsense.ApiClient(configuration) as api_client:
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     address = "addressA" # str | The cryptocurrency address
     direction = "out" # str | Incoming or outgoing neighbors
-    include_labels = False # bool | Whether to include labels of tags (optional) if omitted the server will use the default value of False
+    include_labels = False # bool | Whether to include labels of first page of tags (optional) if omitted the server will use the default value of False
     page = "page_example" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
@@ -371,7 +369,7 @@ Name | Type | Description  | Notes
  **currency** | **str**| The cryptocurrency code (e.g., btc) |
  **address** | **str**| The cryptocurrency address |
  **direction** | **str**| Incoming or outgoing neighbors |
- **include_labels** | **bool**| Whether to include labels of tags | [optional] if omitted the server will use the default value of False
+ **include_labels** | **bool**| Whether to include labels of first page of tags | [optional] if omitted the server will use the default value of False
  **page** | **str**| Resumption token for retrieving the next page | [optional]
  **pagesize** | **int**| Number of items returned in a single page | [optional]
 **_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
@@ -418,10 +416,10 @@ import graphsense
 from graphsense.api import addresses_api
 from graphsense.model.address_txs import AddressTxs
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -502,7 +500,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_tags_by_address**
-> [AddressTag] list_tags_by_address(currency, address)
+> AddressTags list_tags_by_address(currency, address)
 
 Get attribution tags for a given address
 
@@ -513,12 +511,12 @@ Get attribution tags for a given address
 import time
 import graphsense
 from graphsense.api import addresses_api
-from graphsense.model.address_tag import AddressTag
+from graphsense.model.address_tags import AddressTags
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -538,11 +536,22 @@ with graphsense.ApiClient(configuration) as api_client:
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     address = "addressA" # str | The cryptocurrency address
+    page = "page_example" # str | Resumption token for retrieving the next page (optional)
+    pagesize = 10 # int | Number of items returned in a single page (optional)
 
     # example passing only required values which don't have defaults set
     try:
         # Get attribution tags for a given address
         api_response = api_instance.list_tags_by_address(currency, address)
+        pprint(api_response)
+    except graphsense.ApiException as e:
+        print("Exception when calling AddressesApi->list_tags_by_address: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Get attribution tags for a given address
+        api_response = api_instance.list_tags_by_address(currency, address, page=page, pagesize=pagesize)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling AddressesApi->list_tags_by_address: %s\n" % e)
@@ -555,12 +564,14 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **str**| The cryptocurrency code (e.g., btc) |
  **address** | **str**| The cryptocurrency address |
+ **page** | **str**| Resumption token for retrieving the next page | [optional]
+ **pagesize** | **int**| Number of items returned in a single page | [optional]
 **_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
 **async_req** | **bool** | Execute request asynchronously | [optional] default is False.
 
 ### Return type
 
-[**[AddressTag]**](AddressTag.md)
+[**AddressTags**](AddressTags.md)
 
 **Notes:**
 

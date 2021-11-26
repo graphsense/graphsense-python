@@ -12,10 +12,10 @@ import sys
 import unittest
 
 import graphsense
-from graphsense.model.tags import Tags
+from graphsense.model.address_and_entity_tags import AddressAndEntityTags
 from graphsense.model.tx_summary import TxSummary
 from graphsense.model.values import Values
-globals()['Tags'] = Tags
+globals()['AddressAndEntityTags'] = AddressAndEntityTags
 globals()['TxSummary'] = TxSummary
 globals()['Values'] = Values
 from graphsense.model.entity import Entity

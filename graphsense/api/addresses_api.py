@@ -22,7 +22,7 @@ from graphsense.model_utils import (  # noqa: F401
     validate_and_convert_types
 )
 from graphsense.model.address import Address
-from graphsense.model.address_tag import AddressTag
+from graphsense.model.address_tags import AddressTags
 from graphsense.model.address_txs import AddressTxs
 from graphsense.model.entity import Entity
 from graphsense.model.links import Links
@@ -60,7 +60,7 @@ class AddressesApi(object):
                 address (str): The cryptocurrency address
 
             Keyword Args:
-                include_tags (bool): Whether to include tags. [optional] if omitted the server will use the default value of False
+                include_tags (bool): Whether to include the first page of tags. Use the respective /tags endpoint to retrieve more if needed.. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -194,8 +194,7 @@ class AddressesApi(object):
                 address (str): The cryptocurrency address
 
             Keyword Args:
-                include_tags (bool): Whether to include tags. [optional] if omitted the server will use the default value of False
-                tag_coherence (bool): Whether to calculate coherence of address tags. [optional] if omitted the server will use the default value of False
+                include_tags (bool): Whether to include the first page of tags. Use the respective /tags endpoint to retrieve more if needed.. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -262,7 +261,6 @@ class AddressesApi(object):
                     'currency',
                     'address',
                     'include_tags',
-                    'tag_coherence',
                 ],
                 'required': [
                     'currency',
@@ -287,20 +285,16 @@ class AddressesApi(object):
                         (str,),
                     'include_tags':
                         (bool,),
-                    'tag_coherence':
-                        (bool,),
                 },
                 'attribute_map': {
                     'currency': 'currency',
                     'address': 'address',
                     'include_tags': 'include_tags',
-                    'tag_coherence': 'tag_coherence',
                 },
                 'location_map': {
                     'currency': 'path',
                     'address': 'path',
                     'include_tags': 'query',
-                    'tag_coherence': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -491,7 +485,7 @@ class AddressesApi(object):
                 direction (str): Incoming or outgoing neighbors
 
             Keyword Args:
-                include_labels (bool): Whether to include labels of tags. [optional] if omitted the server will use the default value of False
+                include_labels (bool): Whether to include labels of first page of tags. [optional] if omitted the server will use the default value of False
                 page (str): Resumption token for retrieving the next page. [optional]
                 pagesize (int): Number of items returned in a single page. [optional]
                 _return_http_data_only (bool): response data without head status
@@ -801,6 +795,8 @@ class AddressesApi(object):
                 address (str): The cryptocurrency address
 
             Keyword Args:
+                page (str): Resumption token for retrieving the next page. [optional]
+                pagesize (int): Number of items returned in a single page. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -822,7 +818,7 @@ class AddressesApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                [AddressTag]
+                AddressTags
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -853,7 +849,7 @@ class AddressesApi(object):
 
         self.list_tags_by_address = _Endpoint(
             settings={
-                'response_type': ([AddressTag],),
+                'response_type': (AddressTags,),
                 'auth': [
                     'api_key'
                 ],
@@ -866,6 +862,8 @@ class AddressesApi(object):
                 'all': [
                     'currency',
                     'address',
+                    'page',
+                    'pagesize',
                 ],
                 'required': [
                     'currency',
@@ -876,10 +874,15 @@ class AddressesApi(object):
                 'enum': [
                 ],
                 'validation': [
+                    'pagesize',
                 ]
             },
             root_map={
                 'validations': {
+                    ('pagesize',): {
+
+                        'inclusive_minimum': 1,
+                    },
                 },
                 'allowed_values': {
                 },
@@ -888,14 +891,22 @@ class AddressesApi(object):
                         (str,),
                     'address':
                         (str,),
+                    'page':
+                        (str,),
+                    'pagesize':
+                        (int,),
                 },
                 'attribute_map': {
                     'currency': 'currency',
                     'address': 'address',
+                    'page': 'page',
+                    'pagesize': 'pagesize',
                 },
                 'location_map': {
                     'currency': 'path',
                     'address': 'path',
+                    'page': 'query',
+                    'pagesize': 'query',
                 },
                 'collection_format_map': {
                 }

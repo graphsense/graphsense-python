@@ -179,7 +179,7 @@ class Address(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            tags ([AddressTag]): Tags. [optional]  # noqa: E501
+            tags ([AddressTag]): First page of tags of this address. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -285,7 +285,7 @@ class Address(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            tags ([AddressTag]): Tags. [optional]  # noqa: E501
+            tags ([AddressTag]): First page of tags of this address. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -112,7 +112,7 @@ conf = graphsense.Configuration(
                  ):
         """Constructor
         """
-        self._base_path = "https://api.graphsense.info" if host is None else host
+        self._base_path = "http://graphsense-rest:9000" if host is None else host
         """Default Base url
         """
         self.server_index = 0 if server_index is None and host is None else server_index
@@ -425,7 +425,7 @@ conf = graphsense.Configuration(
         """
         return [
             {
-                'url': "https://api.graphsense.info",
+                'url': "http://graphsense-rest:9000",
                 'description': "No description provided",
             }
         ]

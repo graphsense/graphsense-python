@@ -30,10 +30,10 @@ from graphsense.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from graphsense.model.tags import Tags
+    from graphsense.model.address_and_entity_tags import AddressAndEntityTags
     from graphsense.model.tx_summary import TxSummary
     from graphsense.model.values import Values
-    globals()['Tags'] = Tags
+    globals()['AddressAndEntityTags'] = AddressAndEntityTags
     globals()['TxSummary'] = TxSummary
     globals()['Values'] = Values
 
@@ -102,7 +102,7 @@ class Entity(ModelNormal):
             'out_degree': (int,),  # noqa: E501
             'total_received': (Values,),  # noqa: E501
             'total_spent': (Values,),  # noqa: E501
-            'tags': (Tags,),  # noqa: E501
+            'tags': (AddressAndEntityTags,),  # noqa: E501
         }
 
     @cached_property
@@ -179,7 +179,7 @@ class Entity(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            tags (Tags): [optional]  # noqa: E501
+            tags (AddressAndEntityTags): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -285,7 +285,7 @@ class Entity(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            tags (Tags): [optional]  # noqa: E501
+            tags (AddressAndEntityTags): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

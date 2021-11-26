@@ -33,7 +33,7 @@ class TestTagsApi(unittest.TestCase):
     def test_list_tags(self):
         """Test case for list_tags
 
-        Returns address and entity tags associated with a given label  # noqa: E501
+        Returns address or entity tags associated with a given label  # noqa: E501
         """
         pass
 

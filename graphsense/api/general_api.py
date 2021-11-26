@@ -159,7 +159,7 @@ class GeneralApi(object):
 
             Keyword Args:
                 currency (str): The cryptocurrency (e.g., btc). [optional]
-                limit (int): Maximum number of search results. [optional]
+                limit (int): Maximum number of search results. [optional] if omitted the server will use the default value of 10
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -234,6 +234,7 @@ class GeneralApi(object):
                 ],
                 'validation': [
                     'q',
+                    'limit',
                 ]
             },
             root_map={
@@ -244,6 +245,10 @@ class GeneralApi(object):
                         'regex': {
                             'pattern': r'^[\w ]+$',  # noqa: E501
                         },
+                    },
+                    ('limit',): {
+
+                        'inclusive_maximum': 100,
                     },
                 },
                 'allowed_values': {

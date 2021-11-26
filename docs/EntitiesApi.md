@@ -1,6 +1,6 @@
 # graphsense.EntitiesApi
 
-All URIs are relative to *https://api.graphsense.info*
+All URIs are relative to *http://graphsense-rest:9000*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**list_entity_links**](EntitiesApi.md#list_entity_links) | **GET** /{currency}/entities/{entity}/links | Get transactions between two entities
 [**list_entity_neighbors**](EntitiesApi.md#list_entity_neighbors) | **GET** /{currency}/entities/{entity}/neighbors | Get an entity&#39;s neighbors in the entity graph
 [**list_entity_txs**](EntitiesApi.md#list_entity_txs) | **GET** /{currency}/entities/{entity}/txs | Get all transactions an entity has been involved in
-[**list_tags_by_entity**](EntitiesApi.md#list_tags_by_entity) | **GET** /{currency}/entities/{entity}/tags | Get tags for a given entity
+[**list_tags_by_entity**](EntitiesApi.md#list_tags_by_entity) | **GET** /{currency}/entities/{entity}/tags | Get tags for a given entity for the given level
 [**search_entity_neighbors**](EntitiesApi.md#search_entity_neighbors) | **GET** /{currency}/entities/{entity}/search | Search deeply for matching neighbors
 
 
@@ -27,10 +27,10 @@ import graphsense
 from graphsense.api import entities_api
 from graphsense.model.entity import Entity
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -50,8 +50,7 @@ with graphsense.ApiClient(configuration) as api_client:
     api_instance = entities_api.EntitiesApi(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     entity = 67065 # int | The entity ID
-    include_tags = False # bool | Whether to include tags (optional) if omitted the server will use the default value of False
-    tag_coherence = False # bool | Whether to calculate coherence of address tags (optional) if omitted the server will use the default value of False
+    include_tags = False # bool | Whether to include the first page of tags. Use the respective /tags endpoint to retrieve more if needed. (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
     try:
@@ -65,7 +64,7 @@ with graphsense.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Get an entity, optionally with tags
-        api_response = api_instance.get_entity(currency, entity, include_tags=include_tags, tag_coherence=tag_coherence)
+        api_response = api_instance.get_entity(currency, entity, include_tags=include_tags)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling EntitiesApi->get_entity: %s\n" % e)
@@ -78,8 +77,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **str**| The cryptocurrency code (e.g., btc) |
  **entity** | **int**| The entity ID |
- **include_tags** | **bool**| Whether to include tags | [optional] if omitted the server will use the default value of False
- **tag_coherence** | **bool**| Whether to calculate coherence of address tags | [optional] if omitted the server will use the default value of False
+ **include_tags** | **bool**| Whether to include the first page of tags. Use the respective /tags endpoint to retrieve more if needed. | [optional] if omitted the server will use the default value of False
 **_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
 **async_req** | **bool** | Execute request asynchronously | [optional] default is False.
 
@@ -124,10 +122,10 @@ import graphsense
 from graphsense.api import entities_api
 from graphsense.model.entity_addresses import EntityAddresses
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -221,10 +219,10 @@ import graphsense
 from graphsense.api import entities_api
 from graphsense.model.links import Links
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -321,10 +319,10 @@ from graphsense.api import entities_api
 from graphsense.model.only_entity_ids import OnlyEntityIds
 from graphsense.model.neighbors import Neighbors
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -348,7 +346,7 @@ with graphsense.ApiClient(configuration) as api_client:
     only_ids = OnlyEntityIds([
         1,
     ]) # OnlyEntityIds | Restrict result to given set of comma separated IDs (optional)
-    include_labels = False # bool | Whether to include labels of tags (optional) if omitted the server will use the default value of False
+    include_labels = False # bool | Whether to include labels of first page of tags (optional) if omitted the server will use the default value of False
     page = "page_example" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
@@ -379,7 +377,7 @@ Name | Type | Description  | Notes
  **entity** | **int**| The entity ID |
  **direction** | **str**| Incoming or outgoing neighbors |
  **only_ids** | **OnlyEntityIds**| Restrict result to given set of comma separated IDs | [optional]
- **include_labels** | **bool**| Whether to include labels of tags | [optional] if omitted the server will use the default value of False
+ **include_labels** | **bool**| Whether to include labels of first page of tags | [optional] if omitted the server will use the default value of False
  **page** | **str**| Resumption token for retrieving the next page | [optional]
  **pagesize** | **int**| Number of items returned in a single page | [optional]
 **_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
@@ -426,10 +424,10 @@ import graphsense
 from graphsense.api import entities_api
 from graphsense.model.address_txs import AddressTxs
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -510,9 +508,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_tags_by_entity**
-> Tags list_tags_by_entity(currency, entity)
+> Tags list_tags_by_entity(currency, entity, level)
 
-Get tags for a given entity
+Get tags for a given entity for the given level
 
 ### Example
 
@@ -523,10 +521,10 @@ import graphsense
 from graphsense.api import entities_api
 from graphsense.model.tags import Tags
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -546,12 +544,14 @@ with graphsense.ApiClient(configuration) as api_client:
     api_instance = entities_api.EntitiesApi(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     entity = 67065 # int | The entity ID
-    tag_coherence = False # bool | Whether to calculate coherence of address tags (optional) if omitted the server will use the default value of False
+    level = "address" # str | Whether tags on the address or entity level are requested
+    page = "page_example" # str | Resumption token for retrieving the next page (optional)
+    pagesize = 10 # int | Number of items returned in a single page (optional)
 
     # example passing only required values which don't have defaults set
     try:
-        # Get tags for a given entity
-        api_response = api_instance.list_tags_by_entity(currency, entity)
+        # Get tags for a given entity for the given level
+        api_response = api_instance.list_tags_by_entity(currency, entity, level)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling EntitiesApi->list_tags_by_entity: %s\n" % e)
@@ -559,8 +559,8 @@ with graphsense.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        # Get tags for a given entity
-        api_response = api_instance.list_tags_by_entity(currency, entity, tag_coherence=tag_coherence)
+        # Get tags for a given entity for the given level
+        api_response = api_instance.list_tags_by_entity(currency, entity, level, page=page, pagesize=pagesize)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling EntitiesApi->list_tags_by_entity: %s\n" % e)
@@ -573,7 +573,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **str**| The cryptocurrency code (e.g., btc) |
  **entity** | **int**| The entity ID |
- **tag_coherence** | **bool**| Whether to calculate coherence of address tags | [optional] if omitted the server will use the default value of False
+ **level** | **str**| Whether tags on the address or entity level are requested |
+ **page** | **str**| Resumption token for retrieving the next page | [optional]
+ **pagesize** | **int**| Number of items returned in a single page | [optional]
 **_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
 **async_req** | **bool** | Execute request asynchronously | [optional] default is False.
 
@@ -618,10 +620,10 @@ import graphsense
 from graphsense.api import entities_api
 from graphsense.model.search_result_level1 import SearchResultLevel1
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to http://graphsense-rest:9000
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "http://graphsense-rest:9000"
 )
 
 # The client must configure the authentication and authorization parameters

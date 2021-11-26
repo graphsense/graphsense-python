@@ -10,8 +10,10 @@
 # sys.setrecursionlimit(n)
 
 from graphsense.model.address import Address
+from graphsense.model.address_and_entity_tags import AddressAndEntityTags
 from graphsense.model.address_tag import AddressTag
 from graphsense.model.address_tag_all_of import AddressTagAllOf
+from graphsense.model.address_tags import AddressTags
 from graphsense.model.address_tx import AddressTx
 from graphsense.model.address_tx_utxo import AddressTxUtxo
 from graphsense.model.address_txs import AddressTxs
@@ -22,6 +24,7 @@ from graphsense.model.entity import Entity
 from graphsense.model.entity_addresses import EntityAddresses
 from graphsense.model.entity_tag import EntityTag
 from graphsense.model.entity_tag_all_of import EntityTagAllOf
+from graphsense.model.entity_tags import EntityTags
 from graphsense.model.height import Height
 from graphsense.model.link import Link
 from graphsense.model.link_utxo import LinkUtxo

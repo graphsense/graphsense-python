@@ -62,8 +62,7 @@ class EntitiesApi(object):
                 entity (int): The entity ID
 
             Keyword Args:
-                include_tags (bool): Whether to include tags. [optional] if omitted the server will use the default value of False
-                tag_coherence (bool): Whether to calculate coherence of address tags. [optional] if omitted the server will use the default value of False
+                include_tags (bool): Whether to include the first page of tags. Use the respective /tags endpoint to retrieve more if needed.. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -130,7 +129,6 @@ class EntitiesApi(object):
                     'currency',
                     'entity',
                     'include_tags',
-                    'tag_coherence',
                 ],
                 'required': [
                     'currency',
@@ -155,20 +153,16 @@ class EntitiesApi(object):
                         (int,),
                     'include_tags':
                         (bool,),
-                    'tag_coherence':
-                        (bool,),
                 },
                 'attribute_map': {
                     'currency': 'currency',
                     'entity': 'entity',
                     'include_tags': 'include_tags',
-                    'tag_coherence': 'tag_coherence',
                 },
                 'location_map': {
                     'currency': 'path',
                     'entity': 'path',
                     'include_tags': 'query',
-                    'tag_coherence': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -505,7 +499,7 @@ class EntitiesApi(object):
 
             Keyword Args:
                 only_ids (OnlyEntityIds): Restrict result to given set of comma separated IDs. [optional]
-                include_labels (bool): Whether to include labels of tags. [optional] if omitted the server will use the default value of False
+                include_labels (bool): Whether to include labels of first page of tags. [optional] if omitted the server will use the default value of False
                 page (str): Resumption token for retrieving the next page. [optional]
                 pagesize (int): Number of items returned in a single page. [optional]
                 _return_http_data_only (bool): response data without head status
@@ -805,22 +799,25 @@ class EntitiesApi(object):
             self,
             currency,
             entity,
+            level,
             **kwargs
         ):
-            """Get tags for a given entity  # noqa: E501
+            """Get tags for a given entity for the given level  # noqa: E501
 
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.list_tags_by_entity(currency, entity, async_req=True)
+            >>> thread = api.list_tags_by_entity(currency, entity, level, async_req=True)
             >>> result = thread.get()
 
             Args:
                 currency (str): The cryptocurrency code (e.g., btc)
                 entity (int): The entity ID
+                level (str): Whether tags on the address or entity level are requested
 
             Keyword Args:
-                tag_coherence (bool): Whether to calculate coherence of address tags. [optional] if omitted the server will use the default value of False
+                page (str): Resumption token for retrieving the next page. [optional]
+                pagesize (int): Number of items returned in a single page. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -869,6 +866,8 @@ class EntitiesApi(object):
                 currency
             kwargs['entity'] = \
                 entity
+            kwargs['level'] = \
+                level
             return self.call_with_http_info(**kwargs)
 
         self.list_tags_by_entity = _Endpoint(
@@ -886,41 +885,63 @@ class EntitiesApi(object):
                 'all': [
                     'currency',
                     'entity',
-                    'tag_coherence',
+                    'level',
+                    'page',
+                    'pagesize',
                 ],
                 'required': [
                     'currency',
                     'entity',
+                    'level',
                 ],
                 'nullable': [
                 ],
                 'enum': [
+                    'level',
                 ],
                 'validation': [
+                    'pagesize',
                 ]
             },
             root_map={
                 'validations': {
+                    ('pagesize',): {
+
+                        'inclusive_minimum': 1,
+                    },
                 },
                 'allowed_values': {
+                    ('level',): {
+
+                        "ADDRESS": "address",
+                        "ENTITY": "entity"
+                    },
                 },
                 'openapi_types': {
                     'currency':
                         (str,),
                     'entity':
                         (int,),
-                    'tag_coherence':
-                        (bool,),
+                    'level':
+                        (str,),
+                    'page':
+                        (str,),
+                    'pagesize':
+                        (int,),
                 },
                 'attribute_map': {
                     'currency': 'currency',
                     'entity': 'entity',
-                    'tag_coherence': 'tag_coherence',
+                    'level': 'level',
+                    'page': 'page',
+                    'pagesize': 'pagesize',
                 },
                 'location_map': {
                     'currency': 'path',
                     'entity': 'path',
-                    'tag_coherence': 'query',
+                    'level': 'query',
+                    'page': 'query',
+                    'pagesize': 'query',
                 },
                 'collection_format_map': {
                 }
