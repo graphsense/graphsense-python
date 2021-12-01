@@ -1,11 +1,11 @@
 # graphsense.TxsApi
 
-All URIs are relative to *http://openapi_server:9000*
+All URIs are relative to *https://api.graphsense.info*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_tx**](TxsApi.md#get_tx) | **GET** /{currency}/txs/{tx_hash} | Returns details of a specific transaction identified by its hash.
-[**list_txs**](TxsApi.md#list_txs) | **GET** /{currency}/txs | Returns transactions
+[**get_tx_io**](TxsApi.md#get_tx_io) | **GET** /{currency}/txs/{tx_hash}/{io} | Returns input/output values of a specific transaction identified by its hash.
 
 
 # **get_tx**
@@ -22,10 +22,10 @@ import graphsense
 from graphsense.api import txs_api
 from graphsense.model.tx import Tx
 from pprint import pprint
-# Defining the host is optional and defaults to http://openapi_server:9000
+# Defining the host is optional and defaults to https://api.graphsense.info
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://openapi_server:9000"
+    host = "https://api.graphsense.info"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -43,13 +43,23 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = txs_api.TxsApi(api_client)
-    currency = "btc" # str | The cryptocurrency (e.g., btc)
+    currency = "btc" # str | The cryptocurrency code (e.g., btc)
     tx_hash = "ab188013" # str | The transaction hash
+    include_io = False # bool | Whether to include inputs/outputs of a transaction (UTXO only) (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
     try:
         # Returns details of a specific transaction identified by its hash.
         api_response = api_instance.get_tx(currency, tx_hash)
+        pprint(api_response)
+    except graphsense.ApiException as e:
+        print("Exception when calling TxsApi->get_tx: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Returns details of a specific transaction identified by its hash.
+        api_response = api_instance.get_tx(currency, tx_hash, include_io=include_io)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling TxsApi->get_tx: %s\n" % e)
@@ -60,12 +70,21 @@ with graphsense.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **str**| The cryptocurrency (e.g., btc) |
+ **currency** | **str**| The cryptocurrency code (e.g., btc) |
  **tx_hash** | **str**| The transaction hash |
+ **include_io** | **bool**| Whether to include inputs/outputs of a transaction (UTXO only) | [optional] if omitted the server will use the default value of False
+**_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
+**async_req** | **bool** | Execute request asynchronously | [optional] default is False.
 
 ### Return type
 
 [**Tx**](Tx.md)
+
+**Notes:**
+
+* If `async_req` parameter is True, the request will be called asynchronously.  The method will return the request thread.  If parameter `async_req` is False or missing, then the method will return the response directly.
+
+* If the HTTP response code is `429 Too Many Requests` due to rate limit policies, the underlying `urllib3` HTTP client will automatically stall the request as long as advised by the `Retry-After` header.
 
 ### Authorization
 
@@ -84,10 +103,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_txs**
-> Txs list_txs(currency)
+# **get_tx_io**
+> TxValues get_tx_io(currency, tx_hash, io)
 
-Returns transactions
+Returns input/output values of a specific transaction identified by its hash.
 
 ### Example
 
@@ -96,12 +115,12 @@ Returns transactions
 import time
 import graphsense
 from graphsense.api import txs_api
-from graphsense.model.txs import Txs
+from graphsense.model.tx_values import TxValues
 from pprint import pprint
-# Defining the host is optional and defaults to http://openapi_server:9000
+# Defining the host is optional and defaults to https://api.graphsense.info
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://openapi_server:9000"
+    host = "https://api.graphsense.info"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -119,25 +138,17 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = txs_api.TxsApi(api_client)
-    currency = "btc" # str | The cryptocurrency (e.g., btc)
-    page = "page_example" # str | Resumption token for retrieving the next page (optional)
+    currency = "btc" # str | The cryptocurrency code (e.g., btc)
+    tx_hash = "ab188013" # str | The transaction hash
+    io = "outputs" # str | Input or outpus values of a transaction
 
     # example passing only required values which don't have defaults set
     try:
-        # Returns transactions
-        api_response = api_instance.list_txs(currency)
+        # Returns input/output values of a specific transaction identified by its hash.
+        api_response = api_instance.get_tx_io(currency, tx_hash, io)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling TxsApi->list_txs: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        # Returns transactions
-        api_response = api_instance.list_txs(currency, page=page)
-        pprint(api_response)
-    except graphsense.ApiException as e:
-        print("Exception when calling TxsApi->list_txs: %s\n" % e)
+        print("Exception when calling TxsApi->get_tx_io: %s\n" % e)
 ```
 
 
@@ -145,12 +156,21 @@ with graphsense.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **str**| The cryptocurrency (e.g., btc) |
- **page** | **str**| Resumption token for retrieving the next page | [optional]
+ **currency** | **str**| The cryptocurrency code (e.g., btc) |
+ **tx_hash** | **str**| The transaction hash |
+ **io** | **str**| Input or outpus values of a transaction |
+**_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
+**async_req** | **bool** | Execute request asynchronously | [optional] default is False.
 
 ### Return type
 
-[**Txs**](Txs.md)
+[**TxValues**](TxValues.md)
+
+**Notes:**
+
+* If `async_req` parameter is True, the request will be called asynchronously.  The method will return the request thread.  If parameter `async_req` is False or missing, then the method will return the response directly.
+
+* If the HTTP response code is `429 Too Many Requests` due to rate limit policies, the underlying `urllib3` HTTP client will automatically stall the request as long as advised by the `Retry-After` header.
 
 ### Authorization
 

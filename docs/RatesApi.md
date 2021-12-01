@@ -1,6 +1,6 @@
 # graphsense.RatesApi
 
-All URIs are relative to *http://openapi_server:9000*
+All URIs are relative to *https://api.graphsense.info*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -20,11 +20,12 @@ import time
 import graphsense
 from graphsense.api import rates_api
 from graphsense.model.rates import Rates
+from graphsense.model.height import Height
 from pprint import pprint
-# Defining the host is optional and defaults to http://openapi_server:9000
+# Defining the host is optional and defaults to https://api.graphsense.info
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://openapi_server:9000"
+    host = "https://api.graphsense.info"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -42,8 +43,8 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = rates_api.RatesApi(api_client)
-    currency = "btc" # str | The cryptocurrency (e.g., btc)
-    height = 1 # int | The block height
+    currency = "btc" # str | The cryptocurrency code (e.g., btc)
+    height = Height(1) # Height | The block height
 
     # example passing only required values which don't have defaults set
     try:
@@ -59,12 +60,20 @@ with graphsense.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **str**| The cryptocurrency (e.g., btc) |
- **height** | **int**| The block height |
+ **currency** | **str**| The cryptocurrency code (e.g., btc) |
+ **height** | **Height**| The block height |
+**_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
+**async_req** | **bool** | Execute request asynchronously | [optional] default is False.
 
 ### Return type
 
 [**Rates**](Rates.md)
+
+**Notes:**
+
+* If `async_req` parameter is True, the request will be called asynchronously.  The method will return the request thread.  If parameter `async_req` is False or missing, then the method will return the response directly.
+
+* If the HTTP response code is `429 Too Many Requests` due to rate limit policies, the underlying `urllib3` HTTP client will automatically stall the request as long as advised by the `Retry-After` header.
 
 ### Authorization
 

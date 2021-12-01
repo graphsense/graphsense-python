@@ -1,11 +1,11 @@
 # graphsense.TagsApi
 
-All URIs are relative to *http://openapi_server:9000*
+All URIs are relative to *https://api.graphsense.info*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**list_concepts**](TagsApi.md#list_concepts) | **GET** /tags/taxonomies/{taxonomy}/concepts | Returns the supported concepts of a taxonomy
-[**list_tags**](TagsApi.md#list_tags) | **GET** /tags | Returns address and entity tags associated with a given label
+[**list_tags**](TagsApi.md#list_tags) | **GET** /{currency}/tags | Returns address or entity tags associated with a given label
 [**list_taxonomies**](TagsApi.md#list_taxonomies) | **GET** /tags/taxonomies | Returns the supported taxonomies
 
 
@@ -23,10 +23,10 @@ import graphsense
 from graphsense.api import tags_api
 from graphsense.model.concept import Concept
 from pprint import pprint
-# Defining the host is optional and defaults to http://openapi_server:9000
+# Defining the host is optional and defaults to https://api.graphsense.info
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://openapi_server:9000"
+    host = "https://api.graphsense.info"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -61,10 +61,18 @@ with graphsense.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **taxonomy** | **str**| The taxonomy |
+**_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
+**async_req** | **bool** | Execute request asynchronously | [optional] default is False.
 
 ### Return type
 
 [**[Concept]**](Concept.md)
+
+**Notes:**
+
+* If `async_req` parameter is True, the request will be called asynchronously.  The method will return the request thread.  If parameter `async_req` is False or missing, then the method will return the response directly.
+
+* If the HTTP response code is `429 Too Many Requests` due to rate limit policies, the underlying `urllib3` HTTP client will automatically stall the request as long as advised by the `Retry-After` header.
 
 ### Authorization
 
@@ -84,9 +92,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_tags**
-> [Tags] list_tags(label)
+> Tags list_tags(currency, label, level)
 
-Returns address and entity tags associated with a given label
+Returns address or entity tags associated with a given label
 
 ### Example
 
@@ -97,10 +105,10 @@ import graphsense
 from graphsense.api import tags_api
 from graphsense.model.tags import Tags
 from pprint import pprint
-# Defining the host is optional and defaults to http://openapi_server:9000
+# Defining the host is optional and defaults to https://api.graphsense.info
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://openapi_server:9000"
+    host = "https://api.graphsense.info"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -118,13 +126,16 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tags_api.TagsApi(api_client)
+    currency = "btc" # str | The cryptocurrency code (e.g., btc)
     label = "cimedy" # str | The label of an entity
-    currency = "btc" # str | The cryptocurrency (e.g., btc) (optional)
+    level = "address" # str | Whether tags on the address or entity level are requested
+    page = "page_example" # str | Resumption token for retrieving the next page (optional)
+    pagesize = 10 # int | Number of items returned in a single page (optional)
 
     # example passing only required values which don't have defaults set
     try:
-        # Returns address and entity tags associated with a given label
-        api_response = api_instance.list_tags(label)
+        # Returns address or entity tags associated with a given label
+        api_response = api_instance.list_tags(currency, label, level)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling TagsApi->list_tags: %s\n" % e)
@@ -132,8 +143,8 @@ with graphsense.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        # Returns address and entity tags associated with a given label
-        api_response = api_instance.list_tags(label, currency=currency)
+        # Returns address or entity tags associated with a given label
+        api_response = api_instance.list_tags(currency, label, level, page=page, pagesize=pagesize)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling TagsApi->list_tags: %s\n" % e)
@@ -144,12 +155,23 @@ with graphsense.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **currency** | **str**| The cryptocurrency code (e.g., btc) |
  **label** | **str**| The label of an entity |
- **currency** | **str**| The cryptocurrency (e.g., btc) | [optional]
+ **level** | **str**| Whether tags on the address or entity level are requested |
+ **page** | **str**| Resumption token for retrieving the next page | [optional]
+ **pagesize** | **int**| Number of items returned in a single page | [optional]
+**_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
+**async_req** | **bool** | Execute request asynchronously | [optional] default is False.
 
 ### Return type
 
-[**[Tags]**](Tags.md)
+[**Tags**](Tags.md)
+
+**Notes:**
+
+* If `async_req` parameter is True, the request will be called asynchronously.  The method will return the request thread.  If parameter `async_req` is False or missing, then the method will return the response directly.
+
+* If the HTTP response code is `429 Too Many Requests` due to rate limit policies, the underlying `urllib3` HTTP client will automatically stall the request as long as advised by the `Retry-After` header.
 
 ### Authorization
 
@@ -182,10 +204,10 @@ import graphsense
 from graphsense.api import tags_api
 from graphsense.model.taxonomy import Taxonomy
 from pprint import pprint
-# Defining the host is optional and defaults to http://openapi_server:9000
+# Defining the host is optional and defaults to https://api.graphsense.info
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://openapi_server:9000"
+    host = "https://api.graphsense.info"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -216,10 +238,18 @@ with graphsense.ApiClient(configuration) as api_client:
 
 ### Parameters
 This endpoint does not need any parameter.
+**_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
+**async_req** | **bool** | Execute request asynchronously | [optional] default is False.
 
 ### Return type
 
 [**[Taxonomy]**](Taxonomy.md)
+
+**Notes:**
+
+* If `async_req` parameter is True, the request will be called asynchronously.  The method will return the request thread.  If parameter `async_req` is False or missing, then the method will return the response directly.
+
+* If the HTTP response code is `429 Too Many Requests` due to rate limit policies, the underlying `urllib3` HTTP client will automatically stall the request as long as advised by the `Retry-After` header.
 
 ### Authorization
 
