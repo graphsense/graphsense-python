@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **label** | **str** | Label | 
 **abuse** | **str** | Abuses | [optional] 
 **category** | **str** | Category | [optional] 
+**is_cluster_definer** | **bool** | whether the address tag applies to the entity level | [optional] 
+**is_public** | **bool** | whether the address is public | [optional] 
 **lastmod** | **int** | Last modified | [optional] 
 **source** | **str** | Source | [optional] 
 **tagpack_uri** | **str** | Tagpack URI | [optional] 

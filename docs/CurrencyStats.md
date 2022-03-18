@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **no_blocks** | **int** |  | [optional] 
 **no_entities** | **int** |  | [optional] 
 **no_labels** | **int** |  | [optional] 
+**no_tagged_addresses** | **int** |  | [optional] 
 **no_txs** | **int** | number of transactions | [optional] 
 **timestamp** | **int** | Timestamp | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **no_incoming_txs** | **int** |  | 
 **no_outgoing_txs** | **int** |  | 
 **out_degree** | **int** |  | 
+**root_address** | **str** | Address | 
 **total_received** | [**Values**](Values.md) |  | 
 **total_spent** | [**Values**](Values.md) |  | 
 **tags** | [**AddressAndEntityTags**](AddressAndEntityTags.md) |  | [optional] 
