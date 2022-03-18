@@ -10,9 +10,12 @@ Name | Type | Description | Notes
 **entity** | **int** | Entity id | 
 **abuse** | **str** | Abuses | [optional] 
 **category** | **str** | Category | [optional] 
+**is_cluster_definer** | **bool** | whether the address tag applies to the entity level | [optional] 
+**is_public** | **bool** | whether the address is public | [optional] 
 **lastmod** | **int** | Last modified | [optional] 
 **source** | **str** | Source | [optional] 
 **tagpack_uri** | **str** | Tagpack URI | [optional] 
+**address** | **str** | Address | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
