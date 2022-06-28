@@ -12,15 +12,17 @@ import sys
 import unittest
 
 import graphsense
-from graphsense.model.height import Height
+from graphsense.model.entity import Entity
+from graphsense.model.neighbor import Neighbor
 from graphsense.model.values import Values
-globals()['Height'] = Height
+globals()['Entity'] = Entity
+globals()['Neighbor'] = Neighbor
 globals()['Values'] = Values
-from graphsense.model.link_utxo import LinkUtxo
+from graphsense.model.neighbor_entity import NeighborEntity
 
 
-class TestLinkUtxo(unittest.TestCase):
-    """LinkUtxo unit test stubs"""
+class TestNeighborEntity(unittest.TestCase):
+    """NeighborEntity unit test stubs"""
 
     def setUp(self):
         pass
@@ -28,10 +30,10 @@ class TestLinkUtxo(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testLinkUtxo(self):
-        """Test LinkUtxo"""
+    def testNeighborEntity(self):
+        """Test NeighborEntity"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = LinkUtxo()  # noqa: E501
+        # model = NeighborEntity()  # noqa: E501
         pass
 
 

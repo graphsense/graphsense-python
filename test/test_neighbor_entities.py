@@ -12,15 +12,13 @@ import sys
 import unittest
 
 import graphsense
-from graphsense.model.height import Height
-from graphsense.model.rate import Rate
-globals()['Height'] = Height
-globals()['Rate'] = Rate
-from graphsense.model.rates import Rates
+from graphsense.model.neighbor_entity import NeighborEntity
+globals()['NeighborEntity'] = NeighborEntity
+from graphsense.model.neighbor_entities import NeighborEntities
 
 
-class TestRates(unittest.TestCase):
-    """Rates unit test stubs"""
+class TestNeighborEntities(unittest.TestCase):
+    """NeighborEntities unit test stubs"""
 
     def setUp(self):
         pass
@@ -28,10 +26,10 @@ class TestRates(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testRates(self):
-        """Test Rates"""
+    def testNeighborEntities(self):
+        """Test NeighborEntities"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = Rates()  # noqa: E501
+        # model = NeighborEntities()  # noqa: E501
         pass
 
 

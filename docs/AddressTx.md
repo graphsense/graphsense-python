@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tx_type** | **str** |  | defaults to "account"
 **coinbase** | **bool** | Coinbase transaction flag | [optional] 
+**currency** | **str** | crypto currency code | [optional] 
 **height** | [**Height**](Height.md) |  | [optional] 
 **timestamp** | **int** | Timestamp | [optional] 
 **tx_hash** | **str** | Transaction hash | [optional] 

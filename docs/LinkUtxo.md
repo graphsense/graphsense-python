@@ -4,6 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**currency** | **str** | crypto currency code | 
 **height** | [**Height**](Height.md) |  | 
 **input_value** | [**Values**](Values.md) |  | 
 **output_value** | [**Values**](Values.md) |  | 

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **address** | **str** | Address | 
 **balance** | [**Values**](Values.md) |  | 
+**currency** | **str** | crypto currency code | 
 **entity** | **int** | Entity id | 
 **first_tx** | [**TxSummary**](TxSummary.md) |  | 
 **in_degree** | **int** |  | 
