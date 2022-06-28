@@ -12,10 +12,8 @@ import sys
 import unittest
 
 import graphsense
-from graphsense.model.address_tag import AddressTag
 from graphsense.model.tx_summary import TxSummary
 from graphsense.model.values import Values
-globals()['AddressTag'] = AddressTag
 globals()['TxSummary'] = TxSummary
 globals()['Values'] = Values
 from graphsense.model.address import Address
