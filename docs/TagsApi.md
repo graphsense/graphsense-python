@@ -1,6 +1,6 @@
 # graphsense.TagsApi
 
-All URIs are relative to *http://localhost:9000*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -23,10 +23,10 @@ import graphsense
 from graphsense.api import tags_api
 from graphsense.model.address_tags import AddressTags
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:9000
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://localhost:9000"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -118,10 +118,10 @@ import graphsense
 from graphsense.api import tags_api
 from graphsense.model.concept import Concept
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:9000
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://localhost:9000"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -200,10 +200,10 @@ import graphsense
 from graphsense.api import tags_api
 from graphsense.model.taxonomy import Taxonomy
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:9000
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://localhost:9000"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters

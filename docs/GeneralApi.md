@@ -1,6 +1,6 @@
 # graphsense.GeneralApi
 
-All URIs are relative to *http://localhost:9000*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -21,10 +21,10 @@ import graphsense
 from graphsense.api import general_api
 from graphsense.model.stats import Stats
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:9000
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://localhost:9000"
+    host = "http://localhost"
 )
 
 
@@ -89,10 +89,10 @@ import graphsense
 from graphsense.api import general_api
 from graphsense.model.search_result import SearchResult
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:9000
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://localhost:9000"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters

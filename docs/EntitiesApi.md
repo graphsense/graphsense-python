@@ -1,11 +1,11 @@
 # graphsense.EntitiesApi
 
-All URIs are relative to *http://localhost:9000*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_entity**](EntitiesApi.md#get_entity) | **GET** /{currency}/entities/{entity} | Get an entity, optionally with tags
-[**list_address_tags_by_entity**](EntitiesApi.md#list_address_tags_by_entity) | **GET** /{currency}/entities/{entity}/tags | Get tags for a given entity for the given level
+[**list_address_tags_by_entity**](EntitiesApi.md#list_address_tags_by_entity) | **GET** /{currency}/entities/{entity}/tags | Get address tags for a given entity
 [**list_entity_addresses**](EntitiesApi.md#list_entity_addresses) | **GET** /{currency}/entities/{entity}/addresses | Get an entity&#39;s addresses
 [**list_entity_links**](EntitiesApi.md#list_entity_links) | **GET** /{currency}/entities/{entity}/links | Get transactions between two entities
 [**list_entity_neighbors**](EntitiesApi.md#list_entity_neighbors) | **GET** /{currency}/entities/{entity}/neighbors | Get an entity&#39;s neighbors in the entity graph
@@ -27,10 +27,10 @@ import graphsense
 from graphsense.api import entities_api
 from graphsense.model.entity import Entity
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:9000
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://localhost:9000"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 # **list_address_tags_by_entity**
 > AddressTags list_address_tags_by_entity(currency, entity)
 
-Get tags for a given entity for the given level
+Get address tags for a given entity
 
 ### Example
 
@@ -111,10 +111,10 @@ import graphsense
 from graphsense.api import entities_api
 from graphsense.model.address_tags import AddressTags
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:9000
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://localhost:9000"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -139,7 +139,7 @@ with graphsense.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Get tags for a given entity for the given level
+        # Get address tags for a given entity
         api_response = api_instance.list_address_tags_by_entity(currency, entity)
         pprint(api_response)
     except graphsense.ApiException as e:
@@ -148,7 +148,7 @@ with graphsense.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        # Get tags for a given entity for the given level
+        # Get address tags for a given entity
         api_response = api_instance.list_address_tags_by_entity(currency, entity, page=page, pagesize=pagesize)
         pprint(api_response)
     except graphsense.ApiException as e:
@@ -208,10 +208,10 @@ import graphsense
 from graphsense.api import entities_api
 from graphsense.model.entity_addresses import EntityAddresses
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:9000
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://localhost:9000"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -305,10 +305,10 @@ import graphsense
 from graphsense.api import entities_api
 from graphsense.model.links import Links
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:9000
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://localhost:9000"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -405,10 +405,10 @@ from graphsense.api import entities_api
 from graphsense.model.only_entity_ids import OnlyEntityIds
 from graphsense.model.neighbor_entities import NeighborEntities
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:9000
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://localhost:9000"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -510,10 +510,10 @@ import graphsense
 from graphsense.api import entities_api
 from graphsense.model.address_txs import AddressTxs
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:9000
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://localhost:9000"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -607,10 +607,10 @@ import graphsense
 from graphsense.api import entities_api
 from graphsense.model.search_result_level1 import SearchResultLevel1
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:9000
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://localhost:9000"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters

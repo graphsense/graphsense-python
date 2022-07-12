@@ -1,6 +1,6 @@
 # graphsense.RatesApi
 
-All URIs are relative to *http://localhost:9000*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -22,10 +22,10 @@ from graphsense.api import rates_api
 from graphsense.model.rates import Rates
 from graphsense.model.height import Height
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:9000
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://localhost:9000"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
