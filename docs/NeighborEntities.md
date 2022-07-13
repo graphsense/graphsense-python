@@ -1,10 +1,10 @@
-# EntityTags
+# NeighborEntities
 
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**entity_tags** | [**[EntityTag]**](EntityTag.md) |  | 
+**neighbors** | [**[NeighborEntity]**](NeighborEntity.md) |  | 
 **next_page** | **str** |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 

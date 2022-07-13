@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **coinbase** | **bool** | Coinbase transaction flag | 
+**currency** | **str** | crypto currency code | 
 **height** | [**Height**](Height.md) |  | 
 **timestamp** | **int** | Timestamp | 
 **tx_hash** | **str** | Transaction hash | 

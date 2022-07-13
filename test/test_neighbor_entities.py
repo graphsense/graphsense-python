@@ -13,21 +13,13 @@ import sys
 import unittest
 
 import graphsense
-from graphsense.model.height import Height
-from graphsense.model.tx_account import TxAccount
-from graphsense.model.tx_utxo import TxUtxo
-from graphsense.model.tx_values import TxValues
-from graphsense.model.values import Values
-globals()['Height'] = Height
-globals()['TxAccount'] = TxAccount
-globals()['TxUtxo'] = TxUtxo
-globals()['TxValues'] = TxValues
-globals()['Values'] = Values
-from graphsense.model.tx import Tx
+from graphsense.model.neighbor_entity import NeighborEntity
+globals()['NeighborEntity'] = NeighborEntity
+from graphsense.model.neighbor_entities import NeighborEntities
 
 
-class TestTx(unittest.TestCase):
-    """Tx unit test stubs"""
+class TestNeighborEntities(unittest.TestCase):
+    """NeighborEntities unit test stubs"""
 
     def setUp(self):
         pass
@@ -35,10 +27,10 @@ class TestTx(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testTx(self):
-        """Test Tx"""
+    def testNeighborEntities(self):
+        """Test NeighborEntities"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = Tx()  # noqa: E501
+        # model = NeighborEntities()  # noqa: E501
         pass
 
 

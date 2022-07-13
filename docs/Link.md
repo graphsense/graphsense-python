@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tx_type** | **str** |  | defaults to "account"
+**currency** | **str** | crypto currency code | [optional] 
 **height** | [**Height**](Height.md) |  | [optional] 
 **input_value** | [**Values**](Values.md) |  | [optional] 
 **output_value** | [**Values**](Values.md) |  | [optional] 

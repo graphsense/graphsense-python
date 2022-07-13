@@ -10,7 +10,6 @@
 # sys.setrecursionlimit(n)
 
 from graphsense.model.address import Address
-from graphsense.model.address_and_entity_tags import AddressAndEntityTags
 from graphsense.model.address_tag import AddressTag
 from graphsense.model.address_tag_all_of import AddressTagAllOf
 from graphsense.model.address_tags import AddressTags
@@ -22,15 +21,14 @@ from graphsense.model.concept import Concept
 from graphsense.model.currency_stats import CurrencyStats
 from graphsense.model.entity import Entity
 from graphsense.model.entity_addresses import EntityAddresses
-from graphsense.model.entity_tag import EntityTag
-from graphsense.model.entity_tag_all_of import EntityTagAllOf
-from graphsense.model.entity_tags import EntityTags
 from graphsense.model.height import Height
 from graphsense.model.link import Link
 from graphsense.model.link_utxo import LinkUtxo
 from graphsense.model.links import Links
-from graphsense.model.neighbor import Neighbor
-from graphsense.model.neighbors import Neighbors
+from graphsense.model.neighbor_address import NeighborAddress
+from graphsense.model.neighbor_addresses import NeighborAddresses
+from graphsense.model.neighbor_entities import NeighborEntities
+from graphsense.model.neighbor_entity import NeighborEntity
 from graphsense.model.only_entity_ids import OnlyEntityIds
 from graphsense.model.rate import Rate
 from graphsense.model.rates import Rates
@@ -52,7 +50,6 @@ from graphsense.model.search_result_level6 import SearchResultLevel6
 from graphsense.model.search_result_level6_all_of import SearchResultLevel6AllOf
 from graphsense.model.stats import Stats
 from graphsense.model.tag import Tag
-from graphsense.model.tags import Tags
 from graphsense.model.taxonomy import Taxonomy
 from graphsense.model.tx import Tx
 from graphsense.model.tx_account import TxAccount

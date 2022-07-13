@@ -4,14 +4,18 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**active** | **bool** | whether the address has been ever used | 
 **currency** | **str** | crypto currency code | 
+**is_cluster_definer** | **bool** | whether the address tag applies to the entity level | 
 **label** | **str** | Label | 
+**tagpack_creator** | **str** | Tagpack creator | 
+**tagpack_is_public** | **bool** | whether the address is public | 
+**tagpack_title** | **str** | Tagpack title | 
 **address** | **str** | Address | 
+**entity** | **int** | Entity id | 
 **abuse** | **str** | Abuses | [optional] 
 **category** | **str** | Category | [optional] 
-**is_cluster_definer** | **bool** | whether the address tag applies to the entity level | [optional] 
-**is_public** | **bool** | whether the address is public | [optional] 
+**confidence** | **str** | Confidence name | [optional] 
+**confidence_level** | **int** | Confidence level | [optional] 
 **lastmod** | **int** | Last modified | [optional] 
 **source** | **str** | Source | [optional] 
 **tagpack_uri** | **str** | Tagpack URI | [optional] 

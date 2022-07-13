@@ -5,7 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **coinbase** | **bool** | Coinbase transaction flag | 
+**currency** | **str** | crypto currency code | 
 **height** | [**Height**](Height.md) |  | 
+**no_inputs** | **int** | number of input addresses | 
+**no_outputs** | **int** | number of output addresses | 
 **timestamp** | **int** | Timestamp | 
 **total_input** | [**Values**](Values.md) |  | 
 **total_output** | [**Values**](Values.md) |  | 
