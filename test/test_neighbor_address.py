@@ -14,10 +14,8 @@ import unittest
 
 import graphsense
 from graphsense.model.address import Address
-from graphsense.model.neighbor import Neighbor
 from graphsense.model.values import Values
 globals()['Address'] = Address
-globals()['Neighbor'] = Neighbor
 globals()['Values'] = Values
 from graphsense.model.neighbor_address import NeighborAddress
 

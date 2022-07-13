@@ -25,7 +25,6 @@ from graphsense.model.height import Height
 from graphsense.model.link import Link
 from graphsense.model.link_utxo import LinkUtxo
 from graphsense.model.links import Links
-from graphsense.model.neighbor import Neighbor
 from graphsense.model.neighbor_address import NeighborAddress
 from graphsense.model.neighbor_addresses import NeighborAddresses
 from graphsense.model.neighbor_entities import NeighborEntities

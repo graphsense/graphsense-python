@@ -155,7 +155,6 @@ Class | Method | HTTP request | Description
  - [Link](docs/Link.md)
  - [LinkUtxo](docs/LinkUtxo.md)
  - [Links](docs/Links.md)
- - [Neighbor](docs/Neighbor.md)
  - [NeighborAddress](docs/NeighborAddress.md)
  - [NeighborAddresses](docs/NeighborAddresses.md)
  - [NeighborEntities](docs/NeighborEntities.md)
