@@ -211,37 +211,18 @@ Class | Method | HTTP request | Description
 
 In `./examples` you can find example Python scripts and [Jupyter](https://jupyter.org/) notebooks demonstrating how to use the GraphSense Python API. Please Follow these setup instructions to run them:
 
-Clone this repository
+Setup a Python environment with [Anaconda](https://www.anaconda.com/products/distribution):
 
-    git clone git@github.com:graphsense/graphsense-python.git
-    cd graphsense-python
+    conda env create -f environment.yml
+    conda activate graphsense-python
 
-Recommended: create and activate a virtual Python environment
+Copy the config temp file and enter your Iknaio API key
 
-    python3 -m venv venv-gpython
-    . ./venv-gpython/bin/activate
+    cp config.json.tmp config.json
+    vi config.json
 
-Upgrade pip and install all dependencies
-    
-    python -m pip install --upgrade pip
-    pip install -r examples/requirements.txt
-
-Install the GraphSense python client
-
-    pip install git+https://github.com/graphsense/graphsense-python.git
-
-Install a custom iPython kernel that uses the virtual Python environment
-
-    ipython kernel install --name=venv-gpython
-
-Run the Jupyter notebook
+Run the jupyter notebooks
 
     jupyter notebook
 
-Open the notebooks in your browser
-
-    http://localhost:8889/notebooks/examples/basic_entities_demo.ipynb
-    http://localhost:8889/notebooks/examples/sextortion_study.ipynb
-
-Make sure you select the right kernel (venv-gpython) before running the notebooks (Kernel -> Change kernel -> venv-gpython)
 
