@@ -1,0 +1,14 @@
+name: graphsense-python
+channels:
+    - conda-forge
+    - anaconda
+dependencies:
+  - pip
+  - jupyter
+  - numpy
+  - pandas
+  - networkx
+  - seaborn
+  - matplotlib
+  - pip:
+    - git+https://github.com/graphsense/graphsense-python.git
