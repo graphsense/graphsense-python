@@ -64,6 +64,7 @@ Name | Type | Description  | Notes
  **api** | **str**| The api of the operation to execute in bulk |
  **operation** | **str**| The operation to execute in bulk |
  **body** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**| Map of the operation&#39;s parameter names to (arrays of) values |
+ **num_pages** | **int**| Number of pages to be retrieved per bulked request |
 **_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
 **async_req** | **bool** | Execute request asynchronously | [optional] default is False.
 
@@ -149,6 +150,7 @@ Name | Type | Description  | Notes
  **api** | **str**| The api of the operation to execute in bulk |
  **operation** | **str**| The operation to execute in bulk |
  **body** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**| Map of the operation&#39;s parameter names to (arrays of) values |
+ **num_pages** | **int**| Number of pages to be retrieved per bulked request |
 **_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
 **async_req** | **bool** | Execute request asynchronously | [optional] default is False.
 
