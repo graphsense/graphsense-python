@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **no_incoming_txs** | **int** |  | 
 **no_outgoing_txs** | **int** |  | 
 **out_degree** | **int** |  | 
+**status** | **str** |  | 
 **total_received** | [**Values**](Values.md) |  | 
 **total_spent** | [**Values**](Values.md) |  | 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]

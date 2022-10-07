@@ -4,7 +4,7 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_address**](AddressesApi.md#get_address) | **GET** /{currency}/addresses/{address} | Get an address, optionally with tags
+[**get_address**](AddressesApi.md#get_address) | **GET** /{currency}/addresses/{address} | Get an address
 [**get_address_entity**](AddressesApi.md#get_address_entity) | **GET** /{currency}/addresses/{address}/entity | Get the entity of an address
 [**list_address_links**](AddressesApi.md#list_address_links) | **GET** /{currency}/addresses/{address}/links | Get outgoing transactions between two addresses
 [**list_address_neighbors**](AddressesApi.md#list_address_neighbors) | **GET** /{currency}/addresses/{address}/neighbors | Get an address&#39;s neighbors in the address graph
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 # **get_address**
 > Address get_address(currency, address)
 
-Get an address, optionally with tags
+Get an address
 
 ### Example
 
@@ -52,7 +52,7 @@ with graphsense.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Get an address, optionally with tags
+        # Get an address
         api_response = api_instance.get_address(currency, address)
         pprint(api_response)
     except graphsense.ApiException as e:
@@ -317,6 +317,9 @@ with graphsense.ApiClient(configuration) as api_client:
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     address = "addressA" # str | The cryptocurrency address
     direction = "out" # str | Incoming or outgoing neighbors
+    only_ids = [
+        "only_ids_example",
+    ] # [str] | Restrict result to given set of comma separated addresses (optional)
     include_labels = False # bool | Whether to include labels of first page of tags (optional) if omitted the server will use the default value of False
     page = "page_example" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
@@ -333,7 +336,7 @@ with graphsense.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Get an address's neighbors in the address graph
-        api_response = api_instance.list_address_neighbors(currency, address, direction, include_labels=include_labels, page=page, pagesize=pagesize)
+        api_response = api_instance.list_address_neighbors(currency, address, direction, only_ids=only_ids, include_labels=include_labels, page=page, pagesize=pagesize)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling AddressesApi->list_address_neighbors: %s\n" % e)
@@ -347,6 +350,7 @@ Name | Type | Description  | Notes
  **currency** | **str**| The cryptocurrency code (e.g., btc) |
  **address** | **str**| The cryptocurrency address |
  **direction** | **str**| Incoming or outgoing neighbors |
+ **only_ids** | **[str]**| Restrict result to given set of comma separated addresses | [optional]
  **include_labels** | **bool**| Whether to include labels of first page of tags | [optional] if omitted the server will use the default value of False
  **page** | **str**| Resumption token for retrieving the next page | [optional]
  **pagesize** | **int**| Number of items returned in a single page | [optional]
@@ -417,6 +421,7 @@ with graphsense.ApiClient(configuration) as api_client:
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     address = "addressA" # str | The cryptocurrency address
+    direction = "out" # str | Incoming or outgoing transactions (optional)
     page = "page_example" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
@@ -432,7 +437,7 @@ with graphsense.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Get all transactions an address has been involved in
-        api_response = api_instance.list_address_txs(currency, address, page=page, pagesize=pagesize)
+        api_response = api_instance.list_address_txs(currency, address, direction=direction, page=page, pagesize=pagesize)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling AddressesApi->list_address_txs: %s\n" % e)
@@ -445,6 +450,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **str**| The cryptocurrency code (e.g., btc) |
  **address** | **str**| The cryptocurrency address |
+ **direction** | **str**| Incoming or outgoing transactions | [optional]
  **page** | **str**| Resumption token for retrieving the next page | [optional]
  **pagesize** | **int**| Number of items returned in a single page | [optional]
 **_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
