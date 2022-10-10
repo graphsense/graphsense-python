@@ -1,6 +1,6 @@
 # graphsense.TxsApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.ikna.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -22,10 +22,10 @@ import graphsense
 from graphsense.api import txs_api
 from graphsense.model.tx import Tx
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.ikna.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://localhost"
+    host = "https://api.ikna.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -117,10 +117,10 @@ import graphsense
 from graphsense.api import txs_api
 from graphsense.model.tx_values import TxValues
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.ikna.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "http://localhost"
+    host = "https://api.ikna.io"
 )
 
 # The client must configure the authentication and authorization parameters

@@ -29,7 +29,6 @@ from graphsense.model.neighbor_address import NeighborAddress
 from graphsense.model.neighbor_addresses import NeighborAddresses
 from graphsense.model.neighbor_entities import NeighborEntities
 from graphsense.model.neighbor_entity import NeighborEntity
-from graphsense.model.only_entity_ids import OnlyEntityIds
 from graphsense.model.rate import Rate
 from graphsense.model.rates import Rates
 from graphsense.model.search_result import SearchResult
