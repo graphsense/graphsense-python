@@ -15,13 +15,9 @@ import unittest
 import graphsense
 from graphsense.model.address import Address
 from graphsense.model.neighbor_entity import NeighborEntity
-from graphsense.model.search_result_leaf import SearchResultLeaf
-from graphsense.model.search_result_level1_all_of import SearchResultLevel1AllOf
 from graphsense.model.search_result_level2 import SearchResultLevel2
 globals()['Address'] = Address
 globals()['NeighborEntity'] = NeighborEntity
-globals()['SearchResultLeaf'] = SearchResultLeaf
-globals()['SearchResultLevel1AllOf'] = SearchResultLevel1AllOf
 globals()['SearchResultLevel2'] = SearchResultLevel2
 from graphsense.model.search_result_level1 import SearchResultLevel1
 
