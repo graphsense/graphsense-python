@@ -16,11 +16,9 @@ import graphsense
 from graphsense.model.address import Address
 from graphsense.model.neighbor_entity import NeighborEntity
 from graphsense.model.search_result_leaf import SearchResultLeaf
-from graphsense.model.search_result_level6_all_of import SearchResultLevel6AllOf
 globals()['Address'] = Address
 globals()['NeighborEntity'] = NeighborEntity
 globals()['SearchResultLeaf'] = SearchResultLeaf
-globals()['SearchResultLevel6AllOf'] = SearchResultLevel6AllOf
 from graphsense.model.search_result_level6 import SearchResultLevel6
 
 
