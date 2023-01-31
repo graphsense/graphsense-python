@@ -98,6 +98,8 @@ class TxAccount(ModelNormal):
             'tx_hash': (str,),  # noqa: E501
             'tx_type': (str,),  # noqa: E501
             'value': (Values,),  # noqa: E501
+            'contract_creation': (bool,),  # noqa: E501
+            'token_tx_id': (int,),  # noqa: E501
         }
 
     @cached_property
@@ -114,6 +116,8 @@ class TxAccount(ModelNormal):
         'tx_hash': 'tx_hash',  # noqa: E501
         'tx_type': 'tx_type',  # noqa: E501
         'value': 'value',  # noqa: E501
+        'contract_creation': 'contract_creation',  # noqa: E501
+        'token_tx_id': 'token_tx_id',  # noqa: E501
     }
 
     read_only_vars = {
@@ -167,6 +171,8 @@ class TxAccount(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            contract_creation (bool): Indicates if this transaction created a new contract. Recipient address is the address of the new contract.. [optional]  # noqa: E501
+            token_tx_id (int): [optional]  # noqa: E501
         """
 
         tx_type = kwargs.get('tx_type', "account")
@@ -267,6 +273,8 @@ class TxAccount(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            contract_creation (bool): Indicates if this transaction created a new contract. Recipient address is the address of the new contract.. [optional]  # noqa: E501
+            token_tx_id (int): [optional]  # noqa: E501
         """
 
         tx_type = kwargs.get('tx_type', "account")

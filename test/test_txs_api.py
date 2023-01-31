@@ -38,6 +38,13 @@ class TestTxsApi(unittest.TestCase):
         """
         pass
 
+    def test_list_token_txs(self):
+        """Test case for list_token_txs
+
+        Returns all token transactions in a given transaction  # noqa: E501
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

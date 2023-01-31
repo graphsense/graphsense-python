@@ -14,8 +14,10 @@ import unittest
 
 import graphsense
 from graphsense.model.entity import Entity
+from graphsense.model.token_values import TokenValues
 from graphsense.model.values import Values
 globals()['Entity'] = Entity
+globals()['TokenValues'] = TokenValues
 globals()['Values'] = Values
 from graphsense.model.neighbor_entity import NeighborEntity
 

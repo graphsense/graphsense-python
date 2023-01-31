@@ -13,8 +13,10 @@ import sys
 import unittest
 
 import graphsense
+from graphsense.model.token_values import TokenValues
 from graphsense.model.tx_summary import TxSummary
 from graphsense.model.values import Values
+globals()['TokenValues'] = TokenValues
 globals()['TxSummary'] = TxSummary
 globals()['Values'] = Values
 from graphsense.model.address import Address

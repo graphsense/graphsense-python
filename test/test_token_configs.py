@@ -13,19 +13,13 @@ import sys
 import unittest
 
 import graphsense
-from graphsense.model.address_tag import AddressTag
-from graphsense.model.token_values import TokenValues
-from graphsense.model.tx_summary import TxSummary
-from graphsense.model.values import Values
-globals()['AddressTag'] = AddressTag
-globals()['TokenValues'] = TokenValues
-globals()['TxSummary'] = TxSummary
-globals()['Values'] = Values
-from graphsense.model.entity import Entity
+from graphsense.model.token_config import TokenConfig
+globals()['TokenConfig'] = TokenConfig
+from graphsense.model.token_configs import TokenConfigs
 
 
-class TestEntity(unittest.TestCase):
-    """Entity unit test stubs"""
+class TestTokenConfigs(unittest.TestCase):
+    """TokenConfigs unit test stubs"""
 
     def setUp(self):
         pass
@@ -33,10 +27,10 @@ class TestEntity(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testEntity(self):
-        """Test Entity"""
+    def testTokenConfigs(self):
+        """Test TokenConfigs"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = Entity()  # noqa: E501
+        # model = TokenConfigs()  # noqa: E501
         pass
 
 

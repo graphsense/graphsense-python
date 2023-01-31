@@ -243,9 +243,6 @@ class GeneralApi(object):
                     ('q',): {
 
                         'min_length': 3,
-                        'regex': {
-                            'pattern': r'^[\w ]+$',  # noqa: E501
-                        },
                     },
                     ('limit',): {
 

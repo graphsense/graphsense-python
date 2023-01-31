@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **tx_type** | **str** |  | defaults to "account"
 **inputs** | [**TxValues**](TxValues.md) |  | [optional] 
 **outputs** | [**TxValues**](TxValues.md) |  | [optional] 
+**contract_creation** | **bool** | Indicates if this transaction created a new contract. Recipient address is the address of the new contract. | [optional] 
+**token_tx_id** | **int** |  | [optional] 
 **coinbase** | **bool** | Coinbase transaction flag | [optional] 
 **currency** | **str** | crypto currency code | [optional] 
 **height** | [**Height**](Height.md) |  | [optional] 

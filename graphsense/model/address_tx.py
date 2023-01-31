@@ -95,6 +95,8 @@ class AddressTx(ModelComposed):
         lazy_import()
         return {
             'tx_type': (str,),  # noqa: E501
+            'contract_creation': (bool,),  # noqa: E501
+            'token_tx_id': (int,),  # noqa: E501
             'coinbase': (bool,),  # noqa: E501
             'currency': (str,),  # noqa: E501
             'height': (Height,),  # noqa: E501
@@ -120,6 +122,8 @@ class AddressTx(ModelComposed):
 
     attribute_map = {
         'tx_type': 'tx_type',  # noqa: E501
+        'contract_creation': 'contract_creation',  # noqa: E501
+        'token_tx_id': 'token_tx_id',  # noqa: E501
         'coinbase': 'coinbase',  # noqa: E501
         'currency': 'currency',  # noqa: E501
         'height': 'height',  # noqa: E501
@@ -170,6 +174,8 @@ class AddressTx(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            contract_creation (bool): Indicates if this transaction created a new contract. Recipient address is the address of the new contract.. [optional]  # noqa: E501
+            token_tx_id (int): [optional]  # noqa: E501
             coinbase (bool): Coinbase transaction flag. [optional]  # noqa: E501
             currency (str): crypto currency code. [optional]  # noqa: E501
             height (Height): [optional]  # noqa: E501
@@ -279,6 +285,8 @@ class AddressTx(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            contract_creation (bool): Indicates if this transaction created a new contract. Recipient address is the address of the new contract.. [optional]  # noqa: E501
+            token_tx_id (int): [optional]  # noqa: E501
             coinbase (bool): Coinbase transaction flag. [optional]  # noqa: E501
             currency (str): crypto currency code. [optional]  # noqa: E501
             height (Height): [optional]  # noqa: E501

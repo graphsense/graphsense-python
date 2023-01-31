@@ -14,8 +14,10 @@ import unittest
 
 import graphsense
 from graphsense.model.address import Address
+from graphsense.model.token_values import TokenValues
 from graphsense.model.values import Values
 globals()['Address'] = Address
+globals()['TokenValues'] = TokenValues
 globals()['Values'] = Values
 from graphsense.model.neighbor_address import NeighborAddress
 

@@ -71,3 +71,6 @@ tags
 
 #openapi
 .openapi-generator
+
+#credentials
+examples/config.json
