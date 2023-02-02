@@ -19,6 +19,9 @@ Name | Type | Description | Notes
 **total_received** | [**Values**](Values.md) |  | 
 **total_spent** | [**Values**](Values.md) |  | 
 **best_address_tag** | [**AddressTag**](AddressTag.md) |  | [optional] 
+**token_balances** | [**TokenValues**](TokenValues.md) |  | [optional] 
+**total_tokens_received** | [**TokenValues**](TokenValues.md) |  | [optional] 
+**total_tokens_spent** | [**TokenValues**](TokenValues.md) |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
