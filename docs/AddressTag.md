@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **address** | **str** | Address | 
 **entity** | **int** | Entity id | 
 **abuse** | **str** | Abuses | [optional] 
+**actor** | **str** | id of the actor that controlls the address | [optional] 
 **category** | **str** | Category | [optional] 
 **confidence** | **str** | Confidence name | [optional] 
 **confidence_level** | **int** | Confidence level | [optional] 
