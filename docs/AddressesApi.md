@@ -320,7 +320,7 @@ with graphsense.ApiClient(configuration) as api_client:
     only_ids = [
         "only_ids_example",
     ] # [str] | Restrict result to given set of comma separated addresses (optional)
-    include_labels = False # bool | Whether to include labels of first page of tags (optional) if omitted the server will use the default value of False
+    include_labels = False # bool | Whether to include labels of first page of address tags (optional) if omitted the server will use the default value of False
     page = "page_example" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
@@ -351,7 +351,7 @@ Name | Type | Description  | Notes
  **address** | **str**| The cryptocurrency address |
  **direction** | **str**| Incoming or outgoing neighbors |
  **only_ids** | **[str]**| Restrict result to given set of comma separated addresses | [optional]
- **include_labels** | **bool**| Whether to include labels of first page of tags | [optional] if omitted the server will use the default value of False
+ **include_labels** | **bool**| Whether to include labels of first page of address tags | [optional] if omitted the server will use the default value of False
  **page** | **str**| Resumption token for retrieving the next page | [optional]
  **pagesize** | **int**| Number of items returned in a single page | [optional]
 **_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
@@ -396,6 +396,7 @@ Get all transactions an address has been involved in
 import time
 import graphsense
 from graphsense.api import addresses_api
+from graphsense.model.height import Height
 from graphsense.model.address_txs import AddressTxs
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.ikna.io
@@ -422,6 +423,9 @@ with graphsense.ApiClient(configuration) as api_client:
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     address = "addressA" # str | The cryptocurrency address
     direction = "out" # str | Incoming or outgoing transactions (optional)
+    min_height = Height(1) # Height | Return transactions starting from given height (optional)
+    max_height = Height(2) # Height | Return transactions up to (including) given height (optional)
+    token_currency = "WETH" # str | Return transactions of given token currency (optional)
     page = "page_example" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
@@ -437,7 +441,7 @@ with graphsense.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Get all transactions an address has been involved in
-        api_response = api_instance.list_address_txs(currency, address, direction=direction, page=page, pagesize=pagesize)
+        api_response = api_instance.list_address_txs(currency, address, direction=direction, min_height=min_height, max_height=max_height, token_currency=token_currency, page=page, pagesize=pagesize)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling AddressesApi->list_address_txs: %s\n" % e)
@@ -451,6 +455,9 @@ Name | Type | Description  | Notes
  **currency** | **str**| The cryptocurrency code (e.g., btc) |
  **address** | **str**| The cryptocurrency address |
  **direction** | **str**| Incoming or outgoing transactions | [optional]
+ **min_height** | **Height**| Return transactions starting from given height | [optional]
+ **max_height** | **Height**| Return transactions up to (including) given height | [optional]
+ **token_currency** | **str**| Return transactions of given token currency | [optional]
  **page** | **str**| Resumption token for retrieving the next page | [optional]
  **pagesize** | **int**| Number of items returned in a single page | [optional]
 **_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 

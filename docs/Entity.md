@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **root_address** | **str** | Address | 
 **total_received** | [**Values**](Values.md) |  | 
 **total_spent** | [**Values**](Values.md) |  | 
+**actors** | [**LabeledItemRefs**](LabeledItemRefs.md) |  | [optional] 
 **best_address_tag** | [**AddressTag**](AddressTag.md) |  | [optional] 
 **token_balances** | [**TokenValues**](TokenValues.md) |  | [optional] 
 **total_tokens_received** | [**TokenValues**](TokenValues.md) |  | [optional] 

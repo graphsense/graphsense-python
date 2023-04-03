@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **tagpack_is_public** | **bool** | whether the address is public | 
 **tagpack_title** | **str** | Tagpack title | 
 **abuse** | **str** | Abuses | [optional] 
+**actor** | **str** | id of the actor that controlls the address | [optional] 
 **category** | **str** | Category | [optional] 
 **confidence** | **str** | Confidence name | [optional] 
 **confidence_level** | **int** | Confidence level | [optional] 

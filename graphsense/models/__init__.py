@@ -9,6 +9,9 @@
 # import sys
 # sys.setrecursionlimit(n)
 
+from graphsense.model.actor import Actor
+from graphsense.model.actor_context import ActorContext
+from graphsense.model.actors import Actors
 from graphsense.model.address import Address
 from graphsense.model.address_tag import AddressTag
 from graphsense.model.address_tag_all_of import AddressTagAllOf
@@ -22,6 +25,8 @@ from graphsense.model.currency_stats import CurrencyStats
 from graphsense.model.entity import Entity
 from graphsense.model.entity_addresses import EntityAddresses
 from graphsense.model.height import Height
+from graphsense.model.labeled_item_ref import LabeledItemRef
+from graphsense.model.labeled_item_refs import LabeledItemRefs
 from graphsense.model.link import Link
 from graphsense.model.link_utxo import LinkUtxo
 from graphsense.model.links import Links
