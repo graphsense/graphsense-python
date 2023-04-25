@@ -23,6 +23,7 @@ VERSION = "23.03"
 REQUIRES = [
   "urllib3 >= 1.25.3",
   "python-dateutil",
+  "pandas>=1.5, < 2.0"
 ]
 
 setup(
