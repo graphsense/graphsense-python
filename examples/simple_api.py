@@ -31,6 +31,12 @@ with graphsense.ApiClient(configuration) as api_client:
             "19vRqiFxFVGHNd4vqtE6TZM29XVZyQFu8Q"
         ]))
 
+    print(api.list_tags_by_address("btc",
+                                   "16V9EZtv9f8rHzcv2WRfetxj4TPzmYMhky"))
+    # bulk api for tags not available on server side
+    # print(api.address.tags_as_df("btc", "16V9EZtv9f8rHzcv2WRfetxj4TPzmYMhky"))
+    # print(api.address.tags_as_df("btc", ["1PNg9PrxjmZZ51TnzGzCbFvtop8h3fUtVB", "19vRqiFxFVGHNd4vqtE6TZM29XVZyQFu8Q", "16V9EZtv9f8rHzcv2WRfetxj4TPzmYMhky"]))
+
     print("\n#### Address links")
     print(
         api.list_address_links("btc", "1G5GHnRzVXi8NP591wVpXRrERhHW47iSe3",
