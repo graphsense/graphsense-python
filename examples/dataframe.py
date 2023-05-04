@@ -1,5 +1,5 @@
 import graphsense
-from graphsense.api.api import DataFrameApi
+from graphsense.api import api
 from pprint import pprint
 import pandas as pd
 import json
@@ -18,14 +18,12 @@ data = {
 address_df = pd.DataFrame.from_dict(data)
 
 with graphsense.ApiClient(configuration) as api_client:
-    api_instance = DataFrameApi(api_client)
+    api_instance = api.Bulk(api_client)
 
     CURRENCY = "btc"
 
     try:
         # Read data into pandas dataframe.
-        # Use _preload_content=False to stream
-        # raw response data right into a dataframe.
         df_resp = api_instance.get_address_entity(
             CURRENCY, address_df['address'].to_list())
         pprint(df_resp['total_received_value'])
