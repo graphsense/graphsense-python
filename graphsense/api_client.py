@@ -762,7 +762,7 @@ class Endpoint(object):
         """ This method is invoked when endpoints are called
         Example:
 
-        api_instance = DefaultApi()
+        api_instance = Api()
         api_instance.bulk_csv  # this is an instance of the class Endpoint
         api_instance.bulk_csv()  # this invokes api_instance.bulk_csv.__call__()
         which then invokes the callable functions stored in that endpoint at

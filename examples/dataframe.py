@@ -1,5 +1,5 @@
 import graphsense
-from graphsense.api import default_api
+from graphsense.api.api import DataFrameApi
 from pprint import pprint
 import pandas as pd
 import json
@@ -18,7 +18,7 @@ data = {
 address_df = pd.DataFrame.from_dict(data)
 
 with graphsense.ApiClient(configuration) as api_client:
-    api_instance = default_api.DataFrame(api_client)
+    api_instance = DataFrameApi(api_client)
 
     CURRENCY = "btc"
 

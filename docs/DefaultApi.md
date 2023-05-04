@@ -1,38 +1,38 @@
-# graphsense.DefaultApi
+# graphsense.Api
 
 All URIs are relative to *https://api.ikna.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**bulk_csv**](DefaultApi.md#bulk_csv) | **POST** /{currency}/bulk.csv/{operation} | Get data as CSV in bulk
-[**bulk_json**](DefaultApi.md#bulk_json) | **POST** /{currency}/bulk.json/{operation} | Get data as JSON in bulk
-[**get_actor**](DefaultApi.md#get_actor) | **GET** /tags/actors/{actor} | Returns an actor given its unique id or (unique) label
-[**get_actor_tags**](DefaultApi.md#get_actor_tags) | **GET** /tags/actors/{actor}/tags | Returns the address tags for a given actor
-[**get_address**](DefaultApi.md#get_address) | **GET** /{currency}/addresses/{address} | Get an address
-[**get_address_entity**](DefaultApi.md#get_address_entity) | **GET** /{currency}/addresses/{address}/entity | Get the entity of an address
-[**get_block**](DefaultApi.md#get_block) | **GET** /{currency}/blocks/{height} | Get a block by its height
-[**get_entity**](DefaultApi.md#get_entity) | **GET** /{currency}/entities/{entity} | Get an entity
-[**get_exchange_rates**](DefaultApi.md#get_exchange_rates) | **GET** /{currency}/rates/{height} | Returns exchange rate for a given height
-[**get_statistics**](DefaultApi.md#get_statistics) | **GET** /stats | Get statistics of supported currencies
-[**get_tx**](DefaultApi.md#get_tx) | **GET** /{currency}/txs/{tx_hash} | Returns details of a specific transaction identified by its hash.
-[**get_tx_io**](DefaultApi.md#get_tx_io) | **GET** /{currency}/txs/{tx_hash}/{io} | Returns input/output values of a specific transaction identified by its hash.
-[**list_address_links**](DefaultApi.md#list_address_links) | **GET** /{currency}/addresses/{address}/links | Get outgoing transactions between two addresses
-[**list_address_neighbors**](DefaultApi.md#list_address_neighbors) | **GET** /{currency}/addresses/{address}/neighbors | Get an address&#39;s neighbors in the address graph
-[**list_address_tags**](DefaultApi.md#list_address_tags) | **GET** /tags | Returns address tags associated with a given label
-[**list_address_tags_by_entity**](DefaultApi.md#list_address_tags_by_entity) | **GET** /{currency}/entities/{entity}/tags | Get address tags for a given entity
-[**list_address_txs**](DefaultApi.md#list_address_txs) | **GET** /{currency}/addresses/{address}/txs | Get all transactions an address has been involved in
-[**list_block_txs**](DefaultApi.md#list_block_txs) | **GET** /{currency}/blocks/{height}/txs | Get block transactions
-[**list_concepts**](DefaultApi.md#list_concepts) | **GET** /tags/taxonomies/{taxonomy}/concepts | Returns the supported concepts of a taxonomy
-[**list_entity_addresses**](DefaultApi.md#list_entity_addresses) | **GET** /{currency}/entities/{entity}/addresses | Get an entity&#39;s addresses
-[**list_entity_links**](DefaultApi.md#list_entity_links) | **GET** /{currency}/entities/{entity}/links | Get transactions between two entities
-[**list_entity_neighbors**](DefaultApi.md#list_entity_neighbors) | **GET** /{currency}/entities/{entity}/neighbors | Get an entity&#39;s direct neighbors
-[**list_entity_txs**](DefaultApi.md#list_entity_txs) | **GET** /{currency}/entities/{entity}/txs | Get all transactions an entity has been involved in
-[**list_supported_tokens**](DefaultApi.md#list_supported_tokens) | **GET** /{currency}/supported_tokens | Returns a list of supported token (sub)currencies.
-[**list_tags_by_address**](DefaultApi.md#list_tags_by_address) | **GET** /{currency}/addresses/{address}/tags | Get attribution tags for a given address
-[**list_taxonomies**](DefaultApi.md#list_taxonomies) | **GET** /tags/taxonomies | Returns the supported taxonomies
-[**list_token_txs**](DefaultApi.md#list_token_txs) | **GET** /{currency}/token_txs/{tx_hash} | Returns all token transactions in a given transaction
-[**search**](DefaultApi.md#search) | **GET** /search | Returns matching addresses, transactions and labels
-[**search_entity_neighbors**](DefaultApi.md#search_entity_neighbors) | **GET** /{currency}/entities/{entity}/search | Search deeply for matching neighbors
+[**bulk_csv**](Api.md#bulk_csv) | **POST** /{currency}/bulk.csv/{operation} | Get data as CSV in bulk
+[**bulk_json**](Api.md#bulk_json) | **POST** /{currency}/bulk.json/{operation} | Get data as JSON in bulk
+[**get_actor**](Api.md#get_actor) | **GET** /tags/actors/{actor} | Returns an actor given its unique id or (unique) label
+[**get_actor_tags**](Api.md#get_actor_tags) | **GET** /tags/actors/{actor}/tags | Returns the address tags for a given actor
+[**get_address**](Api.md#get_address) | **GET** /{currency}/addresses/{address} | Get an address
+[**get_address_entity**](Api.md#get_address_entity) | **GET** /{currency}/addresses/{address}/entity | Get the entity of an address
+[**get_block**](Api.md#get_block) | **GET** /{currency}/blocks/{height} | Get a block by its height
+[**get_entity**](Api.md#get_entity) | **GET** /{currency}/entities/{entity} | Get an entity
+[**get_exchange_rates**](Api.md#get_exchange_rates) | **GET** /{currency}/rates/{height} | Returns exchange rate for a given height
+[**get_statistics**](Api.md#get_statistics) | **GET** /stats | Get statistics of supported currencies
+[**get_tx**](Api.md#get_tx) | **GET** /{currency}/txs/{tx_hash} | Returns details of a specific transaction identified by its hash.
+[**get_tx_io**](Api.md#get_tx_io) | **GET** /{currency}/txs/{tx_hash}/{io} | Returns input/output values of a specific transaction identified by its hash.
+[**list_address_links**](Api.md#list_address_links) | **GET** /{currency}/addresses/{address}/links | Get outgoing transactions between two addresses
+[**list_address_neighbors**](Api.md#list_address_neighbors) | **GET** /{currency}/addresses/{address}/neighbors | Get an address&#39;s neighbors in the address graph
+[**list_address_tags**](Api.md#list_address_tags) | **GET** /tags | Returns address tags associated with a given label
+[**list_address_tags_by_entity**](Api.md#list_address_tags_by_entity) | **GET** /{currency}/entities/{entity}/tags | Get address tags for a given entity
+[**list_address_txs**](Api.md#list_address_txs) | **GET** /{currency}/addresses/{address}/txs | Get all transactions an address has been involved in
+[**list_block_txs**](Api.md#list_block_txs) | **GET** /{currency}/blocks/{height}/txs | Get block transactions
+[**list_concepts**](Api.md#list_concepts) | **GET** /tags/taxonomies/{taxonomy}/concepts | Returns the supported concepts of a taxonomy
+[**list_entity_addresses**](Api.md#list_entity_addresses) | **GET** /{currency}/entities/{entity}/addresses | Get an entity&#39;s addresses
+[**list_entity_links**](Api.md#list_entity_links) | **GET** /{currency}/entities/{entity}/links | Get transactions between two entities
+[**list_entity_neighbors**](Api.md#list_entity_neighbors) | **GET** /{currency}/entities/{entity}/neighbors | Get an entity&#39;s direct neighbors
+[**list_entity_txs**](Api.md#list_entity_txs) | **GET** /{currency}/entities/{entity}/txs | Get all transactions an entity has been involved in
+[**list_supported_tokens**](Api.md#list_supported_tokens) | **GET** /{currency}/supported_tokens | Returns a list of supported token (sub)currencies.
+[**list_tags_by_address**](Api.md#list_tags_by_address) | **GET** /{currency}/addresses/{address}/tags | Get attribution tags for a given address
+[**list_taxonomies**](Api.md#list_taxonomies) | **GET** /tags/taxonomies | Returns the supported taxonomies
+[**list_token_txs**](Api.md#list_token_txs) | **GET** /{currency}/token_txs/{tx_hash} | Returns all token transactions in a given transaction
+[**search**](Api.md#search) | **GET** /search | Returns matching addresses, transactions and labels
+[**search_entity_neighbors**](Api.md#search_entity_neighbors) | **GET** /{currency}/entities/{entity}/search | Search deeply for matching neighbors
 
 
 # **bulk_csv**
@@ -68,7 +68,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     operation = "get_block" # str | The operation to execute in bulk
     num_pages = 1 # int | Number of pages to retrieve for operations with list response
@@ -81,7 +81,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.bulk_csv(currency, operation, num_pages, body)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->bulk_csv: %s\n" % e)
+        print("Exception when calling Api->bulk_csv: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
@@ -90,7 +90,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.bulk_csv(currency, operation, num_pages, body, ck=ck)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->bulk_csv: %s\n" % e)
+        print("Exception when calling Api->bulk_csv: %s\n" % e)
 ```
 
 
@@ -166,7 +166,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     operation = "get_block" # str | The operation to execute in bulk
     num_pages = 1 # int | Number of pages to retrieve for operations with list response
@@ -178,7 +178,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.bulk_json(currency, operation, num_pages, body)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->bulk_json: %s\n" % e)
+        print("Exception when calling Api->bulk_json: %s\n" % e)
 ```
 
 
@@ -254,7 +254,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     actor = "binance" # str | actor id
 
     # example passing only required values which don't have defaults set
@@ -263,7 +263,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.get_actor(actor)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->get_actor: %s\n" % e)
+        print("Exception when calling Api->get_actor: %s\n" % e)
 ```
 
 
@@ -336,7 +336,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     actor = "binance" # str | actor id
     page = "page_example" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
@@ -347,7 +347,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.get_actor_tags(actor)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->get_actor_tags: %s\n" % e)
+        print("Exception when calling Api->get_actor_tags: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
@@ -356,7 +356,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.get_actor_tags(actor, page=page, pagesize=pagesize)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->get_actor_tags: %s\n" % e)
+        print("Exception when calling Api->get_actor_tags: %s\n" % e)
 ```
 
 
@@ -431,7 +431,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     address = "addressA" # str | The cryptocurrency address
 
@@ -441,7 +441,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.get_address(currency, address)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->get_address: %s\n" % e)
+        print("Exception when calling Api->get_address: %s\n" % e)
 ```
 
 
@@ -515,7 +515,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     address = "addressA" # str | The cryptocurrency address
 
@@ -525,7 +525,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.get_address_entity(currency, address)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->get_address_entity: %s\n" % e)
+        print("Exception when calling Api->get_address_entity: %s\n" % e)
 ```
 
 
@@ -600,7 +600,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     height = Height(1) # Height | The block height
 
@@ -610,7 +610,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.get_block(currency, height)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->get_block: %s\n" % e)
+        print("Exception when calling Api->get_block: %s\n" % e)
 ```
 
 
@@ -684,7 +684,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     entity = 67065 # int | The entity ID
     exclude_best_address_tag = False # bool | Whether to exclude the best address tag (optional) if omitted the server will use the default value of False
@@ -696,7 +696,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.get_entity(currency, entity)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->get_entity: %s\n" % e)
+        print("Exception when calling Api->get_entity: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
@@ -705,7 +705,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.get_entity(currency, entity, exclude_best_address_tag=exclude_best_address_tag, include_actors=include_actors)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->get_entity: %s\n" % e)
+        print("Exception when calling Api->get_entity: %s\n" % e)
 ```
 
 
@@ -782,7 +782,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     height = Height(1) # Height | The block height
 
@@ -792,7 +792,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.get_exchange_rates(currency, height)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->get_exchange_rates: %s\n" % e)
+        print("Exception when calling Api->get_exchange_rates: %s\n" % e)
 ```
 
 
@@ -855,7 +855,7 @@ configuration = graphsense.Configuration(
 # Enter a context with an instance of the API client
 with graphsense.ApiClient() as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
 
     # example, this endpoint has no required or optional parameters
     try:
@@ -863,7 +863,7 @@ with graphsense.ApiClient() as api_client:
         api_response = api_instance.get_statistics()
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->get_statistics: %s\n" % e)
+        print("Exception when calling Api->get_statistics: %s\n" % e)
 ```
 
 
@@ -933,7 +933,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     tx_hash = "ab188013" # str | The transaction hash
     include_io = False # bool | Whether to include inputs/outputs of a transaction (UTXO only) (optional) if omitted the server will use the default value of False
@@ -945,7 +945,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.get_tx(currency, tx_hash)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->get_tx: %s\n" % e)
+        print("Exception when calling Api->get_tx: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
@@ -954,7 +954,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.get_tx(currency, tx_hash, include_io=include_io, token_tx_id=token_tx_id)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->get_tx: %s\n" % e)
+        print("Exception when calling Api->get_tx: %s\n" % e)
 ```
 
 
@@ -1030,7 +1030,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     tx_hash = "ab188013" # str | The transaction hash
     io = "outputs" # str | Input or outpus values of a transaction
@@ -1041,7 +1041,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.get_tx_io(currency, tx_hash, io)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->get_tx_io: %s\n" % e)
+        print("Exception when calling Api->get_tx_io: %s\n" % e)
 ```
 
 
@@ -1116,7 +1116,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     address = "addressA" # str | The cryptocurrency address
     neighbor = "addressE" # str | Neighbor address
@@ -1129,7 +1129,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.list_address_links(currency, address, neighbor)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->list_address_links: %s\n" % e)
+        print("Exception when calling Api->list_address_links: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
@@ -1138,7 +1138,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.list_address_links(currency, address, neighbor, page=page, pagesize=pagesize)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->list_address_links: %s\n" % e)
+        print("Exception when calling Api->list_address_links: %s\n" % e)
 ```
 
 
@@ -1215,7 +1215,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     address = "addressA" # str | The cryptocurrency address
     direction = "out" # str | Incoming or outgoing neighbors
@@ -1232,7 +1232,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.list_address_neighbors(currency, address, direction)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->list_address_neighbors: %s\n" % e)
+        print("Exception when calling Api->list_address_neighbors: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
@@ -1241,7 +1241,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.list_address_neighbors(currency, address, direction, only_ids=only_ids, include_labels=include_labels, page=page, pagesize=pagesize)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->list_address_neighbors: %s\n" % e)
+        print("Exception when calling Api->list_address_neighbors: %s\n" % e)
 ```
 
 
@@ -1320,7 +1320,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     label = "cimedy" # str | The label of an entity
     page = "page_example" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
@@ -1331,7 +1331,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.list_address_tags(label)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->list_address_tags: %s\n" % e)
+        print("Exception when calling Api->list_address_tags: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
@@ -1340,7 +1340,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.list_address_tags(label, page=page, pagesize=pagesize)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->list_address_tags: %s\n" % e)
+        print("Exception when calling Api->list_address_tags: %s\n" % e)
 ```
 
 
@@ -1415,7 +1415,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     entity = 67065 # int | The entity ID
     page = "page_example" # str | Resumption token for retrieving the next page (optional)
@@ -1427,7 +1427,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.list_address_tags_by_entity(currency, entity)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->list_address_tags_by_entity: %s\n" % e)
+        print("Exception when calling Api->list_address_tags_by_entity: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
@@ -1436,7 +1436,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.list_address_tags_by_entity(currency, entity, page=page, pagesize=pagesize)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->list_address_tags_by_entity: %s\n" % e)
+        print("Exception when calling Api->list_address_tags_by_entity: %s\n" % e)
 ```
 
 
@@ -1513,7 +1513,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     address = "addressA" # str | The cryptocurrency address
     direction = "out" # str | Incoming or outgoing transactions (optional)
@@ -1529,7 +1529,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.list_address_txs(currency, address)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->list_address_txs: %s\n" % e)
+        print("Exception when calling Api->list_address_txs: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
@@ -1538,7 +1538,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.list_address_txs(currency, address, direction=direction, min_height=min_height, max_height=max_height, token_currency=token_currency, page=page, pagesize=pagesize)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->list_address_txs: %s\n" % e)
+        print("Exception when calling Api->list_address_txs: %s\n" % e)
 ```
 
 
@@ -1619,7 +1619,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     height = Height(1) # Height | The block height
 
@@ -1629,7 +1629,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.list_block_txs(currency, height)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->list_block_txs: %s\n" % e)
+        print("Exception when calling Api->list_block_txs: %s\n" % e)
 ```
 
 
@@ -1703,7 +1703,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     taxonomy = "foo" # str | The taxonomy
 
     # example passing only required values which don't have defaults set
@@ -1712,7 +1712,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.list_concepts(taxonomy)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->list_concepts: %s\n" % e)
+        print("Exception when calling Api->list_concepts: %s\n" % e)
 ```
 
 
@@ -1785,7 +1785,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     entity = 67065 # int | The entity ID
     page = "page_example" # str | Resumption token for retrieving the next page (optional)
@@ -1797,7 +1797,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.list_entity_addresses(currency, entity)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->list_entity_addresses: %s\n" % e)
+        print("Exception when calling Api->list_entity_addresses: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
@@ -1806,7 +1806,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.list_entity_addresses(currency, entity, page=page, pagesize=pagesize)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->list_entity_addresses: %s\n" % e)
+        print("Exception when calling Api->list_entity_addresses: %s\n" % e)
 ```
 
 
@@ -1882,7 +1882,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     entity = 67065 # int | The entity ID
     neighbor = 123456 # int | Neighbor entity
@@ -1895,7 +1895,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.list_entity_links(currency, entity, neighbor)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->list_entity_links: %s\n" % e)
+        print("Exception when calling Api->list_entity_links: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
@@ -1904,7 +1904,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.list_entity_links(currency, entity, neighbor, page=page, pagesize=pagesize)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->list_entity_links: %s\n" % e)
+        print("Exception when calling Api->list_entity_links: %s\n" % e)
 ```
 
 
@@ -1981,7 +1981,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     entity = 67065 # int | The entity ID
     direction = "out" # str | Incoming or outgoing neighbors
@@ -2000,7 +2000,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.list_entity_neighbors(currency, entity, direction)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->list_entity_neighbors: %s\n" % e)
+        print("Exception when calling Api->list_entity_neighbors: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
@@ -2009,7 +2009,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.list_entity_neighbors(currency, entity, direction, only_ids=only_ids, include_labels=include_labels, exclude_best_address_tag=exclude_best_address_tag, include_actors=include_actors, page=page, pagesize=pagesize)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->list_entity_neighbors: %s\n" % e)
+        print("Exception when calling Api->list_entity_neighbors: %s\n" % e)
 ```
 
 
@@ -2091,7 +2091,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     entity = 67065 # int | The entity ID
     direction = "out" # str | Incoming or outgoing transactions (optional)
@@ -2107,7 +2107,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.list_entity_txs(currency, entity)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->list_entity_txs: %s\n" % e)
+        print("Exception when calling Api->list_entity_txs: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
@@ -2116,7 +2116,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.list_entity_txs(currency, entity, direction=direction, min_height=min_height, max_height=max_height, token_currency=token_currency, page=page, pagesize=pagesize)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->list_entity_txs: %s\n" % e)
+        print("Exception when calling Api->list_entity_txs: %s\n" % e)
 ```
 
 
@@ -2196,7 +2196,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
 
     # example passing only required values which don't have defaults set
@@ -2205,7 +2205,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.list_supported_tokens(currency)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->list_supported_tokens: %s\n" % e)
+        print("Exception when calling Api->list_supported_tokens: %s\n" % e)
 ```
 
 
@@ -2278,7 +2278,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     address = "addressA" # str | The cryptocurrency address
     page = "page_example" # str | Resumption token for retrieving the next page (optional)
@@ -2290,7 +2290,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.list_tags_by_address(currency, address)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->list_tags_by_address: %s\n" % e)
+        print("Exception when calling Api->list_tags_by_address: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
@@ -2299,7 +2299,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.list_tags_by_address(currency, address, page=page, pagesize=pagesize)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->list_tags_by_address: %s\n" % e)
+        print("Exception when calling Api->list_tags_by_address: %s\n" % e)
 ```
 
 
@@ -2375,7 +2375,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
 
     # example, this endpoint has no required or optional parameters
     try:
@@ -2383,7 +2383,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.list_taxonomies()
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->list_taxonomies: %s\n" % e)
+        print("Exception when calling Api->list_taxonomies: %s\n" % e)
 ```
 
 
@@ -2453,7 +2453,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     tx_hash = "ab188013" # str | The transaction hash
 
@@ -2463,7 +2463,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.list_token_txs(currency, tx_hash)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->list_token_txs: %s\n" % e)
+        print("Exception when calling Api->list_token_txs: %s\n" % e)
 ```
 
 
@@ -2537,7 +2537,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     q = "foo" # str | It can be (the beginning of) an address, a transaction or a label
     currency = "btc" # str | The cryptocurrency (e.g., btc) (optional)
     limit = 10 # int | Maximum number of search results (optional) if omitted the server will use the default value of 10
@@ -2548,7 +2548,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.search(q)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->search: %s\n" % e)
+        print("Exception when calling Api->search: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
@@ -2557,7 +2557,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.search(q, currency=currency, limit=limit)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->search: %s\n" % e)
+        print("Exception when calling Api->search: %s\n" % e)
 ```
 
 
@@ -2632,7 +2632,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     entity = 67065 # int | The entity ID
     direction = "out" # str | Incoming or outgoing neighbors
@@ -2650,7 +2650,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.search_entity_neighbors(currency, entity, direction, key, value, depth)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->search_entity_neighbors: %s\n" % e)
+        print("Exception when calling Api->search_entity_neighbors: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
@@ -2659,7 +2659,7 @@ with graphsense.ApiClient(configuration) as api_client:
         api_response = api_instance.search_entity_neighbors(currency, entity, direction, key, value, depth, breadth=breadth, skip_num_addresses=skip_num_addresses)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->search_entity_neighbors: %s\n" % e)
+        print("Exception when calling Api->search_entity_neighbors: %s\n" % e)
 ```
 
 

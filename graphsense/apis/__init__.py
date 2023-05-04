@@ -6,7 +6,7 @@
 # raise a `RecursionError`.
 # In order to avoid this, import only the API that you directly need like:
 #
-#   from .api.default_api import DefaultApi
+#   from .api.default_api import Api
 #
 # or import this package, but before doing it, use:
 #
@@ -14,4 +14,4 @@
 #   sys.setrecursionlimit(n)
 
 # Import APIs into API package:
-from graphsense.api.default_api import DefaultApi
+from graphsense.api.default_api import Api

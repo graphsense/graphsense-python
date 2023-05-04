@@ -107,7 +107,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = default_api.Api(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
 operation = "get_block" # str | The operation to execute in bulk
 num_pages = 1 # int | Number of pages to retrieve for operations with list response
@@ -119,7 +119,7 @@ ck = "ck_example" # str | for dev only (optional)
         api_response = api_instance.bulk_csv(currency, operation, num_pages, body, ck=ck)
         pprint(api_response)
     except graphsense.ApiException as e:
-        print("Exception when calling DefaultApi->bulk_csv: %s\n" % e)
+        print("Exception when calling Api->bulk_csv: %s\n" % e)
 ```
 
 ## Documentation for API Endpoints
@@ -128,35 +128,35 @@ All URIs are relative to *https://api.ikna.io*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**bulk_csv**](docs/DefaultApi.md#bulk_csv) | **POST** /{currency}/bulk.csv/{operation} | Get data as CSV in bulk
-*DefaultApi* | [**bulk_json**](docs/DefaultApi.md#bulk_json) | **POST** /{currency}/bulk.json/{operation} | Get data as JSON in bulk
-*DefaultApi* | [**get_actor**](docs/DefaultApi.md#get_actor) | **GET** /tags/actors/{actor} | Returns an actor given its unique id or (unique) label
-*DefaultApi* | [**get_actor_tags**](docs/DefaultApi.md#get_actor_tags) | **GET** /tags/actors/{actor}/tags | Returns the address tags for a given actor
-*DefaultApi* | [**get_address**](docs/DefaultApi.md#get_address) | **GET** /{currency}/addresses/{address} | Get an address
-*DefaultApi* | [**get_address_entity**](docs/DefaultApi.md#get_address_entity) | **GET** /{currency}/addresses/{address}/entity | Get the entity of an address
-*DefaultApi* | [**get_block**](docs/DefaultApi.md#get_block) | **GET** /{currency}/blocks/{height} | Get a block by its height
-*DefaultApi* | [**get_entity**](docs/DefaultApi.md#get_entity) | **GET** /{currency}/entities/{entity} | Get an entity
-*DefaultApi* | [**get_exchange_rates**](docs/DefaultApi.md#get_exchange_rates) | **GET** /{currency}/rates/{height} | Returns exchange rate for a given height
-*DefaultApi* | [**get_statistics**](docs/DefaultApi.md#get_statistics) | **GET** /stats | Get statistics of supported currencies
-*DefaultApi* | [**get_tx**](docs/DefaultApi.md#get_tx) | **GET** /{currency}/txs/{tx_hash} | Returns details of a specific transaction identified by its hash.
-*DefaultApi* | [**get_tx_io**](docs/DefaultApi.md#get_tx_io) | **GET** /{currency}/txs/{tx_hash}/{io} | Returns input/output values of a specific transaction identified by its hash.
-*DefaultApi* | [**list_address_links**](docs/DefaultApi.md#list_address_links) | **GET** /{currency}/addresses/{address}/links | Get outgoing transactions between two addresses
-*DefaultApi* | [**list_address_neighbors**](docs/DefaultApi.md#list_address_neighbors) | **GET** /{currency}/addresses/{address}/neighbors | Get an address&#39;s neighbors in the address graph
-*DefaultApi* | [**list_address_tags**](docs/DefaultApi.md#list_address_tags) | **GET** /tags | Returns address tags associated with a given label
-*DefaultApi* | [**list_address_tags_by_entity**](docs/DefaultApi.md#list_address_tags_by_entity) | **GET** /{currency}/entities/{entity}/tags | Get address tags for a given entity
-*DefaultApi* | [**list_address_txs**](docs/DefaultApi.md#list_address_txs) | **GET** /{currency}/addresses/{address}/txs | Get all transactions an address has been involved in
-*DefaultApi* | [**list_block_txs**](docs/DefaultApi.md#list_block_txs) | **GET** /{currency}/blocks/{height}/txs | Get block transactions
-*DefaultApi* | [**list_concepts**](docs/DefaultApi.md#list_concepts) | **GET** /tags/taxonomies/{taxonomy}/concepts | Returns the supported concepts of a taxonomy
-*DefaultApi* | [**list_entity_addresses**](docs/DefaultApi.md#list_entity_addresses) | **GET** /{currency}/entities/{entity}/addresses | Get an entity&#39;s addresses
-*DefaultApi* | [**list_entity_links**](docs/DefaultApi.md#list_entity_links) | **GET** /{currency}/entities/{entity}/links | Get transactions between two entities
-*DefaultApi* | [**list_entity_neighbors**](docs/DefaultApi.md#list_entity_neighbors) | **GET** /{currency}/entities/{entity}/neighbors | Get an entity&#39;s direct neighbors
-*DefaultApi* | [**list_entity_txs**](docs/DefaultApi.md#list_entity_txs) | **GET** /{currency}/entities/{entity}/txs | Get all transactions an entity has been involved in
-*DefaultApi* | [**list_supported_tokens**](docs/DefaultApi.md#list_supported_tokens) | **GET** /{currency}/supported_tokens | Returns a list of supported token (sub)currencies.
-*DefaultApi* | [**list_tags_by_address**](docs/DefaultApi.md#list_tags_by_address) | **GET** /{currency}/addresses/{address}/tags | Get attribution tags for a given address
-*DefaultApi* | [**list_taxonomies**](docs/DefaultApi.md#list_taxonomies) | **GET** /tags/taxonomies | Returns the supported taxonomies
-*DefaultApi* | [**list_token_txs**](docs/DefaultApi.md#list_token_txs) | **GET** /{currency}/token_txs/{tx_hash} | Returns all token transactions in a given transaction
-*DefaultApi* | [**search**](docs/DefaultApi.md#search) | **GET** /search | Returns matching addresses, transactions and labels
-*DefaultApi* | [**search_entity_neighbors**](docs/DefaultApi.md#search_entity_neighbors) | **GET** /{currency}/entities/{entity}/search | Search deeply for matching neighbors
+*Api* | [**bulk_csv**](docs/Api.md#bulk_csv) | **POST** /{currency}/bulk.csv/{operation} | Get data as CSV in bulk
+*Api* | [**bulk_json**](docs/Api.md#bulk_json) | **POST** /{currency}/bulk.json/{operation} | Get data as JSON in bulk
+*Api* | [**get_actor**](docs/Api.md#get_actor) | **GET** /tags/actors/{actor} | Returns an actor given its unique id or (unique) label
+*Api* | [**get_actor_tags**](docs/Api.md#get_actor_tags) | **GET** /tags/actors/{actor}/tags | Returns the address tags for a given actor
+*Api* | [**get_address**](docs/Api.md#get_address) | **GET** /{currency}/addresses/{address} | Get an address
+*Api* | [**get_address_entity**](docs/Api.md#get_address_entity) | **GET** /{currency}/addresses/{address}/entity | Get the entity of an address
+*Api* | [**get_block**](docs/Api.md#get_block) | **GET** /{currency}/blocks/{height} | Get a block by its height
+*Api* | [**get_entity**](docs/Api.md#get_entity) | **GET** /{currency}/entities/{entity} | Get an entity
+*Api* | [**get_exchange_rates**](docs/Api.md#get_exchange_rates) | **GET** /{currency}/rates/{height} | Returns exchange rate for a given height
+*Api* | [**get_statistics**](docs/Api.md#get_statistics) | **GET** /stats | Get statistics of supported currencies
+*Api* | [**get_tx**](docs/Api.md#get_tx) | **GET** /{currency}/txs/{tx_hash} | Returns details of a specific transaction identified by its hash.
+*Api* | [**get_tx_io**](docs/Api.md#get_tx_io) | **GET** /{currency}/txs/{tx_hash}/{io} | Returns input/output values of a specific transaction identified by its hash.
+*Api* | [**list_address_links**](docs/Api.md#list_address_links) | **GET** /{currency}/addresses/{address}/links | Get outgoing transactions between two addresses
+*Api* | [**list_address_neighbors**](docs/Api.md#list_address_neighbors) | **GET** /{currency}/addresses/{address}/neighbors | Get an address&#39;s neighbors in the address graph
+*Api* | [**list_address_tags**](docs/Api.md#list_address_tags) | **GET** /tags | Returns address tags associated with a given label
+*Api* | [**list_address_tags_by_entity**](docs/Api.md#list_address_tags_by_entity) | **GET** /{currency}/entities/{entity}/tags | Get address tags for a given entity
+*Api* | [**list_address_txs**](docs/Api.md#list_address_txs) | **GET** /{currency}/addresses/{address}/txs | Get all transactions an address has been involved in
+*Api* | [**list_block_txs**](docs/Api.md#list_block_txs) | **GET** /{currency}/blocks/{height}/txs | Get block transactions
+*Api* | [**list_concepts**](docs/Api.md#list_concepts) | **GET** /tags/taxonomies/{taxonomy}/concepts | Returns the supported concepts of a taxonomy
+*Api* | [**list_entity_addresses**](docs/Api.md#list_entity_addresses) | **GET** /{currency}/entities/{entity}/addresses | Get an entity&#39;s addresses
+*Api* | [**list_entity_links**](docs/Api.md#list_entity_links) | **GET** /{currency}/entities/{entity}/links | Get transactions between two entities
+*Api* | [**list_entity_neighbors**](docs/Api.md#list_entity_neighbors) | **GET** /{currency}/entities/{entity}/neighbors | Get an entity&#39;s direct neighbors
+*Api* | [**list_entity_txs**](docs/Api.md#list_entity_txs) | **GET** /{currency}/entities/{entity}/txs | Get all transactions an entity has been involved in
+*Api* | [**list_supported_tokens**](docs/Api.md#list_supported_tokens) | **GET** /{currency}/supported_tokens | Returns a list of supported token (sub)currencies.
+*Api* | [**list_tags_by_address**](docs/Api.md#list_tags_by_address) | **GET** /{currency}/addresses/{address}/tags | Get attribution tags for a given address
+*Api* | [**list_taxonomies**](docs/Api.md#list_taxonomies) | **GET** /tags/taxonomies | Returns the supported taxonomies
+*Api* | [**list_token_txs**](docs/Api.md#list_token_txs) | **GET** /{currency}/token_txs/{tx_hash} | Returns all token transactions in a given transaction
+*Api* | [**search**](docs/Api.md#search) | **GET** /search | Returns matching addresses, transactions and labels
+*Api* | [**search_entity_neighbors**](docs/Api.md#search_entity_neighbors) | **GET** /{currency}/entities/{entity}/search | Search deeply for matching neighbors
 
 
 ## Documentation For Models

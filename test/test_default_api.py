@@ -12,14 +12,14 @@
 import unittest
 
 import graphsense
-from graphsense.api.default_api import DefaultApi  # noqa: E501
+from graphsense.api.default_api import Api  # noqa: E501
 
 
-class TestDefaultApi(unittest.TestCase):
-    """DefaultApi unit test stubs"""
+class TestApi(unittest.TestCase):
+    """Api unit test stubs"""
 
     def setUp(self):
-        self.api = DefaultApi()  # noqa: E501
+        self.api = Api()  # noqa: E501
 
     def tearDown(self):
         pass
