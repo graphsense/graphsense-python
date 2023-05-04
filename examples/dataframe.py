@@ -1,5 +1,5 @@
 import graphsense
-from graphsense.api import bulk_api
+from graphsense.api import default_api
 from pprint import pprint
 import pandas as pd
 import json
@@ -18,22 +18,16 @@ data = {
 address_df = pd.DataFrame.from_dict(data)
 
 with graphsense.ApiClient(configuration) as api_client:
-    api_instance = bulk_api.BulkApi(api_client)
+    api_instance = default_api.DataFrame(api_client)
 
     CURRENCY = "btc"
-    operation = "get_address_entity"
-    body = {'address': address_df['address'].to_list()}
 
     try:
         # Read data into pandas dataframe.
         # Use _preload_content=False to stream
         # raw response data right into a dataframe.
-        df_resp = pd.read_csv(
-            api_instance.bulk_csv(CURRENCY,
-                                  operation,
-                                  body=body,
-                                  num_pages=1,
-                                  _preload_content=False))
-        pprint(df_resp)
+        df_resp = api_instance.get_address_entity(
+            CURRENCY, address_df['address'].to_list())
+        pprint(df_resp['total_received_value'])
     except graphsense.ApiException as e:
         print("Exception when calling BulkApi->bulk_csv: %s\n" % e)

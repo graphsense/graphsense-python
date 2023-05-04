@@ -762,11 +762,11 @@ class Endpoint(object):
         """ This method is invoked when endpoints are called
         Example:
 
-        api_instance = AddressesApi()
-        api_instance.get_address  # this is an instance of the class Endpoint
-        api_instance.get_address()  # this invokes api_instance.get_address.__call__()
+        api_instance = DefaultApi()
+        api_instance.bulk_csv  # this is an instance of the class Endpoint
+        api_instance.bulk_csv()  # this invokes api_instance.bulk_csv.__call__()
         which then invokes the callable functions stored in that endpoint at
-        api_instance.get_address.callable or self.callable in this class
+        api_instance.bulk_csv.callable or self.callable in this class
 
         """
         return self.callable(self, *args, **kwargs)
