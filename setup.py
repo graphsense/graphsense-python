@@ -12,7 +12,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "graphsense-python"
-VERSION = "23.03"
+VERSION = "23.06"
 # To install the library, run the following
 #
 # python setup.py install
