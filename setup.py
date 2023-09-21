@@ -12,7 +12,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "graphsense-python"
-VERSION = "23.09"
+VERSION = "1.4.0"
 # To install the library, run the following
 #
 # python setup.py install
@@ -38,6 +38,6 @@ setup(
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
     long_description="""\
-    GraphSense API provides programmatic access to various ledgers&#39; addresses, entities, blocks, transactions and tags for automated and highly efficient forensics tasks.  # noqa: E501
+    GraphSense API provides programmatic access to various ledgers&#39; addresses, entities, blocks, transactions and tags for automated and highly efficient forensics tasks.
     """
 )
