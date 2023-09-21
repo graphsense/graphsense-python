@@ -13,11 +13,11 @@ import sys
 import unittest
 
 import graphsense
-from graphsense.model.taxonomy import Taxonomy
+from graphsense.model.tx_ref import TxRef
 
 
-class TestTaxonomy(unittest.TestCase):
-    """Taxonomy unit test stubs"""
+class TestTxRef(unittest.TestCase):
+    """TxRef unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,10 +25,10 @@ class TestTaxonomy(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testTaxonomy(self):
-        """Test Taxonomy"""
+    def testTxRef(self):
+        """Test TxRef"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = Taxonomy()  # noqa: E501
+        # model = TxRef()  # noqa: E501
         pass
 
 

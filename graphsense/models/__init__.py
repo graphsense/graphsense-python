@@ -54,6 +54,7 @@ from graphsense.model.token_configs import TokenConfigs
 from graphsense.model.token_values import TokenValues
 from graphsense.model.tx import Tx
 from graphsense.model.tx_account import TxAccount
+from graphsense.model.tx_ref import TxRef
 from graphsense.model.tx_summary import TxSummary
 from graphsense.model.tx_utxo import TxUtxo
 from graphsense.model.tx_value import TxValue
