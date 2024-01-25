@@ -12,7 +12,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "graphsense-python"
-VERSION = "24.1.1"
+VERSION = "1.4.1"
 # To install the library, run the following
 #
 # python setup.py install
@@ -24,6 +24,9 @@ REQUIRES = [
   "urllib3 >= 1.25.3",
   "python-dateutil",
 ]
+
+with open("README.md", 'r') as f:
+    long_description = f.read()
 
 setup(
     name=NAME,
@@ -37,6 +40,6 @@ setup(
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
-    long_description="file: README.md",
+    long_description=long_description,
     long_description_content_type = "text/markdown; charset=UTF-8; variant=GFM"
 )
