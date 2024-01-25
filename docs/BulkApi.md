@@ -56,7 +56,7 @@ with graphsense.ApiClient(configuration) as api_client:
 
     dataframe = \
         pandas.read_csv(
-            api_instance.bulk_csv(CURRENCY,
+            api_instance.bulk_csv(currency,
                                   operation,
                                   body=body,
                                   num_pages=1,
