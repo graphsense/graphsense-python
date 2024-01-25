@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **uris** | **[str]** | list of additonal uris identifying the actor | 
 **images** | **[str]** | list of uris to logos of the actor | 
-**refs** | **[str]** | list of uris to further information of the actors. | 
+**refs** | **[str]** | list of uris to further information of the actors | 
 **coingecko_ids** | **[str]** | list of references to coingecko exchanges or coins | 
 **defilama_ids** | **[str]** | list of references to defilama | 
 **twitter_handle** | **str** | semi-colon separated list of twitter handles used by the actor | [optional] 
