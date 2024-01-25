@@ -80,7 +80,7 @@ with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
-address = "addressA" # str | The cryptocurrency address
+    address = "addressA" # str | The cryptocurrency address
 
     try:
         # Get an address
