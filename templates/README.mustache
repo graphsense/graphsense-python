@@ -59,16 +59,6 @@ Please follow the [installation procedure](#installation--usage) and then run th
 This python package has been generated from [Graphsense's OpenAPI specification]({{basePath}}) hosted by [Iknaio Cryptoasset Analytics GmbH](https://ikna.io) using this command:
 
 ```
-    docker run --rm \
-      -v "${PWD}:/build" \
-      -v "${PWD}/templates:/templates" \
-      openapitools/openapi-generator-cli:v5.2.1 \
-      generate -i "{{inputSpec}}" \
-        -g python \
-        -t /templates \
-        -o /build \
-        --additional-properties=packageName=graphsense \
-        --additional-properties=projectName=graphsense-python
-
+make GS_REST_SERVICE_URL="{{basePath}}" generate-openapi-client
 ```
 

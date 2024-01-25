@@ -220,16 +220,6 @@ Run the jupyter notebooks
 This python package has been generated from [Graphsense's OpenAPI specification](https://api.test.ikna.io) hosted by [Iknaio Cryptoasset Analytics GmbH](https://ikna.io) using this command:
 
 ```
-    docker run --rm \
-      -v "${PWD}:/build" \
-      -v "${PWD}/templates:/templates" \
-      openapitools/openapi-generator-cli:v5.2.1 \
-      generate -i "https://api.test.ikna.io/openapi.json" \
-        -g python \
-        -t /templates \
-        -o /build \
-        --additional-properties=packageName=graphsense \
-        --additional-properties=projectName=graphsense-python
-
+make GS_REST_SERVICE_URL="https://api.test.ikna.io" generate-openapi-client
 ```
 
