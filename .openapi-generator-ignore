@@ -23,3 +23,5 @@
 #!docs/README.md
 
 docs/BulkApi.md
+.travis.yml
+.gitlab-ci.yml

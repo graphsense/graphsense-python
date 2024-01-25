@@ -1,11 +1,9 @@
 # graphsense.BulkApi
 
-All URIs are relative to *https://api.graphsense.info*
-
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**bulk_csv**](BulkApi.md#bulk_csv) | **POST** /{currency}/bulk.csv/{api}/{operation} | Get data as CSV in bulk
-[**bulk_json**](BulkApi.md#bulk_json) | **POST** /{currency}/bulk.json/{api}/{operation} | Get data as JSON in bulk
+[**bulk_csv**](BulkApi.md#bulk_csv) | **POST** /{currency}/bulk.csv/{operation} | Get data as CSV in bulk
+[**bulk_json**](BulkApi.md#bulk_json) | **POST** /{currency}/bulk.json/{operation} | Get data as JSON in bulk
 
 
 # **bulk_csv**
@@ -21,10 +19,10 @@ import graphsense
 from graphsense.api import bulk_api
 from pprint import pprint
 import pandas
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to https://api.ikna.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "https://api.ikna.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -44,7 +42,7 @@ with graphsense.ApiClient(configuration) as api_client:
     api_instance = bulk_api.BulkApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
     operation = "get_block" # str | The operation to execute in bulk
-    body = {"height": [1, 2, 3]} # {str: (bool, date, datetime, dict, float, int, list, str, none_type)} | Map of the operation's parameter names to (arrays of) values
+    body = {"height": [1, 2, 3]} 
 
     # example passing only required values which don't have defaults set
     try:
@@ -53,6 +51,18 @@ with graphsense.ApiClient(configuration) as api_client:
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling BulkApi->bulk_csv: %s\n" % e)
+
+    # It is also possible to read CSV data directly into a dataframe:
+
+    dataframe = \
+        pandas.read_csv(
+            api_instance.bulk_csv(currency,
+                                  operation,
+                                  body=body,
+                                  num_pages=1,
+                                  _preload_content=False # set to False to omit decoding
+                                  ))
+    pprint(dataframe)
 ```
 
 
@@ -61,7 +71,6 @@ with graphsense.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **str**| The cryptocurrency (e.g., btc) |
- **api** | **str**| The api of the operation to execute in bulk |
  **operation** | **str**| The operation to execute in bulk |
  **body** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**| Map of the operation&#39;s parameter names to (arrays of) values |
  **num_pages** | **int**| Number of pages to be retrieved per bulked request |
@@ -107,10 +116,10 @@ Get data as JSON in bulk
 import graphsense
 from graphsense.api import bulk_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to https://api.ikna.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "https://api.ikna.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -130,7 +139,7 @@ with graphsense.ApiClient(configuration) as api_client:
     api_instance = bulk_api.BulkApi(api_client)
     currency = "btc" # str | The cryptocurrency (e.g., btc)
     operation = "get_block" # str | The operation to execute in bulk
-    body = {"height": [1, 2, 3]} # {str: (bool, date, datetime, dict, float, int, list, str, none_type)} | Map of the operation's parameter names to (arrays of) values
+    body = {"height": [1, 2, 3]} 
 
     # example passing only required values which don't have defaults set
     try:
@@ -147,7 +156,6 @@ with graphsense.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **str**| The cryptocurrency (e.g., btc) |
- **api** | **str**| The api of the operation to execute in bulk |
  **operation** | **str**| The operation to execute in bulk |
  **body** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**| Map of the operation&#39;s parameter names to (arrays of) values |
  **num_pages** | **int**| Number of pages to be retrieved per bulked request |
