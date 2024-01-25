@@ -1,6 +1,6 @@
 # graphsense.TagsApi
 
-All URIs are relative to *https://api.test.ikna.io*
+All URIs are relative to *https://api.ikna.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -25,10 +25,10 @@ import graphsense
 from graphsense.api import tags_api
 from graphsense.model.actor import Actor
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.test.ikna.io
+# Defining the host is optional and defaults to https://api.ikna.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.test.ikna.io"
+    host = "https://api.ikna.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -107,10 +107,10 @@ import graphsense
 from graphsense.api import tags_api
 from graphsense.model.address_tags import AddressTags
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.test.ikna.io
+# Defining the host is optional and defaults to https://api.ikna.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.test.ikna.io"
+    host = "https://api.ikna.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -202,10 +202,10 @@ import graphsense
 from graphsense.api import tags_api
 from graphsense.model.address_tags import AddressTags
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.test.ikna.io
+# Defining the host is optional and defaults to https://api.ikna.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.test.ikna.io"
+    host = "https://api.ikna.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -297,10 +297,10 @@ import graphsense
 from graphsense.api import tags_api
 from graphsense.model.concept import Concept
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.test.ikna.io
+# Defining the host is optional and defaults to https://api.ikna.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.test.ikna.io"
+    host = "https://api.ikna.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -379,10 +379,10 @@ import graphsense
 from graphsense.api import tags_api
 from graphsense.model.taxonomy import Taxonomy
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.test.ikna.io
+# Defining the host is optional and defaults to https://api.ikna.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.test.ikna.io"
+    host = "https://api.ikna.io"
 )
 
 # The client must configure the authentication and authorization parameters

@@ -1,13 +1,13 @@
 # graphsense.TxsApi
 
-All URIs are relative to *https://api.test.ikna.io*
+All URIs are relative to *https://api.ikna.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_spending_txs**](TxsApi.md#get_spending_txs) | **GET** /{currency}/txs/{tx_hash}/spending | Returns in which other transaction&#39;s outputs the asked transaction spent. Think backwards references is the transaction graph. This endpoint is only available for utxo like currencies.
 [**get_spent_in_txs**](TxsApi.md#get_spent_in_txs) | **GET** /{currency}/txs/{tx_hash}/spent_in | Returns in which other transactions, outputs from the asked transaction are spent. Think forward references in the transaction graph. This endpoint is only available for utxo like currencies.
-[**get_tx**](TxsApi.md#get_tx) | **GET** /{currency}/txs/{tx_hash} | Returns details of a specific transaction identified by its hash.
-[**get_tx_io**](TxsApi.md#get_tx_io) | **GET** /{currency}/txs/{tx_hash}/{io} | Returns input/output values of a specific transaction identified by its hash.
+[**get_tx**](TxsApi.md#get_tx) | **GET** /{currency}/txs/{tx_hash} | Returns details of a specific transaction identified by its hash
+[**get_tx_io**](TxsApi.md#get_tx_io) | **GET** /{currency}/txs/{tx_hash}/{io} | Returns input/output values of a specific transaction identified by its hash
 [**list_token_txs**](TxsApi.md#list_token_txs) | **GET** /{currency}/token_txs/{tx_hash} | Returns all token transactions in a given transaction
 
 
@@ -25,10 +25,10 @@ import graphsense
 from graphsense.api import txs_api
 from graphsense.model.tx_ref import TxRef
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.test.ikna.io
+# Defining the host is optional and defaults to https://api.ikna.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.test.ikna.io"
+    host = "https://api.ikna.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -120,10 +120,10 @@ import graphsense
 from graphsense.api import txs_api
 from graphsense.model.tx_ref import TxRef
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.test.ikna.io
+# Defining the host is optional and defaults to https://api.ikna.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.test.ikna.io"
+    host = "https://api.ikna.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 # **get_tx**
 > Tx get_tx(currency, tx_hash)
 
-Returns details of a specific transaction identified by its hash.
+Returns details of a specific transaction identified by its hash
 
 ### Example
 
@@ -215,10 +215,10 @@ import graphsense
 from graphsense.api import txs_api
 from graphsense.model.tx import Tx
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.test.ikna.io
+# Defining the host is optional and defaults to https://api.ikna.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.test.ikna.io"
+    host = "https://api.ikna.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -243,7 +243,7 @@ with graphsense.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Returns details of a specific transaction identified by its hash.
+        # Returns details of a specific transaction identified by its hash
         api_response = api_instance.get_tx(currency, tx_hash)
         pprint(api_response)
     except graphsense.ApiException as e:
@@ -252,7 +252,7 @@ with graphsense.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        # Returns details of a specific transaction identified by its hash.
+        # Returns details of a specific transaction identified by its hash
         api_response = api_instance.get_tx(currency, tx_hash, include_io=include_io, token_tx_id=token_tx_id)
         pprint(api_response)
     except graphsense.ApiException as e:
@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 # **get_tx_io**
 > TxValues get_tx_io(currency, tx_hash, io)
 
-Returns input/output values of a specific transaction identified by its hash.
+Returns input/output values of a specific transaction identified by its hash
 
 ### Example
 
@@ -312,10 +312,10 @@ import graphsense
 from graphsense.api import txs_api
 from graphsense.model.tx_values import TxValues
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.test.ikna.io
+# Defining the host is optional and defaults to https://api.ikna.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.test.ikna.io"
+    host = "https://api.ikna.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -339,7 +339,7 @@ with graphsense.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Returns input/output values of a specific transaction identified by its hash.
+        # Returns input/output values of a specific transaction identified by its hash
         api_response = api_instance.get_tx_io(currency, tx_hash, io)
         pprint(api_response)
     except graphsense.ApiException as e:
@@ -398,10 +398,10 @@ import graphsense
 from graphsense.api import txs_api
 from graphsense.model.txs_account import TxsAccount
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.test.ikna.io
+# Defining the host is optional and defaults to https://api.ikna.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.test.ikna.io"
+    host = "https://api.ikna.io"
 )
 
 # The client must configure the authentication and authorization parameters

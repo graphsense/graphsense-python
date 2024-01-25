@@ -1,16 +1,16 @@
 # graphsense.TokensApi
 
-All URIs are relative to *https://api.test.ikna.io*
+All URIs are relative to *https://api.ikna.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**list_supported_tokens**](TokensApi.md#list_supported_tokens) | **GET** /{currency}/supported_tokens | Returns a list of supported token (sub)currencies.
+[**list_supported_tokens**](TokensApi.md#list_supported_tokens) | **GET** /{currency}/supported_tokens | Returns a list of supported token (sub)currencies
 
 
 # **list_supported_tokens**
 > TokenConfigs list_supported_tokens(currency)
 
-Returns a list of supported token (sub)currencies.
+Returns a list of supported token (sub)currencies
 
 ### Example
 
@@ -21,10 +21,10 @@ import graphsense
 from graphsense.api import tokens_api
 from graphsense.model.token_configs import TokenConfigs
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.test.ikna.io
+# Defining the host is optional and defaults to https://api.ikna.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.test.ikna.io"
+    host = "https://api.ikna.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -46,7 +46,7 @@ with graphsense.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Returns a list of supported token (sub)currencies.
+        # Returns a list of supported token (sub)currencies
         api_response = api_instance.list_supported_tokens(currency)
         pprint(api_response)
     except graphsense.ApiException as e:

@@ -1,6 +1,6 @@
 # graphsense.EntitiesApi
 
-All URIs are relative to *https://api.test.ikna.io*
+All URIs are relative to *https://api.ikna.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -27,10 +27,10 @@ import graphsense
 from graphsense.api import entities_api
 from graphsense.model.entity import Entity
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.test.ikna.io
+# Defining the host is optional and defaults to https://api.ikna.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.test.ikna.io"
+    host = "https://api.ikna.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -124,10 +124,10 @@ import graphsense
 from graphsense.api import entities_api
 from graphsense.model.address_tags import AddressTags
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.test.ikna.io
+# Defining the host is optional and defaults to https://api.ikna.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.test.ikna.io"
+    host = "https://api.ikna.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -221,10 +221,10 @@ import graphsense
 from graphsense.api import entities_api
 from graphsense.model.entity_addresses import EntityAddresses
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.test.ikna.io
+# Defining the host is optional and defaults to https://api.ikna.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.test.ikna.io"
+    host = "https://api.ikna.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -318,10 +318,10 @@ import graphsense
 from graphsense.api import entities_api
 from graphsense.model.links import Links
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.test.ikna.io
+# Defining the host is optional and defaults to https://api.ikna.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.test.ikna.io"
+    host = "https://api.ikna.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -417,10 +417,10 @@ import graphsense
 from graphsense.api import entities_api
 from graphsense.model.neighbor_entities import NeighborEntities
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.test.ikna.io
+# Defining the host is optional and defaults to https://api.ikna.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.test.ikna.io"
+    host = "https://api.ikna.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -527,10 +527,10 @@ from graphsense.api import entities_api
 from graphsense.model.height import Height
 from graphsense.model.address_txs import AddressTxs
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.test.ikna.io
+# Defining the host is optional and defaults to https://api.ikna.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.test.ikna.io"
+    host = "https://api.ikna.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -632,10 +632,10 @@ import graphsense
 from graphsense.api import entities_api
 from graphsense.model.search_result_level1 import SearchResultLevel1
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.test.ikna.io
+# Defining the host is optional and defaults to https://api.ikna.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.test.ikna.io"
+    host = "https://api.ikna.io"
 )
 
 # The client must configure the authentication and authorization parameters

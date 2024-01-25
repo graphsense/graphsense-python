@@ -1,6 +1,6 @@
 # graphsense.RatesApi
 
-All URIs are relative to *https://api.test.ikna.io*
+All URIs are relative to *https://api.ikna.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -22,10 +22,10 @@ from graphsense.api import rates_api
 from graphsense.model.rates import Rates
 from graphsense.model.height import Height
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.test.ikna.io
+# Defining the host is optional and defaults to https://api.ikna.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.test.ikna.io"
+    host = "https://api.ikna.io"
 )
 
 # The client must configure the authentication and authorization parameters
