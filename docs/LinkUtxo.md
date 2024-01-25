@@ -4,12 +4,12 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**tx_hash** | **str** | Transaction hash | 
 **currency** | **str** | crypto currency code | 
 **height** | [**Height**](Height.md) |  | 
+**timestamp** | **int** | Timestamp | 
 **input_value** | [**Values**](Values.md) |  | 
 **output_value** | [**Values**](Values.md) |  | 
-**timestamp** | **int** | Timestamp | 
-**tx_hash** | **str** | Transaction hash | 
 **tx_type** | **str** |  | defaults to "utxo"
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 

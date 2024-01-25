@@ -1,6 +1,6 @@
 # graphsense.BulkApi
 
-All URIs are relative to *https://api.graphsense.info*
+All URIs are relative to *{{basePath}}*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -21,10 +21,10 @@ import graphsense
 from graphsense.api import bulk_api
 from pprint import pprint
 import pandas
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to {{basePath}}
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "{{basePath}}"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -107,10 +107,10 @@ Get data as JSON in bulk
 import graphsense
 from graphsense.api import bulk_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.graphsense.info
+# Defining the host is optional and defaults to {{basePath}}
 # See configuration.py for a list of all supported configuration parameters.
 configuration = graphsense.Configuration(
-    host = "https://api.graphsense.info"
+    host = "{{basePath}}"
 )
 
 # The client must configure the authentication and authorization parameters

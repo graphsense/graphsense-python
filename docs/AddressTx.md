@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tx_type** | **str** |  | defaults to "account"
-**contract_creation** | **bool** | Indicates if this transaction created a new contract. Recipient address is the address of the new contract. | [optional] 
 **token_tx_id** | **int** |  | [optional] 
-**coinbase** | **bool** | Coinbase transaction flag | [optional] 
+**contract_creation** | **bool** | Indicates if this transaction created a new contract. Recipient address is the address of the new contract. | [optional] 
+**tx_hash** | **str** | Transaction hash | [optional] 
 **currency** | **str** | crypto currency code | [optional] 
+**coinbase** | **bool** | Coinbase transaction flag | [optional] 
 **height** | [**Height**](Height.md) |  | [optional] 
 **timestamp** | **int** | Timestamp | [optional] 
-**tx_hash** | **str** | Transaction hash | [optional] 
 **value** | [**Values**](Values.md) |  | [optional] 
 **from_address** | **str** | Address | [optional] 
 **to_address** | **str** | Address | [optional] 
