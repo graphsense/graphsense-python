@@ -14,6 +14,12 @@ VERSION = "{{{version}}}"
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 
+project_urls = {
+  'Source': 'https://github.com/graphsense/graphsense-python',
+  'Changelog': 'https://github.com/graphsense/blob/master/CHANGELOG.md',
+  'Tracker': 'https://github.com/graphsense/graphsense-python/issues',
+}
+
 REQUIRES = [
   "urllib3 >= 1.25.3",
   "python-dateutil",
@@ -38,7 +44,8 @@ setup(
     description="{{appName}}",
     author="{{#infoName}}{{infoName}}{{/infoName}}{{^infoName}}OpenAPI Generator community{{/infoName}}",
     author_email="{{#infoEmail}}{{infoEmail}}{{/infoEmail}}{{^infoEmail}}team@openapitools.org{{/infoEmail}}",
-    url="{{packageUrl}}",
+    url="https://graphsense.github.io/",
+    project_urls=project_urls,
     keywords=["OpenAPI", "OpenAPI-Generator", "{{{appName}}}"],
     python_requires=">=3.6",
     install_requires=REQUIRES,
