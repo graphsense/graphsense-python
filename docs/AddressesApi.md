@@ -192,6 +192,7 @@ Get outgoing transactions between two addresses
 import time
 import graphsense
 from graphsense.api import addresses_api
+from graphsense.model.height import Height
 from graphsense.model.links import Links
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.ikna.io
@@ -218,6 +219,9 @@ with graphsense.ApiClient(configuration) as api_client:
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     address = "addressA" # str | The cryptocurrency address
     neighbor = "addressE" # str | Neighbor address
+    min_height = Height(1) # Height | Return transactions starting from given height (optional)
+    max_height = Height(2) # Height | Return transactions up to (including) given height (optional)
+    order = "desc" # str | Sorting order (optional) if omitted the server will use the default value of "desc"
     page = "page_example" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
@@ -233,7 +237,7 @@ with graphsense.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Get outgoing transactions between two addresses
-        api_response = api_instance.list_address_links(currency, address, neighbor, page=page, pagesize=pagesize)
+        api_response = api_instance.list_address_links(currency, address, neighbor, min_height=min_height, max_height=max_height, order=order, page=page, pagesize=pagesize)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling AddressesApi->list_address_links: %s\n" % e)
@@ -247,6 +251,9 @@ Name | Type | Description  | Notes
  **currency** | **str**| The cryptocurrency code (e.g., btc) |
  **address** | **str**| The cryptocurrency address |
  **neighbor** | **str**| Neighbor address |
+ **min_height** | **Height**| Return transactions starting from given height | [optional]
+ **max_height** | **Height**| Return transactions up to (including) given height | [optional]
+ **order** | **str**| Sorting order | [optional] if omitted the server will use the default value of "desc"
  **page** | **str**| Resumption token for retrieving the next page | [optional]
  **pagesize** | **int**| Number of items returned in a single page | [optional]
 **_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
@@ -425,6 +432,7 @@ with graphsense.ApiClient(configuration) as api_client:
     direction = "out" # str | Incoming or outgoing transactions (optional)
     min_height = Height(1) # Height | Return transactions starting from given height (optional)
     max_height = Height(2) # Height | Return transactions up to (including) given height (optional)
+    order = "desc" # str | Sorting order (optional) if omitted the server will use the default value of "desc"
     token_currency = "WETH" # str | Return transactions of given token currency (optional)
     page = "page_example" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
@@ -441,7 +449,7 @@ with graphsense.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Get all transactions an address has been involved in
-        api_response = api_instance.list_address_txs(currency, address, direction=direction, min_height=min_height, max_height=max_height, token_currency=token_currency, page=page, pagesize=pagesize)
+        api_response = api_instance.list_address_txs(currency, address, direction=direction, min_height=min_height, max_height=max_height, order=order, token_currency=token_currency, page=page, pagesize=pagesize)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling AddressesApi->list_address_txs: %s\n" % e)
@@ -457,6 +465,7 @@ Name | Type | Description  | Notes
  **direction** | **str**| Incoming or outgoing transactions | [optional]
  **min_height** | **Height**| Return transactions starting from given height | [optional]
  **max_height** | **Height**| Return transactions up to (including) given height | [optional]
+ **order** | **str**| Sorting order | [optional] if omitted the server will use the default value of "desc"
  **token_currency** | **str**| Return transactions of given token currency | [optional]
  **page** | **str**| Resumption token for retrieving the next page | [optional]
  **pagesize** | **int**| Number of items returned in a single page | [optional]
