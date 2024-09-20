@@ -14,12 +14,11 @@ Python >= 3.6
 ## Installation & Usage
 ### pip install
 
-If the python package is hosted on a repository, you can install directly using:
+You can install graphsense-python via pypi using:
 
 ```sh
-pip install git+https://github.com/graphsense/graphsense-python.git
+pip install graphsense-python
 ```
-(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/graphsense/graphsense-python.git`)
 
 Then import the package:
 ```python
