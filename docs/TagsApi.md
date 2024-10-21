@@ -129,7 +129,7 @@ with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tags_api.TagsApi(api_client)
     actor = "binance" # str | actor id
-    page = "page_example" # str | Resumption token for retrieving the next page (optional)
+    page = "" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
     # example passing only required values which don't have defaults set
@@ -224,7 +224,7 @@ with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tags_api.TagsApi(api_client)
     label = "cimedy" # str | The label of an entity
-    page = "page_example" # str | Resumption token for retrieving the next page (optional)
+    page = "" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
     # example passing only required values which don't have defaults set
