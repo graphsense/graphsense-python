@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **tx_hash** | **str** | Transaction hash | 
 **currency** | **str** | crypto currency code | 
 **height** | [**Height**](Height.md) |  | 
-**timestamp** | **int** | Timestamp | 
+**timestamp** | **int** | Timestamp in posix seconds format | 
 **input_value** | [**Values**](Values.md) |  | 
 **output_value** | [**Values**](Values.md) |  | 
 **tx_type** | **str** |  | defaults to "utxo"

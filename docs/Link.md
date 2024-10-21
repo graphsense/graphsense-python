@@ -5,14 +5,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tx_type** | **str** |  | defaults to "account"
-**token_tx_id** | **int** |  | [optional] 
+**token_tx_id** | **int** | identifies a specific token transaction within a tx_hash, (deprecated) use identifier instead in encapsulates all information that uniquely identifies the transaction | [optional] 
 **contract_creation** | **bool** | Indicates if this transaction created a new contract. Recipient address is the address of the new contract. | [optional] 
 **tx_hash** | **str** | Transaction hash | [optional] 
 **currency** | **str** | crypto currency code | [optional] 
 **height** | [**Height**](Height.md) |  | [optional] 
-**timestamp** | **int** | Timestamp | [optional] 
+**timestamp** | **int** | Timestamp in posix seconds format | [optional] 
 **input_value** | [**Values**](Values.md) |  | [optional] 
 **output_value** | [**Values**](Values.md) |  | [optional] 
+**identifier** | **str** | uniquely identifies a transaction or a sub transaction like a token transaction or trace. | [optional] 
+**network** | **str** | crypto currency code | [optional] 
 **value** | [**Values**](Values.md) |  | [optional] 
 **from_address** | **str** | Address | [optional] 
 **to_address** | **str** | Address | [optional] 

@@ -20,11 +20,13 @@ from graphsense.model.address_tx import AddressTx
 from graphsense.model.address_tx_utxo import AddressTxUtxo
 from graphsense.model.address_txs import AddressTxs
 from graphsense.model.block import Block
+from graphsense.model.block_at_date import BlockAtDate
 from graphsense.model.concept import Concept
 from graphsense.model.currency_stats import CurrencyStats
 from graphsense.model.entity import Entity
 from graphsense.model.entity_addresses import EntityAddresses
 from graphsense.model.height import Height
+from graphsense.model.label_summary import LabelSummary
 from graphsense.model.labeled_item_ref import LabeledItemRef
 from graphsense.model.labeled_item_refs import LabeledItemRefs
 from graphsense.model.link import Link
@@ -48,6 +50,8 @@ from graphsense.model.search_result_level5 import SearchResultLevel5
 from graphsense.model.search_result_level6 import SearchResultLevel6
 from graphsense.model.stats import Stats
 from graphsense.model.tag import Tag
+from graphsense.model.tag_cloud_entry import TagCloudEntry
+from graphsense.model.tag_summary import TagSummary
 from graphsense.model.taxonomy import Taxonomy
 from graphsense.model.token_config import TokenConfig
 from graphsense.model.token_configs import TokenConfigs

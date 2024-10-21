@@ -51,7 +51,7 @@ with graphsense.ApiClient(configuration) as api_client:
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     entity = 67065 # int | The entity ID
     exclude_best_address_tag = False # bool | Whether to exclude the best address tag (optional) if omitted the server will use the default value of False
-    include_actors = False # bool | Whether to include the actors (optional) if omitted the server will use the default value of False
+    include_actors = False # bool | Whether to include information about the actor behind the address (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
     try:
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
  **currency** | **str**| The cryptocurrency code (e.g., btc) |
  **entity** | **int**| The entity ID |
  **exclude_best_address_tag** | **bool**| Whether to exclude the best address tag | [optional] if omitted the server will use the default value of False
- **include_actors** | **bool**| Whether to include the actors | [optional] if omitted the server will use the default value of False
+ **include_actors** | **bool**| Whether to include information about the actor behind the address | [optional] if omitted the server will use the default value of False
 **_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
 **async_req** | **bool** | Execute request asynchronously | [optional] default is False.
 
@@ -453,7 +453,7 @@ with graphsense.ApiClient(configuration) as api_client:
     ] # [int] | Restrict result to given set of comma separated IDs (optional)
     include_labels = False # bool | Whether to include labels of first page of address tags (optional) if omitted the server will use the default value of False
     exclude_best_address_tag = False # bool | Whether to exclude the best address tag (optional) if omitted the server will use the default value of False
-    include_actors = False # bool | Whether to include the actors (optional) if omitted the server will use the default value of False
+    include_actors = False # bool | Whether to include information about the actor behind the address (optional) if omitted the server will use the default value of False
     page = "page_example" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
@@ -486,7 +486,7 @@ Name | Type | Description  | Notes
  **only_ids** | **[int]**| Restrict result to given set of comma separated IDs | [optional]
  **include_labels** | **bool**| Whether to include labels of first page of address tags | [optional] if omitted the server will use the default value of False
  **exclude_best_address_tag** | **bool**| Whether to exclude the best address tag | [optional] if omitted the server will use the default value of False
- **include_actors** | **bool**| Whether to include the actors | [optional] if omitted the server will use the default value of False
+ **include_actors** | **bool**| Whether to include information about the actor behind the address | [optional] if omitted the server will use the default value of False
  **page** | **str**| Resumption token for retrieving the next page | [optional]
  **pagesize** | **int**| Number of items returned in a single page | [optional]
 **_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 

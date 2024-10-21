@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **height** | [**Height**](Height.md) |  | 
 **no_inputs** | **int** | number of input addresses | 
 **no_outputs** | **int** | number of output addresses | 
-**timestamp** | **int** | Timestamp | 
+**timestamp** | **int** | Timestamp in posix seconds format | 
 **total_input** | [**Values**](Values.md) |  | 
 **total_output** | [**Values**](Values.md) |  | 
 **tx_type** | **str** |  | defaults to "utxo"
