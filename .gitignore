@@ -67,7 +67,7 @@ target/
 .ipynb_checkpoints
 
 #ctags
-tags
+./tags
 
 #openapi
 .openapi-generator
