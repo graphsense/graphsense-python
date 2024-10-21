@@ -147,7 +147,7 @@ with graphsense.ApiClient(configuration) as api_client:
     api_instance = entities_api.EntitiesApi(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     entity = 67065 # int | The entity ID
-    page = "page_example" # str | Resumption token for retrieving the next page (optional)
+    page = "" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
     # example passing only required values which don't have defaults set
@@ -244,7 +244,7 @@ with graphsense.ApiClient(configuration) as api_client:
     api_instance = entities_api.EntitiesApi(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     entity = 67065 # int | The entity ID
-    page = "page_example" # str | Resumption token for retrieving the next page (optional)
+    page = "" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
     # example passing only required values which don't have defaults set
@@ -346,7 +346,7 @@ with graphsense.ApiClient(configuration) as api_client:
     min_height = Height(1) # Height | Return transactions starting from given height (optional)
     max_height = Height(2) # Height | Return transactions up to (including) given height (optional)
     order = "desc" # str | Sorting order (optional) if omitted the server will use the default value of "desc"
-    page = "page_example" # str | Resumption token for retrieving the next page (optional)
+    page = "" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
     # example passing only required values which don't have defaults set
@@ -454,7 +454,7 @@ with graphsense.ApiClient(configuration) as api_client:
     include_labels = False # bool | Whether to include labels of first page of address tags (optional) if omitted the server will use the default value of False
     exclude_best_address_tag = False # bool | Whether to exclude the best address tag (optional) if omitted the server will use the default value of False
     include_actors = False # bool | Whether to include information about the actor behind the address (optional) if omitted the server will use the default value of False
-    page = "page_example" # str | Resumption token for retrieving the next page (optional)
+    page = "" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
     # example passing only required values which don't have defaults set
@@ -562,7 +562,7 @@ with graphsense.ApiClient(configuration) as api_client:
     max_height = Height(2) # Height | Return transactions up to (including) given height (optional)
     order = "desc" # str | Sorting order (optional) if omitted the server will use the default value of "desc"
     token_currency = "WETH" # str | Return transactions of given token currency (optional)
-    page = "page_example" # str | Resumption token for retrieving the next page (optional)
+    page = "" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
     # example passing only required values which don't have defaults set

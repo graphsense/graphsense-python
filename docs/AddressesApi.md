@@ -49,7 +49,7 @@ with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
-    address = "addressA" # str | The cryptocurrency address
+    address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
     include_actors = True # bool | Whether to include information about the actor behind the address (optional) if omitted the server will use the default value of True
 
     # example passing only required values which don't have defaults set
@@ -144,7 +144,7 @@ with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
-    address = "addressA" # str | The cryptocurrency address
+    address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
 
     # example passing only required values which don't have defaults set
     try:
@@ -228,7 +228,7 @@ with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
-    address = "addressA" # str | The cryptocurrency address
+    address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
     include_best_cluster_tag = False # bool | If the best cluster tag should be inherited to the address level, often helpful for exchanges where not every address is tagged. (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
@@ -324,12 +324,12 @@ with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
-    address = "addressA" # str | The cryptocurrency address
-    neighbor = "addressE" # str | Neighbor address
+    address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
+    neighbor = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | Neighbor address
     min_height = Height(1) # Height | Return transactions starting from given height (optional)
     max_height = Height(2) # Height | Return transactions up to (including) given height (optional)
     order = "desc" # str | Sorting order (optional) if omitted the server will use the default value of "desc"
-    page = "page_example" # str | Resumption token for retrieving the next page (optional)
+    page = "" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
     # example passing only required values which don't have defaults set
@@ -429,14 +429,14 @@ with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
-    address = "addressA" # str | The cryptocurrency address
+    address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
     direction = "out" # str | Incoming or outgoing neighbors
     only_ids = [
         "only_ids_example",
     ] # [str] | Restrict result to given set of comma separated addresses (optional)
     include_labels = False # bool | Whether to include labels of first page of address tags (optional) if omitted the server will use the default value of False
     include_actors = True # bool | Whether to include information about the actor behind the address (optional) if omitted the server will use the default value of True
-    page = "page_example" # str | Resumption token for retrieving the next page (optional)
+    page = "" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
     # example passing only required values which don't have defaults set
@@ -537,13 +537,13 @@ with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
-    address = "addressA" # str | The cryptocurrency address
+    address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
     direction = "out" # str | Incoming or outgoing transactions (optional)
     min_height = Height(1) # Height | Return transactions starting from given height (optional)
     max_height = Height(2) # Height | Return transactions up to (including) given height (optional)
     order = "desc" # str | Sorting order (optional) if omitted the server will use the default value of "desc"
     token_currency = "WETH" # str | Return transactions of given token currency (optional)
-    page = "page_example" # str | Resumption token for retrieving the next page (optional)
+    page = "" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
     # example passing only required values which don't have defaults set
@@ -644,8 +644,8 @@ with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
-    address = "addressA" # str | The cryptocurrency address
-    page = "page_example" # str | Resumption token for retrieving the next page (optional)
+    address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
+    page = "" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
     include_best_cluster_tag = False # bool | If the best cluster tag should be inherited to the address level, often helpful for exchanges where not every address is tagged. (optional) if omitted the server will use the default value of False
 
