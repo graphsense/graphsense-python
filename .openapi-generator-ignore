@@ -25,3 +25,5 @@
 docs/BulkApi.md
 .travis.yml
 .gitlab-ci.yml
+test/*
+git_push.sh

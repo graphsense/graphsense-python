@@ -144,7 +144,7 @@ with graphsense.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Get data as JSON in bulk
-        api_response = api_instance.bulk_json(currency, api, operation, body, num_pages=1)
+        api_response = api_instance.bulk_json(currency, operation, 1, body)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling BulkApi->bulk_json: %s\n" % e)
