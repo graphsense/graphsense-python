@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **currency** | **str** | crypto currency code | 
 **coinbase** | **bool** | Coinbase transaction flag | 
 **height** | [**Height**](Height.md) |  | 
-**timestamp** | **int** | Timestamp | 
+**timestamp** | **int** | Timestamp in posix seconds format | 
 **value** | [**Values**](Values.md) |  | 
 **tx_type** | **str** |  | defaults to "utxo"
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
