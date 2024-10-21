@@ -152,10 +152,12 @@ class BulkApi(object):
                     ('operation',): {
 
                         "GET_BLOCK": "get_block",
+                        "GET_BLOCK_BY_DATE": "get_block_by_date",
                         "LIST_BLOCK_TXS": "list_block_txs",
                         "GET_ADDRESS": "get_address",
                         "LIST_ADDRESS_TXS": "list_address_txs",
                         "LIST_TAGS_BY_ADDRESS": "list_tags_by_address",
+                        "GET_TAG_SUMMARY_BY_ADDRESS": "get_tag_summary_by_address",
                         "LIST_ADDRESS_NEIGHBORS": "list_address_neighbors",
                         "GET_ADDRESS_ENTITY": "get_address_entity",
                         "LIST_ADDRESS_LINKS": "list_address_links",
@@ -322,10 +324,12 @@ class BulkApi(object):
                     ('operation',): {
 
                         "GET_BLOCK": "get_block",
+                        "GET_BLOCK_BY_DATE": "get_block_by_date",
                         "LIST_BLOCK_TXS": "list_block_txs",
                         "GET_ADDRESS": "get_address",
                         "LIST_ADDRESS_TXS": "list_address_txs",
                         "LIST_TAGS_BY_ADDRESS": "list_tags_by_address",
+                        "GET_TAG_SUMMARY_BY_ADDRESS": "get_tag_summary_by_address",
                         "LIST_ADDRESS_NEIGHBORS": "list_address_neighbors",
                         "GET_ADDRESS_ENTITY": "get_address_entity",
                         "LIST_ADDRESS_LINKS": "list_address_links",
