@@ -145,11 +145,21 @@ with graphsense.ApiClient(configuration) as api_client:
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
+    include_actors = True # bool | Whether to include information about the actor behind the address (optional) if omitted the server will use the default value of True
 
     # example passing only required values which don't have defaults set
     try:
         # Get the entity of an address
         api_response = api_instance.get_address_entity(currency, address)
+        pprint(api_response)
+    except graphsense.ApiException as e:
+        print("Exception when calling AddressesApi->get_address_entity: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Get the entity of an address
+        api_response = api_instance.get_address_entity(currency, address, include_actors=include_actors)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling AddressesApi->get_address_entity: %s\n" % e)
@@ -162,6 +172,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **str**| The cryptocurrency code (e.g., btc) |
  **address** | **str**| The cryptocurrency address |
+ **include_actors** | **bool**| Whether to include information about the actor behind the address | [optional] if omitted the server will use the default value of True
 **_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
 **async_req** | **bool** | Execute request asynchronously | [optional] default is False.
 
@@ -325,7 +336,7 @@ with graphsense.ApiClient(configuration) as api_client:
     api_instance = addresses_api.AddressesApi(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     address = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | The cryptocurrency address
-    neighbor = "1Archive1n2C579dMsAu3iC6tWzuQJz8dN" # str | Neighbor address
+    neighbor = "1FKCzy3BEtiZDhRDtivp7Y7RVb9edg5BH7" # str | Neighbor address
     min_height = Height(1) # Height | Return transactions starting from given height (optional)
     max_height = Height(2) # Height | Return transactions up to (including) given height (optional)
     order = "desc" # str | Sorting order (optional) if omitted the server will use the default value of "desc"
