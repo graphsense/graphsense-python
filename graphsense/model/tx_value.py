@@ -90,6 +90,7 @@ class TxValue(ModelNormal):
         return {
             'address': ([str],),  # noqa: E501
             'value': (Values,),  # noqa: E501
+            'index': (int,),  # noqa: E501
         }
 
     @cached_property
@@ -100,6 +101,7 @@ class TxValue(ModelNormal):
     attribute_map = {
         'address': 'address',  # noqa: E501
         'value': 'value',  # noqa: E501
+        'index': 'index',  # noqa: E501
     }
 
     read_only_vars = {
@@ -147,6 +149,7 @@ class TxValue(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            index (int): Optional index for the inputs and outputs. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -234,6 +237,7 @@ class TxValue(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            index (int): Optional index for the inputs and outputs. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

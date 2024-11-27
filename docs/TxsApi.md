@@ -239,6 +239,8 @@ with graphsense.ApiClient(configuration) as api_client:
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     tx_hash = "04d92601677d62a985310b61a301e74870fa942c8be0648e16b1db23b996a8cd" # str | The transaction hash
     include_io = False # bool | Whether to include inputs/outputs of a transaction (UTXO only) (optional) if omitted the server will use the default value of False
+    include_nonstandard_io = False # bool | Whether to include non-standard inputs/outputs such as OP_RETURN of a transaction (UTXO only) (optional) if omitted the server will use the default value of False
+    include_io_index = False # bool | Whether to include the index of inputs/outputs of a transaction (UTXO only) (optional) if omitted the server will use the default value of False
     token_tx_id = 1 # int | Select a specific token_transaction (Account model only) (optional)
 
     # example passing only required values which don't have defaults set
@@ -253,7 +255,7 @@ with graphsense.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Returns details of a specific transaction identified by its hash
-        api_response = api_instance.get_tx(currency, tx_hash, include_io=include_io, token_tx_id=token_tx_id)
+        api_response = api_instance.get_tx(currency, tx_hash, include_io=include_io, include_nonstandard_io=include_nonstandard_io, include_io_index=include_io_index, token_tx_id=token_tx_id)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling TxsApi->get_tx: %s\n" % e)
@@ -267,6 +269,8 @@ Name | Type | Description  | Notes
  **currency** | **str**| The cryptocurrency code (e.g., btc) |
  **tx_hash** | **str**| The transaction hash |
  **include_io** | **bool**| Whether to include inputs/outputs of a transaction (UTXO only) | [optional] if omitted the server will use the default value of False
+ **include_nonstandard_io** | **bool**| Whether to include non-standard inputs/outputs such as OP_RETURN of a transaction (UTXO only) | [optional] if omitted the server will use the default value of False
+ **include_io_index** | **bool**| Whether to include the index of inputs/outputs of a transaction (UTXO only) | [optional] if omitted the server will use the default value of False
  **token_tx_id** | **int**| Select a specific token_transaction (Account model only) | [optional]
 **_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
 **async_req** | **bool** | Execute request asynchronously | [optional] default is False.
@@ -336,11 +340,22 @@ with graphsense.ApiClient(configuration) as api_client:
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
     tx_hash = "04d92601677d62a985310b61a301e74870fa942c8be0648e16b1db23b996a8cd" # str | The transaction hash
     io = "outputs" # str | Input or outpus values of a transaction
+    include_nonstandard_io = False # bool | Whether to include non-standard inputs/outputs such as OP_RETURN of a transaction (UTXO only) (optional) if omitted the server will use the default value of False
+    include_io_index = False # bool | Whether to include the index of inputs/outputs of a transaction (UTXO only) (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
     try:
         # Returns input/output values of a specific transaction identified by its hash
         api_response = api_instance.get_tx_io(currency, tx_hash, io)
+        pprint(api_response)
+    except graphsense.ApiException as e:
+        print("Exception when calling TxsApi->get_tx_io: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Returns input/output values of a specific transaction identified by its hash
+        api_response = api_instance.get_tx_io(currency, tx_hash, io, include_nonstandard_io=include_nonstandard_io, include_io_index=include_io_index)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling TxsApi->get_tx_io: %s\n" % e)
@@ -354,6 +369,8 @@ Name | Type | Description  | Notes
  **currency** | **str**| The cryptocurrency code (e.g., btc) |
  **tx_hash** | **str**| The transaction hash |
  **io** | **str**| Input or outpus values of a transaction |
+ **include_nonstandard_io** | **bool**| Whether to include non-standard inputs/outputs such as OP_RETURN of a transaction (UTXO only) | [optional] if omitted the server will use the default value of False
+ **include_io_index** | **bool**| Whether to include the index of inputs/outputs of a transaction (UTXO only) | [optional] if omitted the server will use the default value of False
 **_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
 **async_req** | **bool** | Execute request asynchronously | [optional] default is False.
 
