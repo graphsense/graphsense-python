@@ -328,6 +328,8 @@ class TxsApi(object):
 
             Keyword Args:
                 include_io (bool): Whether to include inputs/outputs of a transaction (UTXO only). [optional] if omitted the server will use the default value of False
+                include_nonstandard_io (bool): Whether to include non-standard inputs/outputs such as OP_RETURN of a transaction (UTXO only). [optional] if omitted the server will use the default value of False
+                include_io_index (bool): Whether to include the index of inputs/outputs of a transaction (UTXO only). [optional] if omitted the server will use the default value of False
                 token_tx_id (int): Select a specific token_transaction (Account model only). [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
@@ -395,6 +397,8 @@ class TxsApi(object):
                     'currency',
                     'tx_hash',
                     'include_io',
+                    'include_nonstandard_io',
+                    'include_io_index',
                     'token_tx_id',
                 ],
                 'required': [
@@ -420,6 +424,10 @@ class TxsApi(object):
                         (str,),
                     'include_io':
                         (bool,),
+                    'include_nonstandard_io':
+                        (bool,),
+                    'include_io_index':
+                        (bool,),
                     'token_tx_id':
                         (int,),
                 },
@@ -427,12 +435,16 @@ class TxsApi(object):
                     'currency': 'currency',
                     'tx_hash': 'tx_hash',
                     'include_io': 'include_io',
+                    'include_nonstandard_io': 'include_nonstandard_io',
+                    'include_io_index': 'include_io_index',
                     'token_tx_id': 'token_tx_id',
                 },
                 'location_map': {
                     'currency': 'path',
                     'tx_hash': 'path',
                     'include_io': 'query',
+                    'include_nonstandard_io': 'query',
+                    'include_io_index': 'query',
                     'token_tx_id': 'query',
                 },
                 'collection_format_map': {
@@ -469,6 +481,8 @@ class TxsApi(object):
                 io (str): Input or outpus values of a transaction
 
             Keyword Args:
+                include_nonstandard_io (bool): Whether to include non-standard inputs/outputs such as OP_RETURN of a transaction (UTXO only). [optional] if omitted the server will use the default value of False
+                include_io_index (bool): Whether to include the index of inputs/outputs of a transaction (UTXO only). [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -537,6 +551,8 @@ class TxsApi(object):
                     'currency',
                     'tx_hash',
                     'io',
+                    'include_nonstandard_io',
+                    'include_io_index',
                 ],
                 'required': [
                     'currency',
@@ -568,16 +584,24 @@ class TxsApi(object):
                         (str,),
                     'io':
                         (str,),
+                    'include_nonstandard_io':
+                        (bool,),
+                    'include_io_index':
+                        (bool,),
                 },
                 'attribute_map': {
                     'currency': 'currency',
                     'tx_hash': 'tx_hash',
                     'io': 'io',
+                    'include_nonstandard_io': 'include_nonstandard_io',
+                    'include_io_index': 'include_io_index',
                 },
                 'location_map': {
                     'currency': 'path',
                     'tx_hash': 'path',
                     'io': 'path',
+                    'include_nonstandard_io': 'query',
+                    'include_io_index': 'query',
                 },
                 'collection_format_map': {
                 }
