@@ -74,3 +74,5 @@ target/
 
 #credentials
 examples/config.json
+
+.env
