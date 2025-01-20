@@ -27,3 +27,4 @@ docs/BulkApi.md
 .gitlab-ci.yml
 test/*
 git_push.sh
+.gitignore

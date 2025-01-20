@@ -1,3 +1,5 @@
+-include .env
+
 generate-openapi-client:
 	docker run --rm \
 		-v "${PWD}:/build:Z" \
@@ -10,5 +12,7 @@ generate-openapi-client:
 		--additional-properties=packageName=graphsense \
 		--additional-properties=projectName=graphsense-python
 
+run-examples:
+	API_KEY=$(API_KEY) python test_examples.py
 
-.PHONY: generate-openapi-client
+.PHONY: generate-openapi-client run-examples
