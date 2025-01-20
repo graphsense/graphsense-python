@@ -21,6 +21,7 @@ Returns in which other transaction's outputs the asked transaction spent. Think 
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import txs_api
 from graphsense.model.tx_ref import TxRef
@@ -116,6 +117,7 @@ Returns in which other transactions, outputs from the asked transaction are spen
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import txs_api
 from graphsense.model.tx_ref import TxRef
@@ -211,6 +213,7 @@ Returns details of a specific transaction identified by its hash
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import txs_api
 from graphsense.model.tx import Tx
@@ -312,6 +315,7 @@ Returns input/output values of a specific transaction identified by its hash
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import txs_api
 from graphsense.model.tx_values import TxValues
@@ -411,6 +415,7 @@ Returns all token transactions in a given transaction
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import txs_api
 from graphsense.model.txs_account import TxsAccount

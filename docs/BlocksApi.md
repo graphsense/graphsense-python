@@ -19,6 +19,7 @@ Get a block by its height
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import blocks_api
 from graphsense.model.block import Block
@@ -104,6 +105,7 @@ Get the closest blocks given a timestamp
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from dateutil.parser import parse
 from graphsense.api import blocks_api
@@ -189,6 +191,7 @@ Get block transactions
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import blocks_api
 from graphsense.model.tx import Tx

@@ -23,6 +23,7 @@ Get an address
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import addresses_api
 from graphsense.model.address import Address
@@ -118,6 +119,7 @@ Get the entity of an address
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import addresses_api
 from graphsense.model.entity import Entity
@@ -213,6 +215,7 @@ Get attribution tag summary for a given address
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import addresses_api
 from graphsense.model.tag_summary import TagSummary
@@ -308,6 +311,7 @@ Get outgoing transactions between two addresses
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import addresses_api
 from graphsense.model.height import Height
@@ -414,6 +418,7 @@ Get an address's neighbors in the address graph
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import addresses_api
 from graphsense.model.neighbor_addresses import NeighborAddresses
@@ -521,6 +526,7 @@ Get all transactions an address has been involved in
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import addresses_api
 from graphsense.model.height import Height
@@ -629,6 +635,7 @@ Get attribution tags for a given address
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import addresses_api
 from graphsense.model.address_tags import AddressTags

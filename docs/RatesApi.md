@@ -17,6 +17,7 @@ Returns exchange rate for a given height
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import rates_api
 from graphsense.model.rates import Rates

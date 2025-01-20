@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **tagpack_is_public** | **bool** | whether the address is public | 
 **tagpack_creator** | **str** | Tagpack creator | 
 **is_cluster_definer** | **bool** | whether the address tag applies to the entity level | 
+**tag_type** | **str** | kind of tag e.g. Mention; representing a mention of an address, or Actor; representing an actor saying something about the actor behind the address. | 
 **currency** | **str** | crypto currency code | 
 **category** | **str** | Category | [optional] 
 **concepts** | **[str]** | A list additional concepts/categories | [optional] 

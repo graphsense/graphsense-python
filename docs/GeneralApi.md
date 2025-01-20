@@ -17,6 +17,7 @@ Get statistics of supported currencies
 
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import general_api
 from graphsense.model.stats import Stats
@@ -85,6 +86,7 @@ Returns matching addresses, transactions and labels
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import general_api
 from graphsense.model.search_result import SearchResult

@@ -23,6 +23,7 @@ Get an entity
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import entities_api
 from graphsense.model.entity import Entity
@@ -120,6 +121,7 @@ Get address tags for a given entity
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import entities_api
 from graphsense.model.address_tags import AddressTags
@@ -217,6 +219,7 @@ Get an entity's addresses
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import entities_api
 from graphsense.model.entity_addresses import EntityAddresses
@@ -314,6 +317,7 @@ Get transactions between two entities
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import entities_api
 from graphsense.model.height import Height
@@ -420,6 +424,7 @@ Get an entity's direct neighbors
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import entities_api
 from graphsense.model.neighbor_entities import NeighborEntities
@@ -529,6 +534,7 @@ Get all transactions an entity has been involved in
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import entities_api
 from graphsense.model.height import Height
@@ -637,6 +643,7 @@ Search deeply for matching neighbors
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import entities_api
 from graphsense.model.search_result_level1 import SearchResultLevel1

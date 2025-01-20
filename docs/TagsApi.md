@@ -21,6 +21,7 @@ Returns an actor given its unique id or (unique) label
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import tags_api
 from graphsense.model.actor import Actor
@@ -103,6 +104,7 @@ Returns the address tags for a given actor
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import tags_api
 from graphsense.model.address_tags import AddressTags
@@ -198,6 +200,7 @@ Returns address tags associated with a given label
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import tags_api
 from graphsense.model.address_tags import AddressTags
@@ -293,6 +296,7 @@ Returns the supported concepts of a taxonomy
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import tags_api
 from graphsense.model.concept import Concept
@@ -318,7 +322,7 @@ configuration.api_key['api_key'] = 'YOUR_API_KEY'
 with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tags_api.TagsApi(api_client)
-    taxonomy = "foo" # str | The taxonomy
+    taxonomy = "concept" # str | The taxonomy
 
     # example passing only required values which don't have defaults set
     try:
@@ -375,6 +379,7 @@ Returns the supported taxonomies
 * Api Key Authentication (api_key):
 ```python
 import time
+from dateutil.parser import parse as dateutil_parser
 import graphsense
 from graphsense.api import tags_api
 from graphsense.model.taxonomy import Taxonomy
