@@ -107,7 +107,6 @@ Get the closest blocks given a timestamp
 import time
 from dateutil.parser import parse as dateutil_parser
 import graphsense
-from dateutil.parser import parse
 from graphsense.api import blocks_api
 from graphsense.model.block_at_date import BlockAtDate
 from pprint import pprint
@@ -133,7 +132,7 @@ with graphsense.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = blocks_api.BlocksApi(api_client)
     currency = "btc" # str | The cryptocurrency code (e.g., btc)
-    date = parse('2017-07-21T17:32:28Z') # datetime | The time of the block
+    date = dateutil_parser('2017-07-21T17:32:28Z') # datetime | The time of the block
 
     # example passing only required values which don't have defaults set
     try:
