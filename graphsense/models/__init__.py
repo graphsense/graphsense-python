@@ -25,6 +25,7 @@ from graphsense.model.concept import Concept
 from graphsense.model.currency_stats import CurrencyStats
 from graphsense.model.entity import Entity
 from graphsense.model.entity_addresses import EntityAddresses
+from graphsense.model.external_conversions import ExternalConversions
 from graphsense.model.height import Height
 from graphsense.model.label_summary import LabelSummary
 from graphsense.model.labeled_item_ref import LabeledItemRef
@@ -64,4 +65,5 @@ from graphsense.model.tx_utxo import TxUtxo
 from graphsense.model.tx_value import TxValue
 from graphsense.model.tx_values import TxValues
 from graphsense.model.txs_account import TxsAccount
+from graphsense.model.user_reported_tag import UserReportedTag
 from graphsense.model.values import Values

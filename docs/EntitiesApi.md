@@ -349,7 +349,10 @@ with graphsense.ApiClient(configuration) as api_client:
     neighbor = 123456 # int | Neighbor entity
     min_height = Height(1) # Height | Return transactions starting from given height (optional)
     max_height = Height(2) # Height | Return transactions up to (including) given height (optional)
+    min_date = dateutil_parser('2017-07-21T17:32:28Z') # datetime | min date of txs (optional)
+    max_date = dateutil_parser('2017-07-21T17:32:28Z') # datetime | max date of txs (optional)
     order = "desc" # str | Sorting order (optional) if omitted the server will use the default value of "desc"
+    token_currency = "WETH" # str | Return transactions of given token or base currency (optional)
     page = "" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
@@ -365,7 +368,7 @@ with graphsense.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Get transactions between two entities
-        api_response = api_instance.list_entity_links(currency, entity, neighbor, min_height=min_height, max_height=max_height, order=order, page=page, pagesize=pagesize)
+        api_response = api_instance.list_entity_links(currency, entity, neighbor, min_height=min_height, max_height=max_height, min_date=min_date, max_date=max_date, order=order, token_currency=token_currency, page=page, pagesize=pagesize)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling EntitiesApi->list_entity_links: %s\n" % e)
@@ -381,7 +384,10 @@ Name | Type | Description  | Notes
  **neighbor** | **int**| Neighbor entity |
  **min_height** | **Height**| Return transactions starting from given height | [optional]
  **max_height** | **Height**| Return transactions up to (including) given height | [optional]
+ **min_date** | **datetime**| min date of txs | [optional]
+ **max_date** | **datetime**| max date of txs | [optional]
  **order** | **str**| Sorting order | [optional] if omitted the server will use the default value of "desc"
+ **token_currency** | **str**| Return transactions of given token or base currency | [optional]
  **page** | **str**| Resumption token for retrieving the next page | [optional]
  **pagesize** | **int**| Number of items returned in a single page | [optional]
 **_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
@@ -566,8 +572,10 @@ with graphsense.ApiClient(configuration) as api_client:
     direction = "out" # str | Incoming or outgoing transactions (optional)
     min_height = Height(1) # Height | Return transactions starting from given height (optional)
     max_height = Height(2) # Height | Return transactions up to (including) given height (optional)
+    min_date = dateutil_parser('2017-07-21T17:32:28Z') # datetime | min date of txs (optional)
+    max_date = dateutil_parser('2017-07-21T17:32:28Z') # datetime | max date of txs (optional)
     order = "desc" # str | Sorting order (optional) if omitted the server will use the default value of "desc"
-    token_currency = "WETH" # str | Return transactions of given token currency (optional)
+    token_currency = "WETH" # str | Return transactions of given token or base currency (optional)
     page = "" # str | Resumption token for retrieving the next page (optional)
     pagesize = 10 # int | Number of items returned in a single page (optional)
 
@@ -583,7 +591,7 @@ with graphsense.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Get all transactions an entity has been involved in
-        api_response = api_instance.list_entity_txs(currency, entity, direction=direction, min_height=min_height, max_height=max_height, order=order, token_currency=token_currency, page=page, pagesize=pagesize)
+        api_response = api_instance.list_entity_txs(currency, entity, direction=direction, min_height=min_height, max_height=max_height, min_date=min_date, max_date=max_date, order=order, token_currency=token_currency, page=page, pagesize=pagesize)
         pprint(api_response)
     except graphsense.ApiException as e:
         print("Exception when calling EntitiesApi->list_entity_txs: %s\n" % e)
@@ -599,8 +607,10 @@ Name | Type | Description  | Notes
  **direction** | **str**| Incoming or outgoing transactions | [optional]
  **min_height** | **Height**| Return transactions starting from given height | [optional]
  **max_height** | **Height**| Return transactions up to (including) given height | [optional]
+ **min_date** | **datetime**| min date of txs | [optional]
+ **max_date** | **datetime**| max date of txs | [optional]
  **order** | **str**| Sorting order | [optional] if omitted the server will use the default value of "desc"
- **token_currency** | **str**| Return transactions of given token currency | [optional]
+ **token_currency** | **str**| Return transactions of given token or base currency | [optional]
  **page** | **str**| Resumption token for retrieving the next page | [optional]
  **pagesize** | **int**| Number of items returned in a single page | [optional]
 **_preload_content** | **bool** | If False, the urllib3.HTTPResponse object will be returned without reading/decoding response data. | [optional] default is True. 
