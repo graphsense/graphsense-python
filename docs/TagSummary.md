@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **tag_count** | **int** |  | 
 **label_summary** | [**{str: (LabelSummary,)}**](LabelSummary.md) |  | 
 **concept_tag_cloud** | [**{str: (TagCloudEntry,)}**](TagCloudEntry.md) |  | 
+**tag_count_indirect** | **int** |  | [optional] 
 **best_actor** | **str** |  | [optional] 
 **best_label** | **str** |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
