@@ -3,7 +3,7 @@
 Please see the [changelog of GraphSense OpenAPI](https://github.com/graphsense/graphsense-openapi/blob/master/CHANGELOG.md) for changes related to the API.
 
 
-## [25.08.0/1.10.0] - 2025-08-05
+## [25.08.0/1.13.0] - 2025-08-05
 
 ### Added
 - added new conversion endpoint: Input is a transaction output are swaps or similar currency conversion transactions that can be resolved by the backend
