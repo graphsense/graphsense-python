@@ -1,3 +1,7 @@
+# Notice
+
+⚠️ **REPOSITORY MOVED**: This repository has been moved to [graphsense-lib](https://github.com/graphsense/graphsense-rest/tree/master/client/python). Please use the new repository for all development and updates. This repository is now archived and no longer accepts commits.
+
 # graphsense-python
 GraphSense API provides programmatic access to various ledgers' addresses, entities, blocks, transactions and tags for automated and highly efficient forensics tasks.
 
